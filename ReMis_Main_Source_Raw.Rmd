@@ -1,0 +1,35 @@
+---
+title: "ReMis_Main_Source_Raw"
+author: "Marton Kovacs"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: html_document
+---
+
+# Load packages
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+```
+
+# Import data
+```{r, message = FALSE}
+Source <- read_csv("Source/ResearchersMistakes_MainStudy_January+21,+2019_21.01.csv")
+```
+
+# Save comments that contain personal information separately
+```{r}
+personal_comment_id <- c("R_3saEuW4TTviBwnM")
+
+Source %>% 
+  slice(-(1:2)) %>% 
+  distinct(comment, ResponseId) %>% 
+  filter(ResponseId %in% personal_comment_id) %>% 
+  write_tsv(., "Raw/ReMis_Main_PersonalComments_data.tsv")
+```
+
+# Save source data in .tsv format but delete comments that contain personal information
+```{r}
+Source %>% 
+  mutate(comment = case_when(ResponseId == personal_comment_id ~ NA_character_,
+                             TRUE ~ comment)) %>% 
+  write_tsv(., "Raw/ReMis_Main_Raw_data.tsv")
+```

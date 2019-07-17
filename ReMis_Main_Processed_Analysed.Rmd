@@ -1,0 +1,644 @@
+---
+title: "ReMis_Main_processed_Analysed"
+author: "Marton Kovacs"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: html_document
+---
+
+# Load packages
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(readxl)
+library(qdap)
+library(papaja)
+library(patchwork)
+library(skimr)
+library(viridis)
+library(ggthemes)
+```
+
+# Load functions
+```{r}
+source("utils.R")
+```
+
+# Descriptive results of the grouping process
+```{r}
+# Read in data
+## Data management mistake stages
+grouping_stage <-
+  read_tsv("Processed/ReMis_Main_Processed_Stage_Groups_data.tsv")
+
+## Data management mistake types
+grouping_type <- 
+  read_tsv("Processed/ReMis_Main_Processed_Type_Groups_data.tsv")
+
+## Causes of mistakes
+grouping_cause <-  
+  read_tsv("Processed/ReMis_Main_Processed_Cause_Groups_data.tsv")
+
+## Outcomes of mistakes
+grouping_outcome <- 
+  read_tsv("Processed/ReMis_Main_Processed_Outcome_Groups_data.tsv")
+```
+
+## Descriptives
+```{r}
+## Data management mistake stages
+grouping_stage %>% skim()
+
+## Data management mistake types
+grouping_type %>% skim()
+
+## Causes of mistakes
+grouping_cause %>% skim()
+
+## Outcomes of mistakes
+grouping_outcome %>% skim()
+```
+
+# Relationship between mistake types by mistake causes
+# Read in processed data
+```{r}
+cause_type_relationship <- read_tsv( "Processed/ReMis_Main_Processed_Cause_Type_Relationship_Analysis_data.tsv")
+```
+
+# Data descriptives
+```{r}
+skim(cause_type_relationship) %>% summary()
+
+skim(cause_type_relationship)
+```
+
+# Relationship between causes and types together for the most serious and recurring mistakes
+```{r}
+con_tab <- as_tibble(xtabs(~ group_type + group_cause, data = cause_type_relationship))
+  
+relationship_plot_data <- con_tab %>% 
+  group_by(group_type) %>% 
+  mutate(n_sum = sum(n)) %>% 
+  ungroup() %>%
+  mutate(prop = round(n / n_sum * 100)) %>%
+  filter(n_sum >= 10)
+
+relationship_plot_label <- relationship_plot_data %>% 
+  group_by(group_type) %>% 
+  mutate(highest_prop = case_when(prop == max(prop) ~ 1L,
+                                  TRUE ~ 0L)) %>% 
+  filter(highest_prop == 1) %>% 
+  mutate(label = paste(group_cause, prop, "%"),
+         label = paste(label, collapse = " and\n "))
+
+# Plot with the label of the most frequent cause
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(group_type, n), y = n)) +
+    geom_bar(stat = "identity") +
+    geom_text(data = relationship_plot_label, aes(y = n_sum, label = label),
+              hjust = -0.1, size = 3,
+              position = position_dodge(width = 1),
+              inherit.aes = TRUE) +
+    scale_y_continuous(expand = c(0,0), limit = c(0, 65)) +
+    coord_flip() +
+    labs(x = "Data Management Mistake Types",
+         y = "Count") +
+    theme(axis.text.x = element_text(),
+          panel.background = element_blank(),
+          panel.grid = element_blank(),
+          axis.ticks = element_line(),
+          axis.line = element_line())
+
+# Stacked barplot of all the causes
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(group_type, n), y = n, group = group_cause, fill = group_cause)) +
+    geom_bar(stat = "identity") +
+    #scale_fill_colorblind() +
+    scale_y_continuous(expand = c(0,0), limit = c(0, 65)) +
+    coord_flip() +
+    labs(x = "Data Management Mistake Types",
+         y = "Count") +
+    theme(axis.text.x = element_text(),
+          panel.background = element_blank(),
+          panel.grid = element_blank(),
+          axis.ticks = element_line(),
+          axis.line = element_line(),
+          legend.title = element_blank())
+
+ggsave("Figures/cause_type_relationship_all_stacked.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+# Relationship between causes and types for the most serious mistakes
+```{r}
+cause_type_relationship_serious <- cause_type_relationship %>% 
+  filter(type == "serious")
+
+con_tab <- as_tibble(xtabs(~ group_type + group_cause, data = cause_type_relationship_serious))
+  
+relationship_plot_data <- con_tab %>% 
+  group_by(group_type) %>% 
+  mutate(n_sum = sum(n)) %>% 
+  ungroup() %>%
+  mutate(prop = round(n / n_sum * 100)) %>%
+  filter(n_sum >= 10)
+
+hist(relationship_plot_data$n_sum)
+
+relationship_plot_label <- relationship_plot_data %>% 
+  group_by(group_type) %>% 
+  mutate(highest_prop = case_when(prop == max(prop) ~ 1L,
+                                  TRUE ~ 0L)) %>% 
+  filter(highest_prop == 1) %>% 
+  mutate(label = paste(group_cause, prop, "%"),
+         label = paste(label, collapse = " and\n "))
+         
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(group_type, n), y = n)) +
+    geom_bar(stat = "identity") +
+    geom_text(data = relationship_plot_label, aes(y = n_sum, label = label),
+              hjust = -0.1, size = 3,
+              position = position_dodge(width = 1),
+              inherit.aes = TRUE) +
+    scale_y_continuous(expand = c(0,0), limit = c(0, 65)) +
+    coord_flip() +
+    labs(x = "Data Management Mistake Types",
+         y = "Count") +
+    theme(axis.text.x = element_text(),
+          panel.background = element_blank(),
+          panel.grid = element_blank(),
+          axis.ticks = element_line(),
+          axis.line = element_line())
+```
+
+# Relationship between causes and types for the most recurring mistakes
+```{r}
+cause_type_relationship_recurring <- cause_type_relationship %>% 
+  filter(type == "recurring")
+
+con_tab <- as_tibble(xtabs(~ group_type + group_cause, data = cause_type_relationship_recurring))
+  
+relationship_plot_data <- con_tab %>% 
+  group_by(group_type) %>% 
+  mutate(n_sum = sum(n)) %>% 
+  ungroup() %>%
+  mutate(prop = round(n / n_sum * 100)) %>%
+  filter(n_sum >= 10)
+
+relationship_plot_label <- relationship_plot_data %>% 
+  group_by(group_type) %>% 
+  mutate(highest_prop = case_when(prop == max(prop) ~ 1L,
+                                  TRUE ~ 0L)) %>% 
+  filter(highest_prop == 1) %>% 
+  mutate(label = paste(group_cause, prop, "%"),
+         label = paste(label, collapse = " and\n "))
+         
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(group_type, n), y = n)) +
+    geom_bar(stat = "identity") +
+    geom_text(data = relationship_plot_label, aes(y = n_sum, label = label),
+              hjust = -0.1, size = 3,
+              position = position_dodge(width = 1),
+              inherit.aes = TRUE) +
+    scale_y_continuous(expand = c(0,0), limit = c(0, 65)) +
+    coord_flip() +
+    labs(x = "Data Management Mistake Types",
+         y = "Count") +
+    theme(axis.text.x = element_text(),
+          panel.background = element_blank(),
+          panel.grid = element_blank(),
+          axis.ticks = element_line(),
+          axis.line = element_line())
+```
+
+# Descriptives of the sample
+
+# Read in data
+```{r}
+descriptives <- read_tsv("Processed/ReMis_Main_Processed_Descriptive_Analysis_data.tsv")
+```
+
+# Data descriptives
+```{r}
+skim(descriptives)
+```
+
+## Years spent on the field
+```{r}
+### Histogram
+descriptives %>% 
+  ggplot() +
+  aes(years) +
+  geom_histogram() +
+  labs(x = "Years spent on the field",  y = "Count") +
+  scale_y_continuous(expand = c(0,0)) +
+  papaja::theme_apa()
+```
+
+## Field
+```{r}
+### Descriptive statistics
+descriptives %>% 
+  group_by(field) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 2))
+
+### Barplot
+descriptives %>% 
+  filter(!is.na(field)) %>% 
+  mutate(field = str_extract(field, "(\\w+)"),
+         field = str_to_title(field),
+         field = fct_relevel(field,
+                             "Other",
+                             "Experimental",
+                             "Social",
+                             "Clinical",
+                             "Developmental",
+                             "Applied",
+                             "Neurophysiology",
+                             "Methodology",
+                             "Personality")) %>% 
+  group_by(field) %>% 
+  count() %>% 
+  ggplot(.) +
+  aes(x = field, y = n) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x = "Field of the research teams of the respondents",
+       y = "Count") + 
+  papaja::theme_apa() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.line = element_line(color = "black"))
+```
+
+# Committing data management mistakes in general
+
+# Read in data
+```{r}
+general_mistake_frequency <- read_tsv("Processed/ReMis_Main_Processed_General_Frequency_Analysis_data.tsv")
+```
+
+# Relevel factor variable for plotting
+```{r}
+general_mistake_frequency <- 
+  general_mistake_frequency %>% 
+  mutate(general_frequency = frequency_char_to_fact(general_frequency))
+```
+
+```{r}
+## Levels of the answer option to general_frequency
+distinct(general_mistake_frequency, general_frequency)
+
+## Percentage of responses to general_frequency
+general_mistake_frequency %>%
+  filter(!is.na(general_frequency)) %>% 
+  group_by(general_frequency) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = n / N * 100)
+
+## Barplot of the responses to general_frequency
+  general_mistake_frequency %>% 
+  filter(!is.na(general_frequency)) %>% 
+  ggplot() +
+  aes(general_frequency) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 270)) +
+  labs(x = "Frequency levels",
+       y = "Count") +
+  coord_flip() +
+  theme_apa()
+```
+
+# Analysis of the most recurring mistakes
+
+# Read in data
+```{r}
+general_mistake_overview <- read_tsv("Processed/ReMis_Main_Processed_Mistake_General_Analysis_data.tsv")
+```
+
+## Research data management level analyses
+```{r}
+### Levels of the answer option to recurring_frequency
+general_mistake_overview %>% 
+  filter(type == "recurring",
+         question == "frequency") %>% 
+  distinct(rating)
+
+### Proportion of the frequency of the most recurring mistakes
+general_mistake_overview %>%
+  filter(type == "recurring",
+         question == "frequency",
+         !is.na(rating)) %>% 
+  mutate(rating = frequency_char_to_fact(rating)) %>% 
+  group_by(rating) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100))
+
+### Barplot of responses to recurring_frequency
+recurring_frequency_plot <- 
+  general_mistake_overview %>%
+  filter(type == "recurring",
+         question == "frequency",
+         !is.na(rating)) %>% 
+  mutate(rating = frequency_char_to_fact(rating)) %>% 
+  ggplot() +
+  aes(x = rating) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 250)) +
+  labs(x = "Frequency levels",
+       y = "Count") +
+  theme_apa(box = T) +
+  coord_flip()
+
+### Proportion of the most recurring mistakes on a given seriousness level throughout research data management
+general_mistake_overview %>%
+  filter(type == "recurring",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>% 
+  group_by(rating) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100))
+
+### Barplot of responses to recurring_serious
+recurring_serious_plot <- 
+  general_mistake_overview %>% 
+  filter(type == "recurring",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>% 
+  ggplot() +
+  aes(rating) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 280)) +
+  labs(x = "Seriousnes levels",
+       y = "Count") +
+  theme_classic() +
+  coord_flip() +
+  theme_apa(box = T)
+
+### Median rating of all the most recurring mistakes
+general_mistake_overview %>% 
+  filter(type == "recurring",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_int(rating)) %>%
+  group_by(question) %>% 
+  summarize(median = median(rating, na.rm = TRUE),
+            max = max(rating, na.rm = TRUE),
+            min = min(rating, na.rm = TRUE),
+            n = n(),
+            quart1 = quantile(rating, 0.25, na.rm = TRUE),
+            quart3 = quantile(rating, 0.75, na.rm = TRUE),
+            IQR = IQR(rating, na.rm = TRUE))
+```
+
+# Analysis of the most serious mistakes
+## Research data management level analyses
+```{r}
+### Proportion of the most serious mistakes on a given seriousness level throughout research data management
+processed %>%
+  filter(!is.na(serious_serious)) %>% 
+  group_by(serious_serious) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = n / N * 100)
+
+### Barplot of responses to serious_serious
+serious_serious_plot <- 
+  processed %>% 
+  filter(!is.na(serious_serious)) %>% 
+  ggplot() +
+  aes(serious_serious) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 300)) +
+  labs(x = "Seriousnes levels",
+       y = "Count") +
+  coord_flip() +
+  theme_apa(box = T)
+```
+
+
+###### Will not be included #########
+
+
+## Stage level analyses
+```{r}
+### Levels of the answer option to recurring_stage_final
+distinct(processed, recurring_stage_final)
+
+### Proportion of respondents reported their most recurrent mistake at each data management stage
+processed %>%
+  filter(recurring_stage_final %ni% c("missing", "time", "nodatamanagement", "noinformation")) %>%
+  group_by(recurring_stage_final) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 2))
+
+### Barplot of the recurring mistakes grouped to stages
+recurring_stage_plot <- 
+  processed %>% 
+  filter(recurring_stage_final %ni% c("missing", "time", "nodatamanagement", "noinformation")) %>%
+  mutate(recurring_stage_final = fct_relevel(recurring_stage_final,
+                             "collection",
+                             "cprocessing",
+                             "processing",
+                             "panalysis",
+                             "analysis",
+                             "outputs",
+                             "storing"),
+         recurring_stage_final = fct_rev(recurring_stage_final)) %>%
+  ggplot() +
+  aes(recurring_stage_final) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 150)) +
+  labs(x = "Research data management stages",
+       y = "Count") +
+  theme_classic() +
+  coord_flip() +
+  theme_apa(box = T)
+
+### The number of most recurring mistakes reported on a given seriousness level for each stage by the number of all responses to the given stage
+processed %>%
+  filter(recurring_stage_final %ni% c("missing", "time", "nodatamanagement", "noinformation"),
+         !is.na(recurring_serious)) %>% 
+  group_by(recurring_stage_final, recurring_serious) %>% 
+  summarise(n = n()) %>% 
+  group_by(recurring_stage_final) %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 2))
+
+### The median and IQR of the seriousness ratings of the most recurring mistakes separately on the given RDM stage
+processed %>% 
+  group_by(recurring_stage_final) %>% 
+    summarize(median = median(recurring_serious_int, na.rm = TRUE),
+              max = max(recurring_serious_int, na.rm = TRUE),
+              min = min(recurring_serious_int, na.rm = TRUE),
+              n = n(),
+              quart1 = quantile(recurring_serious_int, 0.25, na.rm = TRUE),
+              quart3 = quantile(recurring_serious_int, 0.75, na.rm = TRUE),
+              IQR = IQR(recurring_serious_int, na.rm = TRUE))
+```
+
+## Stage level analyses
+```{r}
+### Levels of the answer option to serious_stage_final
+distinct(processed, serious_stage_final)
+
+### Proportion of respondents reported their most recurrent mistake at each data management stage
+processed %>%
+  filter(serious_stage_final %ni% c("missing", "time", "nodatamanagement", "noinformation")) %>% 
+  group_by(serious_stage_final) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 2))
+
+### Stacked barplot of the most recurring and most serious mistakes grouped to stages
+serious_stage_plot <- 
+  processed %>% 
+  select(ResponseId, serious_stage_final, recurring_stage_final) %>% 
+  gather(key = "mistake_type", value = "stage", -ResponseId) %>% 
+  mutate(mistake_type = str_extract(mistake_type, "[^_]+"),
+         stage= fct_relevel(stage,
+                             "storing",
+                             "outputs",
+                             "analysis",
+                             "panalysis",
+                             "processing",
+                             "cprocessing",
+                             "collection")) %>% 
+  filter(stage %ni% c("missing", "time", "nodatamanagement", "noinformation")) %>%
+  group_by(mistake_type, stage) %>% 
+  summarise(n = n()) %>% 
+  group_by(mistake_type) %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 2),
+         label = paste(as.character(stage), percentage, "%")) %>% 
+  ggplot() +
+  aes(x = as.factor(mistake_type),
+      y = percentage,
+      fill = stage) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x = "Mistake type",
+       y = "Percentage") +
+  coord_flip() +
+  theme_apa(box = T)
+
+### Pyramid plot of the most recurring and most serious mistakes grouped to stages
+library(ggplot2)
+library(scales)
+library(gtable)
+library(grid)
+
+# Set theme
+th <- theme(panel.grid.minor = element_blank(),
+         panel.grid.major = element_blank(), 
+         axis.text.y = element_blank(), 
+         axis.title.y = element_blank(),
+         plot.title = element_text(size = 10, hjust = 0.5))
+
+# Clean data
+pyramid_df <- processed_rating %>%
+  select(ResponseId, serious_stage_final, recurring_stage_final) %>% 
+  gather(key = "mistake_type", value = "stage", -ResponseId) %>% 
+  mutate(mistake_type = str_extract(mistake_type, "[^_]+"),
+         stage= fct_relevel(stage,
+                             "storing",
+                             "outputs",
+                             "analysis",
+                             "panalysis",
+                             "processing",
+                             "cprocessing",
+                             "collection")) %>% 
+  filter(stage %ni% c("missing", "time", "nodatamanagement", "noinformation")) %>%
+  group_by(mistake_type, stage) %>% 
+  summarise(n = n()) %>% 
+  group_by(mistake_type) %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N, 2),
+         label = paste(as.character(stage), percentage, "%"))
+
+### most recurring plot to appear on the right 
+pyramid_recurring <- 
+  ggplot(subset(pyramid_df, mistake_type == "recurring"), aes(x = stage)) +
+  geom_bar(aes(y = percentage), stat = "identity") +
+  scale_y_continuous('', labels = percent, limits = c(0, 0.5), expand = c(0,0)) + 
+  labs(x = NULL) +
+  ggtitle("Most frequent mistakes") +
+  coord_flip() +
+  th +
+  theme(plot.margin= unit(c(1, 0, 0, 0), "lines"))
+
+### most serious plot to appear on the left
+pyramid_serious <- 
+  ggplot(subset(pyramid_df, mistake_type == "serious"), aes(x = stage)) +
+  geom_bar(aes(y = percentage), stat = "identity") +
+  scale_y_continuous('',
+                     trans = 'reverse',
+                     labels = percent,
+                     limits = c(0.5, 0), 
+                     expand = c(0, 0)) + 
+  labs(x = NULL) +
+  ggtitle("Most serious mistakes") +
+  coord_flip() +
+  th +
+  theme(plot.margin= unit(c(1, 0, 0, 0), "lines"))
+
+## labels
+stages_name <- ggplot(data = filter(pyramid_df, mistake_type == "serious"), aes(x=stage)) +
+   geom_bar(stat = "identity", aes(y = 0)) +
+   geom_text(aes(y = 0,  label = stage), size = 3) +
+   ggtitle("Stages") +
+   coord_flip() + theme_bw() + th +
+   theme(panel.border = element_rect(colour = NA)) 
+
+stages_name_grob <- ggplotGrob(stages_name)
+
+# Get the title
+Title <- stages_name_grob$grobs[[which(stages_name_grob$layout$name == "title")]]
+
+# Get the plot panel
+stages_name_grob <- stages_name_grob$grobs[[which(stages_name_grob$layout$name == "panel")]]
+
+gt <- cbind(gtF, gtM, size = "first")
+
+### Combining
+grid.newpage()
+
+pushViewport( viewport( layout = grid.layout(1,3, widths = c(.4,.2,.4))))
+
+vplayout <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
+
+print(pyramid_serious, vp = vplayout(1,1))
+print(stages_name_grob,   vp = vplayout(1,2))
+print(pyramid_recurring,   vp = vplayout(1,3))
+
+### The number of most serious mistakes reported on a given seriousness level for each stage by the number of all responses to the given stage
+processed %>%
+  filter(serious_stage_final %ni% c("missing", "time", "nodatamanagement", "noinformation"),
+         !is.na(serious_serious)) %>% 
+  group_by(serious_stage_final, serious_serious) %>% 
+  summarise(n = n()) %>% 
+  group_by(serious_stage_final) %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 2)) %>% View()
+
+### The median and IQR of the seriousness ratings of the most serious mistakes separately on the given RDM stage
+processed %>% 
+  group_by(serious_stage_final) %>% 
+    summarize(median = median(serious_serious_int, na.rm = TRUE),
+              max = max(serious_serious_int, na.rm = TRUE),
+              min = min(serious_serious_int, na.rm = TRUE),
+              n = n(),
+              quart1 = quantile(serious_serious_int, 0.25, na.rm = TRUE),
+              quart3 = quantile(serious_serious_int, 0.75, na.rm = TRUE),
+              IQR = IQR(serious_serious_int, na.rm = TRUE))
+```

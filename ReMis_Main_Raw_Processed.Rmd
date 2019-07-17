@@ -1,0 +1,237 @@
+---
+title: "ReMis_Main_Raw_Processed"
+author: "Marton Kovacs"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Load packages
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(writexl)
+library(readxl)
+library(zoo)
+library(papaja)
+library(qdap)
+```
+
+# Load functions
+```{r}
+source("utils.R")
+```
+
+# Transforming Raw data to be ready for the grouping of the answers
+## Import data
+```{r, message = FALSE, warning=FALSE}
+raw <- read_tsv("Raw/ReMis_Main_Raw_data.tsv")
+```
+
+## Data filtering
+### Delete rows created by Qualtrics for variable explanation
+```{r}
+raw <- raw %>%
+  slice(-(1:2))
+
+### Number of responses
+Raw %>%
+  distinct(ResponseId) %>% 
+  count() # 783
+
+### Response rate
+# TODO
+```
+
+### Delete trial answers
+```{r}
+trial_answers <- c("R_2v2lOblGkxW8bzU", "R_OsbjDax8tZ9HrBD", "R_3haoYfua4zboVyb", "R_2xEmpKqvv1joVTT")
+
+raw <- raw %>%
+  filter(ResponseId %ni% trial_answers)
+
+### Number of responses
+raw %>%
+  distinct(ResponseId) %>% 
+  count() # 779
+```
+
+### Delete respondents who did not accept the informed consent form
+```{r}
+raw %>%
+  group_by(inform) %>% 
+  summarise(n = n()) # 760
+
+raw <- raw %>%
+  filter(inform == "Yes")
+```
+
+### Delete respondents who did not answer any question
+```{r}
+questions <- colnames(raw)[12:26]
+
+Raw_NoAnswer <- raw %>% 
+  filter_at(vars(questions), all_vars(is.na(.)))
+
+raw <- raw %>%
+  filter_at(vars(questions), any_vars(!is.na(.))) # 271 respondents deleted
+
+### Number of responses
+raw %>%
+  distinct(ResponseId) %>% 
+  count() # 489
+```
+
+## Variable transformation
+### Transforming Likert-scale character text to integer
+```{r}
+raw <- raw %>%
+  mutate(years = as.integer(years),
+         recurring_outcome = case_when(recurring_outcome == "other" ~ recurring_outcome_6_TEXT,
+                                          TRUE ~ recurring_outcome),
+         serious_outcome = case_when(serious_outcome == "other" ~ serious_outcome_6_TEXT,
+                                          TRUE ~ serious_outcome),
+         general_frequency = beg2char(general_frequency, "\n"),
+         recurring_frequency = beg2char(recurring_frequency, "\n"),
+         recurring_serious = beg2char(recurring_serious, "\n"),
+         serious_serious = beg2char(serious_serious, "\n"),
+         response_id = ResponseId)
+```
+
+## Filter the needed variables only
+```{r}
+raw <- 
+  raw %>%
+  select(-StartDate, -EndDate, -Status,
+         -Progress, -`Duration (in seconds)`, -Finished,
+         -RecordedDate, -DistributionChannel, -UserLanguage,
+         -inform, -comment, -serious_outcome_6_TEXT,
+         -recurring_outcome_6_TEXT, -ResponseId)
+```
+
+## Create datatable for the descriptive information
+```{r}
+processed_descriptives <- 
+  raw %>%
+  select(response_id, years, field)
+```
+
+## Create datatable for general frequency of mistakes in teams
+```{r}
+processed_general_frequency <- 
+  raw %>%
+  select(response_id, general_frequency)
+```
+
+# Create datatable for general overview of data management mistakes
+```{r}
+# Save into a different datatable the exclusion for general discussion about DMP mistakes
+processed_mistake_type_coding <-
+  read_xlsx("Processed/grouping/coding/ReMis_Main_Processed_Mistake_Type_Coding_data.xlsx") %>% 
+  filter(code %in% c("see above", "missing", "irrelevant content")) %>% 
+  mutate(exclusion_criteria = code,
+         type = mistake_type) %>% 
+  select(-mistakes_sep, -mistake_no, -code, -mistake_type) %>%
+  select(response_id, type, mistake, exclusion_criteria) %>% 
+  write_tsv(., "Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv")
+
+## Read in the list of mistake responses that will be excluded from this analysis
+exclude <- read_tsv("Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv")
+
+## Number of mistake responses that we exclude (and the reason why)
+exclude %>% 
+  group_by(exclusion_criteria) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(sum = sum(n)) %>%
+  knitr::kable(caption = "The exclusion criteria and the number of responses excluded because of that")
+
+## Creating datatable
+### TODO: CLEAN THIS MESS UP!
+temp_story <- 
+  raw %>% 
+  select(response_id, recurring_story, serious_story) %>%
+  gather(key = "type", value = "mistake", -response_id) %>% 
+  mutate(type = str_extract(type, "[^_]+"))
+
+temp_rating <-
+  raw %>%
+  select(response_id, recurring_frequency, recurring_serious, serious_serious) %>% 
+  gather(key = "key", value = "rating", -response_id) %>% 
+  separate(key, into = c("type", "question"), sep = "_")
+
+processed_mistake_general <-
+  temp_story %>% 
+  left_join(., temp_rating, by = c("response_id", "type"))
+
+## Excluding trials
+processed_mistake_general_excluded <-
+  processed_mistake_general %>% 
+  anti_join(., exclude, by = c("response_id", "type", "mistake"))
+
+## Number of missing ratings after exclusion
+processed_mistake_general_excluded %>% 
+  filter(is.na(rating)) %>% 
+  group_by(question) %>% 
+  count()
+```
+
+# Create datatable for exploring the relationship between mistake causes and types
+```{r}
+## Reading in grouping results for mistake types and causes
+processed_type_groups <- 
+  read_tsv("Processed/ReMis_Main_Processed_Type_Groups_data.tsv")
+
+processed_cause_groups_filtered <-
+  read_tsv("Processed/ReMis_Main_Processed_Cause_Groups_data.tsv") %>%
+  group_by(response_id, type) %>% 
+  slice(which.max(cause_no)) %>% 
+  filter(cause_no == 1)
+
+## Create the datatable
+processed_cause_type_relationship <-
+  processed_type_groups %>% 
+  inner_join(., processed_cause_groups_filtered, by = c("response_id", "type")) %>% 
+  select(response_id, type, mistake, mistake_no, mistakes_sep, group_type, cause, cause_no, cause_sep, group_cause) %>% 
+  filter(group_cause != "ambiguous",
+         group_type != "ambiguous")
+```
+
+# Create datatable for the investigation of the frequency and seriousness of different mistake types
+```{r}
+processed_type <-
+  processed_type_groups %>% 
+  inner_join(., processed_mistake_general, by = c("response_id", "type", "mistake")) %>% 
+  select(response_id, type, mistake, mistake_no, mistakes_sep, group_type, question, rating)
+```
+
+# Create datatable for the investigation of the frequency and seriousness of different data management stages
+```{r}
+## Read in stage groupes
+processed_stage_groups <- read_tsv("Processed/ReMis_Main_Processed_Stage_Groups_data.tsv")
+
+processed_stage <-
+  processed_stage_groups %>% 
+  inner_join(., processed_mistake_general, by = c("response_id", "type", "mistake"))
+```
+
+# Write processed datafiles for analysis
+```{r}
+processed_stage %>% 
+write_tsv(., "Processed/ReMis_Main_Processed_Stage_Analysis_data.tsv")
+
+processed_type %>% 
+  write_tsv(., "Processed/ReMis_Main_Processed_Type_Analysis_data.tsv")
+
+processed_cause_type_relationship %>% 
+  write_tsv(., "Processed/ReMis_Main_Processed_Cause_Type_Relationship_Analysis_data.tsv")
+
+processed_mistake_general_excluded %>% 
+  write_tsv(., "Processed/ReMis_Main_Processed_Mistake_General_Analysis_data.tsv")
+
+processed_descriptives %>% 
+  write_tsv(., "Processed/ReMis_Main_Processed_Descriptive_Analysis_data.tsv")
+
+processed_general_frequency %>% 
+  write_tsv(., "Processed/ReMis_Main_Processed_General_Frequency_Analysis_data.tsv")
+```
