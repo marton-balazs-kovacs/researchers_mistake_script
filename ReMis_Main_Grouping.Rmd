@@ -11,6 +11,9 @@ library(tidyverse)
 library(writexl)
 library(readxl)
 library(qdap)
+library(DiagrammeR) # For the flowchart
+library(grid) # For the flowchart
+library(Gmisc) # For the flowchart
 ```
 
 # Grouping the responses
@@ -541,5 +544,38 @@ processed_grouping_outcome_result %>%
 
 # Flowchart depicting the steps of the grouping process
 ```{r}
+# See templates: https://github.com/aghaynes/misc/blob/master/flow_template.R
+# https://rstudio-pubs-static.s3.amazonaws.com/90261_ad00e95221e14a33a50f2ebb56d34ab8.html
+# https://davetang.org/muse/2017/03/31/creating-flowchart-using-r/
 
+# Create the nodes
+nodes <-
+  create_node_df(
+    n = 7,
+    label = c("Responses",
+              "Separated responses",
+              "Grouping",
+              "Ungrouped responses",
+              "Grouped responses",
+              "Codes",
+              "Groups"),
+    type = "lower",
+    style = "filled",
+    color = "grey",
+    shape = rep("rectangle", 7)
+  )
+
+# Create edges
+edges <-
+  create_edge_df(
+    from = c(1, 2, 2, 3, 3, 6),
+    to = c(2, 3, 6, 4, 5, 7),
+    rel = "related")
+
+# Create the graph
+flowchart <- create_graph(nodes_df = nodes,
+                          edges_df = edges)
+
+# See the graph
+render_graph(flowchart)
 ```
