@@ -49,3 +49,12 @@ rating_char_to_int <- as_mapper(~ case_when(str_detect(.x, "Insignificant") ~ 1L
                                             .x == "High" ~ 4L,
                                             .x == "Very High" ~ 5L,
                                             TRUE ~ NA_integer_))
+
+#' Function to count the number of responses to the survey
+response_count <- function(dt){
+  
+  dt %>%
+    distinct(response_id) %>% 
+    count() %>% 
+    pull(n)
+}

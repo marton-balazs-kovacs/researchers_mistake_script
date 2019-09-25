@@ -1,5 +1,5 @@
 ---
-title: "ReMis_Main_Raw_Processed"
+title: "ReMis Main Raw Processed"
 author: "Marton Kovacs"
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 output: html_document
@@ -8,230 +8,180 @@ editor_options:
 ---
 
 # Load packages
+
 ```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(writexl)
 library(readxl)
 library(zoo)
-library(papaja)
 library(qdap)
 ```
 
 # Load functions
+
 ```{r}
 source("utils.R")
 ```
 
-# Transforming Raw data to be ready for the grouping of the answers
+# Transforming Raw data to be ready for the thematic grouping
 ## Import data
-```{r, message = FALSE, warning=FALSE}
+
+```{r, message = FALSE, warning = FALSE}
 raw <- read_tsv("Raw/ReMis_Main_Raw_data.tsv")
+```
+
+## Converting the varaible names to clean format
+
+```{r}
+raw <-
+  raw %>% 
+  janitor::clean_names()
 ```
 
 ## Data filtering
 ### Delete rows created by Qualtrics for variable explanation
+
 ```{r}
-raw <- raw %>%
+raw <- 
+  raw %>%
   slice(-(1:2))
-
-### Number of responses
-Raw %>%
-  distinct(ResponseId) %>% 
-  count() # 783
-
-### Response rate
-# TODO
 ```
 
-### Delete trial answers
+The number of responses: `r response_count(raw)`
+
+### Checking the number of responses from each distribution channel
+
+The survey was filled out by respondents outside of our sample as some respondents redestributed the survey link among their collagues. These responses are marked as "anonymous" by Qualtrics in the Distribution channel variable. Whereas the survey that we sent to our sample is marked by "email".
+
 ```{r}
-trial_answers <- c("R_2v2lOblGkxW8bzU", "R_OsbjDax8tZ9HrBD", "R_3haoYfua4zboVyb", "R_2xEmpKqvv1joVTT")
-
-raw <- raw %>%
-  filter(ResponseId %ni% trial_answers)
-
-### Number of responses
-raw %>%
-  distinct(ResponseId) %>% 
-  count() # 779
+distrib_channel_count <- 
+  raw %>%
+  group_by(distribution_channel) %>%
+  count()
 ```
+
+We recieved `r filter(distrib_channel_count, distribution_channel == "anonymous") %>% pull(n)` answers from the redistribution of our survey. As we do not know who provided these responses we exclude them from further analysis.
+
+```{r}
+raw <-
+  raw %>% 
+  filter(distribution_channel != "anonymous")
+```
+
+The number of responses: `r response_count(raw)`
+
+### Delete trial responses
+
+There are responses that were provided by the authors during the testing of the survey. These responses are excluded from further analysis.
+
+```{r}
+trial_respones <- c("R_2v2lOblGkxW8bzU", "R_OsbjDax8tZ9HrBD", "R_3haoYfua4zboVyb", "R_2xEmpKqvv1joVTT")
+
+raw <- 
+  raw %>%
+  filter(response_id %ni% trial_respones)
+```
+
+The number of responses: `r response_count(raw)`
 
 ### Delete respondents who did not accept the informed consent form
+
+We exclude respondents who did not accept the informed consent form in the beggining of our survey from any further analysis.
+
+The number of respondents who did and did not accept the informed consent form:
+
 ```{r}
 raw %>%
   group_by(inform) %>% 
-  summarise(n = n()) # 760
+  summarise(n = n())
+```
 
+```{r}
 raw <- raw %>%
   filter(inform == "Yes")
 ```
 
+The number of responses: `r response_count(raw)`
+
 ### Delete respondents who did not answer any question
+
+When saving the responses of the survey from Qualtrics we downloaded the responses in progress alongside the completed responses. Therefore, we exclude the responses where the respondent did not answer any questions of the survey.
+
 ```{r}
 questions <- colnames(raw)[12:26]
 
-Raw_NoAnswer <- raw %>% 
+raw_no_answer <- 
+  raw %>% 
   filter_at(vars(questions), all_vars(is.na(.)))
-
-raw <- raw %>%
-  filter_at(vars(questions), any_vars(!is.na(.))) # 271 respondents deleted
-
-### Number of responses
-raw %>%
-  distinct(ResponseId) %>% 
-  count() # 489
 ```
 
-## Variable transformation
-### Transforming Likert-scale character text to integer
-```{r}
-raw <- raw %>%
-  mutate(years = as.integer(years),
-         recurring_outcome = case_when(recurring_outcome == "other" ~ recurring_outcome_6_TEXT,
-                                          TRUE ~ recurring_outcome),
-         serious_outcome = case_when(serious_outcome == "other" ~ serious_outcome_6_TEXT,
-                                          TRUE ~ serious_outcome),
-         general_frequency = beg2char(general_frequency, "\n"),
-         recurring_frequency = beg2char(recurring_frequency, "\n"),
-         recurring_serious = beg2char(recurring_serious, "\n"),
-         serious_serious = beg2char(serious_serious, "\n"),
-         response_id = ResponseId)
-```
+The number of responses where the respondent did not answer any question: `r response_count(raw_no_answer)`
 
-## Filter the needed variables only
 ```{r}
 raw <- 
   raw %>%
-  select(-StartDate, -EndDate, -Status,
-         -Progress, -`Duration (in seconds)`, -Finished,
-         -RecordedDate, -DistributionChannel, -UserLanguage,
-         -inform, -comment, -serious_outcome_6_TEXT,
-         -recurring_outcome_6_TEXT, -ResponseId)
+  filter_at(vars(questions), any_vars(!is.na(.)))
 ```
 
-## Create datatable for the descriptive information
+The number of responses: `r response_count(raw)`
+
+## Calucalting median response time
+
+We are calculating the median completition time of the survey based on the responses that we had after exclusion.
+
 ```{r}
-processed_descriptives <- 
+raw %>% 
+  mutate(response_time_sec = as.numeric(duration_in_seconds)) %>% 
+  summarise(median_response_time_min = median(response_time_sec) / 60,
+            iqr_response_time = stats::IQR(response_time_sec),
+            quantile_response_time_3 = quantile(response_time_sec, 0.75),
+            quantile_response_time_1 = quantile(response_time_sec, 0.25),
+            min_response_time = min(response_time_sec),
+            max_response_time = max(response_time_sec))
+```
+
+## Variable transformation
+
+We are combining the free text response that respondents provided when they chose not to select a preset option with the selected preset answers.
+
+```{r}
+raw <- 
   raw %>%
-  select(response_id, years, field)
+  mutate(years = as.integer(years),
+         recurring_outcome = case_when(recurring_outcome == "other" ~ recurring_outcome_6_text,
+                                          TRUE ~ recurring_outcome),
+         serious_outcome = case_when(serious_outcome == "other" ~ serious_outcome_6_text,
+                                          TRUE ~ serious_outcome))
 ```
 
-## Create datatable for general frequency of mistakes in teams
+We are keeping only the level description of the Likert-scale variables but not their explanation.
+
 ```{r}
-processed_general_frequency <- 
+raw <- 
   raw %>%
-  select(response_id, general_frequency)
+  mutate(general_frequency = beg2char(general_frequency, "\n"),
+         recurring_frequency = beg2char(recurring_frequency, "\n"),
+         recurring_serious = beg2char(recurring_serious, "\n"),
+         serious_serious = beg2char(serious_serious, "\n"))
 ```
 
-# Create datatable for general overview of data management mistakes
+## Filter the needed variables only
+
+We are dropping the variables that will not be used in further analysis.
+
 ```{r}
-# Save into a different datatable the exclusion for general discussion about DMP mistakes
-processed_mistake_type_coding <-
-  read_xlsx("Processed/grouping/coding/ReMis_Main_Processed_Mistake_Type_Coding_data.xlsx") %>% 
-  filter(code %in% c("see above", "missing", "irrelevant content")) %>% 
-  mutate(exclusion_criteria = code,
-         type = mistake_type) %>% 
-  select(-mistakes_sep, -mistake_no, -code, -mistake_type) %>%
-  select(response_id, type, mistake, exclusion_criteria) %>% 
-  write_tsv(., "Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv")
-
-## Read in the list of mistake responses that will be excluded from this analysis
-exclude <- read_tsv("Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv")
-
-## Number of mistake responses that we exclude (and the reason why)
-exclude %>% 
-  group_by(exclusion_criteria) %>% 
-  count() %>% 
-  ungroup() %>% 
-  mutate(sum = sum(n)) %>%
-  knitr::kable(caption = "The exclusion criteria and the number of responses excluded because of that")
-
-## Creating datatable
-### TODO: CLEAN THIS MESS UP!
-temp_story <- 
-  raw %>% 
-  select(response_id, recurring_story, serious_story) %>%
-  gather(key = "type", value = "mistake", -response_id) %>% 
-  mutate(type = str_extract(type, "[^_]+"))
-
-temp_rating <-
+raw <- 
   raw %>%
-  select(response_id, recurring_frequency, recurring_serious, serious_serious) %>% 
-  gather(key = "key", value = "rating", -response_id) %>% 
-  separate(key, into = c("type", "question"), sep = "_")
-
-processed_mistake_general <-
-  temp_story %>% 
-  left_join(., temp_rating, by = c("response_id", "type"))
-
-## Excluding trials
-processed_mistake_general_excluded <-
-  processed_mistake_general %>% 
-  anti_join(., exclude, by = c("response_id", "type", "mistake"))
-
-## Number of missing ratings after exclusion
-processed_mistake_general_excluded %>% 
-  filter(is.na(rating)) %>% 
-  group_by(question) %>% 
-  count()
+  select(-start_date, -end_date, -status,
+         -progress, -duration_in_seconds, -finished,
+         -recorded_date, -distribution_channel, -user_language,
+         -inform, -comment, -serious_outcome_6_text,
+         -recurring_outcome_6_text)
 ```
 
-# Create datatable for exploring the relationship between mistake causes and types
+# Saving the data for the thematic grouping
+
 ```{r}
-## Reading in grouping results for mistake types and causes
-processed_type_groups <- 
-  read_tsv("Processed/ReMis_Main_Processed_Type_Groups_data.tsv")
-
-processed_cause_groups_filtered <-
-  read_tsv("Processed/ReMis_Main_Processed_Cause_Groups_data.tsv") %>%
-  group_by(response_id, type) %>% 
-  slice(which.max(cause_no)) %>% 
-  filter(cause_no == 1)
-
-## Create the datatable
-processed_cause_type_relationship <-
-  processed_type_groups %>% 
-  inner_join(., processed_cause_groups_filtered, by = c("response_id", "type")) %>% 
-  select(response_id, type, mistake, mistake_no, mistakes_sep, group_type, cause, cause_no, cause_sep, group_cause) %>% 
-  filter(group_cause != "ambiguous",
-         group_type != "ambiguous")
-```
-
-# Create datatable for the investigation of the frequency and seriousness of different mistake types
-```{r}
-processed_type <-
-  processed_type_groups %>% 
-  inner_join(., processed_mistake_general, by = c("response_id", "type", "mistake")) %>% 
-  select(response_id, type, mistake, mistake_no, mistakes_sep, group_type, question, rating)
-```
-
-# Create datatable for the investigation of the frequency and seriousness of different data management stages
-```{r}
-## Read in stage groupes
-processed_stage_groups <- read_tsv("Processed/ReMis_Main_Processed_Stage_Groups_data.tsv")
-
-processed_stage <-
-  processed_stage_groups %>% 
-  inner_join(., processed_mistake_general, by = c("response_id", "type", "mistake"))
-```
-
-# Write processed datafiles for analysis
-```{r}
-processed_stage %>% 
-write_tsv(., "Processed/ReMis_Main_Processed_Stage_Analysis_data.tsv")
-
-processed_type %>% 
-  write_tsv(., "Processed/ReMis_Main_Processed_Type_Analysis_data.tsv")
-
-processed_cause_type_relationship %>% 
-  write_tsv(., "Processed/ReMis_Main_Processed_Cause_Type_Relationship_Analysis_data.tsv")
-
-processed_mistake_general_excluded %>% 
-  write_tsv(., "Processed/ReMis_Main_Processed_Mistake_General_Analysis_data.tsv")
-
-processed_descriptives %>% 
-  write_tsv(., "Processed/ReMis_Main_Processed_Descriptive_Analysis_data.tsv")
-
-processed_general_frequency %>% 
-  write_tsv(., "Processed/ReMis_Main_Processed_General_Frequency_Analysis_data.tsv")
+raw %>%
+  write_tsv(., "Processed/ReMis_Main_Processed_data.tsv")
 ```

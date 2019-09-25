@@ -6,6 +6,7 @@ output: html_document
 ---
 
 # Load packages
+
 ```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(readxl)
@@ -19,35 +20,35 @@ library(ggrepel)
 ```
 
 # Load functions
+
 ```{r}
 source("utils.R")
 ```
 
-# Descriptive results of the grouping process
+# Defining groups
+
 ```{r}
-# Read in data
-## Data management mistake stages
-grouping_stage <-
-  read_tsv("Processed/ReMis_Main_Processed_Stage_Groups_data.tsv")
+# Data management mistake
+grouping_type %>% 
+  distinct(group) %>%
+  filter(group != "NA") %>% 
+  count()
 
-## Data management mistake types
-grouping_type <- 
-  read_tsv("Processed/ReMis_Main_Processed_Type_Groups_data.tsv")
+# Causes of mistakes
+grouping_cause %>% 
+  distinct(group) %>%
+  filter(group != "NA") %>% 
+  count()
 
-## Causes of mistakes
-grouping_cause <-  
-  read_tsv("Processed/ReMis_Main_Processed_Cause_Groups_data.tsv")
-
-## Outcomes of mistakes
-grouping_outcome <- 
-  read_tsv("Processed/ReMis_Main_Processed_Outcome_Groups_data.tsv")
+# Outcomes of mistakes
+grouping_outcome %>% 
+  distinct(group) %>%
+  filter(group != "NA") %>% 
+  count()
 ```
 
 ## Descriptives
 ```{r}
-## Data management mistake stages
-grouping_stage %>% skim()
-
 ## Data management mistake types
 grouping_type %>% skim()
 
@@ -146,6 +147,61 @@ relationship_plot_data %>%
           legend.text = element_text(size = 15))
 
 ggsave("Figures/cause_type_relationship_all_stacked.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+# Relationship between mistake types and mistake outcomes
+# Read in processed data
+```{r}
+outcome_type_relationship <- read_tsv( "Processed/ReMis_Main_Processed_Outcome_Type_Relationship_Analysis_data.tsv")
+```
+
+# Data descriptives
+```{r}
+skim(outcome_type_relationship) %>% summary()
+
+skim(outcome_type_relationship)
+```
+
+# Relationship between causes and types together for the most serious and recurring mistakes
+```{r}
+con_tab <- as_tibble(xtabs(~ group_type + group_outcome, data = outcome_type_relationship))
+
+relationship_plot_data <- con_tab %>% 
+  group_by(group_type) %>% 
+  mutate(n_sum = sum(n)) %>% 
+  ungroup() %>%
+  mutate(prop = round(n / n_sum * 100)) %>%
+  filter(n_sum >= 10)
+
+relationship_plot_label <- relationship_plot_data %>% 
+  group_by(group_type) %>% 
+  mutate(highest_prop = case_when(prop == max(prop) ~ 1L,
+                                  TRUE ~ 0L)) %>% 
+  filter(highest_prop == 1) %>% 
+  mutate(label = paste(group_outcome, prop, "%"),
+         label = paste(label, collapse = " and\n "))
+
+# Stacked barplot
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(group_type, n), y = n, group = n, fill = group_outcome)) +
+    geom_bar(stat = "identity") +
+    scale_fill_colorblind() +
+    scale_y_continuous(expand = c(0,0)) +
+    coord_flip() +
+    labs(x = "Data Management Mistake Types",
+         y = "Count") +
+    theme(axis.text.x = element_text(size = 15),
+          axis.text.y = element_text(size = 15),
+          panel.background = element_blank(),
+          panel.grid = element_blank(),
+          axis.ticks = element_line(),
+          axis.line = element_line(),
+          axis.title = element_text(size = 20),
+          legend.title = element_blank(),
+          legend.position = c(0.75, 0.4),
+          legend.text = element_text(size = 15))
+
+# ggsave("Figures/outcome_type_relationship_all_stacked.png", width = 14.4, height = 8, plot = last_plot())
 ```
 
 # Descriptives of the sample
@@ -369,8 +425,10 @@ serious_serious_plot <-
 type_analysis <- read_tsv("Processed/ReMis_Main_Processed_Type_Analysis_data.tsv")
 
 # Seriousness and frequency plot
-type_analysis %>%
-  filter(type == "recurring") %>% 
+type_analysis_plot_data <- 
+  type_analysis %>% 
+  filter(type == "recurring",
+         group_type != "ambiguous") %>% 
   spread(key = question, value = rating) %>% 
   mutate(frequency = frequency_char_to_int(frequency),
          serious = serious_char_to_int(serious)) %>%
@@ -378,19 +436,69 @@ type_analysis %>%
   summarize(n = n(),
             mean_frequency = mean(frequency, na.rm = T),
             mean_serious = mean(serious, na.rm = T)) %>% 
-  ggplot() +
+  filter(n > 10)
+
+  ggplot(data = type_analysis_plot_data) +
   aes(x = mean_frequency,
       y = mean_serious) +
-  geom_point(aes(size = n), shape = 15) +
-  #geom_text(aes(label = group_type), hjust = -0.2, vjust = 0.6) +
-  geom_label_repel(aes(label = group_type),
-                   box.padding   = 0.35, 
-                   point.padding = 0.5,
-                   segment.color = 'grey50') +
-  scale_x_continuous(limits = c(1, 3), breaks = c(1, 2, 3), label = c("Very low", "Low", "Moderate")) +
-  scale_y_continuous(limits = c(1, 3), breaks = c(1, 2, 3), label = c("Insignificant", "Minor", "Moderate")) +
-  theme(panel.grid = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_line(color = "black"),
-        legend.title = element_blank())
+  geom_text_repel(aes(label = group_type),
+                  data = subset(type_analysis_plot_data, mean_serious < 2.2),
+                  nudge_x = 0,
+                  nudge_y = -0.15,
+                  direction = "x",
+                  size = 5,
+                  segment.alpha = 0.6,
+                  segment.size = 0.8,
+                  segment.colour = "black") +
+  geom_text_repel(aes(label = group_type),
+                  data = subset(type_analysis_plot_data, mean_serious > 2.45 & mean_frequency < 2.4),
+                  nudge_x = c(0.2, 0.1, -0.1),
+                  nudge_y = c(0.2, 0.1, 0.1),
+                  direction = "x",
+                  size = 5,
+                  segment.alpha = 0.6,
+                  segment.size = 0.8,
+                  segment.colour = "black") +
+   geom_text_repel(aes(label = group_type),
+                   data = subset(type_analysis_plot_data, mean_frequency > 2.37 & mean_serious > 2.15),
+                  nudge_x = c(0.2, 0.25, 0.2),
+                  nudge_y = c(0.1, 0.1, 0.1),
+                  direction = "y",
+                  size = 5,
+                  segment.alpha = 0.6,
+                  segment.size = 0.8,
+                  segment.colour = "black") +
+    geom_text_repel(aes(label = group_type),
+                   data = subset(type_analysis_plot_data, mean_serious > 2.1 & mean_frequency < 2.1 & mean_serious < 2.65),
+                  nudge_x = c(-0.1, -0.1, 0.15),
+                  nudge_y = c(0.1, 0.1, -0.1),
+                  direction = "y",
+                  size = 5,
+                  segment.alpha = 0.6,
+                  segment.size = 0.8,
+                  segment.colour = "black") +
+    geom_text_repel(aes(label = group_type),
+                   data = subset(type_analysis_plot_data, group_type %in% c("version control error", "data transfer error")),
+                  nudge_x = c(0.1, 0.1),
+                  nudge_y = c(0.1, 0.1),
+                  direction = "y",
+                  size = 5,
+                  segment.alpha = 0.6,
+                  segment.size = 0.8,
+                  segment.colour = "black") +
+      geom_point(aes(size = n), shape = 15, alpha = 1, color = "black") +
+  scale_size_continuous(range = c(10, 20)) +
+    geom_text(aes(label = n), color = "white") +
+    scale_x_continuous(limits = c(1.8, 3), breaks = c(2, 3), label = c("Low", "Moderate")) +
+    scale_y_continuous(limits = c(1.8, 3), breaks = c(2, 3), label = c("Minor", "Moderate")) +
+    labs(x = "Mean Frequency Rating of the Mistake",
+         y = "Mean Seriousness Rating of the Mistake") +
+    theme(panel.grid = element_blank(),
+          panel.background = element_blank(),
+          axis.line = element_line(color = "black"),
+          axis.text = element_text(color = "black", size = 15),
+          axis.title = element_text(size = 20),
+          legend.position = "none")
+  
+#ggsave("Figures/type_serious_frequency.png", width = 14.4, height = 8, plot = last_plot())
 ```
