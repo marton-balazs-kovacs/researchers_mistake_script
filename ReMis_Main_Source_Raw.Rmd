@@ -14,7 +14,7 @@ library(tidyverse)
 # Import data
 
 ```{r, message = FALSE}
-source <- read_csv("Source/ResearchersMistakes_MainStudy_January+21,+2019_21.01.csv")
+source <- read_csv("Data/Source/ResearchersMistakes_MainStudy_January+21,+2019_21.01.csv")
 ```
 
 # Save comments that contain personal information to a separate file
@@ -26,7 +26,7 @@ source %>%
   slice(-(1:2)) %>% 
   distinct(comment, ResponseId) %>% 
   filter(ResponseId %in% personal_comment_id) %>% 
-  write_tsv(., "Raw/ReMis_Main_PersonalComments_data.tsv")
+  write_tsv(., "Data/Raw/ReMis_Main_PersonalComments_data.tsv")
 ```
 
 # Save source data in .tsv format but delete comments that contain personal information
@@ -35,5 +35,5 @@ source %>%
 source %>% 
   mutate(comment = case_when(ResponseId == personal_comment_id ~ NA_character_,
                              TRUE ~ comment)) %>% 
-  write_tsv(., "Raw/ReMis_Main_Raw_data.tsv")
+  write_tsv(., "Data/Raw/ReMis_Main_Raw_data.tsv")
 ```

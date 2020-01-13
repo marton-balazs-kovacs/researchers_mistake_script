@@ -1,0 +1,831 @@
+---
+title: "ReMis_Grouping_Validation"
+author: "Marton Kovacs"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: html_document
+---
+
+# Load packages
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(writexl)
+library(readxl)
+library(zoo)
+library(qdap)
+```
+
+# Load functions
+
+```{r}
+source("utils.R")
+```
+
+# Validating the grouping procedure
+## Creating definition for the groups
+
+We read the output of the creating groups process, and enumerate all the codes that belong to a group to create a definition for the given group.
+
+### Data management mistake types
+#### Read data
+
+```{r}
+processed_mistake_type_grouping <- read_xlsx("Data/Processed/grouping/group/ReMis_Main_Processed_Mistake_Type_Grouping.xlsx")
+```
+
+#### Count the number of codes that were not assigned to groups
+
+```{r}
+processed_mistake_type_grouping %>% 
+  filter(group == "NA") %>% 
+  count()
+```
+
+#### Transform data
+
+```{r}
+processed_mistake_type_definition <-
+  processed_mistake_type_grouping %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  group_by(group) %>% 
+  summarise(definition = str_c(code, collapse = "; ")) %>% 
+  mutate(definition = tolower(definition))
+```
+
+#### Write data
+
+```{r}
+# write_xlsx(processed_mistake_type_definition, "Data/Processed/definition/ReMis_Main_Processed_Mistake_Type_Definition.xlsx")
+```
+
+#### Testing
+##### Testing similarity between tables
+
+```{r}
+setdiff(
+  select(processed_mistake_type_coding_count, -group),
+  select(processed_mistake_type_grouping, -group)
+  )
+```
+
+##### Test if the sum of the number of codes equals the length of the responses
+
+```{r}
+processed_mistake_type_grouping %>% 
+  summarise(sum_n = sum(n))
+
+processed_mistake_type_coding %>% 
+  count()
+```
+
+### Causes of mistakes
+#### Read data
+
+```{r}
+processed_cause_grouping <- read_xlsx("Data/Processed/grouping/group/ReMis_Main_Processed_Cause_Grouping.xlsx")
+```
+
+#### Count the number of codes that were not assigned to groups
+
+```{r}
+processed_cause_grouping %>% 
+  filter(group == "NA") %>% 
+  count()
+```
+
+#### Transform data
+
+```{r}
+processed_cause_definition <-
+  processed_cause_grouping %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  group_by(group) %>% 
+  summarise(definition = str_c(code, collapse = "; ")) %>% 
+  mutate(definition = tolower(definition))
+```
+
+#### Write data
+
+```{r}
+# write_xlsx(processed_cause_definition, "Data/Processed/definition/ReMis_Main_Processed_Cause_Definition.xlsx")
+```
+
+#### Testing
+##### Testing similarity between tables
+
+```{r}
+setdiff(
+  select(processed_cause_coding_count, -group),
+  select(processed_casuse_grouping, -group)
+)
+```
+
+##### Test if the sum of the number of codes equals the length of the responses
+
+```{r}
+processed_cause_grouping %>% 
+  summarise(sum_n = sum(n))
+
+processed_cause_coding %>% 
+  count()
+```
+
+### Outcomes of mistakes
+#### Read data
+
+```{r}
+processed_outcome_grouping <- read_xlsx("Data/Processed/grouping/group/ReMis_Main_Processed_Outcome_Grouping.xlsx")
+```
+
+#### Count the number of codes that were not assigned to groups
+
+```{r}
+processed_outcome_grouping %>% 
+  filter(group == "NA") %>% 
+  count()
+```
+
+#### Transform data
+
+```{r}
+processed_outcome_definition <-
+  processed_outcome_grouping %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  group_by(group) %>% 
+  summarise(definition = str_c(code, collapse = "; ")) %>% 
+  mutate(definition = tolower(definition))
+```
+
+#### Write data
+
+```{r}
+# write_xlsx(processed_outcome_definition, "Data/Processed/definition/ReMis_Main_Processed_Outcome_Definition.xlsx")
+```
+
+#### Testing
+##### Testing similarity between tables
+
+```{r}
+setdiff(
+  select(processed_outcome_coding_count, -group),
+  select(processed_outcome_grouping, -group)
+)
+```
+
+##### Test if the sum of the number of codes equals the length of the responses
+
+```{r}
+processed_outcome_grouping %>% 
+  summarise(sum_n = sum(n))
+
+processed_outcome_coding %>% 
+  count()
+```
+
+## Sorting the responses to groups
+### Creating spreadsheets for the raters
+
+Because sorting the separated responses to groups by independent raters require different amount of work for the different type of questions we divided the mistake types in half and sent it out to 4 independent raters.
+
+#### Data management mistake types
+##### Read data
+
+```{r}
+processed_mistake_type_grouped <- read_tsv("Data/Processed/grouping/grouped/ReMis_Main_Processed_Mistake_Type_Grouped_data.tsv")
+```
+
+##### Transform data
+
+```{r}
+processed_mistake_type_grouped <-
+  processed_mistake_type_grouped %>% 
+  filter(group %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe",
+                     "insufficient information",
+                     "NA")) %>%
+  select(-code, -n, -group)
+```
+
+##### Create datatables for raters
+
+```{r}
+# Rater1
+## Transform data
+processed_mistake_type_rater1 <-
+  processed_mistake_type_grouped %>% 
+  mutate(group_rater1 = NA_character_) %>% 
+  slice(1:599)
+
+## Write data
+# write_xlsx(processed_mistake_type_rater1, "Data/Processed/grouping/rating/ReMis_Main_Processed_Type_Rater1_data.xlsx")
+
+# Rater2
+## Transform data
+processed_mistake_type_rater2 <-
+  processed_mistake_type_grouped %>% 
+  mutate(group_rater2 = NA_character_) %>% 
+  slice(1:599)
+
+## Write data
+# write_xlsx(processed_mistake_type_rater2, "Data/Processed/grouping/rating/ReMis_Main_Processed_Type_test_data.xlsx")
+
+# Rater3
+## Transform data
+processed_mistake_type_rater3 <-
+  processed_mistake_type_grouped %>% 
+  mutate(group_rater3 = NA_character_) %>%
+  slice(600:786)
+
+## Write data
+# write_xlsx(processed_mistake_type_rater3, "Data/Processed/rating/ReMis_Main_Processed_Type_Rater3_data.xlsx")
+
+# Rater4
+## Transform data
+processed_mistake_type_rater4 <-
+  processed_mistake_type_grouped %>% 
+  mutate(group_rater4 = NA_character_) %>% 
+  slice(600:786)
+
+## Write data
+# write_xlsx(processed_mistake_type_rater4, "Data/Processed/grouping/rating/ReMis_Main_Processed_Type_Rater4_data.xlsx")
+```
+
+#### Causes of mistakes
+##### Read data
+
+```{r}
+processed_cause_grouped <- read_tsv("Data/Processed/grouping/grouped/ReMis_Main_Processed_Cause_Grouped_data.tsv")
+```
+
+##### Transform data
+
+```{r}
+processed_cause_grouped <-
+  processed_cause_grouped %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  select(-code, -n, -group)
+```
+
+##### Create datatables for raters
+
+```{r}
+# Rater1
+## Transform data
+processed_cause_rater1 <-
+  processed_cause_grouped %>% 
+  mutate(group_rater1 = NA_character_)
+
+## Write data
+# write_xlsx(processed_cause_rater1, "Data/Processed/grouping/rating/ReMis_Main_Processed_Cause_Rater1_data.xlsx")
+
+# Rater2
+## Transform data
+processed_cause_rater2 <-
+  processed_cause_grouped %>% 
+  mutate(group_rater2 = NA_character_)
+
+## Write data
+# write_xlsx(processed_cause_rater2, "Data/Processed/grouping/rating/ReMis_Main_Processed_Cause_Rater2_data.xlsx")
+```
+
+#### Outcomes of mistakes
+##### Read data
+
+```{r}
+processed_outcome_grouped <- read_tsv("Data/Processed/grouping/grouped/ReMis_Main_Processed_Outcome_Grouped_data.tsv")
+```
+
+##### Transform data
+
+```{r}
+processed_outcome_grouped <-
+  processed_outcome_grouped %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  select(-code, -n, -group)
+```
+
+##### Create datatables for raters
+
+```{r}
+# Rater1
+## Transform data
+processed_outcome_rater1 <-
+  processed_outcome_grouped %>% 
+  mutate(group_rater1 = NA_character_) 
+
+## Write data
+# write_xlsx(processed_outcome_rater1, "Data/Processed/grouping/rating/ReMis_Main_Processed_Outcome_Rater1_data.xlsx")
+
+# Rater2
+## Transform data
+processed_outcome_rater2 <-
+  processed_outcome_grouped %>% 
+  mutate(group_rater2 = NA_character_)
+
+## Write data
+# write_xlsx(processed_outcome_rater2, "Data/Processed/grouping/rating/ReMis_Main_Processed_Outcome_Rater2_data.xlsx")
+```
+
+### Sorting the responses to groups
+
+The indepedent raters ratings were compared. In case of non-match, the raters could discuss the case. If they could not reach agreement, one of the authors made the final decision.
+
+#### Data management mistake types
+##### Read data
+
+Read the datatables with the ratings of the independent raters.
+
+```{r}
+# Rater 1
+processed_grouping_type_rater1 <-
+  read_xlsx("Data/Processed/grouping/rated/ReMis_Main_Processed_Type_Rater1_data.xlsx") %>% 
+  mutate(mistake_no = as.integer(mistake_no))
+
+# Rater 2
+processed_grouping_type_rater2 <-
+  read_xlsx("Data/Processed/grouping/rated/ReMis_Main_Processed_Type_Rater2_data.xlsx") %>% 
+  mutate(mistake_no = as.integer(mistake_no))
+
+# Rater 3
+processed_grouping_type_rater3 <-
+  read_xlsx("Data/Processed/grouping/rated/ReMis_Main_Processed_Type_Rater3_data.xlsx") %>% 
+  mutate(mistake_no = as.integer(mistake_no))
+
+# Rater 4
+processed_grouping_type_rater4 <-
+  read_xlsx("Data/Processed/grouping/rated/ReMis_Main_Processed_Type_Rater4_data.xlsx") %>% 
+  mutate(mistake_no = as.integer(mistake_no))
+```
+
+##### Test whether rated tables are similar to the prepared tables
+
+During the rating process the independent raters could change other field than the required. To catch these cases we compare the tables that contain the rating with the ones that were prepared for the rating.
+
+```{r}
+# Rater 1
+setdiff(
+  select(processed_mistake_type_rater1, -group_rater1),
+  select(processed_grouping_type_rater1, -group_rater1)
+  )
+
+# Rater 2
+setdiff(
+  select(processed_mistake_type_rater2, -group_rater2),
+  select(processed_grouping_type_rater2, -group_rater2)
+  )
+
+# Rater 3
+setdiff(
+  select(processed_mistake_type_rater3, -group_rater3),
+  select(processed_grouping_type_rater3, -group_rater3)
+  ) 
+
+# Rater 4
+setdiff(
+  select(processed_mistake_type_rater4, -group_rater4),
+  select(processed_grouping_type_rater4, -group_rater4)
+  )
+```
+
+##### Merging rated dataframes by corresponding raters
+
+```{r}
+processed_grouping_type_1 <- 
+  left_join(processed_grouping_type_rater1, processed_grouping_type_rater2, by = c("response_id", "mistake_type", "mistake", "mistake_no", "mistake_sep"))
+
+processed_grouping_type_2 <- 
+  left_join(processed_grouping_type_rater3, processed_grouping_type_rater4, by = c("response_id", "mistake_type", "mistake", "mistake_no", "mistake_sep"))
+```
+
+##### Matching ratings
+
+```{r}
+processed_grouping_type_match_1 <- 
+  processed_grouping_type_1 %>% 
+  mutate(match = case_when(group_rater1 == group_rater2 ~ 1L,
+                           group_rater1 != group_rater2 ~ 0L,
+                           is.na(group_rater1) | is.na(group_rater2) ~ 0L),
+         group_final = NA_character_)
+
+processed_grouping_type_match_2 <- 
+  processed_grouping_type_2 %>% 
+  mutate(match = case_when(group_rater3 == group_rater4 ~ 1L,
+                           group_rater3 != group_rater4 ~ 0L,
+                           is.na(group_rater3) | is.na(group_rater4) ~ 0L),
+         group_final = NA_character_)
+```
+
+##### Counting the number of matches and non matches before discussion
+
+```{r}
+processed_grouping_type_match_1 %>% 
+  group_by(match) %>% 
+  summarise(N = n()) %>% 
+  mutate(sum_n = sum(N),
+         freq = N / sum_n * 100)
+
+processed_grouping_type_match_2 %>% 
+  group_by(match) %>% 
+  summarise(N = n()) %>% 
+  mutate(sum_n = sum(N),
+         freq = N / sum_n * 100)
+```
+
+##### Write matching rating results for discussion
+
+```{r}
+# write_xlsx(processed_grouping_type_match_1, "Data/Processed/grouping/match/ReMis_Main_Processed_Grouping_Type_Match_1_data.xlsx")
+
+# write_xlsx(processed_grouping_type_match_2, "Data/Processed/grouping/match/ReMis_Main_Processed_Grouping_Type_Match_2_data.xlsx")
+```
+
+#### Causes of mistakes
+##### Read data
+
+```{r}
+# Rater 1
+processed_grouping_cause_rater1 <-
+  read_xlsx("Data/Processed/grouping/rated/ReMis_Main_Processed_Cause_Rater1_data.xlsx") %>% 
+  mutate(cause_no = as.integer(cause_no))
+
+# Rater 2
+processed_grouping_cause_rater2 <-
+  read_xlsx("Data/Processed/grouping/rated/ReMis_Main_Processed_Cause_Rater2_data.xlsx") %>% 
+  mutate(cause_no = as.integer(cause_no))
+```
+
+##### Test whether rated tables are similar to the prepared tables
+
+```{r}
+# Rater 1
+setdiff(
+  select(processed_cause_rater1, -group_rater1),
+  select(processed_grouping_cause_rater1, -group_rater1)
+)
+
+# Rater 2
+setdiff(
+  select(processed_cause_rater2, -group_rater2),
+  select(processed_grouping_cause_rater2, -group_rater2)
+)
+```
+
+##### Merging rated dataframes by corresponding raters
+
+```{r}
+processed_grouping_cause <- 
+  left_join(processed_grouping_cause_rater1, processed_grouping_cause_rater2, by = c("response_id", "cause_type", "cause", "cause_no", "cause_sep"))
+```
+
+##### Matching ratings
+
+```{r}
+processed_grouping_cause_match <- 
+  processed_grouping_cause %>% 
+  mutate(match = case_when(group_rater1 == group_rater2 ~ 1L,
+                           group_rater1 != group_rater2 ~ 0L,
+                           is.na(group_rater1) | is.na(group_rater2) ~ 0L),
+         group_final = NA_character_)
+```
+
+##### Counting the number of matches and non matches before discussion
+
+```{r}
+processed_grouping_cause_match %>% 
+  group_by(match) %>% 
+  summarise(N = n()) %>% 
+  mutate(sum_n = sum(N),
+         freq = N / sum_n * 100)
+```
+
+##### Write matching rating results for discussion
+
+```{r}
+# write_xlsx(processed_grouping_cause_match, "Data/Processed/grouping/match/ReMis_Main_Processed_Grouping_Cause_Match_data.xlsx")
+```
+
+#### Outcomes of mistakes
+##### Read data
+
+```{r}
+## Rater 1
+processed_grouping_outcome_rater1 <-
+  read_xlsx("Data/Processed/grouping/rated/ReMis_Main_Processed_Outcome_Rater1_data.xlsx") %>% 
+  mutate(outcome_no = as.integer(outcome_no))
+
+## Rater 2
+processed_grouping_outcome_rater2 <-
+  read_xlsx("Data/Processed/grouping/rated/ReMis_Main_Processed_Outcome_Rater2_data.xlsx") %>% 
+  mutate(outcome_no = as.integer(outcome_no))
+```
+
+##### Test whether rated tables are similar to the prepared tables
+
+```{r}
+# Rater 1
+setdiff(
+  select(processed_outcome_rater1, -group_rater1),
+  select(processed_grouping_outcome_rater1, -group_rater1)
+)
+
+# Rater 2
+setdiff(
+  select(processed_outcome_rater2, -group_rater2),
+  select(processed_grouping_outcome_rater2, -group_rater2)
+)
+```
+
+##### Merging rated dataframes by corresponding raters
+
+```{r}
+processed_grouping_outcome <- 
+  left_join(processed_grouping_outcome_rater1, processed_grouping_outcome_rater2, by = c("response_id", "outcome_type", "outcome", "outcome_no", "outcome_sep"))
+```
+
+##### Matching ratings
+
+```{r}
+processed_grouping_outcome_match <- 
+  processed_grouping_outcome %>% 
+  mutate(match = case_when(group_rater1 == group_rater2 ~ 1L,
+                           group_rater1 != group_rater2 ~ 0L,
+                           is.na(group_rater1) | is.na(group_rater2) ~ 0L),
+         group_final = NA_character_)
+```
+
+##### Counting the number of matches and non matches before discussion
+
+```{r}
+processed_grouping_outcome_match %>% 
+  group_by(match) %>% 
+  summarise(N = n()) %>% 
+  mutate(sum_n = sum(N),
+         freq = N / sum_n * 100)
+```
+
+##### Write matching rating results for discussion
+
+```{r}
+# write_xlsx(processed_grouping_outcome_match, "Data/Processed/grouping/match/ReMis_Main_Processed_Grouping_Outcome_Match_data.xlsx")
+```
+
+### Prepare the final groups for further analysis
+
+After discussing the non-match cases and coming to an agreement we read the final groups and prepare them for further analysis.
+
+#### Data management mistake types
+##### Read final groups
+
+```{r}
+processed_grouping_type_result_1 <-
+  read_xlsx("Data/Processed/grouping/match/ReMis_Main_Processed_Grouping_Type_Match_1_data.xlsx") %>% 
+  mutate(mistake_no = as.integer(mistake_no))
+
+processed_grouping_type_result_2 <-
+  read_xlsx("Data/Processed/grouping/match/ReMis_Main_Processed_Grouping_Type_Match_2_data.xlsx") %>% 
+    mutate(mistake_no = as.integer(mistake_no))
+```
+
+##### Testing whether there was a change in the tables
+
+```{r}
+setdiff(
+  select(processed_grouping_type_match_1, -group_final),
+  select(processed_grouping_type_result_1, -group_final)
+)
+
+setdiff(
+  select(processed_grouping_type_match_2, -group_final),
+  select(processed_grouping_type_result_2, -group_final)
+)
+```
+
+##### Transformation
+
+```{r}
+processed_grouping_type_result_1 <-
+  processed_grouping_type_result_1 %>% 
+  mutate(group_final = case_when(is.na(group_final) & match == 1L ~ group_rater1,
+                                 TRUE ~ group_final),
+         group_type = group_final) %>% 
+  select(-group_final, -group_rater1, -group_rater2, -match)
+
+processed_grouping_type_result_2 <-
+  processed_grouping_type_result_2 %>% 
+  mutate(group_final = case_when(is.na(group_final) & match == 1L ~ group_rater3,
+                                 TRUE ~ group_final),
+         group_type = group_final) %>% 
+  select(-group_final, -group_rater3, -group_rater4, -match)
+
+processed_grouping_type_result <-
+  processed_grouping_type_result_1 %>% 
+  bind_rows(., processed_grouping_type_result_2) %>% 
+  mutate(type = mistake_type) %>% 
+  select(-mistake_type)
+```
+
+# Checking the match between the authors and the raters grouping
+
+```{r}
+processed_grouping_type_validation <-
+  processed_grouping_type_result %>%
+  inner_join(., processed_mistake_type_grouped, by = c("mistake_no",
+                                                       "response_id",
+                                                       "mistake",
+                                                       "mistake_sep",
+                                                       "type" = "mistake_type")) %>% 
+  mutate(group_raters = group_type,
+         group_authors = group,
+         match = case_when(group_raters == group_authors ~ 1L,
+                           group_raters != group_authors ~ 0L,
+                           is.na(group_raters) | is.na(group_authors) ~ 0L))
+
+processed_grouping_type_validation %>% 
+  group_by(match) %>% 
+  summarise(N =n()) %>% 
+  ungroup() %>% 
+  mutate(sum_n = sum(N),
+         freq = N / sum_n * 100)
+```
+
+##### Count the number of responses that the raters could not assign to a group
+
+```{r}
+processed_grouping_type_result %>% 
+  filter(group_type == "ambiguous") %>% 
+  summarise(N = n()) %>% 
+  mutate(freq = N / nrow(processed_grouping_type_result) * 100)
+```
+
+##### Saving the dataset
+
+```{r}
+write_tsv(processed_grouping_type_result, "Data/Processed/grouping/validated/ReMis_Main_Processed_Type_Validated_data.tsv")
+```
+
+#### Causes of mistakes
+##### Read final groups
+
+```{r}
+processed_grouping_cause_result <-
+  read_xlsx("Data/Processed/grouping/match/ReMis_Main_Processed_Grouping_Cause_Match_data.xlsx") %>% 
+  mutate(cause_no = as.integer(cause_no))
+```
+
+##### Testing whether there was a change in the tables
+
+```{r}
+setdiff(
+  select(processed_grouping_cause_match, -group_final),
+  select(processed_grouping_cause_result, -group_final)
+)
+```
+
+For the first cause (cause_no == 1) mentioned by the respondent (respondent_id == R_3lrEYOs4D0F0s0k) Rater 1 changed his or her decision of "bad or lack of standards" to "bad skill management" during the final discussion.
+
+##### Transformation
+
+```{r}
+processed_grouping_cause_result <-
+  processed_grouping_cause_result %>% 
+  mutate(group_final = case_when(is.na(group_final) & match == 1L ~ group_rater1,
+                                 TRUE ~ group_final),
+         group_cause = group_final,
+         type = cause_type) %>% 
+  select(-group_final, -group_rater1, -group_rater2, -match, -cause_type)
+```
+
+##### Count the number of responses that the raters could not assign to a group
+
+```{r}
+processed_grouping_cause_result %>% 
+  filter(group_cause == "ambiguous") %>% 
+  summarise(N = n()) %>% 
+  mutate(freq = N / nrow(processed_grouping_cause_result) * 100)
+```
+
+# Checking the match between the authors and the raters grouping
+
+```{r}
+processed_grouping_cause_validation <-
+  processed_grouping_cause_result %>%
+  inner_join(., processed_cause_grouped, by = c("cause_no",
+                                                "response_id",
+                                                "cause",
+                                                "cause_sep",
+                                                "type" = "cause_type")) %>% 
+  mutate(group_raters = group_cause,
+         group_authors = group,
+         match = case_when(group_raters == group_authors ~ 1L,
+                           group_raters != group_authors ~ 0L,
+                           is.na(group_raters) | is.na(group_authors) ~ 0L))
+
+processed_grouping_cause_validation %>% 
+  group_by(match) %>% 
+  summarise(N =n()) %>% 
+  ungroup() %>% 
+  mutate(sum_n = sum(N),
+         freq = N / sum_n * 100)
+```
+
+##### Saving the dataset
+
+```{r}
+write_tsv(processed_grouping_cause_result, "Data/Processed/grouping/validated/ReMis_Main_Processed_Cause_Validated_data.tsv")
+```
+
+#### Outcomes of mistakes
+##### Read final groups
+
+```{r}
+processed_grouping_outcome_result <-
+  read_xlsx("Data/Processed/grouping/match/ReMis_Main_Processed_Grouping_Outcome_Match_data.xlsx") %>% 
+  mutate(outcome_no = as.integer(outcome_no))
+```
+
+##### Testing whether there was a change in the tables
+
+```{r}
+setdiff(
+  select(processed_grouping_outcome_match, -group_final),
+  select(processed_grouping_outcome_result, -group_final)
+)
+```
+
+##### Transformation
+
+```{r}
+processed_grouping_outcome_result <-
+  processed_grouping_outcome_result %>% 
+  mutate(group_final = case_when(is.na(group_final) & match == 1L ~ group_rater1,
+                                 TRUE ~ group_final),
+         group_outcome = group_final,
+         type = outcome_type) %>% 
+  select(-group_final, -group_rater1, -group_rater2, -match, -outcome_type)
+```
+
+##### Count the number of responses that the raters could not assign to a group
+
+```{r}
+processed_grouping_outcome_result %>% 
+  filter(group_outcome == "ambiguous") %>% 
+  summarise(N = n()) %>% 
+  mutate(freq = N / nrow(processed_grouping_outcome_result) * 100)
+```
+
+# Checking the match between the authors and the raters grouping
+
+```{r}
+processed_grouping_outcome_validation <-
+  processed_grouping_outcome_result %>%
+  inner_join(., processed_outcome_grouped, by = c("outcome_no",
+                                                "response_id",
+                                                "outcome",
+                                                "outcome_sep",
+                                                "type" = "outcome_type")) %>% 
+  mutate(group_raters = group_outcome,
+         group_authors = group,
+         match = case_when(group_raters == group_authors ~ 1L,
+                           group_raters != group_authors ~ 0L,
+                           is.na(group_raters) | is.na(group_authors) ~ 0L))
+
+processed_grouping_outcome_validation %>% 
+  group_by(match) %>% 
+  summarise(N =n()) %>% 
+  ungroup() %>% 
+  mutate(sum_n = sum(N),
+         freq = N / sum_n * 100)
+```
+
+##### Saving the dataset
+
+```{r}
+write_tsv(processed_grouping_outcome_result, "Data/Processed/grouping/validated/ReMis_Main_Processed_Outcome_Validated_data.tsv")
+```

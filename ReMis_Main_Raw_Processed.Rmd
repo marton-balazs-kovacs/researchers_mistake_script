@@ -3,8 +3,6 @@ title: "ReMis Main Raw Processed"
 author: "Marton Kovacs"
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 output: html_document
-editor_options: 
-  chunk_output_type: console
 ---
 
 # Load packages
@@ -19,18 +17,23 @@ library(qdap)
 
 # Load functions
 
+The "utils.R" file contains the custom made functions for this project.
+
 ```{r}
 source("utils.R")
 ```
 
-# Transforming Raw data to be ready for the thematic grouping
-## Import data
+# Import data
+
+We are importing the raw datafile that was created by the code in the "ReMis_Main_Source_Raw.Rmd" file.
 
 ```{r, message = FALSE, warning = FALSE}
-raw <- read_tsv("Raw/ReMis_Main_Raw_data.tsv")
+raw <- read_tsv("Data/Raw/ReMis_Main_Raw_data.tsv")
 ```
 
-## Converting the varaible names to clean format
+# Converting the varaible names to clean format
+
+We are using snake format.
 
 ```{r}
 raw <-
@@ -38,8 +41,10 @@ raw <-
   janitor::clean_names()
 ```
 
-## Data filtering
-### Delete rows created by Qualtrics for variable explanation
+# Data filtering
+## Delete rows created by Qualtrics for variable explanation
+
+Qualtrics create two rows that stores metadata about the variables. These are not needed in further analysis.
 
 ```{r}
 raw <- 
@@ -49,9 +54,9 @@ raw <-
 
 The number of responses: `r response_count(raw)`
 
-### Checking the number of responses from each distribution channel
+## Checking the number of responses from each distribution channel
 
-The survey was filled out by respondents outside of our sample as some respondents redestributed the survey link among their collagues. These responses are marked as "anonymous" by Qualtrics in the Distribution channel variable. Whereas the survey that we sent to our sample is marked by "email".
+The survey was filled out by respondents outside of our sample as some respondents redestributed the survey link among their colleagues. These responses are marked as "anonymous" by Qualtrics in the Distribution channel variable. Whereas the survey that we sent to our sample is marked by "email".
 
 ```{r}
 distrib_channel_count <- 
@@ -60,17 +65,9 @@ distrib_channel_count <-
   count()
 ```
 
-We recieved `r filter(distrib_channel_count, distribution_channel == "anonymous") %>% pull(n)` answers from the redistribution of our survey. As we do not know who provided these responses we exclude them from further analysis.
+We recieved `r filter(distrib_channel_count, distribution_channel == "anonymous") %>% pull(n)` answers from the redistribution of our survey. We decided to keep these answers in for the creation of the groups but exclude them from the analysis.
 
-```{r}
-raw <-
-  raw %>% 
-  filter(distribution_channel != "anonymous")
-```
-
-The number of responses: `r response_count(raw)`
-
-### Delete trial responses
+## Delete trial responses
 
 There are responses that were provided by the authors during the testing of the survey. These responses are excluded from further analysis.
 
@@ -84,7 +81,7 @@ raw <-
 
 The number of responses: `r response_count(raw)`
 
-### Delete respondents who did not accept the informed consent form
+## Delete respondents who did not accept the informed consent form
 
 We exclude respondents who did not accept the informed consent form in the beggining of our survey from any further analysis.
 
@@ -97,15 +94,16 @@ raw %>%
 ```
 
 ```{r}
-raw <- raw %>%
+raw <- 
+  raw %>%
   filter(inform == "Yes")
 ```
 
 The number of responses: `r response_count(raw)`
 
-### Delete respondents who did not answer any question
+## Delete respondents who did not answer any question
 
-When saving the responses of the survey from Qualtrics we downloaded the responses in progress alongside the completed responses. Therefore, we exclude the responses where the respondent did not answer any questions of the survey.
+When saving the responses of the survey from Qualtrics we downloaded responses in progress alongside the completed responses. Therefore, we exclude the responses where the respondent did not answer any questions of the survey.
 
 ```{r}
 questions <- colnames(raw)[12:26]
@@ -125,7 +123,7 @@ raw <-
 
 The number of responses: `r response_count(raw)`
 
-## Calucalting median response time
+# Calucalting median response time
 
 We are calculating the median completition time of the survey based on the responses that we had after exclusion.
 
@@ -140,9 +138,10 @@ raw %>%
             max_response_time = max(response_time_sec))
 ```
 
-## Variable transformation
+# Variable transformation
 
-We are combining the free text response that respondents provided when they chose not to select a preset option with the selected preset answers.
+The questions about the outcomes of the mistakes were multiple choice questions wwith the possibility of providing a free text answer (by choosing the "other" option).
+We are combining the free text responses with the preset responses into one variable.
 
 ```{r}
 raw <- 
@@ -165,7 +164,18 @@ raw <-
          serious_serious = beg2char(serious_serious, "\n"))
 ```
 
-## Filter the needed variables only
+# Saving the responses from anonymous respondents
+
+We save the response ids of the anonymous respondents separately in order to exclude them from further analysis later in the data preprocessing process.
+
+```{r}
+anonym_res_data <- 
+  raw %>%
+  filter(distribution_channel == "anonymous") %>% 
+  distinct(response_id)
+```
+
+# Filter the needed variables only
 
 We are dropping the variables that will not be used in further analysis.
 
@@ -179,9 +189,1103 @@ raw <-
          -recurring_outcome_6_text)
 ```
 
-# Saving the data for the thematic grouping
+# Saving the cleaned dataset
 
 ```{r}
-raw %>%
-  write_tsv(., "Processed/ReMis_Main_Processed_data.tsv")
+write_tsv(raw, "Data/Processed/ReMis_Main_Raw_Cleaned_data.tsv")
+```
+
+# Response separation
+
+Some respondents wrote more than one answer to a free text question. In order to not lose any information, the authors read through the free text responses and separated the responses if they contained multiple answers.
+
+Since we asked the respondents to describe their team's most **recurring** and most **serious** mistakes, and their causes and their outcomes we have to treat these differently later on. We keep this information in the variable named "[mistake or cause or ourcome]_type".
+
+We keep the original response in the variable named "mistake" and "cause" and "outcome". During the separation this variable will not be touched.
+
+The separated answers will be kept in new variables with and increasing id number in their name.
+
+E.g. If there are two answers in one response in "mistake" then those two answers will bea separated in the "mistake_1" and "mistake_2" variables.
+
+## Data management mistakes
+### Number of responses before separation
+
+For counting the response before the separation we do not include the missing responses.
+
+```{r}
+raw %>% 
+  transmute(response_id,
+            recurring_story,
+            serious_story) %>% 
+  gather(key = "mistake_type", value = "mistake", -response_id) %>% 
+  mutate(mistake_type = str_extract(mistake_type, "[^_]+")) %>% 
+  drop_na(mistake) %>%
+  count()
+```
+
+### Transforming data
+
+```{r}
+processed_mistake_separation <-
+  raw %>%
+  transmute(response_id,
+            recurring_story,
+            serious_story) %>% 
+  gather(key = "mistake_type", value = "mistake", -response_id) %>% 
+  mutate(mistake_type = str_extract(mistake_type, "[^_]+"),
+         mistake_1 = NA_character_,
+         mistake_2 = NA_character_)
+```
+
+### Saving the dataset
+
+```{r}
+# write_xlsx(processed_mistake_separation, "Data/Processed/grouping/separation/ReMis_Main_Processed_Mistake_data.xlsx")
+```
+
+## Causes of mistakes
+### Number of responses before separation
+
+For counting the response before the separation we do not include the missing responses.
+
+```{r}
+raw %>% 
+  transmute(response_id,
+            recurring_cause,
+            serious_cause) %>% 
+  gather(key = "cause_type", value = "cause", -response_id) %>% 
+  mutate(cause_type = str_extract(cause_type, "[^_]+")) %>% 
+  drop_na(cause) %>% 
+  count()
+```
+
+### Transforming data
+
+```{r}
+processed_cause_separation <-
+  raw %>% 
+  transmute(response_id,
+            recurring_cause,
+            serious_cause) %>% 
+  gather(key = "cause_type", value = "cause", -response_id) %>% 
+  mutate(cause_type = str_extract(cause_type, "[^_]+"),
+         cause_1 = NA_character_,
+         cause_2 = NA_character_)
+```
+
+### Saving the dataset
+
+```{r}
+# write_xlsx(processed_cause_separation, "Data/Processed/grouping/separation/ReMis_Main_Processed_Cause_data.xlsx")
+```
+
+## Outcomes of mistakes
+### Number of responses before separation
+
+For counting the response before the separation we do not include the missing responses.
+
+```{r}
+raw %>% 
+  transmute(response_id,
+            recurring_outcome,
+            serious_outcome) %>% 
+  gather(key = "outcome_type", value = "outcome", -response_id) %>% 
+  mutate(outcome_type = str_extract(outcome_type, "[^_]+")) %>% 
+  drop_na(outcome) %>% 
+  count()
+```
+
+### Transforming data
+
+```{r}
+processed_outcome_separation <-
+  raw %>% 
+  transmute(response_id,
+            recurring_outcome,
+            serious_outcome) %>% 
+  gather(key = "outcome_type", value = "outcome", -response_id) %>% 
+  mutate(outcome_type = str_extract(outcome_type, "[^_]+"),
+         outcome_1 = NA_character_)
+```
+
+### Saving the dataset
+
+```{r}
+# write_xlsx(processed_outcome_separation, "Data/Processed/grouping/separation/ReMis_Main_Processed_Outcome_data.xlsx")
+```
+
+# Thematic grouping
+
+The thematic grouping methodology is applied to the separated descriptions of **mistakes**, **causes** and **outcomes** separately.
+
+## Preparing data for creating the codes
+
+First, we read the output of the separation process of the mistakes, causes and outcomes.
+
+Objects with the name "processed_[mistake, cause, outcome]_data" contain the result of the manually carried out response separation process.
+
+Second, we transform the data to prepare them for the coding of the separated responses.
+
+Third, we save the transformed datatable.
+
+### Data management mistake types
+#### Read data
+
+```{r}
+processed_mistake_data <- read_xlsx("Data/Processed/grouping/separation/ReMis_Main_Processed_Mistake_data.xlsx")
+```
+
+#### Transform data
+
+```{r}
+processed_mistake_data <-
+  processed_mistake_data %>% 
+  gather(key = "mistake_no", value = "mistake_sep", -response_id, -mistake_type, -mistake) %>%
+  mutate(mistake_no = str_extract(mistake_no, "[0-9]$"),
+         mistake_no = as.integer(mistake_no),
+         code = NA_character_) %>% 
+  drop_na(mistake_sep)
+```
+
+#### Number of responses after separation
+
+```{r}
+processed_mistake_data  %>% 
+  drop_na(mistake) %>%
+  count()
+```
+
+#### Write data
+
+```{r}
+# write_xlsx(processed_mistake_data, "Data/Processed/grouping/coding/ReMis_Main_Processed_Mistake_Type_Coding_data.xlsx")
+```
+
+### Causes of mistakes
+#### Read data
+
+```{r}
+processed_cause_data <- read_xlsx("Data/Processed/grouping/separation/ReMis_Main_Processed_Cause_data.xlsx")
+```
+
+#### Transform data
+
+```{r}
+processed_cause_data <-
+  processed_cause_data %>% 
+  gather(key = "cause_no", value = "cause_sep", -response_id, -cause_type, -cause) %>%
+  mutate(cause_no = str_extract(cause_no, "[0-9]$"),
+         cause_no = as.integer(cause_no),
+         code = NA_character_) %>% 
+  drop_na(cause_sep)
+```
+
+#### Number of responses after separation
+
+```{r}
+processed_cause_data  %>% 
+  drop_na(cause) %>% 
+  count()
+```
+
+#### Write data
+
+```{r}
+# write_xlsx(processed_cause_data, "Data/Processed/grouping/coding/ReMis_Main_Processed_Cause_Coding_data.xlsx")
+```
+
+### Outcomes of mistakes
+#### Read data
+
+```{r}
+processed_outcome_data <- read_xlsx("Data/Processed/grouping/separation/ReMis_Main_Processed_Outcome_data.xlsx")
+```
+
+#### Transform data
+
+```{r}
+processed_outcome_data <- 
+  processed_outcome_data %>% 
+  gather(key = "outcome_no", value = "outcome_sep", -response_id, -outcome_type, -outcome) %>%
+  mutate(outcome_no = str_extract(outcome_no, "[0-9]$"),
+         outcome_no = as.integer(outcome_no),
+         code = NA_character_) %>% 
+  drop_na(outcome_sep)
+```
+
+#### Number of responses after separation
+
+```{r}
+processed_outcome_data  %>% 
+  drop_na(outcome) %>% 
+  count()
+```
+
+#### Write data
+
+```{r}
+# write_xlsx(processed_outcome_data, "Data/Processed/grouping/coding/ReMis_Main_Processed_Outcome_Coding_data.xlsx")
+```
+
+## Creating groups
+
+First, we read the output of the coding process of the separated mistakes, causes and outcomes.
+
+Objects with the name "processed_[mistake_tpye, cause, outcome]_coding" contain the result of the manually carried out creating codes process.
+
+Second, we transform the codes to use them for creating the groups.
+
+Third, we save the transformed datatable.
+
+### Data management mistake types
+#### Read data
+
+```{r}
+processed_mistake_type_coding <-
+  read_xlsx("Data/Processed/grouping/coding/ReMis_Main_Processed_Mistake_Type_Coding_data.xlsx") %>% 
+  mutate(mistake_no = as.integer(mistake_no))
+```
+
+#### General exclusion
+
+After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent ("see above"), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).
+
+##### Number of exluded responses
+
+```{r}
+processed_mistake_type_coding %>% 
+  filter(code %in% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe")) %>% 
+  group_by(code) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(sum_n = sum(n))
+```
+
+##### Number of responses after exclusion
+
+```{r}
+processed_mistake_type_coding %>% 
+  filter(code %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe")) %>% 
+  count()
+```
+
+##### Number of responses excluded because of insufficient information
+
+For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the mistake ("insufficient information").
+
+```{r}
+processed_mistake_type_coding %>% 
+  filter(code == "insufficient information") %>% 
+  count()
+```
+
+#### Transform data
+
+```{r}
+processed_mistake_type_coding_count <-
+  processed_mistake_type_coding %>% 
+  group_by(code) %>%
+  count() %>% 
+  mutate(group = NA_character_) %>%
+  arrange(code)
+```
+
+#### Counting the number of disctinct codes
+
+```{r}
+processed_mistake_type_coding_count %>% 
+  filter(code %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe",
+                     "insufficient information")) %>% 
+  ungroup() %>% 
+  count()
+```
+
+#### Write data
+
+```{r}
+# write_xlsx(processed_mistake_type_coding_count, "Data/Processed/grouping/group/ReMis_Main_Processed_Mistake_Type_Grouping.xlsx")
+```
+
+#### Testing similarity between tables
+
+The tables are handled in a spreadsheet therefore, it is possible that there are dissimilarities between them. These test compare the parts of the tables that should be similar after the manual processing that were carried out outside of R.
+
+```{r}
+setdiff(
+  select(processed_mistake_type_coding, -code),
+  select(processed_mistake_data, -code)
+  )
+```
+
+### Causes of mistakes
+#### Read data
+
+```{r}
+processed_cause_coding <-
+  read_xlsx("Data/Processed/grouping/coding/ReMis_Main_Processed_Cause_Coding_data.xlsx") %>% 
+  mutate(cause_no = as.integer(cause_no))
+```
+
+#### General exclusion
+
+After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent ("see above"), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).
+
+##### Number of exluded responses
+
+```{r}
+processed_cause_coding %>% 
+  filter(code %in% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe")) %>% 
+  group_by(code) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(sum_n = sum(n))
+```
+
+##### Number of responses after exclusion
+
+```{r}
+processed_cause_coding %>% 
+  filter(code %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe")) %>% 
+  count()
+```
+
+##### Number of responses excluded because of insufficient information
+
+For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the cause of the mistake ("insufficient information").
+
+```{r}
+processed_cause_coding %>% 
+  filter(code == "insufficient information") %>% 
+  count()
+```
+
+#### Transform data
+
+```{r}
+processed_cause_coding_count <-
+  processed_cause_coding %>% 
+  group_by(code) %>%
+  count() %>%
+  mutate(group = NA_character_) %>% 
+  arrange(code)
+```
+
+#### Counting the number of disctinct codes
+
+```{r}
+processed_cause_coding_count %>% 
+  filter(code %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe",
+                     "insufficient information")) %>% 
+  ungroup() %>% 
+  count()
+```
+
+#### Write data
+
+```{r}
+# write_xlsx(processed_cause_coding_count, "Data/Processed/grouping/group/ReMis_Main_Processed_Cause_Grouping.xlsx")
+```
+
+#### Testing similarity between tables
+
+```{r}
+setdiff(
+  select(processed_cause_coding, -code),
+  select(processed_cause_data, -code)
+  )
+```
+
+### Outcomes of mistakes
+#### Read data
+
+```{r}
+processed_outcome_coding <-
+  read_xlsx("Data/Processed/grouping/coding/ReMis_Main_Processed_Outcome_Coding_data.xlsx") %>% 
+  mutate(outcome_no = as.integer(outcome_no))
+```
+
+#### General exclusion
+
+After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent ("see above"), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).
+
+##### Number of exluded responses
+
+```{r}
+processed_outcome_coding %>% 
+  filter(code %in% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe")) %>% 
+  group_by(code) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(sum_n = sum(n))
+```
+
+##### Number of responses after exclusion
+
+```{r}
+processed_outcome_coding %>% 
+  filter(code %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe")) %>% 
+  count()
+```
+
+##### Number of responses excluded because of insufficient information
+
+For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the outcome of the mistake ("insufficient information").
+
+```{r}
+processed_outcome_coding %>% 
+  filter(code == "insufficient information") %>% 
+  count()
+```
+
+#### Transform data
+
+```{r}
+processed_outcome_coding_count <-
+  processed_outcome_coding %>% 
+  group_by(code) %>%
+  count() %>%
+  mutate(group = NA_character_) %>% 
+  arrange(code)
+```
+
+#### Counting the number of disctinct codes
+
+```{r}
+processed_outcome_coding_count %>% 
+  filter(code %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe",
+                     "insufficient information")) %>% 
+  ungroup() %>% 
+  count()
+```
+
+#### Write data
+
+```{r}
+# write_xlsx(processed_outcome_coding_count, "Data/Processed/grouping/group/ReMis_Main_Processed_Outcome_Grouping.xlsx")
+```
+
+#### Testing similarity between tables
+
+```{r}
+setdiff(
+  select(processed_outcome_coding, -code),
+  select(processed_outcome_data, -code)
+  )
+```
+
+## Exclusion
+
+First, we read the outcome of the creating groups process.
+Second, we join the outputs of the creating codes and the defining groups processes.
+
+Second, we exclude all the separated responses, where
+* the corresponding code was not assigned to a group during the defining groups process ("NA")
+* the respondent did not write down the response but refered to a previous response ("see above")
+* the response was irrelevant to the given question ("irrelevant content")
+* the response did not provide enough information to decide what did the respondent mean ("insufficient information")
+* if the respondent expliciltly claimed the the mistake happen more then 5 years ago ("out of timeframe")
+* if the response was missing ("missing")
+
+### Data management mistake types
+#### Read data
+
+```{r}
+processed_mistake_type_grouping <- read_xlsx("Data/Processed/grouping/group/ReMis_Main_Processed_Mistake_Type_Grouping.xlsx")
+```
+
+#### Merge each case with their group based on the codes
+
+```{r}
+processed_mistake_type_grouped <-
+  processed_mistake_type_coding %>% 
+  left_join(., processed_mistake_type_grouping, by = "code")
+```
+
+#### Write responses for validation
+
+```{r}
+# write_tsv(processed_mistake_type_grouped, "Processed/grouping/grouped/ReMis_Main_Processed_Mistake_Type_Grouped_data.tsv")
+```
+
+#### Count the number of responses that we exclude because we could not assign the code to a group
+
+```{r}
+processed_mistake_type_grouped %>% 
+  filter(group == "NA") %>% 
+  count()
+```
+
+#### Test if there is any case thats code is not grouped
+
+```{r}
+processed_mistake_type_grouped %>% 
+  filter(is.na(group)) %>% 
+  count()
+```
+
+#### Create a variable that stores whether the maximum number of separated responses provided by the respondent is one or not
+
+```{r}
+processed_mistake_type_grouped <-
+  processed_mistake_type_grouped %>% 
+  group_by(response_id, mistake_type) %>%
+  mutate(maximum_response_one_type = case_when(which.max(mistake_no) == 1L ~ "yes",
+                                          which.max(mistake_no) != 1L ~ "no"))
+```
+
+#### Number of responses where the maximum number of separated of response is not one
+
+```{r}
+processed_mistake_type_grouped %>% 
+  ungroup() %>% 
+  filter(maximum_response_one_type != "yes") %>% 
+  count()
+```
+
+#### Number of respondent who wrote more than one response
+
+```{r}
+processed_mistake_type_grouped %>% 
+  ungroup() %>% 
+  filter(maximum_response_one_type != "yes") %>% 
+  distinct(response_id) %>% 
+  count()
+```
+
+#### Exclude cases based on ambiguous groups
+
+```{r}
+processed_mistake_type_filtered <-
+  processed_mistake_type_grouped %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA"))
+```
+
+#### Exclude cases of anonymous respondents
+
+We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.
+
+```{r}
+processed_mistake_type_filtered <-
+  processed_mistake_type_filtered %>% 
+  anti_join(., anonym_res_data, by = "response_id")
+```
+
+#### Transformation
+
+```{r}
+processed_mistake_type_filtered <-
+  processed_mistake_type_filtered %>% 
+  ungroup() %>% 
+  mutate(type = mistake_type,
+         group_type = group,
+         code_type = code) %>% 
+  select(-mistake_type, -n, -group, -code)
+```
+
+#### Write final groups for further analysis
+
+```{r}
+write_tsv(processed_mistake_type_filtered, "Data/Processed/ReMis_Main_Processed_Type_Groups_data.tsv")
+```
+
+### Causes of mistakes
+#### Read data
+
+```{r}
+processed_cause_grouping <- read_xlsx("Data/Processed/grouping/group/ReMis_Main_Processed_Cause_Grouping.xlsx")
+```
+
+#### Merge each case with their group based on the codes
+
+```{r}
+processed_cause_grouped <-
+  processed_cause_coding %>% 
+  left_join(., processed_cause_grouping, by = "code")
+```
+
+#### Write responses for validation
+
+```{r}
+# write_tsv(processed_cause_grouped, "Data/Processed/grouping/grouped/ReMis_Main_Processed_Cause_Grouped_data.tsv")
+```
+
+#### Count the number of responses that we exclude because we could not assign the code to a group
+
+```{r}
+processed_cause_grouped %>% 
+  filter(group == "NA") %>% 
+  count()
+```
+
+#### Test if there is any case thats code is not grouped
+
+```{r}
+processed_cause_grouped %>% 
+  filter(is.na(group)) %>% 
+  count()
+```
+
+#### Create a variable that stores whether the maximum number of separated responses provided by the respondent is one or not
+
+```{r}
+processed_cause_grouped <-
+  processed_cause_grouped %>% 
+  group_by(response_id, cause_type) %>%
+  mutate(maximum_response_one_cause = case_when(which.max(cause_no) == 1L ~ "yes",
+                                          which.max(cause_no) != 1L ~ "no"))
+```
+
+#### Number of responses where the maximum number of separated of response is not one
+
+```{r}
+processed_cause_grouped %>% 
+  ungroup() %>% 
+  filter(maximum_response_one_cause != "yes") %>% 
+  count()
+```
+
+#### Number of respondent who wrote more than one response
+
+```{r}
+processed_cause_grouped %>% 
+  ungroup() %>% 
+  filter(maximum_response_one_cause != "yes") %>% 
+  distinct(response_id) %>% 
+  count()
+```
+
+# Exclude cases based on ambiguous groups
+
+```{r}
+processed_cause_filtered <-
+  processed_cause_grouped %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA"))
+```
+
+#### Exclude cases of anonymous respondents
+
+We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.
+
+```{r}
+processed_cause_filtered <-
+  processed_cause_filtered %>% 
+  anti_join(., anonym_res_data, by = "response_id")
+```
+
+#### Transformation
+
+```{r}
+processed_cause_filtered <-
+  processed_cause_filtered %>% 
+  ungroup() %>% 
+  mutate(type = cause_type,
+         group_cause = group,
+         code_cause = code) %>% 
+  select(-cause_type, -n, -group, -code)
+```
+
+#### Write final groups for further analysis
+
+```{r}
+write_tsv(processed_cause_filtered, "Data/Processed/ReMis_Main_Processed_Cause_Groups_data.tsv")
+```
+
+### Outcomes of mistakes
+#### Read data
+
+```{r}
+processed_outcome_grouping <- read_xlsx("Data/Processed/grouping/group/ReMis_Main_Processed_Outcome_Grouping.xlsx")
+```
+
+#### Merge each case with their group based on the codes
+
+```{r}
+processed_outcome_grouped <- 
+  processed_outcome_coding %>% 
+  left_join(., processed_outcome_grouping, by = "code")
+```
+
+#### Write responses for validation
+
+```{r}
+# write_tsv(processed_outcome_grouped, "Data/Processed/grouping/grouped/ReMis_Main_Processed_Outcome_Grouped_data.tsv")
+```
+
+#### Count the number of responses that we exclude because we could not assign the code to a group
+
+```{r}
+processed_outcome_grouped %>% 
+  filter(group == "NA") %>% 
+  count()
+```
+
+#### Test if there is any case thats code is not grouped
+
+```{r}
+processed_outcome_grouped %>% 
+  filter(is.na(group)) %>% 
+  count()
+```
+
+#### Create a variable that stores whether the maximum number of separated responses provided by the respondent is one or not
+
+```{r}
+processed_outcome_grouped <-
+  processed_outcome_grouped %>% 
+  group_by(response_id, outcome_type) %>%
+  mutate(maximum_response_one_outcome = case_when(which.max(outcome_no) == 1L ~ "yes",
+                                          which.max(outcome_no) != 1L ~ "no"))
+```
+
+#### Number of responses where the maximum number of separated of response is not one
+
+```{r}
+processed_outcome_grouped %>% 
+  ungroup() %>% 
+  filter(maximum_response_one_outcome != "yes") %>% 
+  count()
+```
+
+#### Number of respondent who wrote more than one response
+
+```{r}
+processed_outcome_grouped %>% 
+  ungroup() %>% 
+  filter(maximum_response_one_outcome != "yes") %>% 
+  distinct(response_id) %>% 
+  count()
+```
+
+#### Exclude cases based on ambiguous groups
+
+```{r}
+processed_outcome_filtered <-
+  processed_outcome_grouped %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA"))
+```
+
+#### Exclude cases of anonymous respondents
+
+We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.
+
+```{r}
+processed_outcome_filtered <-
+  processed_outcome_filtered %>% 
+  anti_join(., anonym_res_data, by = "response_id")
+```
+
+#### Transformation
+
+```{r}
+processed_outcome_filtered <-
+  processed_outcome_filtered %>% 
+  ungroup() %>% 
+  mutate(type = outcome_type,
+         group_outcome = group,
+         code_outcome = code) %>% 
+  select(-outcome_type, -n, -group, -code)
+```
+
+#### Write final groups for further analysis
+
+```{r}
+write_tsv(processed_outcome_filtered, "Data/Processed/ReMis_Main_Processed_Outcome_Groups_data.tsv")
+```
+
+# Create individual datatables for the analysis
+
+## Excluding responses because it is from an anonym respondent
+
+```{r}
+raw <-
+  raw %>%
+  anti_join(., anonym_res_data, by = "response_id")
+```
+
+## Create datatable for the descriptive information
+### Select needed variables
+
+```{r}
+processed_descriptives <- 
+  raw %>%
+  select(response_id,
+         years,
+         field)
+```
+
+### Write processed datafile for analysis
+
+```{r}
+write_tsv(processed_descriptives, "Data/Processed/ReMis_Main_Processed_Descriptive_data.tsv")
+```
+
+## Create datatable for general frequency of mistakes in teams
+### Select needed variables
+
+```{r}
+processed_general_frequency <- 
+  raw %>%
+  select(response_id,
+         general_frequency)
+```
+
+### Write processed datafile for analysis
+
+```{r}
+write_tsv(processed_general_frequency, "Data/Processed/ReMis_Main_Processed_General_Frequency_data.tsv")
+```
+
+## Create datatable for general overview of data management mistakes (seriousness and frequency ratings of mistakes)
+### Investigating the excluded responses
+#### Create a table of the excluded responses
+
+We flagged the mistakes that needed to be excluded from further analysis during the coding process in order to save time. Therefore, we use the coded mistake data to find the participants who's responses fit our exclusion criteria.
+
+```{r}
+exclude <-  
+  processed_mistake_type_coding %>%
+  filter(code %in% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe")) %>%
+  mutate(exclusion_criteria = code,
+         type = mistake_type) %>%
+  select(response_id, type, mistake, exclusion_criteria) %>% 
+  distinct(response_id, type, .keep_all = TRUE) %>% 
+  anti_join(., anonym_res_data, by = "response_id") # We are excluding responses that are from anonymous respondents from this list
+
+write_tsv(exclude, "Data/Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv")
+```
+
+#### Number of mistake responses that we exclude (and the reason why)
+
+```{r}
+exclude %>% 
+  group_by(exclusion_criteria, type) %>% 
+  count() %>% 
+  group_by(type) %>% 
+  mutate(sum = sum(n)) %>%
+  knitr::kable(caption = "The exclusion criteria and the number of responses excluded because of that")
+```
+
+### Transforming data
+#### Creating temporary datatable for storing mistake descriptions
+
+```{r}
+temp_story <- 
+  raw %>% 
+  select(response_id, recurring_story, serious_story) %>%
+  gather(key = "type", value = "mistake", -response_id) %>% 
+  mutate(type = str_extract(type, "[^_]+"))
+```
+
+#### Number of all mistake response stories before exclusion
+
+```{r}
+temp_story %>% 
+  filter(!is.na(mistake)) %>%
+  group_by(type) %>% 
+  count()
+```
+
+#### Creating temporary datatable for storing mistake ratings
+
+```{r}
+temp_rating <-
+  raw %>%
+  select(response_id, recurring_frequency, recurring_serious, serious_serious) %>% 
+  gather(key = "key", value = "rating", -response_id) %>% 
+  separate(key, into = c("type", "question"), sep = "_")
+```
+
+#### Number of all mistake response ratings before exclusion
+
+```{r}
+temp_rating %>%
+  filter(!is.na(rating)) %>%
+  group_by(type, question) %>% 
+  count()
+```
+
+#### Joining ratings to the descriptions of the mistakes
+
+```{r}
+processed_mistake_general <-
+  temp_story %>% 
+  left_join(., temp_rating, by = c("response_id", "type"))
+```
+
+#### Number of individual respondents before exclusion
+
+```{r}
+processed_mistake_general %>% 
+  distinct(response_id) %>% 
+  count()
+```
+
+#### Responses that will be excluded and their ratings
+
+```{r}
+processed_mistake_general_exclude <- 
+  processed_mistake_general %>% 
+  inner_join(., exclude, by = c("response_id", "type", "mistake"))
+```
+
+#### Number of responses that will be excluded per type and question
+
+```{r}
+processed_mistake_general_exclude %>% 
+  group_by(type, question) %>% 
+  count()
+```
+
+#### Excluding trials
+
+```{r}
+processed_mistake_general_excluded <-
+  processed_mistake_general %>% 
+  anti_join(., exclude, by = c("response_id", "type", "mistake"))
+```
+
+#### Number of missing ratings after exclusion
+
+```{r}
+processed_mistake_general_excluded %>% 
+  filter(is.na(rating)) %>% 
+  group_by(type, question) %>% 
+  count()
+```
+
+#### Drop responses where the rating is missing
+
+```{r}
+processed_mistake_general_excluded <-
+  processed_mistake_general_excluded %>% 
+  filter(!is.na(rating))
+```
+
+#### Number of all mistake response ratings
+
+```{r}
+processed_mistake_general_excluded %>% 
+  group_by(type, question) %>% 
+  count()
+```
+
+#### Number of individual respondents left after exclusion
+
+```{r}
+processed_mistake_general_excluded %>% 
+  distinct(response_id) %>%
+  count()
+```
+
+#### Write processed datafile for analysis
+
+```{r}
+write_tsv(processed_mistake_general_excluded, "Data/Processed/ReMis_Main_Processed_Mistake_General_data.tsv")
+```
+
+## Create datatable for exploring the relationship between mistake causes and types
+
+We keep every case where the respondent reported only maximum one cause or one mistake.
+
+### Counting the number of causes before exclusion 
+
+```{r}
+processed_cause_filtered %>% 
+  group_by(type) %>% 
+  count()
+```
+
+### Counting the number of mistake types before exclusion
+
+```{r}
+processed_mistake_type_filtered %>% 
+  group_by(type) %>% 
+  count()
+```
+
+### Create the datatable
+
+```{r}
+processed_cause_type_relationship <-
+  processed_cause_filtered %>% 
+  inner_join(., processed_mistake_type_filtered, by = c("response_id", "type")) %>% 
+  filter(!(maximum_response_one_cause == "no" & maximum_response_one_type == "no"))
+```
+
+### Write processed datafile for analysis
+
+```{r}
+write_tsv(processed_cause_type_relationship, "Data/Processed/ReMis_Main_Processed_Cause_Type_Relationship_Analysis_data.tsv")
+```
+
+## Create datatable for exploring the relationship between mistake types and outcomes
+
+We keep every case where the respondent reported only maximum one outcome or one mistake.
+
+### Counting the number of outcomes before exclusion 
+
+```{r}
+processed_outcome_filtered %>% 
+  group_by(type) %>% 
+  count()
+```
+
+### Create the datatable
+
+```{r}
+processed_outcome_type_relationship <-
+  processed_mistake_type_filtered %>% 
+  inner_join(., processed_outcome_filtered, by = c("response_id", "type")) %>% 
+  filter(!(maximum_response_one_outcome == "no" & maximum_response_one_type == "no"))
+```
+
+### Write processed datafile for analysis
+
+```{r}
+write_tsv(processed_outcome_type_relationship, "Data/Processed/ReMis_Main_Processed_Outcome_Type_Relationship_Analysis_data.tsv")
 ```

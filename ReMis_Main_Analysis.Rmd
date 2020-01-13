@@ -25,56 +25,28 @@ library(ggrepel)
 source("utils.R")
 ```
 
-# Defining groups
-
-```{r}
-# Data management mistake
-grouping_type %>% 
-  distinct(group) %>%
-  filter(group != "NA") %>% 
-  count()
-
-# Causes of mistakes
-grouping_cause %>% 
-  distinct(group) %>%
-  filter(group != "NA") %>% 
-  count()
-
-# Outcomes of mistakes
-grouping_outcome %>% 
-  distinct(group) %>%
-  filter(group != "NA") %>% 
-  count()
-```
-
-## Descriptives
-```{r}
-## Data management mistake types
-grouping_type %>% skim()
-
-## Causes of mistakes
-grouping_cause %>% skim()
-
-## Outcomes of mistakes
-grouping_outcome %>% skim()
-```
-
 # Relationship between mistake types by mistake causes
-# Read in processed data
+## Read in processed data
+
 ```{r}
-cause_type_relationship <- read_tsv( "Processed/ReMis_Main_Processed_Cause_Type_Relationship_Analysis_data.tsv")
+cause_type_relationship <- read_tsv( "Data/Processed/ReMis_Main_Processed_Cause_Type_Relationship_Analysis_data.tsv")
 ```
 
-# Data descriptives
+## Data descriptives
+
 ```{r}
 skim(cause_type_relationship) %>% summary()
 
 skim(cause_type_relationship)
 ```
 
-# Relationship between causes and types together for the most serious and recurring mistakes
+## Data transformation
+
+For the plot we are recoding the different cause groups to match APA 6th format.
+
 ```{r}
-cause_type_relationship <- cause_type_relationship %>% 
+cause_type_relationship <- 
+  cause_type_relationship %>% 
   mutate(group_cause_meta = case_when(group_cause == "lack of knowledge/experience" ~ "Lack of knowledge",
                                       group_cause == "bad or lack of planning" ~ "Bad project preparation or management",
                                       group_cause == "bad or lack of standards" ~ "Bad project preparation or management",
@@ -90,24 +62,36 @@ cause_type_relationship <- cause_type_relationship %>%
                                       group_cause == "overconfidence" ~ "Personal difficulties",
                                       group_cause == "physical and mental constraints" ~ "Personal difficulties",
                                       group_cause == "lack of control" ~ "Personal difficulties"))
+```
 
+Counting how many respondents listed a specific cause for each mistake type.
+
+```{r}
 con_tab <- as_tibble(xtabs(~ group_type + group_cause_meta, data = cause_type_relationship))
+```
 
-relationship_plot_data <- con_tab %>% 
+Calculating the percentages for each count.
+
+```{r}
+relationship_plot_data <- 
+  con_tab %>% 
   group_by(group_type) %>% 
   mutate(n_sum = sum(n)) %>% 
   ungroup() %>%
   mutate(prop = round(n / n_sum * 100)) %>%
   filter(n_sum >= 10)
+```
 
-relationship_plot_label <- relationship_plot_data %>% 
-  group_by(group_type) %>% 
-  mutate(highest_prop = case_when(prop == max(prop) ~ 1L,
-                                  TRUE ~ 0L)) %>% 
-  filter(highest_prop == 1) %>% 
-  mutate(label = paste(group_cause_meta, prop, "%"),
-         label = paste(label, collapse = " and\n "))
+Creating labels for the plots' Y axis with the different mistake types and their count in this analysis.
 
+```{r}
+relationship_plot_label <- 
+  relationship_plot_data %>% 
+  mutate(label = paste0(group_type, " (", n_sum, ")"))
+```
+
+
+```{r}
 # Plot with the label of the most frequent cause
 relationship_plot_data %>% 
     ggplot(aes(x = reorder(group_type, n), y = n)) +
@@ -171,7 +155,9 @@ relationship_plot_data <- con_tab %>%
   mutate(n_sum = sum(n)) %>% 
   ungroup() %>%
   mutate(prop = round(n / n_sum * 100)) %>%
-  filter(n_sum >= 10)
+  filter(n_sum >= 10) %>% 
+  mutate(group_outcome = case_when(group_outcome == "financial lost" ~ "financial loss",
+                                   TRUE ~ group_outcome))
 
 relationship_plot_label <- relationship_plot_data %>% 
   group_by(group_type) %>% 
@@ -201,22 +187,40 @@ relationship_plot_data %>%
           legend.position = c(0.75, 0.4),
           legend.text = element_text(size = 15))
 
-# ggsave("Figures/outcome_type_relationship_all_stacked.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/outcome_type_relationship_all_stacked.png", width = 14.4, height = 8, plot = last_plot())
 ```
 
 # Descriptives of the sample
 
 # Read in data
+
 ```{r}
-descriptives <- read_tsv("Processed/ReMis_Main_Processed_Descriptive_Analysis_data.tsv")
+descriptives <- read_tsv("Processed/ReMis_Main_Processed_Descriptive_data.tsv")
+```
+
+# The number of distinct respondents
+
+```{r}
+descriptives %>% 
+  distinct(response_id) %>% 
+  count()
 ```
 
 # Data descriptives
+
 ```{r}
 skim(descriptives)
 ```
 
+# Years in field descriptives
+
+```{r}
+descriptives %>% 
+  summarise(median_year = median(years))
+```
+
 ## Years spent on the field
+
 ```{r}
 ### Histogram
 descriptives %>% 
@@ -229,6 +233,7 @@ descriptives %>%
 ```
 
 ## Field
+
 ```{r}
 ### Descriptive statistics
 descriptives %>% 
@@ -270,7 +275,7 @@ descriptives %>%
 
 # Read in data
 ```{r}
-general_mistake_frequency <- read_tsv("Processed/ReMis_Main_Processed_General_Frequency_Analysis_data.tsv")
+general_mistake_frequency <- read_tsv("Processed/ReMis_Main_Processed_General_Frequency_data.tsv")
 ```
 
 # Relevel factor variable for plotting
@@ -286,7 +291,7 @@ distinct(general_mistake_frequency, general_frequency)
 
 ## Percentage of responses to general_frequency
 general_mistake_frequency %>%
-  filter(!is.na(general_frequency)) %>% 
+  filter(!is.na(general_frequency)) %>%
   group_by(general_frequency) %>% 
   summarise(n = n()) %>% 
   ungroup() %>% 
@@ -309,12 +314,19 @@ general_mistake_frequency %>%
 # Analysis of the most recurring mistakes
 
 # Read in data
+
 ```{r}
-general_mistake_overview <- read_tsv("Processed/ReMis_Main_Processed_Mistake_General_Analysis_data.tsv")
+general_mistake_overview <- read_tsv("Processed/ReMis_Main_Processed_Mistake_General_data.tsv")
 ```
 
 ## Research data management level analyses
+
 ```{r}
+### Number of responses to each investigated question
+general_mistake_overview %>% 
+  group_by(type, question) %>% 
+  count()
+
 ### Levels of the answer option to recurring_frequency
 general_mistake_overview %>% 
   filter(type == "recurring",
@@ -331,7 +343,7 @@ general_mistake_overview %>%
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
-         percentage = round(n / N * 100))
+         percentage = n / N * 100)
 
 ### Barplot of responses to recurring_frequency
 recurring_frequency_plot <- 
@@ -397,9 +409,12 @@ general_mistake_overview %>%
 ## Research data management level analyses
 ```{r}
 ### Proportion of the most serious mistakes on a given seriousness level throughout research data management
-processed %>%
-  filter(!is.na(serious_serious)) %>% 
-  group_by(serious_serious) %>% 
+general_mistake_overview %>%
+  filter(type == "serious",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>%
+  group_by(rating) %>% 
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
@@ -407,10 +422,13 @@ processed %>%
 
 ### Barplot of responses to serious_serious
 serious_serious_plot <- 
-  processed %>% 
-  filter(!is.na(serious_serious)) %>% 
+  general_mistake_overview %>% 
+  filter(type == "serious",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>%
   ggplot() +
-  aes(serious_serious) +
+  aes(rating) +
   geom_bar() +
   scale_y_continuous(expand = c(0,0), limits = c(0, 300)) +
   labs(x = "Seriousnes levels",
@@ -427,8 +445,7 @@ type_analysis <- read_tsv("Processed/ReMis_Main_Processed_Type_Analysis_data.tsv
 # Seriousness and frequency plot
 type_analysis_plot_data <- 
   type_analysis %>% 
-  filter(type == "recurring",
-         group_type != "ambiguous") %>% 
+  filter(type == "recurring") %>% 
   spread(key = question, value = rating) %>% 
   mutate(frequency = frequency_char_to_int(frequency),
          serious = serious_char_to_int(serious)) %>%
@@ -501,4 +518,42 @@ type_analysis_plot_data <-
           legend.position = "none")
   
 #ggsave("Figures/type_serious_frequency.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+# Frequency and occurence of the most serious mistake types
+
+```{r}
+# Seriousness and frequency plot
+type_serious_analysis <-  
+  type_analysis %>% 
+  filter(type == "serious") %>% 
+  spread(key = question, value = rating) %>% 
+  mutate(serious = serious_char_to_int(serious)) %>%
+  group_by(group_type) %>% 
+  summarize(n = n(),
+            mean_serious = mean(serious, na.rm = T)) %>% 
+  filter(n > 10)
+
+ggplot(data = type_serious_analysis) +
+  aes(x = n,
+      y = mean_serious) +
+  geom_point(size = 8, shape = 15, alpha = 1, color = "black") +
+  geom_text_repel(aes(label = group_type),
+                  force = 10,
+                  max.iter = 3e3,
+                  size = 5,
+                  segment.alpha = 0.6,
+                  segment.size = 0.8,
+                  segment.colour = "black") +
+  labs(x = "Number of Research Teams reported the Mistake",
+       y = "Mean Seriousness Rating of the Mistake") +
+  scale_y_continuous(limits = c(2, 4), breaks = c(2, 3, 4), label = c("Minor", "Moderate", "Major")) +
+    theme(panel.grid = element_blank(),
+          panel.background = element_blank(),
+          axis.line = element_line(color = "black"),
+          axis.text = element_text(color = "black", size = 15),
+          axis.title = element_text(size = 20),
+          legend.position = "none")
+
+# ggsave("Figures/type_serious_serious.png", width = 14.4, height = 8, plot = last_plot())
 ```

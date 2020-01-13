@@ -1,0 +1,318 @@
+---
+title: "Untitled"
+author: "Marton Kovacs"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: html_document
+---
+
+# Load packages
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+# Investigating the journals in the science direct database
+
+In our study we collected email addresses of authors who published in one of the Science Direct Journals that is labelled as psychology (see the following link for the journals and their labels: https://www.sciencedirect.com/browse/journals-and-books?contentType=JL&subject=psychology).
+
+## Import data
+
+The list of journals and their subfields at the time of the data collection.
+
+```{r}
+journal <- read_csv2("Data/ContactDatabase/ReMis_Sample_Journal.csv",
+                     locale = locale(encoding = "ISO-8859-13"))
+```
+
+At the time of our data collection there were `r journal %>% distinct(publicationname) %>% count()` journals in the Science Direct database.
+
+# Investigating our contact database
+
+We used a scraping code to collect meta information of published articles in the Science Direct database.
+
+## Import data
+
+```{r}
+email <- read_csv("Data/ContactDatabase/ReMis_Sample_Raw.csv",
+                  locale = locale(encoding = "UTF-8")) %>% 
+  distinct(email, .keep_all = TRUE)
+```
+
+## Descriptive statistics of our collection
+### Number of articles
+
+We have downloaded the metainformation of `r email %>% distinct(doi) %>% filter(!is.na(doi)) %>% count()` individual articles.
+
+We could extract the email addresses of `r email %>% distinct(email) %>% filter(!is.na(email)) %>% count()` corresponding authors of these articles. This does not mean that all email addresses are working as the automatized scraper code coulde make mistakes.
+
+### Number of journals
+
+Saving the distinct journal titles from our collection. 
+
+```{r}
+email_publication <- 
+  email %>%
+  distinct(publicationname)
+```
+
+We collected articles from `r email_publication %>% count()` journals out of the full Science Direct database.
+
+There are journals that are in the Science Direct database but we did not collect any articles from them. Save the list of these journals.
+
+```{r}
+journal_missing <-
+  journal %>% 
+  distinct(publicationname) %>% 
+  anti_join(., email_publication, by = "publicationname")
+```
+
+There were `r journal_missing %>% count()` that we did not collect any article from.
+
+# Investigating the randomly selected sample for the main survey
+
+We randomly selected email addresses from our collection for the main survey in three rounds. These are named bacth 3, batch 5 and batch 6. For batch 3 we selected a 100 email addres, for batch 5 we selected 500, and for batch 6 we selected 15000.
+
+After the selection we tried to fin the last name or the emil address of the author if it was missing by hand.
+
+## Import data
+
+```{r}
+# batch 3
+batch_3_cleaned <- read_csv("Data/Samples/ReMis_Main_181126_3Batch_Cleaned.csv")
+
+# batch 5
+batch_5_cleaned <- read_csv("Data/Samples/ReMis_Main_181129_5Batch_Cleaned.csv")
+
+# batch 6
+batch_6_cleaned <- read_csv("Data/Samples/ReMis_Main_181210_6Batch_Cleaned.csv")
+```
+
+We used the Qualtrics mail sender to send out our survey. Therefore now, we load the metadata of our samples downloaded from the Qualtrics mail sender history.
+
+```{r}
+# batch 3
+batch_3_history <- read_csv2("Data/MailSender_History/ReMis_Main_History_Batch_3.csv")
+
+# batch 5
+batch_5_history <- read_csv2("Data/MailSender_History/ReMis_Main_History_Batch_5.csv")
+
+# batch 6
+batch_6_history <- read_csv2("Data/MailSender_History/ReMis_Main_History_Batch_6.csv")
+```
+
+## Renaming variables
+
+We rename some variables to make the datasets comperable.
+
+```{r}
+# batch 3
+batch_3_history <- 
+  batch_3_history %>% 
+  rename(email = Email,
+         last_name = `Last Name`,
+         status = Status)
+
+batch_3_cleaned <-
+  batch_3_cleaned %>% 
+  rename(last_name = surname)
+
+# batch 5
+batch_5_history <- 
+  batch_5_history %>% 
+  rename(email = Email,
+         last_name = `Last Name`,
+         status = Status)
+
+batch_5_cleaned <-
+  batch_5_cleaned %>% 
+  rename(last_name = surname)
+
+# batch 6
+batch_6_history <- 
+ batch_6_history %>%
+  rename(email = Email,
+         last_name = `Last Name`,
+         status = Status)
+
+batch_6_cleaned <-
+  batch_6_cleaned %>% 
+  rename(last_name = surname)
+```
+
+## Descriptives of the used samples
+
+There are `r batch_3_cleaned %>% count()` email addresses in the sample of batch 3.
+For batch 3 there were `r batch_3_cleaned %>% filter(is.na(email)) %>% count()` missing email addresses and `r batch_3_cleaned %>% filter(is.na(last_name)) %>% count()` missing last names.
+There were `batch_3_history %>% count()` emails sent out to this sample.
+
+There are `r batch_5_cleaned %>% count()` email addresses in the sample of batch 5.
+For batch 5 there were `r batch_5_cleaned %>% filter(is.na(email)) %>% count()` missing email addresses and `r batch_5_cleaned %>% filter(is.na(last_name)) %>% count()` missing last names.
+There were `batch_5_history %>% count()` emails sent out to this sample.
+
+There are `r batch_6_cleaned %>% count()` email addresses in the sample of batch 6.
+For batch 6 there were `r batch_6_cleaned %>% filter(is.na(email)) %>% count()` missing email addresses and `r batch_6_cleaned %>% filter(is.na(last_name)) %>% count()` missing last names.
+There were `batch_6_history %>% count()` emails sent out to this sample.
+
+## Exclusion from the samples
+
+For a few authors we coud not find the last name or the email address in the sample of batch 6. We are saving these incomplete instances now.
+
+```{r}
+batch_6_missing <-
+  batch_6_cleaned %>% 
+  filter(is.na(last_name) | is.na(email))
+```
+
+We are checking the difference between the cleaned sample and the survey history.
+
+```{r}
+batch_6_cleaned_history_difference <-
+  setdiff(
+    select(batch_6_cleaned, email, last_name),
+    select(batch_6_history, email, last_name)
+    )
+```
+
+There are `r batch_6_cleaned_history_difference %>% count()` data points that differ in the sample in opposition to the survey history.
+88 of these differing data points are the ones that miss either the last name or the email address of the author, so they were dropped during cleaning up.
+1 data point is differing because there is a difference in the last name addded during the cleaning up.
+
+We are checking the difference between the survey history and the cleaned sample.
+
+```{r}
+batch_6_history_cleaned_difference <-
+  setdiff(
+    select(batch_6_history, email, last_name),
+    select(batch_6_cleaned, email, last_name)
+    )
+```
+
+There are `r batch_6_history_cleaned_difference %>% count()` data points that differ in the survey history in opposition to the sample.
+One of these data points is the one with different wording in the last name that we have found in the comparison before.
+In addition, one of the coauthors was added to the email list as a final check.
+
+We are excluding the coauthor from the survey history.
+
+```{r}
+batch_6_history <-
+  batch_6_history %>% 
+  filter(last_name != "Aczel")
+```
+
+## Joining sample with history
+
+Finish the cleaning of the sample we join the information in the sample to the email addresses in the survey history.
+
+```{r}
+# Batch 3
+batch_3_sample <-
+  batch_3_history %>% 
+  left_join(., batch_3_cleaned, by = c("email", "last_name"))
+
+# Batch 5
+batch_5_sample <-
+  batch_5_history %>% 
+  left_join(., batch_5_cleaned, by = c("email", "last_name"))
+
+# Batch 6
+batch_6_sample <-
+  batch_6_history %>% 
+  left_join(., batch_6_cleaned, by = c("email", "last_name"))
+```
+
+The final sample size for batch 3 is `r batch_3_sample %>% count()`
+
+The final sample size for batch 5 is `r batch_5_sample %>% count()`
+
+The final sample size for batch 6 is `r batch_6_sample %>% count()`
+
+## Joining samples
+
+We join all the three samples to one dataframe.
+
+```{r}
+sample <-
+  batch_3_sample %>% 
+  bind_rows(batch_5_sample) %>%
+  bind_rows(batch_6_sample)
+```
+
+Checking the send status of the emails.
+
+```{r}
+sample %>% 
+  group_by(status) %>% 
+  count()
+```
+
+# Investigating the journals in our sample
+
+A lot of the respondents to our survey indicated that their subfield is not on the list of preset subfields that we provided in our survey. We believed that the range of subfields listed cover the field of psychology. It is possible that our respondents were not exclusivly psychologist, just published in a paper that is labelled as psychology in the Science Direct database. Therefore, now we list the titles of the journals where the authors in our sample published in.
+
+```{r}
+sample_publication <- 
+  sample %>%
+  distinct(publicationname)
+```
+
+We have `r sample_publication %>% filter(!is.na(publicationname)) %>% count()` distinct journals in our sample.
+
+We are checking the list of publications that our in our whole database but were not selected when we created our sample.
+
+```{r}
+email_publication %>% 
+  anti_join(., sample_publication, by = "publicationname")
+```
+
+There were `r sample %>% filter(is.na(publicationname)) %>% count()` researchers in the sample where the journal is not known.
+
+# Exploring journal subfield in our sample
+
+We are adding the subfield descriptions from the Science Direct database to our sample.
+
+```{r}
+sample_match_journal <-
+  sample_publication %>%
+  inner_join(., journal, by = "publicationname")
+```
+
+We are checking the number of subfields that a journal is assigned to.
+
+```{r}
+sample_match_journal %>% 
+  group_by(publicationname) %>% 
+  summarise(n_subfields = n()) %>% 
+  group_by(n_subfields) %>% 
+  summarise(n_journals = n())
+```
+
+On plot the same thing.
+
+```{r}
+sample_match_journal %>% 
+  group_by(publicationname) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  ggplot() +
+  aes(x = n) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 130)) +
+  labs(x = "Number of Subfields That a Journal Is Assigned to", y = "Count") +
+  theme_minimal()
+```
+
+Number of journals assinged to each subfield. Please keep in mind that a journal can be assigned to more than one subfield.
+
+```{r}
+sample_match_journal %>% 
+  group_by(subfield) %>% 
+  summarise(n = n()) %>% 
+  ggplot() +
+  aes(x = subfield, y = n) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 60)) +
+  labs(x = "Subfields", y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5))
+```
