@@ -12,11 +12,8 @@ library(tidyverse)
 library(readxl)
 library(qdap)
 library(papaja)
-library(patchwork)
 library(skimr)
 library(viridis)
-library(ggthemes)
-library(ggrepel)
 ```
 
 # Load functions
@@ -25,14 +22,321 @@ library(ggrepel)
 source("utils.R")
 ```
 
-# Relationship between mistake types by mistake causes
-## Read in processed data
+# Descriptives of the sample
+## Read in data
+
+```{r}
+descriptives <- read_tsv("Data/Processed/ReMis_Main_Processed_Descriptive_data.tsv")
+```
+
+## The number of distinct respondents
+
+```{r}
+descriptives %>% 
+  distinct(response_id) %>% 
+  count()
+```
+
+## Data descriptives
+
+```{r}
+skim(descriptives)
+```
+
+## Years in field descriptives
+
+```{r}
+descriptives %>% 
+  summarise(median_year = median(years))
+```
+
+## Years spent on the field
+
+```{r}
+### Histogram
+descriptives %>% 
+  ggplot() +
+  aes(years) +
+  geom_histogram() +
+  labs(x = "Years spent on the field",  y = "Count") +
+  scale_y_continuous(expand = c(0,0)) +
+  theme(axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 12),
+        axis.title = element_text(size = 15),
+        panel.background = element_blank())
+```
+
+Saving the plot.
+
+```{r}
+ggsave("Figures/years_on_field_plot.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+## Field
+
+Distribution of the subfield of the respondents.
+
+```{r}
+descriptives %>% 
+  group_by(field) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 2)) %>% 
+  arrange(desc(n))
+```
+
+Plotting the distribution.
+
+```{r}
+descriptives %>% 
+  filter(!is.na(field)) %>% 
+  mutate(field = case_when(field == "other" ~ "Other",
+                           field == "experimental and cognitive psychology" ~ "Experimental and\nCognitive Psychology",
+                           field == "social psychology" ~ "Social Psychology",
+                           field == "clinical psychology" ~ "Clinical Psychology",
+                           field == "developmental and educational psychology" ~ "Developmental and\nEducational Psychology",
+                           field == "applied psychology" ~ "Applied Psychology",
+                           field == "neurophysiology and physiological psychology" ~ "Neurophysiology and\nPhysiological Psychology",
+                           field == "methodology and statistics" ~ "Methodology and Statistics",
+                           field == "personality psychology" ~ "Personality Psychology")) %>% 
+  group_by(field) %>% 
+  count() %>% 
+  ggplot(.) +
+  aes(x = reorder(field, desc(n)), y = n) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 120)) +
+  labs(x = "Field of the research teams of the respondents",
+       y = "Count") + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
+        axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 12),
+        axis.title = element_text(size = 15),
+        panel.background = element_blank())
+```
+
+Saving the plot.
+
+```{r}
+ggsave("Figures/subfield_distribution_plot.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+# General overview of data management mistakes
+## General frequency of mistakes
+### Import data
+
+```{r}
+general_mistake_frequency <- read_tsv("Data/Processed/ReMis_Main_Processed_General_Frequency_data.tsv")
+```
+
+### Relevel factor variable for plotting
+
+```{r}
+general_mistake_frequency <- 
+  general_mistake_frequency %>% 
+  mutate(general_frequency = frequency_char_to_fact(general_frequency))
+```
+
+Checking the levels of the answer option to general_frequency.
+
+```{r}
+distinct(general_mistake_frequency, general_frequency)
+```
+
+### Descriptive results
+
+```{r}
+general_mistake_frequency %>%
+  filter(!is.na(general_frequency)) %>%
+  group_by(general_frequency) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = n / N * 100)
+```
+
+```{r}
+general_mistake_frequency %>% 
+  filter(!is.na(general_frequency)) %>% 
+  ggplot() +
+  aes(general_frequency) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 270)) +
+  labs(x = "Frequency levels",
+       y = "Count") +
+  coord_flip() +
+  theme(axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 12),
+        axis.title = element_text(size = 15),
+        panel.background = element_blank())
+```
+
+## Analysis of the most frequent mistakes
+### Read in data
+
+```{r}
+general_mistake_overview <- read_tsv("Data/Processed/ReMis_Main_Processed_Mistake_General_data.tsv")
+```
+
+### Number of responses to each investigated question
+
+```{r}
+general_mistake_overview %>% 
+  group_by(type, question) %>% 
+  count()
+```
+
+### Levels of the answer option to recurring_frequency
+
+```{r}
+general_mistake_overview %>% 
+  filter(type == "recurring",
+         question == "frequency") %>% 
+  distinct(rating)
+```
+
+### Proportion of the frequency of the most recurring mistakes
+
+```{r}
+general_mistake_overview %>%
+  filter(type == "recurring",
+         question == "frequency",
+         !is.na(rating)) %>% 
+  mutate(rating = frequency_char_to_fact(rating)) %>% 
+  group_by(rating) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = n / N * 100)
+```
+
+### Barplot of responses of the frequency of the most recurring mistakes
+
+```{r} 
+general_mistake_overview %>%
+  filter(type == "recurring",
+         question == "frequency",
+         !is.na(rating)) %>% 
+  mutate(rating = frequency_char_to_fact(rating)) %>% 
+  ggplot() +
+  aes(x = rating) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 250)) +
+  labs(x = "Frequency levels",
+       y = "Count") +
+  coord_flip() +
+  theme(axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 12),
+        axis.title = element_text(size = 15),
+        panel.background = element_blank())
+```
+
+### Proportion of the most recurring mistakes on a given seriousness level throughout research data management
+
+```{r}
+general_mistake_overview %>%
+  filter(type == "recurring",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>% 
+  group_by(rating) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100))
+```
+
+### Barplot of responses of the seriousness of the most recurring mistakes
+
+```{r}
+general_mistake_overview %>% 
+  filter(type == "recurring",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>% 
+  ggplot() +
+  aes(rating) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 280)) +
+  labs(x = "Seriousnes levels",
+       y = "Count") +
+  coord_flip() +
+  theme(axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 12),
+        axis.title = element_text(size = 15),
+        panel.background = element_blank())
+```
+
+### Median rating of all the most recurring mistakes
+
+```{r}
+general_mistake_overview %>% 
+  filter(type == "recurring",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_int(rating)) %>%
+  group_by(question) %>% 
+  summarize(median = median(rating, na.rm = TRUE),
+            max = max(rating, na.rm = TRUE),
+            min = min(rating, na.rm = TRUE),
+            n = n(),
+            quart1 = quantile(rating, 0.25, na.rm = TRUE),
+            quart3 = quantile(rating, 0.75, na.rm = TRUE),
+            IQR = IQR(rating, na.rm = TRUE))
+```
+
+## Analysis of the most serious mistakes
+
+### Proportion of the most serious mistakes on a given seriousness level throughout research data management
+
+```{r}
+general_mistake_overview %>%
+  filter(type == "serious",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>%
+  group_by(rating) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = n / N * 100)
+```
+
+### Barplot of responses to serious_serious
+
+```{r}
+general_mistake_overview %>% 
+  filter(type == "serious",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>%
+  ggplot() +
+  aes(rating) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 300)) +
+  labs(x = "Seriousnes levels",
+       y = "Count") +
+  coord_flip() +
+  theme(axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 12),
+        axis.title = element_text(size = 15),
+        panel.background = element_blank())
+```
+
+# Investigating research data management mistake types
+## Relationship between mistake types by mistake causes
+### Read in processed data
 
 ```{r}
 cause_type_relationship <- read_tsv( "Data/Processed/ReMis_Main_Processed_Cause_Type_Relationship_Analysis_data.tsv")
 ```
 
-## Data descriptives
+### Data descriptives
 
 ```{r}
 skim(cause_type_relationship) %>% summary()
@@ -40,7 +344,7 @@ skim(cause_type_relationship) %>% summary()
 skim(cause_type_relationship)
 ```
 
-## Data transformation
+### Data transformation
 
 For the plot we are recoding the different cause groups to match APA 6th format.
 
@@ -78,482 +382,133 @@ relationship_plot_data <-
   group_by(group_type) %>% 
   mutate(n_sum = sum(n)) %>% 
   ungroup() %>%
-  mutate(prop = round(n / n_sum * 100)) %>%
+  mutate(prop = n / n_sum) %>%
   filter(n_sum >= 10)
+```
+
+Check if the proportion of the cause groups add up to a hundred.
+
+```{r}
+relationship_plot_data %>% 
+  group_by(group_type) %>% 
+  summarise(sum_prop = sum(prop))
 ```
 
 Creating labels for the plots' Y axis with the different mistake types and their count in this analysis.
 
 ```{r}
-relationship_plot_label <- 
+relationship_plot_data <- 
   relationship_plot_data %>% 
   mutate(label = paste0(group_type, " (", n_sum, ")"))
 ```
 
+### Creating the plot
 
-```{r}
-# Plot with the label of the most frequent cause
+```{r, fig.show = 'hide'}
 relationship_plot_data %>% 
-    ggplot(aes(x = reorder(group_type, n), y = n)) +
+    ggplot(aes(x = reorder(label, n), y = prop, group = group_cause_meta, fill = group_cause_meta)) +
     geom_bar(stat = "identity") +
-    geom_text(data = relationship_plot_label, aes(y = n_sum, label = label),
-              hjust = -0.1, size = 3,
-              position = position_dodge(width = 1),
-              inherit.aes = TRUE) +
-    scale_y_continuous(expand = c(0,0), limit = c(0, 65)) +
+    viridis::scale_fill_viridis(discrete = TRUE) +
+    scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
     coord_flip() +
     labs(x = "Data Management Mistake Types",
-         y = "Count") +
-    theme(axis.text.x = element_text(),
+         y = "Percentage",
+         fill = "Meta Cause Groups") +
+    theme(axis.text.x = element_text(size = 12, color = "black"),
+          axis.text.y = element_text(size = 12, color = "black"),
           panel.background = element_blank(),
           panel.grid = element_blank(),
-          axis.ticks = element_line(),
-          axis.line = element_line())
-
-# Stacked barplot of all the causes
-relationship_plot_data %>% 
-    ggplot(aes(x = reorder(group_type, n), y = n, group = n, fill = group_cause_meta)) +
-    geom_bar(stat = "identity") +
-    scale_fill_colorblind() +
-    scale_y_continuous(expand = c(0,0), limit = c(0, 65)) +
-    coord_flip() +
-    labs(x = "Data Management Mistake Types",
-         y = "Count") +
-    theme(axis.text.x = element_text(size = 15),
-          axis.text.y = element_text(size = 15),
-          panel.background = element_blank(),
-          panel.grid = element_blank(),
-          axis.ticks = element_line(),
-          axis.line = element_line(),
-          axis.title = element_text(size = 20),
-          legend.title = element_blank(),
-          legend.position = c(0.75, 0.4),
-          legend.text = element_text(size = 15))
-
-ggsave("Figures/cause_type_relationship_all_stacked.png", width = 14.4, height = 8, plot = last_plot())
+          axis.ticks = element_line(color = "black"),
+          axis.line = element_line(color = "black"),
+          legend.title = element_text(size = 15),
+          axis.title = element_text(size = 15, color = "black"),
+          legend.text = element_text(size = 12))
 ```
 
-# Relationship between mistake types and mistake outcomes
-# Read in processed data
+Saving the plot.
+
 ```{r}
-outcome_type_relationship <- read_tsv( "Processed/ReMis_Main_Processed_Outcome_Type_Relationship_Analysis_data.tsv")
+ggsave("Figures/cause_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
 ```
 
-# Data descriptives
+## Relationship between mistake types and mistake outcomes
+### Read in processed data
+
+```{r}
+outcome_type_relationship <- read_tsv( "Data/Processed/ReMis_Main_Processed_Outcome_Type_Relationship_Analysis_data.tsv")
+```
+
+### Data descriptives
+
 ```{r}
 skim(outcome_type_relationship) %>% summary()
 
 skim(outcome_type_relationship)
 ```
 
-# Relationship between causes and types together for the most serious and recurring mistakes
+### Data transformation
+
+Counting how many respondents listed a specific cause for each mistake type
+
 ```{r}
 con_tab <- as_tibble(xtabs(~ group_type + group_outcome, data = outcome_type_relationship))
+```
 
-relationship_plot_data <- con_tab %>% 
+Calculating the percentages for each count.
+
+```{r}
+relationship_plot_data <-
+  con_tab %>% 
   group_by(group_type) %>% 
   mutate(n_sum = sum(n)) %>% 
   ungroup() %>%
-  mutate(prop = round(n / n_sum * 100)) %>%
+  mutate(prop = n / n_sum) %>%
   filter(n_sum >= 10) %>% 
   mutate(group_outcome = case_when(group_outcome == "financial lost" ~ "financial loss",
                                    TRUE ~ group_outcome))
+```
 
-relationship_plot_label <- relationship_plot_data %>% 
-  group_by(group_type) %>% 
-  mutate(highest_prop = case_when(prop == max(prop) ~ 1L,
-                                  TRUE ~ 0L)) %>% 
-  filter(highest_prop == 1) %>% 
-  mutate(label = paste(group_outcome, prop, "%"),
-         label = paste(label, collapse = " and\n "))
+Check if the proportion of the cause groups add up to a hundred.
 
-# Stacked barplot
+```{r}
 relationship_plot_data %>% 
-    ggplot(aes(x = reorder(group_type, n), y = n, group = n, fill = group_outcome)) +
+  group_by(group_type) %>% 
+  summarise(sum_prop = sum(prop))
+```
+
+Creating labels for the plots' Y axis with the different mistake types and their count in this analysis.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  mutate(label = paste0(group_type, " (", n_sum, ")"))
+```
+
+### Creating the plot
+
+```{r, fig.show = 'hide'}
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(label, n), y = prop, group = group_outcome, fill = group_outcome)) +
     geom_bar(stat = "identity") +
-    scale_fill_colorblind() +
-    scale_y_continuous(expand = c(0,0)) +
+    viridis::scale_fill_viridis(discrete = TRUE) +
+    scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
     coord_flip() +
     labs(x = "Data Management Mistake Types",
-         y = "Count") +
-    theme(axis.text.x = element_text(size = 15),
-          axis.text.y = element_text(size = 15),
+         y = "Percentage",
+         fill = "Outcome Groups") +
+    theme(axis.text.x = element_text(size = 12, color = "black"),
+          axis.text.y = element_text(size = 12, color = "black"),
           panel.background = element_blank(),
           panel.grid = element_blank(),
-          axis.ticks = element_line(),
-          axis.line = element_line(),
-          axis.title = element_text(size = 20),
-          legend.title = element_blank(),
-          legend.position = c(0.75, 0.4),
-          legend.text = element_text(size = 15))
-
-ggsave("Figures/outcome_type_relationship_all_stacked.png", width = 14.4, height = 8, plot = last_plot())
-```
-
-# Descriptives of the sample
-
-# Read in data
-
-```{r}
-descriptives <- read_tsv("Processed/ReMis_Main_Processed_Descriptive_data.tsv")
-```
-
-# The number of distinct respondents
-
-```{r}
-descriptives %>% 
-  distinct(response_id) %>% 
-  count()
-```
-
-# Data descriptives
-
-```{r}
-skim(descriptives)
-```
-
-# Years in field descriptives
-
-```{r}
-descriptives %>% 
-  summarise(median_year = median(years))
-```
-
-## Years spent on the field
-
-```{r}
-### Histogram
-descriptives %>% 
-  ggplot() +
-  aes(years) +
-  geom_histogram() +
-  labs(x = "Years spent on the field",  y = "Count") +
-  scale_y_continuous(expand = c(0,0)) +
-  papaja::theme_apa()
-```
-
-## Field
-
-```{r}
-### Descriptive statistics
-descriptives %>% 
-  group_by(field) %>% 
-  summarise(n = n()) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n),
-         percentage = round(n / N * 100, 2))
-
-### Barplot
-descriptives %>% 
-  filter(!is.na(field)) %>% 
-  mutate(field = str_extract(field, "(\\w+)"),
-         field = str_to_title(field),
-         field = fct_relevel(field,
-                             "Other",
-                             "Experimental",
-                             "Social",
-                             "Clinical",
-                             "Developmental",
-                             "Applied",
-                             "Neurophysiology",
-                             "Methodology",
-                             "Personality")) %>% 
-  group_by(field) %>% 
-  count() %>% 
-  ggplot(.) +
-  aes(x = field, y = n) +
-  geom_bar(stat = "identity") +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x = "Field of the research teams of the respondents",
-       y = "Count") + 
-  papaja::theme_apa() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.line = element_line(color = "black"))
-```
-
-# Committing data management mistakes in general
-
-# Read in data
-```{r}
-general_mistake_frequency <- read_tsv("Processed/ReMis_Main_Processed_General_Frequency_data.tsv")
-```
-
-# Relevel factor variable for plotting
-```{r}
-general_mistake_frequency <- 
-  general_mistake_frequency %>% 
-  mutate(general_frequency = frequency_char_to_fact(general_frequency))
-```
-
-```{r}
-## Levels of the answer option to general_frequency
-distinct(general_mistake_frequency, general_frequency)
-
-## Percentage of responses to general_frequency
-general_mistake_frequency %>%
-  filter(!is.na(general_frequency)) %>%
-  group_by(general_frequency) %>% 
-  summarise(n = n()) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n),
-         percentage = n / N * 100)
-
-## Barplot of the responses to general_frequency
-  general_mistake_frequency %>% 
-  filter(!is.na(general_frequency)) %>% 
-  ggplot() +
-  aes(general_frequency) +
-  geom_bar() +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 270)) +
-  labs(x = "Frequency levels",
-       y = "Count") +
-  coord_flip() +
-  theme_apa()
-```
-
-# Analysis of the most recurring mistakes
-
-# Read in data
-
-```{r}
-general_mistake_overview <- read_tsv("Processed/ReMis_Main_Processed_Mistake_General_data.tsv")
-```
-
-## Research data management level analyses
-
-```{r}
-### Number of responses to each investigated question
-general_mistake_overview %>% 
-  group_by(type, question) %>% 
-  count()
-
-### Levels of the answer option to recurring_frequency
-general_mistake_overview %>% 
-  filter(type == "recurring",
-         question == "frequency") %>% 
-  distinct(rating)
-
-### Proportion of the frequency of the most recurring mistakes
-general_mistake_overview %>%
-  filter(type == "recurring",
-         question == "frequency",
-         !is.na(rating)) %>% 
-  mutate(rating = frequency_char_to_fact(rating)) %>% 
-  group_by(rating) %>% 
-  summarise(n = n()) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n),
-         percentage = n / N * 100)
-
-### Barplot of responses to recurring_frequency
-recurring_frequency_plot <- 
-  general_mistake_overview %>%
-  filter(type == "recurring",
-         question == "frequency",
-         !is.na(rating)) %>% 
-  mutate(rating = frequency_char_to_fact(rating)) %>% 
-  ggplot() +
-  aes(x = rating) +
-  geom_bar() +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 250)) +
-  labs(x = "Frequency levels",
-       y = "Count") +
-  theme_apa(box = T) +
-  coord_flip()
-
-### Proportion of the most recurring mistakes on a given seriousness level throughout research data management
-general_mistake_overview %>%
-  filter(type == "recurring",
-         question == "serious",
-         !is.na(rating)) %>% 
-  mutate(rating = serious_char_to_fact(rating)) %>% 
-  group_by(rating) %>% 
-  summarise(n = n()) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n),
-         percentage = round(n / N * 100))
-
-### Barplot of responses to recurring_serious
-recurring_serious_plot <- 
-  general_mistake_overview %>% 
-  filter(type == "recurring",
-         question == "serious",
-         !is.na(rating)) %>% 
-  mutate(rating = serious_char_to_fact(rating)) %>% 
-  ggplot() +
-  aes(rating) +
-  geom_bar() +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 280)) +
-  labs(x = "Seriousnes levels",
-       y = "Count") +
-  theme_classic() +
-  coord_flip() +
-  theme_apa(box = T)
-
-### Median rating of all the most recurring mistakes
-general_mistake_overview %>% 
-  filter(type == "recurring",
-         !is.na(rating)) %>% 
-  mutate(rating = serious_char_to_int(rating)) %>%
-  group_by(question) %>% 
-  summarize(median = median(rating, na.rm = TRUE),
-            max = max(rating, na.rm = TRUE),
-            min = min(rating, na.rm = TRUE),
-            n = n(),
-            quart1 = quantile(rating, 0.25, na.rm = TRUE),
-            quart3 = quantile(rating, 0.75, na.rm = TRUE),
-            IQR = IQR(rating, na.rm = TRUE))
-```
-
-# Analysis of the most serious mistakes
-## Research data management level analyses
-```{r}
-### Proportion of the most serious mistakes on a given seriousness level throughout research data management
-general_mistake_overview %>%
-  filter(type == "serious",
-         question == "serious",
-         !is.na(rating)) %>% 
-  mutate(rating = serious_char_to_fact(rating)) %>%
-  group_by(rating) %>% 
-  summarise(n = n()) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n),
-         percentage = n / N * 100)
-
-### Barplot of responses to serious_serious
-serious_serious_plot <- 
-  general_mistake_overview %>% 
-  filter(type == "serious",
-         question == "serious",
-         !is.na(rating)) %>% 
-  mutate(rating = serious_char_to_fact(rating)) %>%
-  ggplot() +
-  aes(rating) +
-  geom_bar() +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 300)) +
-  labs(x = "Seriousnes levels",
-       y = "Count") +
-  coord_flip() +
-  theme_apa(box = T)
-```
-
-# Analysis of the mistake types for the recurring mistakes
-```{r}
-# Read in data
-type_analysis <- read_tsv("Processed/ReMis_Main_Processed_Type_Analysis_data.tsv")
-
-# Seriousness and frequency plot
-type_analysis_plot_data <- 
-  type_analysis %>% 
-  filter(type == "recurring") %>% 
-  spread(key = question, value = rating) %>% 
-  mutate(frequency = frequency_char_to_int(frequency),
-         serious = serious_char_to_int(serious)) %>%
-  group_by(group_type) %>% 
-  summarize(n = n(),
-            mean_frequency = mean(frequency, na.rm = T),
-            mean_serious = mean(serious, na.rm = T)) %>% 
-  filter(n > 10)
-
-  ggplot(data = type_analysis_plot_data) +
-  aes(x = mean_frequency,
-      y = mean_serious) +
-  geom_text_repel(aes(label = group_type),
-                  data = subset(type_analysis_plot_data, mean_serious < 2.2),
-                  nudge_x = 0,
-                  nudge_y = -0.15,
-                  direction = "x",
-                  size = 5,
-                  segment.alpha = 0.6,
-                  segment.size = 0.8,
-                  segment.colour = "black") +
-  geom_text_repel(aes(label = group_type),
-                  data = subset(type_analysis_plot_data, mean_serious > 2.45 & mean_frequency < 2.4),
-                  nudge_x = c(0.2, 0.1, -0.1),
-                  nudge_y = c(0.2, 0.1, 0.1),
-                  direction = "x",
-                  size = 5,
-                  segment.alpha = 0.6,
-                  segment.size = 0.8,
-                  segment.colour = "black") +
-   geom_text_repel(aes(label = group_type),
-                   data = subset(type_analysis_plot_data, mean_frequency > 2.37 & mean_serious > 2.15),
-                  nudge_x = c(0.2, 0.25, 0.2),
-                  nudge_y = c(0.1, 0.1, 0.1),
-                  direction = "y",
-                  size = 5,
-                  segment.alpha = 0.6,
-                  segment.size = 0.8,
-                  segment.colour = "black") +
-    geom_text_repel(aes(label = group_type),
-                   data = subset(type_analysis_plot_data, mean_serious > 2.1 & mean_frequency < 2.1 & mean_serious < 2.65),
-                  nudge_x = c(-0.1, -0.1, 0.15),
-                  nudge_y = c(0.1, 0.1, -0.1),
-                  direction = "y",
-                  size = 5,
-                  segment.alpha = 0.6,
-                  segment.size = 0.8,
-                  segment.colour = "black") +
-    geom_text_repel(aes(label = group_type),
-                   data = subset(type_analysis_plot_data, group_type %in% c("version control error", "data transfer error")),
-                  nudge_x = c(0.1, 0.1),
-                  nudge_y = c(0.1, 0.1),
-                  direction = "y",
-                  size = 5,
-                  segment.alpha = 0.6,
-                  segment.size = 0.8,
-                  segment.colour = "black") +
-      geom_point(aes(size = n), shape = 15, alpha = 1, color = "black") +
-  scale_size_continuous(range = c(10, 20)) +
-    geom_text(aes(label = n), color = "white") +
-    scale_x_continuous(limits = c(1.8, 3), breaks = c(2, 3), label = c("Low", "Moderate")) +
-    scale_y_continuous(limits = c(1.8, 3), breaks = c(2, 3), label = c("Minor", "Moderate")) +
-    labs(x = "Mean Frequency Rating of the Mistake",
-         y = "Mean Seriousness Rating of the Mistake") +
-    theme(panel.grid = element_blank(),
-          panel.background = element_blank(),
+          axis.ticks = element_line(color = "black"),
           axis.line = element_line(color = "black"),
-          axis.text = element_text(color = "black", size = 15),
-          axis.title = element_text(size = 20),
-          legend.position = "none")
-  
-#ggsave("Figures/type_serious_frequency.png", width = 14.4, height = 8, plot = last_plot())
+          axis.title = element_text(size = 15, color = "black"),
+          legend.title = element_text(size = 15),
+          legend.text = element_text(size = 12))
 ```
 
-# Frequency and occurence of the most serious mistake types
+Saving the plot.
 
 ```{r}
-# Seriousness and frequency plot
-type_serious_analysis <-  
-  type_analysis %>% 
-  filter(type == "serious") %>% 
-  spread(key = question, value = rating) %>% 
-  mutate(serious = serious_char_to_int(serious)) %>%
-  group_by(group_type) %>% 
-  summarize(n = n(),
-            mean_serious = mean(serious, na.rm = T)) %>% 
-  filter(n > 10)
-
-ggplot(data = type_serious_analysis) +
-  aes(x = n,
-      y = mean_serious) +
-  geom_point(size = 8, shape = 15, alpha = 1, color = "black") +
-  geom_text_repel(aes(label = group_type),
-                  force = 10,
-                  max.iter = 3e3,
-                  size = 5,
-                  segment.alpha = 0.6,
-                  segment.size = 0.8,
-                  segment.colour = "black") +
-  labs(x = "Number of Research Teams reported the Mistake",
-       y = "Mean Seriousness Rating of the Mistake") +
-  scale_y_continuous(limits = c(2, 4), breaks = c(2, 3, 4), label = c("Minor", "Moderate", "Major")) +
-    theme(panel.grid = element_blank(),
-          panel.background = element_blank(),
-          axis.line = element_line(color = "black"),
-          axis.text = element_text(color = "black", size = 15),
-          axis.title = element_text(size = 20),
-          legend.position = "none")
-
-# ggsave("Figures/type_serious_serious.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/outcome_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
 ```

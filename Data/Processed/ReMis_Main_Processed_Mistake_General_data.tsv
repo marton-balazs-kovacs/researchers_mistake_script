@@ -1,0 +1,1072 @@
+response_id	type	mistake	question	rating
+R_3kBPKtkLfMFdp7R	recurring	Transcription errors going from paper to computer	frequency	Low
+R_3kBPKtkLfMFdp7R	recurring	Transcription errors going from paper to computer	serious	Minor
+R_1rrxPxsFGkflPpx	recurring	failing to add informative meta-data	frequency	Low
+R_1rrxPxsFGkflPpx	recurring	failing to add informative meta-data	serious	Minor
+R_DuXE6py2mbqw7qV	recurring	Wrong analysis	frequency	Low
+R_DuXE6py2mbqw7qV	recurring	Wrong analysis	serious	Minor
+R_1cZWGJtCZKD1ew4	recurring	Mismatching due to incorrect SQL queries	frequency	Very Low
+R_1cZWGJtCZKD1ew4	recurring	Mismatching due to incorrect SQL queries	serious	Major
+R_2Qy5UUJfVHXoWZV	recurring	We have used the old dataset or have deleted important data from the database	frequency	Low
+R_2Qy5UUJfVHXoWZV	recurring	We have used the old dataset or have deleted important data from the database	serious	Minor
+R_3dMrKvR94hccB6c	recurring	Not well documented data recording, recording not according to protocol.	frequency	Low
+R_3dMrKvR94hccB6c	recurring	Not well documented data recording, recording not according to protocol.	serious	Moderate
+R_25AfsUG4wphIkYO	recurring	Non-transparent labelling of datafiles	frequency	Moderate
+R_25AfsUG4wphIkYO	recurring	Non-transparent labelling of datafiles	serious	Minor
+R_3HOJBmqA8Qj5Vik	recurring	Some subject did not respond to all queries and we had no checks in place to prevent this	frequency	Low
+R_3HOJBmqA8Qj5Vik	recurring	Some subject did not respond to all queries and we had no checks in place to prevent this	serious	Insignificant
+R_RLJj4PkFNDEdYit	recurring	Wrong coding of missing data	frequency	Very Low
+R_RLJj4PkFNDEdYit	recurring	Wrong coding of missing data	serious	Minor
+R_xa49SUkv3DKQme5	recurring	Coding errors in experimental paradigms preventing parts of the data from being sampled.	frequency	Low
+R_xa49SUkv3DKQme5	recurring	Coding errors in experimental paradigms preventing parts of the data from being sampled.	serious	Moderate
+R_1Fsku9bfzuOnHlW	recurring	Over riding current files by old ones	frequency	Moderate
+R_1Fsku9bfzuOnHlW	recurring	Over riding current files by old ones	serious	Minor
+R_31cTpd46NEwANvI	recurring	typos	frequency	Very Low
+R_31cTpd46NEwANvI	recurring	typos	serious	Insignificant
+R_XQWU5837JcirPJD	recurring	We realized that we had been working on the wrong version of a dataset.	frequency	Low
+R_XQWU5837JcirPJD	recurring	We realized that we had been working on the wrong version of a dataset.	serious	Minor
+R_beZArZ7io7gtZKh	recurring	I do a lot of data reduction and summary in Excel. On occasion, Excel formulas are applied incorrectly or get copied incorrectly.	frequency	Low
+R_beZArZ7io7gtZKh	recurring	I do a lot of data reduction and summary in Excel. On occasion, Excel formulas are applied incorrectly or get copied incorrectly.	serious	Minor
+R_T4VDquP5brp47AZ	recurring	Data coding variables were mixed up, and to be sure of no mistakes, we had to have RAs recode all of the data.	frequency	Very Low
+R_T4VDquP5brp47AZ	recurring	Data coding variables were mixed up, and to be sure of no mistakes, we had to have RAs recode all of the data.	serious	Moderate
+R_1ODLj4FHdxhK3G1	recurring	Uninformative variable names, unidentifiable whether already recoded, calculating sums instead of means, doing this based on column numbers instead of variable names... etc.	frequency	Low
+R_1ODLj4FHdxhK3G1	recurring	Uninformative variable names, unidentifiable whether already recoded, calculating sums instead of means, doing this based on column numbers instead of variable names... etc.	serious	Minor
+R_31oXJfKSNMz4pNg	recurring	Turning on the “select data” function in SPSS and forgetting to turn it off when analysing the full data set	frequency	Low
+R_31oXJfKSNMz4pNg	recurring	Turning on the “select data” function in SPSS and forgetting to turn it off when analysing the full data set	serious	Minor
+R_1o7utbGjr0CiW5p	recurring	Coded a subject's data with an incorrect code number.	frequency	Very Low
+R_1o7utbGjr0CiW5p	recurring	Coded a subject's data with an incorrect code number.	serious	Minor
+R_2YSaYiPeTrGttp8	recurring	Error in the analysis code.	frequency	Moderate
+R_2YSaYiPeTrGttp8	recurring	Error in the analysis code.	serious	Minor
+R_0Jku2nGizREQbhn	recurring	Confusing variable labels	frequency	Moderate
+R_0Jku2nGizREQbhn	recurring	Confusing variable labels	serious	Moderate
+R_2at1V67diUQvkc1	recurring	Poor variable naming. Mistakes in converting wide to long data formats due to using copy and paste.	frequency	Low
+R_2at1V67diUQvkc1	recurring	Poor variable naming. Mistakes in converting wide to long data formats due to using copy and paste.	serious	Minor
+R_1QJxQZXirFtXONG	recurring	lost data	frequency	Low
+R_1QJxQZXirFtXONG	recurring	lost data	serious	Major
+R_3qr2ZreTjyLiVlU	recurring	Incorrect values were entered when transferring data from paper-pencil survey into SPSS files.	frequency	Moderate
+R_3qr2ZreTjyLiVlU	recurring	Incorrect values were entered when transferring data from paper-pencil survey into SPSS files.	serious	Moderate
+R_3ej0du4jNp47nCF	recurring	The data-related mistakes are often very different: from missing to code a relevant variable to errors in a script. In the vast majority of cases the errors are detected during the piloting period and are corrected for the final experiment.	frequency	Low
+R_3ej0du4jNp47nCF	recurring	The data-related mistakes are often very different: from missing to code a relevant variable to errors in a script. In the vast majority of cases the errors are detected during the piloting period and are corrected for the final experiment.	serious	Minor
+R_cI8mWxOvlaSvaSZ	recurring	Coding manual being hard to decipher, or getting lost	frequency	Very Low
+R_cI8mWxOvlaSvaSZ	recurring	Coding manual being hard to decipher, or getting lost	serious	Minor
+R_2wBKpgElsyjBV0b	recurring	incomplete copying from spreadsheet into another application	frequency	Low
+R_2wBKpgElsyjBV0b	recurring	incomplete copying from spreadsheet into another application	serious	Minor
+R_RxBYZwBUfiAACBP	recurring	Duplicated a formula from one to another calculation file to keep reporting format constant with an error in the formula!	frequency	Low
+R_RxBYZwBUfiAACBP	recurring	Duplicated a formula from one to another calculation file to keep reporting format constant with an error in the formula!	serious	Moderate
+R_sKV54jfDQ68Jx05	recurring	Conflated correlation	frequency	Very Low
+R_sKV54jfDQ68Jx05	recurring	Conflated correlation	serious	Moderate
+R_1g0dAm4HvOZLwXc	recurring	The only identified one is collecting survey data on an online platform where some responses overwrote earlier responses in the same survey. This was with qualtrics, the platform you used, by including several times the same block in the survey flow...	frequency	Very Low
+R_1g0dAm4HvOZLwXc	recurring	The only identified one is collecting survey data on an online platform where some responses overwrote earlier responses in the same survey. This was with qualtrics, the platform you used, by including several times the same block in the survey flow...	serious	Insignificant
+R_RgJqa1XTk8Aexax	recurring	a missing item in a scale	frequency	Low
+R_RgJqa1XTk8Aexax	recurring	a missing item in a scale	serious	Moderate
+R_3sb7E8EQLjHDtj6	recurring	data processing error - a dependent variable was incorrectly calculated from raw data	frequency	Very Low
+R_3sb7E8EQLjHDtj6	recurring	data processing error - a dependent variable was incorrectly calculated from raw data	serious	Minor
+R_1IWT6B2ocVRIEy7	recurring	Plotting	frequency	Very Low
+R_1IWT6B2ocVRIEy7	recurring	Plotting	serious	Insignificant
+R_30oeLXyDGAJEwhS	recurring	"We collected data on a likert-scale from ""strongly agree= 1 to strongly agree = 7"""	frequency	Very Low
+R_30oeLXyDGAJEwhS	recurring	"We collected data on a likert-scale from ""strongly agree= 1 to strongly agree = 7"""	serious	Moderate
+R_3KJ9fDQ34vAsAxJ	recurring	Not immediately creating and keeping a good data manual/codebook.	frequency	Low
+R_3KJ9fDQ34vAsAxJ	recurring	Not immediately creating and keeping a good data manual/codebook.	serious	Minor
+R_2V85hhvhCukcKS9	recurring	Data got lost when changing to new hardware.	frequency	Low
+R_2V85hhvhCukcKS9	recurring	Data got lost when changing to new hardware.	serious	Minor
+R_3s7iyh922xBWmba	recurring	Data lost	frequency	Very Low
+R_3s7iyh922xBWmba	recurring	Data lost	serious	Major
+R_2xYjxG2sdLotM8Q	recurring	Mainly old versions substitute new versions of codes of papers.	frequency	Low
+R_2xYjxG2sdLotM8Q	recurring	Mainly old versions substitute new versions of codes of papers.	serious	Minor
+R_Q6a2dBgrDtQZrcl	recurring	Downloading data from Qualtrics that gets rearranged and difficult to read in the SPSS file. We need to check it manually because mistakes are often made that have impacted analysis.	frequency	Moderate
+R_Q6a2dBgrDtQZrcl	recurring	Downloading data from Qualtrics that gets rearranged and difficult to read in the SPSS file. We need to check it manually because mistakes are often made that have impacted analysis.	serious	Minor
+R_23eJfXyDulGeJUx	recurring	A student failed to include how some variables were dummy coded, leading another student to make wrong assumptions	frequency	Moderate
+R_23eJfXyDulGeJUx	recurring	A student failed to include how some variables were dummy coded, leading another student to make wrong assumptions	serious	Minor
+R_OBy6N3n9kcEUbmx	recurring	Working on outdated dataset, realize that a variable was incorrecrly coded after performing statistical analyses...	frequency	Very Low
+R_OBy6N3n9kcEUbmx	recurring	Working on outdated dataset, realize that a variable was incorrecrly coded after performing statistical analyses...	serious	Minor
+R_2afAwJhFERuWpcR	recurring	Rare, but mismatching participants from two different data collection sessions or two different surveys (e.g., a pre-survey and one during an experimental session).	frequency	Very Low
+R_2afAwJhFERuWpcR	recurring	Rare, but mismatching participants from two different data collection sessions or two different surveys (e.g., a pre-survey and one during an experimental session).	serious	Minor
+R_25RcV6aMECnyYyF	recurring	Simple entry error.	frequency	Moderate
+R_25RcV6aMECnyYyF	recurring	Simple entry error.	serious	Insignificant
+R_1C7oJP4CkRa3cdP	recurring	Programming errors in experimental software for treatments.	frequency	Low
+R_1C7oJP4CkRa3cdP	recurring	Programming errors in experimental software for treatments.	serious	Moderate
+R_yD8d1A59bQGBOut	recurring	Different people wher working on different versions of the same data set to do analyses.	frequency	Low
+R_yD8d1A59bQGBOut	recurring	Different people wher working on different versions of the same data set to do analyses.	serious	Moderate
+R_R4b2NHauEWrdgcN	recurring	results initially misinterpreted due to lack of clarity in how the scale was coded	frequency	Very Low
+R_R4b2NHauEWrdgcN	recurring	results initially misinterpreted due to lack of clarity in how the scale was coded	serious	Minor
+R_2vZVaf4kmem95MD	recurring	Data collectors not recording all the information that data forms requested.	frequency	Moderate
+R_2vZVaf4kmem95MD	recurring	Data collectors not recording all the information that data forms requested.	serious	Moderate
+R_1ojdoHkyRAEhaO9	recurring	Use uninformative variable names	frequency	Moderate
+R_1ojdoHkyRAEhaO9	recurring	Use uninformative variable names	serious	Minor
+R_1FzFMxxfXX2SLGw	recurring	Confusion about which files - e.g., naming files in correctly, confusion about which files correspond to which condition	frequency	Low
+R_1FzFMxxfXX2SLGw	recurring	Confusion about which files - e.g., naming files in correctly, confusion about which files correspond to which condition	serious	Minor
+R_1kTbPJmOD0m8h6r	recurring	Copy from worksheets to eCRF	frequency	Low
+R_1kTbPJmOD0m8h6r	recurring	Copy from worksheets to eCRF	serious	Minor
+R_qITgjpy8nUlimv7	recurring	In a very complex, multi-year, multi-setting project, with large data sets kept in different locations, it became cumbersome and confusing to comprehend and access the relevant data for particular analyses.	frequency	Low
+R_qITgjpy8nUlimv7	recurring	In a very complex, multi-year, multi-setting project, with large data sets kept in different locations, it became cumbersome and confusing to comprehend and access the relevant data for particular analyses.	serious	Moderate
+R_2ONZImZtC8mhCrA	recurring	data being incorrectly copied from one database to another	frequency	Low
+R_2ONZImZtC8mhCrA	recurring	data being incorrectly copied from one database to another	serious	Minor
+R_2agYT2RkPZaarIL	recurring	Occasional mis-transcriptions (of language data), but we double-check on these when we check reliability	frequency	Very Low
+R_2agYT2RkPZaarIL	recurring	Occasional mis-transcriptions (of language data), but we double-check on these when we check reliability	serious	Minor
+R_33lN4aBOD0tfqwg	recurring	Tracking status of participants (i.e., lost to follow up vs. declined to continue)	frequency	Low
+R_33lN4aBOD0tfqwg	recurring	Tracking status of participants (i.e., lost to follow up vs. declined to continue)	serious	Minor
+R_2RVBEeR4DZhBco5	recurring	I recoded the items wrong	frequency	Very Low
+R_2RVBEeR4DZhBco5	recurring	I recoded the items wrong	serious	Minor
+R_2aQPnJKQNgJw2Ob	recurring	Corruption of datasets due to errors in transcription, merging, etc.	frequency	Moderate
+R_2aQPnJKQNgJw2Ob	recurring	Corruption of datasets due to errors in transcription, merging, etc.	serious	Minor
+R_1QLOiVySy2bKLTZ	recurring	"Miscoding of a variable -- e.g., 1 to 7 coded as ""more"" with higher numbers but was actually ""less"""	frequency	Low
+R_1QLOiVySy2bKLTZ	recurring	"Miscoding of a variable -- e.g., 1 to 7 coded as ""more"" with higher numbers but was actually ""less"""	serious	Moderate
+R_2XhPhn1YeASQHAr	recurring	"version control and/or frequent changes to surveys leading to messy data sets; combining ""identical"" data sets that aren't actually identical"	frequency	Low
+R_2XhPhn1YeASQHAr	recurring	"version control and/or frequent changes to surveys leading to messy data sets; combining ""identical"" data sets that aren't actually identical"	serious	Minor
+R_2YQViBTzxB4Z58d	recurring	Failure to programme response-collection aspect of the task properly, or other programming errors.	frequency	Low
+R_2YQViBTzxB4Z58d	recurring	Failure to programme response-collection aspect of the task properly, or other programming errors.	serious	Minor
+R_3G7c4213rSP4bPF	recurring	Applying a statistical model to a wrong/incomplete part of the data	frequency	Low
+R_3G7c4213rSP4bPF	recurring	Applying a statistical model to a wrong/incomplete part of the data	serious	Moderate
+R_XiYRBKDZ1f0f0wV	recurring	Ordinal variables were coded in the incorrect direction	frequency	Moderate
+R_XiYRBKDZ1f0f0wV	recurring	Ordinal variables were coded in the incorrect direction	serious	Minor
+R_1LXOUF7PqQkhz6o	recurring	Misspecified codes for variable conditions.	frequency	Low
+R_1LXOUF7PqQkhz6o	recurring	Misspecified codes for variable conditions.	serious	Minor
+R_3lrEYOs4D0F0s0k	recurring	1. We used uninformative variable names that made it hard to re-use the dataset. 2. Frame deletion error. A row was deleted and all datapoints moved up one so that experimental groups and datapoints no longer matched. The mistake was not spotted in time and a conference abstract was published with erroneous results, although the actual conference presentation contained corrected analyses and disclosure of the mistake. 3. Failure to retain data at screening for a critical baseline variable for some participants	frequency	Low
+R_3lrEYOs4D0F0s0k	recurring	1. We used uninformative variable names that made it hard to re-use the dataset. 2. Frame deletion error. A row was deleted and all datapoints moved up one so that experimental groups and datapoints no longer matched. The mistake was not spotted in time and a conference abstract was published with erroneous results, although the actual conference presentation contained corrected analyses and disclosure of the mistake. 3. Failure to retain data at screening for a critical baseline variable for some participants	serious	Moderate
+R_3PbElbVvAPqPtkC	recurring	Punching the data wrongly	frequency	Low
+R_3PbElbVvAPqPtkC	recurring	Punching the data wrongly	serious	Minor
+R_1mKI2PUxRHLULTJ	recurring	uninformative labels for variables is the top frequent one; working off the wrong version of the dataset, and only realizing it after weeks of performing analyses is the second more frequent one.	frequency	Low
+R_1mKI2PUxRHLULTJ	recurring	uninformative labels for variables is the top frequent one; working off the wrong version of the dataset, and only realizing it after weeks of performing analyses is the second more frequent one.	serious	Moderate
+R_3RlLuQSE5pu1tb0	recurring	Being uncertain of variables due to naming	frequency	Low
+R_3RlLuQSE5pu1tb0	recurring	Being uncertain of variables due to naming	serious	Minor
+R_2doLrFMsPU9gioB	recurring	Over-write one form of the data over another. Have never lost the original (thirty years did, so had to re-type from paper copies).	frequency	Low
+R_2doLrFMsPU9gioB	recurring	Over-write one form of the data over another. Have never lost the original (thirty years did, so had to re-type from paper copies).	serious	Minor
+R_1dyHBENaRUWZjBd	recurring	Recently, despite pre-testing and piloting an online study, when some participants took the survey, errors occurred and thus we lost some fraction of the data	frequency	Low
+R_1dyHBENaRUWZjBd	recurring	Recently, despite pre-testing and piloting an online study, when some participants took the survey, errors occurred and thus we lost some fraction of the data	serious	Minor
+R_2VmXtXlfGpTVyxw	recurring	Misleading cut-paste from one file to another.	frequency	Very Low
+R_2VmXtXlfGpTVyxw	recurring	Misleading cut-paste from one file to another.	serious	Insignificant
+R_XYUxOqaUOdv9F97	recurring	Programming mistakes in survey set-up (eg, not including a item, having a typo in an item, setting quaktrics/inquisit to allow missing data)	frequency	Low
+R_XYUxOqaUOdv9F97	recurring	Programming mistakes in survey set-up (eg, not including a item, having a typo in an item, setting quaktrics/inquisit to allow missing data)	serious	Minor
+R_1KoS03TB4Dmwx8K	recurring	Journal transposed numbers in a manuscript table.  We didn't catch it during proofing.	frequency	Very Low
+R_1KoS03TB4Dmwx8K	recurring	Journal transposed numbers in a manuscript table.  We didn't catch it during proofing.	serious	Major
+R_2xEjkBHMLVAdlpz	recurring	We have the data in a spreadsheet and when a co-author updated the spreadsheet he failed to copy the formulas for all the data.  Thus more than half the data was undercounted.  Fortunately, it was a replication study and when the results turned out different from the original study, we went through all the data very carefully to check for errors.	frequency	Low
+R_2xEjkBHMLVAdlpz	recurring	We have the data in a spreadsheet and when a co-author updated the spreadsheet he failed to copy the formulas for all the data.  Thus more than half the data was undercounted.  Fortunately, it was a replication study and when the results turned out different from the original study, we went through all the data very carefully to check for errors.	serious	Minor
+R_OcBfzKXUA2Vg1mV	recurring	"Assistants keyed in the wrong numbers randomly.  Required rekeying the data.   RedCap did not have Research Assistant as ""on project"" so did not input the right ID number code.   Confusion in combining data sets from different sources.   Different sites had different ways of defining the same contructs making it difficult to combine data witout extensive re-coding.   Had longitudinal data in old software programs and it didn't translate easily to new programs."	frequency	Low
+R_OcBfzKXUA2Vg1mV	recurring	"Assistants keyed in the wrong numbers randomly.  Required rekeying the data.   RedCap did not have Research Assistant as ""on project"" so did not input the right ID number code.   Confusion in combining data sets from different sources.   Different sites had different ways of defining the same contructs making it difficult to combine data witout extensive re-coding.   Had longitudinal data in old software programs and it didn't translate easily to new programs."	serious	Minor
+R_2Wxs9NL5pTh2Ko0	recurring	Lack of clarity on the meaning of variables makes them hard to interpret later.	frequency	Low
+R_2Wxs9NL5pTh2Ko0	recurring	Lack of clarity on the meaning of variables makes them hard to interpret later.	serious	Insignificant
+R_eYdELbJBuvjhdyF	recurring	misscheduling participants	frequency	Low
+R_eYdELbJBuvjhdyF	recurring	misscheduling participants	serious	Moderate
+R_2EEnIEQa9QlsXtt	recurring	out of these mentioned above I believe that the most typical is data mislabelling or several recodes that - after some time - make the proper replication of analyses difficult. Of course R scripts or jasp / jamovi help, but with spss - even using syntax, this is a serious problem.	frequency	Very Low
+R_2EEnIEQa9QlsXtt	recurring	out of these mentioned above I believe that the most typical is data mislabelling or several recodes that - after some time - make the proper replication of analyses difficult. Of course R scripts or jasp / jamovi help, but with spss - even using syntax, this is a serious problem.	serious	Minor
+R_1IH7qhVEGwzF6pZ	recurring	Mistakes when we calculate factors.	frequency	Low
+R_1IH7qhVEGwzF6pZ	recurring	Mistakes when we calculate factors.	serious	Moderate
+R_YRpTUYsPnCHJ2U1	recurring	A variable is transformed or recoded inappropriately.	frequency	Moderate
+R_YRpTUYsPnCHJ2U1	recurring	A variable is transformed or recoded inappropriately.	serious	Moderate
+R_1FwvnH84InncNXX	recurring	We mostly run into problems with Qualtrics. For example, we will program a questionnaire to be on a 7-point scale and the program will put it on a 15-point scale. Or, questions will be programmed in a set order and Qualtrics will change the order that the questions are presented.	frequency	Very Low
+R_1FwvnH84InncNXX	recurring	We mostly run into problems with Qualtrics. For example, we will program a questionnaire to be on a 7-point scale and the program will put it on a 15-point scale. Or, questions will be programmed in a set order and Qualtrics will change the order that the questions are presented.	serious	Moderate
+R_26mVWrTn2jxXvOy	recurring	Copy-pasting from programs without getting all needed columns/participants	frequency	Moderate
+R_26mVWrTn2jxXvOy	recurring	Copy-pasting from programs without getting all needed columns/participants	serious	Minor
+R_3EupOPAfblnLBPk	recurring	Improper recodes and related syntax errors	frequency	Low
+R_3EupOPAfblnLBPk	recurring	Improper recodes and related syntax errors	serious	Minor
+R_1IlTZYBSAO0Dcuy	recurring	Uninformative variable names combined with a low quality codebook.	frequency	Moderate
+R_1IlTZYBSAO0Dcuy	recurring	Uninformative variable names combined with a low quality codebook.	serious	Minor
+R_2Yrmw7uMu8U6eEA	recurring	Failure to register (or correctly register) participant data	frequency	Low
+R_2Yrmw7uMu8U6eEA	recurring	Failure to register (or correctly register) participant data	serious	Minor
+R_2VpQNBQ0y3Xk4v1	recurring	Scale was coded wrongly (e.g. high value meant low score)	frequency	Low
+R_2VpQNBQ0y3Xk4v1	recurring	Scale was coded wrongly (e.g. high value meant low score)	serious	Minor
+R_1qgGU0J3OX0g6t9	recurring	missing data incorrectly labeled as 0.	frequency	Very Low
+R_1qgGU0J3OX0g6t9	recurring	missing data incorrectly labeled as 0.	serious	Minor
+R_2EGYmDTj3LV7rUU	recurring	Some mistake in stimulus presentation through specialized software (e.g., Psychtoolbox) leads us to discard data from several participants before we realize the mistake	frequency	Very Low
+R_2EGYmDTj3LV7rUU	recurring	Some mistake in stimulus presentation through specialized software (e.g., Psychtoolbox) leads us to discard data from several participants before we realize the mistake	serious	Minor
+R_33qjViTvNv9H48m	recurring	Difficult to track the evolution of the data from the source dataset.	frequency	Moderate
+R_33qjViTvNv9H48m	recurring	Difficult to track the evolution of the data from the source dataset.	serious	Minor
+R_3lKPtjrvge3kjlW	recurring	equipment failure led to data loss, but I don't think that fits in your definition.  I cannot think of any data-related mistakes comparable to your examples.	frequency	Low
+R_3lKPtjrvge3kjlW	recurring	equipment failure led to data loss, but I don't think that fits in your definition.  I cannot think of any data-related mistakes comparable to your examples.	serious	Minor
+R_3ssjvVtm5kqPBor	recurring	Research assistants changed data file name to reflect the participant number that was meant to be given rather than actually entered in the software.	frequency	Low
+R_3ssjvVtm5kqPBor	recurring	Research assistants changed data file name to reflect the participant number that was meant to be given rather than actually entered in the software.	serious	Minor
+R_3gTq4TA8Trl2ZHf	recurring	Mistake in translation from survey raw data to computerized data	frequency	Low
+R_3gTq4TA8Trl2ZHf	recurring	Mistake in translation from survey raw data to computerized data	serious	Minor
+R_DSGTNrt5b3NfEyd	recurring	Most commonly we face name|ID duplication due to the same participant being evaluated more than once; also, I've built our database on excel and more often people working on it mix up all kinds of formulas despite lock strategies, which lead me to check it every time I have to analyze something.	frequency	Low
+R_DSGTNrt5b3NfEyd	recurring	Most commonly we face name|ID duplication due to the same participant being evaluated more than once; also, I've built our database on excel and more often people working on it mix up all kinds of formulas despite lock strategies, which lead me to check it every time I have to analyze something.	serious	Moderate
+R_2czHmrjciqTkBt0	recurring	Loss of participants' responses, overwritten across experiments/sessions	frequency	Low
+R_2czHmrjciqTkBt0	recurring	Loss of participants' responses, overwritten across experiments/sessions	serious	Minor
+R_1NDGa4iJhjM1zX9	recurring	Change in scoring for the same items used in multiple studies.	frequency	Moderate
+R_1NDGa4iJhjM1zX9	recurring	Change in scoring for the same items used in multiple studies.	serious	Moderate
+R_OHDG36aZkVyuXAJ	recurring	Data scanning errors led to missing values, or substantial time validating values against paper-documented responses	frequency	Low
+R_OHDG36aZkVyuXAJ	recurring	Data scanning errors led to missing values, or substantial time validating values against paper-documented responses	serious	Moderate
+R_pDGuvxLRGbALOtH	recurring	technical errors that were not detected in time due to inexperience of researchers	frequency	High
+R_pDGuvxLRGbALOtH	recurring	technical errors that were not detected in time due to inexperience of researchers	serious	Minor
+R_2uCVsIhbczMricX	recurring	The online battery was not an accurate representation of the survey we needed (wrong or misleading variable names, a condition being dropped, etc.)	frequency	Low
+R_2uCVsIhbczMricX	recurring	The online battery was not an accurate representation of the survey we needed (wrong or misleading variable names, a condition being dropped, etc.)	serious	Minor
+R_BG2zCrSq72cu5oJ	recurring	Multiple people worked on the same data set at the same time which resulted in two different files each with some of the data processed.	frequency	Low
+R_BG2zCrSq72cu5oJ	recurring	Multiple people worked on the same data set at the same time which resulted in two different files each with some of the data processed.	serious	Minor
+R_PULxBT05Q47IOmR	recurring	Forgetting to save output into my data analyses logbook, although I print hard copies for a folder.	frequency	Low
+R_PULxBT05Q47IOmR	recurring	Forgetting to save output into my data analyses logbook, although I print hard copies for a folder.	serious	Minor
+R_2TRUjQ7kYqmtIno	recurring	multiple versions of data files leading to using incorrect variables naming and transformations without documentation	frequency	High
+R_2TRUjQ7kYqmtIno	recurring	multiple versions of data files leading to using incorrect variables naming and transformations without documentation	serious	Moderate
+R_3saEuW4TTviBwnM	recurring	File was lost or corrupted	frequency	Moderate
+R_3saEuW4TTviBwnM	recurring	File was lost or corrupted	serious	Moderate
+R_usJmD25Zml44ef7	recurring	Use of wrong data set	frequency	Moderate
+R_usJmD25Zml44ef7	recurring	Use of wrong data set	serious	Minor
+R_3qR5qywuGiliJsm	recurring	Not labeling things well. Go back to the project years later and can't figure out what the different variables were.	frequency	Low
+R_3qR5qywuGiliJsm	recurring	Not labeling things well. Go back to the project years later and can't figure out what the different variables were.	serious	Minor
+R_3j27GQZJCc95DpV	recurring	No back up	frequency	Moderate
+R_3j27GQZJCc95DpV	recurring	No back up	serious	Major
+R_1GEpvVXQjiA6JFC	recurring	"Unclear labels and ""wrong"" or unclear reference category in econometric analysis"	frequency	Low
+R_1GEpvVXQjiA6JFC	recurring	"Unclear labels and ""wrong"" or unclear reference category in econometric analysis"	serious	Minor
+R_1ZdEcLWKTBdeOgV	recurring	Administering the wrong survey to participants (i.e., participants received baseline survey at follow-up or participants in one condition received survey meant for participants in another condition).	frequency	Moderate
+R_1ZdEcLWKTBdeOgV	recurring	Administering the wrong survey to participants (i.e., participants received baseline survey at follow-up or participants in one condition received survey meant for participants in another condition).	serious	Moderate
+R_24AdUWCIaQLvyCw	recurring	mis classification of some microscopy photos	frequency	Very Low
+R_24AdUWCIaQLvyCw	recurring	mis classification of some microscopy photos	serious	Minor
+R_2EggCQnejEtHW3a	recurring	Uninformative variable names making it difficult to re-acclimate with the data after significant passage of time.	frequency	Low
+R_2EggCQnejEtHW3a	recurring	Uninformative variable names making it difficult to re-acclimate with the data after significant passage of time.	serious	Minor
+R_1kY9lz7ULI6kPb3	recurring	Nope!  I am a data ninja! This is probably no help to your study. I obsess about my data.  I took this survey because I have data catastrophes.  Before using qaulltrics, I used my own servers to collect data and I was hacked destroying months of data.  I also had a hard drive crash and nooooooo backup of my data so then I eneded up losing years of data.	frequency	Moderate
+R_1kY9lz7ULI6kPb3	recurring	Nope!  I am a data ninja! This is probably no help to your study. I obsess about my data.  I took this survey because I have data catastrophes.  Before using qaulltrics, I used my own servers to collect data and I was hacked destroying months of data.  I also had a hard drive crash and nooooooo backup of my data so then I eneded up losing years of data.	serious	Extreme
+R_cCsCmJ2M9PGyP8R	recurring	software errors, could be corrected	frequency	Low
+R_cCsCmJ2M9PGyP8R	recurring	software errors, could be corrected	serious	Moderate
+R_2BgSfuqikIO1v0a	recurring	Transposition errors in pasting data from different spreadsheets	frequency	Moderate
+R_2BgSfuqikIO1v0a	recurring	Transposition errors in pasting data from different spreadsheets	serious	Moderate
+R_6hDIMFdjLBO9MOd	recurring	Different participant ID numbers across phases of a project made it very difficult and time consuming to put them back together again.	frequency	Low
+R_6hDIMFdjLBO9MOd	recurring	Different participant ID numbers across phases of a project made it very difficult and time consuming to put them back together again.	serious	Moderate
+R_2QVQCBFhAeeJNZP	recurring	Mistakes at the recording stage - e.g. failure to pre-calibrate equipment, so that meaningful dependent measures cannot be extracted - failure to match stimulus list to data output files.	frequency	Low
+R_2QVQCBFhAeeJNZP	recurring	Mistakes at the recording stage - e.g. failure to pre-calibrate equipment, so that meaningful dependent measures cannot be extracted - failure to match stimulus list to data output files.	serious	Moderate
+R_3kjMa6nu9SI2Zxt	recurring	An investigator gives me (the statistician) a large, usually observational, dataset with poorly documented variable coding schemes or undocumented exclusion criteria. In analyzing the data, I initially make assumptions about the variable definitions that turn out to be incorrect when I discuss my uncertainties with the investigators.	frequency	Moderate
+R_3kjMa6nu9SI2Zxt	recurring	An investigator gives me (the statistician) a large, usually observational, dataset with poorly documented variable coding schemes or undocumented exclusion criteria. In analyzing the data, I initially make assumptions about the variable definitions that turn out to be incorrect when I discuss my uncertainties with the investigators.	serious	Minor
+R_3rJuaVQjfJOizzO	recurring	Uninformative variables that do not help in reassessing the code (or codes with no comments).	frequency	Moderate
+R_3rJuaVQjfJOizzO	recurring	Uninformative variables that do not help in reassessing the code (or codes with no comments).	serious	Minor
+R_RDng1vjQz0Eut2x	recurring	Miscoding a variable with a wrong value that is not detected in quality control processes we set up like double entry. But then is found later when examining for outliers or trying to explain analytical results.	frequency	High
+R_RDng1vjQz0Eut2x	recurring	Miscoding a variable with a wrong value that is not detected in quality control processes we set up like double entry. But then is found later when examining for outliers or trying to explain analytical results.	serious	Moderate
+R_1fkEC9uIzUqHPXF	recurring	Incorrect randomization of participants to conditions.	frequency	Low
+R_1fkEC9uIzUqHPXF	recurring	Incorrect randomization of participants to conditions.	serious	Moderate
+R_Ugcj0Hs9IX1A3WV	recurring	Not labeling variables or response values in data file	frequency	Very High
+R_Ugcj0Hs9IX1A3WV	recurring	Not labeling variables or response values in data file	serious	Minor
+R_3jZ1VC6ejnLzmYa	recurring	A participant's second response to a question would overwrite their response to the first question.	frequency	Very Low
+R_3jZ1VC6ejnLzmYa	recurring	A participant's second response to a question would overwrite their response to the first question.	serious	Moderate
+R_yDdfJsIfeCY3yRr	recurring	Mistakes relating to Excel formulas (used to clean, re-code, analyze data) - either having a type/error in the formula and not immediately realizing it, or not pasting it correctly throughout file.  Usually realize it right away when writing the formulas, I'd consider it a mistake if it persists beyond one session.	frequency	High
+R_yDdfJsIfeCY3yRr	recurring	Mistakes relating to Excel formulas (used to clean, re-code, analyze data) - either having a type/error in the formula and not immediately realizing it, or not pasting it correctly throughout file.  Usually realize it right away when writing the formulas, I'd consider it a mistake if it persists beyond one session.	serious	Minor
+R_3Pp3aZ3NKVDVBPb	recurring	Rearranging spreadsheet data, but realised immediately so only resulted in a loss of about 30 mins.	frequency	Very Low
+R_3Pp3aZ3NKVDVBPb	recurring	Rearranging spreadsheet data, but realised immediately so only resulted in a loss of about 30 mins.	serious	Insignificant
+R_2dSg2D5VTNB7RVY	recurring	poor identifier management	frequency	High
+R_2dSg2D5VTNB7RVY	recurring	poor identifier management	serious	Minor
+R_xaBv50AriU5pPt7	recurring	Incorrect coding/re-coding of categorical variables.	frequency	Low
+R_xaBv50AriU5pPt7	recurring	Incorrect coding/re-coding of categorical variables.	serious	Minor
+R_AmI4PaDaAItn0MF	recurring	improper coding of a raw variable when transforming it into an analytic variable	frequency	Low
+R_AmI4PaDaAItn0MF	recurring	improper coding of a raw variable when transforming it into an analytic variable	serious	Minor
+R_28FWEYSvglYwL9F	recurring	version control of dataset leading to doing the same work twice	frequency	Low
+R_28FWEYSvglYwL9F	recurring	version control of dataset leading to doing the same work twice	serious	Minor
+R_2EzS06GIwQj0lQn	recurring	not including a code to allow for tracking of data from one data point to the next	frequency	Very Low
+R_2EzS06GIwQj0lQn	recurring	not including a code to allow for tracking of data from one data point to the next	serious	Major
+R_1FqSTPQf3FjsXjM	recurring	Data not re-coded	frequency	Very Low
+R_1FqSTPQf3FjsXjM	recurring	Data not re-coded	serious	Insignificant
+R_T1kUZzmLbVaqMQp	recurring	Recoding negative items	frequency	Very Low
+R_T1kUZzmLbVaqMQp	recurring	Recoding negative items	serious	Major
+R_AGrmutGJFICE93z	recurring	We have lost data due to computer errors but replaced those data with additional data collection (and didn't analyze the data until the additional data was collected	frequency	Very Low
+R_AGrmutGJFICE93z	recurring	We have lost data due to computer errors but replaced those data with additional data collection (and didn't analyze the data until the additional data was collected	serious	Minor
+R_3szfXpJiLetcwwr	recurring	Poor archiving and labeling of data.	frequency	Low
+R_3szfXpJiLetcwwr	recurring	Poor archiving and labeling of data.	serious	Minor
+R_WDKxkIWKqWPUbqV	recurring	transcription errors	frequency	Very Low
+R_WDKxkIWKqWPUbqV	recurring	transcription errors	serious	Insignificant
+R_1pRrkSmdJGmTwHk	recurring	Data entry typos/human error in data entry.	frequency	Low
+R_1pRrkSmdJGmTwHk	recurring	Data entry typos/human error in data entry.	serious	Insignificant
+R_31N0JcnckZmHXuH	recurring	Not recording in the master database which subjects were used in which analysis.	frequency	Very High
+R_31N0JcnckZmHXuH	recurring	Not recording in the master database which subjects were used in which analysis.	serious	Moderate
+R_T5iKcDfWBpqUOaJ	recurring	Running analyses on a wrong version of the data set	frequency	High
+R_T5iKcDfWBpqUOaJ	recurring	Running analyses on a wrong version of the data set	serious	Minor
+R_2U9jvXCLvYdgF4v	recurring	Not necessarily working on the most recent dataset.	frequency	High
+R_2U9jvXCLvYdgF4v	recurring	Not necessarily working on the most recent dataset.	serious	Minor
+R_3CWadSWEbwUhhrs	recurring	instruments were not appropriate for the participants (e.g. personality questionnaire applied to the sample which couldn't understand the meaning of the items (and that could be seen on the reliability estimates) low control over the data collection procedure (especially in internet based research)	frequency	Low
+R_3CWadSWEbwUhhrs	recurring	instruments were not appropriate for the participants (e.g. personality questionnaire applied to the sample which couldn't understand the meaning of the items (and that could be seen on the reliability estimates) low control over the data collection procedure (especially in internet based research)	serious	Minor
+R_1Kp6yZnGSG4gEcP	recurring	corruption of data files	frequency	Very Low
+R_1Kp6yZnGSG4gEcP	recurring	corruption of data files	serious	Minor
+R_1OkPHcZJmExTE2S	recurring	typo	frequency	Low
+R_1OkPHcZJmExTE2S	recurring	typo	serious	Insignificant
+R_1mW0ThB9AoMJITt	recurring	I harvest data from a variety of published (typically online) sources, and sometimes the original data get disconnected from the working data sets that I use for modeling.	frequency	Low
+R_1mW0ThB9AoMJITt	recurring	I harvest data from a variety of published (typically online) sources, and sometimes the original data get disconnected from the working data sets that I use for modeling.	serious	Minor
+R_1jvKqTl2Ij19jke	recurring	inversion of condition labels during processing	frequency	Very Low
+R_1jvKqTl2Ij19jke	recurring	inversion of condition labels during processing	serious	Minor
+R_3JgdVz92UzIXsDf	recurring	"Programming errors - I can't think of any other mistake that's ever been made (except or for students doing God knows what when working with their data, but that is always something I double check and correct as a matter of course. Letting students make those data working mistakes, to show them how careful you actually need to be is more a life-lesson for them, than a mistake by the ""research team""."	frequency	Low
+R_3JgdVz92UzIXsDf	recurring	"Programming errors - I can't think of any other mistake that's ever been made (except or for students doing God knows what when working with their data, but that is always something I double check and correct as a matter of course. Letting students make those data working mistakes, to show them how careful you actually need to be is more a life-lesson for them, than a mistake by the ""research team""."	serious	Minor
+R_Ajw5jmJ8M7DobyF	recurring	Earlier version of questionnaire used with a small number of respondents before error identified. Discarded participants from study.	frequency	Very Low
+R_Ajw5jmJ8M7DobyF	recurring	Earlier version of questionnaire used with a small number of respondents before error identified. Discarded participants from study.	serious	Minor
+R_2zHk3lrt2viQjzY	recurring	Variables were recoded into same variables (without timing note of the recoding)	frequency	Very Low
+R_2zHk3lrt2viQjzY	recurring	Variables were recoded into same variables (without timing note of the recoding)	serious	Minor
+R_2VQJaAMQ7x7b0Vc	recurring	Failure to exclude error or otherwise invalid trials from statistical analysis.	frequency	Low
+R_2VQJaAMQ7x7b0Vc	recurring	Failure to exclude error or otherwise invalid trials from statistical analysis.	serious	Minor
+R_3pgaQNfj5tISZ0r	recurring	Entering data wrongly by mistake	frequency	Low
+R_3pgaQNfj5tISZ0r	recurring	Entering data wrongly by mistake	serious	Minor
+R_1Kx6uWGscVutS3f	recurring	Multiple versions of a data file were kept and it took hours to later identify the final copy with all information.	frequency	Low
+R_1Kx6uWGscVutS3f	recurring	Multiple versions of a data file were kept and it took hours to later identify the final copy with all information.	serious	Moderate
+R_22EynRiZfQKWOM7	recurring	Lack of recording relevant details (by student interviewers).	frequency	Very Low
+R_22EynRiZfQKWOM7	recurring	Lack of recording relevant details (by student interviewers).	serious	Insignificant
+R_2cu4Vcaq8fXrGGw	recurring	We were incorrect in what the dummy codes were referring to (more vs less of variable X)	frequency	Low
+R_2cu4Vcaq8fXrGGw	recurring	We were incorrect in what the dummy codes were referring to (more vs less of variable X)	serious	Minor
+R_OvXfiWtDSp3WRdD	recurring	Created a definition of variable incorrectly	frequency	Low
+R_OvXfiWtDSp3WRdD	recurring	Created a definition of variable incorrectly	serious	Moderate
+R_vCDw2trrlQggWnD	recurring	(1) Similar data collections, but variables assigned different names (2) Students doing data manipulations (e.g., forming scales from several items) in a spreadsheet, rather than in reproducible, documented code.	frequency	Moderate
+R_vCDw2trrlQggWnD	recurring	(1) Similar data collections, but variables assigned different names (2) Students doing data manipulations (e.g., forming scales from several items) in a spreadsheet, rather than in reproducible, documented code.	serious	Moderate
+R_1FnQHiAFu95KLEA	recurring	questions were dropped by a standard questionnaire	frequency	Low
+R_1FnQHiAFu95KLEA	recurring	questions were dropped by a standard questionnaire	serious	Minor
+R_2ay4ISLXNFlfXiA	recurring	Making an error when entering data.	frequency	Very Low
+R_2ay4ISLXNFlfXiA	recurring	Making an error when entering data.	serious	Insignificant
+R_exlSjtrcVMPpPkl	recurring	FAILURE TO ENTER DATA CORRECTLY	frequency	Low
+R_exlSjtrcVMPpPkl	recurring	FAILURE TO ENTER DATA CORRECTLY	serious	Minor
+R_3lFbOeEkr2aGW1f	recurring	Errors in code for creating derived variables	frequency	Low
+R_3lFbOeEkr2aGW1f	recurring	Errors in code for creating derived variables	serious	Minor
+R_2YKRrPH6SwOg1i9	recurring	Not documenting data cleaning and processing steps so you can’t recall how to get from the raw data file to the input used for analysis	frequency	Moderate
+R_2YKRrPH6SwOg1i9	recurring	Not documenting data cleaning and processing steps so you can’t recall how to get from the raw data file to the input used for analysis	serious	Minor
+R_2aKnSakmSAQuXYg	recurring	Access issues and duplicate work issues	frequency	Very High
+R_2aKnSakmSAQuXYg	recurring	Access issues and duplicate work issues	serious	Minor
+R_6gLIVQF1l9WfwFH	recurring	Experimental condition incorrectly assigned, but the mistake was detected as part of protocol for data review.	frequency	Very Low
+R_6gLIVQF1l9WfwFH	recurring	Experimental condition incorrectly assigned, but the mistake was detected as part of protocol for data review.	serious	Insignificant
+R_2WVyCoeuAAHCNin	recurring	Omitting an important scale from a survey	frequency	Very Low
+R_2WVyCoeuAAHCNin	recurring	Omitting an important scale from a survey	serious	Moderate
+R_AFdMpLX9YukUDqV	recurring	Poorly organized syntax files with occasional mistakes	frequency	Low
+R_AFdMpLX9YukUDqV	recurring	Poorly organized syntax files with occasional mistakes	serious	Minor
+R_3Pq7FOazfc0hLft	recurring	The coding system for categorical variables was mistakenly interpreted.	frequency	Low
+R_3Pq7FOazfc0hLft	recurring	The coding system for categorical variables was mistakenly interpreted.	serious	Insignificant
+R_302hgWPu7XX10Ur	recurring	Programming mistakes in the statistical software	frequency	Moderate
+R_302hgWPu7XX10Ur	recurring	Programming mistakes in the statistical software	serious	Minor
+R_3fAw2UE7epkUpRF	recurring	Human error with data entry	frequency	Low
+R_3fAw2UE7epkUpRF	recurring	Human error with data entry	serious	Minor
+R_3jeZvxEXWjMiPoU	recurring	Scheduling twl participants in the same slot. Making some errors in programming the experiment (which are usually fixed after 2-3 pilot participants)	frequency	Very Low
+R_3jeZvxEXWjMiPoU	recurring	Scheduling twl participants in the same slot. Making some errors in programming the experiment (which are usually fixed after 2-3 pilot participants)	serious	Minor
+R_2awtub9gT0lm0Nq	recurring	Wrong data encoding/labelling	frequency	Low
+R_2awtub9gT0lm0Nq	recurring	Wrong data encoding/labelling	serious	Minor
+R_3s5IM3bGbNtc4XU	recurring	Main problem has been insufficient data archiving of ended projects. Sometimes data is needed later as well.	frequency	Low
+R_3s5IM3bGbNtc4XU	recurring	Main problem has been insufficient data archiving of ended projects. Sometimes data is needed later as well.	serious	Moderate
+R_73C5WonwTfcN8Wt	recurring	Data loss due to equipment failure during data collection, misplacing data files from individual participants, errors when collating data from different sources for analyses (questionnaires, experimental tasks etc.).	frequency	Moderate
+R_73C5WonwTfcN8Wt	recurring	Data loss due to equipment failure during data collection, misplacing data files from individual participants, errors when collating data from different sources for analyses (questionnaires, experimental tasks etc.).	serious	Minor
+R_29tEljEKBrsztMe	recurring	Probably issues related to coding of questionnaires items.	frequency	Low
+R_29tEljEKBrsztMe	recurring	Probably issues related to coding of questionnaires items.	serious	Minor
+R_1C8fB8CBFHe5SbN	recurring	Program unexpectedly deleted cases automatically, but this was detected and corrected.	frequency	Very Low
+R_1C8fB8CBFHe5SbN	recurring	Program unexpectedly deleted cases automatically, but this was detected and corrected.	serious	Minor
+R_3fHPNDhuPCvBI5t	recurring	labelling of variables sometimes difficult to understand after a given time or when project members have left the lab	frequency	Very Low
+R_3fHPNDhuPCvBI5t	recurring	labelling of variables sometimes difficult to understand after a given time or when project members have left the lab	serious	Minor
+R_SH3w71pRCZDwotH	recurring	Probably has to do with making long data forms from wide data forms. If not done properly, something is easily excluded or duplicated by mistake. But I think we also do these types of things very carefully now.	frequency	Low
+R_SH3w71pRCZDwotH	recurring	Probably has to do with making long data forms from wide data forms. If not done properly, something is easily excluded or duplicated by mistake. But I think we also do these types of things very carefully now.	serious	Minor
+R_3fW2vvpojJLV3ZS	recurring	Working on the wrong version of the data.	frequency	Low
+R_3fW2vvpojJLV3ZS	recurring	Working on the wrong version of the data.	serious	Minor
+R_1NCbBfTdX4Jcm6q	recurring	Transposition errors from copy and paste between sources.	frequency	Low
+R_1NCbBfTdX4Jcm6q	recurring	Transposition errors from copy and paste between sources.	serious	Minor
+R_1g6hYU8eXreCTSC	recurring	Confusion on details of measurement when different experimenters conducted the experiment	frequency	Low
+R_1g6hYU8eXreCTSC	recurring	Confusion on details of measurement when different experimenters conducted the experiment	serious	Moderate
+R_ysSpq9fCGv43WI9	recurring	Problems with the labels of variables	frequency	High
+R_ysSpq9fCGv43WI9	recurring	Problems with the labels of variables	serious	Minor
+R_vTAtDgS8N64qWDn	recurring	Confusing values with formulas in excel leading to wrong numbers when pasted in a different spreadshet	frequency	Low
+R_vTAtDgS8N64qWDn	recurring	Confusing values with formulas in excel leading to wrong numbers when pasted in a different spreadshet	serious	Moderate
+R_3M0uW4vbFXE4kvx	recurring	1) Uninformative names, lack of documentation, takes time to re-create analyses.  2) Problems accessing data from SQL server, insufficient documentation of variables there	frequency	Low
+R_3M0uW4vbFXE4kvx	recurring	1) Uninformative names, lack of documentation, takes time to re-create analyses.  2) Problems accessing data from SQL server, insufficient documentation of variables there	serious	Minor
+R_d9XxjKNfZKBlcv7	recurring	Our analysis code has errors in it, invalidating all or part of the analysis.	frequency	Low
+R_d9XxjKNfZKBlcv7	recurring	Our analysis code has errors in it, invalidating all or part of the analysis.	serious	Moderate
+R_3fAULoP2522oOyB	recurring	Data corruption due to import / export data to / from different format (Excel, csv, sas) especially for variables related times, date, long integer.	frequency	Very Low
+R_3fAULoP2522oOyB	recurring	Data corruption due to import / export data to / from different format (Excel, csv, sas) especially for variables related times, date, long integer.	serious	Minor
+R_1gpx3ioVAlVTipo	recurring	I see the biggest risk in the first phase when you (often alone, would be better to be two so that one or the other might notice mistakes more easily) prepare the data for analysis; e.g. preparations/calculations of variables with large data sets. I find this a difficult and time consuming task, with potential for human errors. We try to document the steps and use syntaxes, but still, I find it difficult to document in such a way that it would be easy enough to retrace all steps in complex cases. Also, the work load and stress increase the risk for mistakes.	frequency	Low
+R_1gpx3ioVAlVTipo	recurring	I see the biggest risk in the first phase when you (often alone, would be better to be two so that one or the other might notice mistakes more easily) prepare the data for analysis; e.g. preparations/calculations of variables with large data sets. I find this a difficult and time consuming task, with potential for human errors. We try to document the steps and use syntaxes, but still, I find it difficult to document in such a way that it would be easy enough to retrace all steps in complex cases. Also, the work load and stress increase the risk for mistakes.	serious	Minor
+R_3NDG6QfrooWuJHa	recurring	hardware failure that leads to program crash during the experiment	frequency	Low
+R_3NDG6QfrooWuJHa	recurring	hardware failure that leads to program crash during the experiment	serious	Minor
+R_0i9ZGQEYBdbMe1r	recurring	the data in o'tree come up in a spread sheet that is neither a long format neither a wide format, therefore to do the analyses I have to restructure the data, however, standard restructure procedure in R and spss are not useful because they go from wide to  long formats or from long to wide formats, therefore I did it by hand, and this created some mistakes in statistical analyses which was immediately diagnosed and corrected but took some extra time.	frequency	Very Low
+R_0i9ZGQEYBdbMe1r	recurring	the data in o'tree come up in a spread sheet that is neither a long format neither a wide format, therefore to do the analyses I have to restructure the data, however, standard restructure procedure in R and spss are not useful because they go from wide to  long formats or from long to wide formats, therefore I did it by hand, and this created some mistakes in statistical analyses which was immediately diagnosed and corrected but took some extra time.	serious	Major
+R_vktbxXQAdWGQUmJ	recurring	'-Copy and paste error in excel -selecting the wrong variables in data analysis, specially when the names are similar (i.e. WM1 vs. WM2.... etc) -Involving modification of previous script to perform new analysis (i.e. forgot to change variable names)	frequency	Low
+R_vktbxXQAdWGQUmJ	recurring	'-Copy and paste error in excel -selecting the wrong variables in data analysis, specially when the names are similar (i.e. WM1 vs. WM2.... etc) -Involving modification of previous script to perform new analysis (i.e. forgot to change variable names)	serious	Major
+R_3jfk9WUBB1C9rE0	recurring	Missing observations when transfering data between different formats	frequency	Moderate
+R_3jfk9WUBB1C9rE0	recurring	Missing observations when transfering data between different formats	serious	Moderate
+R_u7y4awKmx0P9uMx	recurring	When we moved data between spreadsheet we only partially selected the data which led to data loss.	frequency	Low
+R_u7y4awKmx0P9uMx	recurring	When we moved data between spreadsheet we only partially selected the data which led to data loss.	serious	Minor
+R_1ImjMmhDv5BB0tL	recurring	Programming errors in code (we use MATLAB) for analyzing data.	frequency	Low
+R_1ImjMmhDv5BB0tL	recurring	Programming errors in code (we use MATLAB) for analyzing data.	serious	Minor
+R_1rwuSrjs7gQ6lcy	recurring	Insufficient data description / labeling	frequency	Moderate
+R_1rwuSrjs7gQ6lcy	recurring	Insufficient data description / labeling	serious	Minor
+R_ZJlgxWYq9ryKVJ7	recurring	unsuitable variable names that made it difficult to re-analize the data after some time lapsed; errors in recoding variables that lead to loss of information of the raw data	frequency	Low
+R_ZJlgxWYq9ryKVJ7	recurring	unsuitable variable names that made it difficult to re-analize the data after some time lapsed; errors in recoding variables that lead to loss of information of the raw data	serious	Minor
+R_1OCdfz7knYYZ9MF	recurring	Use of wrong datasets happened last year.	frequency	Moderate
+R_1OCdfz7knYYZ9MF	recurring	Use of wrong datasets happened last year.	serious	Minor
+R_3Gs4GQj61sS2krY	recurring	Transferring data from one format to another is always tricky.	frequency	Low
+R_3Gs4GQj61sS2krY	recurring	Transferring data from one format to another is always tricky.	serious	Minor
+R_UW9udpehJoHvjeV	recurring	program related	frequency	Low
+R_UW9udpehJoHvjeV	recurring	program related	serious	Moderate
+R_W2NaMKUGZou4QDv	recurring	nothing really systematic and only minor, e.g., missing outlier removal or keeping track of concerned conditions, SD vs SE in figure vs. caption, formula error in excel,	frequency	Low
+R_W2NaMKUGZou4QDv	recurring	nothing really systematic and only minor, e.g., missing outlier removal or keeping track of concerned conditions, SD vs SE in figure vs. caption, formula error in excel,	serious	Minor
+R_3R4baXz3l9QdAPM	recurring	Coding error in syntax	frequency	Moderate
+R_3R4baXz3l9QdAPM	recurring	Coding error in syntax	serious	Major
+R_2Ve7LLcoPdCtYvA	recurring	Using an outdated version of experiment code.	frequency	Moderate
+R_2Ve7LLcoPdCtYvA	recurring	Using an outdated version of experiment code.	serious	Moderate
+R_3DjBdzkuQENmiq9	recurring	mix up in participant ID code	frequency	Moderate
+R_3DjBdzkuQENmiq9	recurring	mix up in participant ID code	serious	Insignificant
+R_Y6sggRDaiYKcxP3	recurring	Overwriting old files. Import old files. Wrong named variables in data analysis scripts.	frequency	Moderate
+R_Y6sggRDaiYKcxP3	recurring	Overwriting old files. Import old files. Wrong named variables in data analysis scripts.	serious	Minor
+R_3HnSEV00T3RGWzi	recurring	Working on a wrong version of a dataset/manuscript.	frequency	High
+R_3HnSEV00T3RGWzi	recurring	Working on a wrong version of a dataset/manuscript.	serious	Minor
+R_bCncU5uFNDBQAdr	recurring	It´s difficult to say, but I think that a very common mistake is when the range of response of a questionnaire is not coorect (e.g., 0 to 4, instead of 1 to 5)	frequency	High
+R_bCncU5uFNDBQAdr	recurring	It´s difficult to say, but I think that a very common mistake is when the range of response of a questionnaire is not coorect (e.g., 0 to 4, instead of 1 to 5)	serious	Minor
+R_XLNMXHwqdiwAG7D	recurring	Poor data labelling and documentation	frequency	Moderate
+R_XLNMXHwqdiwAG7D	recurring	Poor data labelling and documentation	serious	Moderate
+R_2OGsptCGC66lVpU	recurring	Difficult to identify older data files due to uninformative file naming conventions.	frequency	Low
+R_2OGsptCGC66lVpU	recurring	Difficult to identify older data files due to uninformative file naming conventions.	serious	Minor
+R_2yfNEamm9FvTD4O	recurring	building data frame wrongly the first time	frequency	Low
+R_2yfNEamm9FvTD4O	recurring	building data frame wrongly the first time	serious	Insignificant
+R_1myhPq5ghONho9x	recurring	wrong coding of variables	frequency	Low
+R_1myhPq5ghONho9x	recurring	wrong coding of variables	serious	Moderate
+R_3KK0Lq3IYGIcJXW	recurring	I have had in the past that I did not label a variable properly. It computed two variables but I could not remember what was the correct one.	frequency	Moderate
+R_3KK0Lq3IYGIcJXW	recurring	I have had in the past that I did not label a variable properly. It computed two variables but I could not remember what was the correct one.	serious	Minor
+R_1f1ptLmJabcd2gt	recurring	incorrect input data, mismatch between subjects and his data because of wrong copy and paste. numbers added as text	frequency	Moderate
+R_1f1ptLmJabcd2gt	recurring	incorrect input data, mismatch between subjects and his data because of wrong copy and paste. numbers added as text	serious	Moderate
+R_ByOF9nbo28ZJhG9	recurring	erroneous coding of variables in qualtrics surveys	frequency	Low
+R_ByOF9nbo28ZJhG9	recurring	erroneous coding of variables in qualtrics surveys	serious	Minor
+R_1Lez5WNMDX1hRUJ	recurring	Mistakes in some codes of a dataset	frequency	Very Low
+R_1Lez5WNMDX1hRUJ	recurring	Mistakes in some codes of a dataset	serious	Minor
+R_DCZvMltMaiLK0zD	recurring	data loss, data wrongly inserted, data not completely inserted, data not correctly saved, variable names errors	frequency	High
+R_DCZvMltMaiLK0zD	recurring	data loss, data wrongly inserted, data not completely inserted, data not correctly saved, variable names errors	serious	Minor
+R_24OvWIXid68ghSc	recurring	In qualitative analysis, forgetting which codes are used for what, and reinventing or duplicating similar or identical codes.	frequency	Moderate
+R_24OvWIXid68ghSc	recurring	In qualitative analysis, forgetting which codes are used for what, and reinventing or duplicating similar or identical codes.	serious	Minor
+R_28GI4y8PGiLchXU	recurring	"Having PhD students ""code"" a dataset and then leave without proper instructions on how variables were calculated, what certain variable names mean and what filters (e.g., only completes) they used for their final analyses"	frequency	Moderate
+R_28GI4y8PGiLchXU	recurring	"Having PhD students ""code"" a dataset and then leave without proper instructions on how variables were calculated, what certain variable names mean and what filters (e.g., only completes) they used for their final analyses"	serious	Moderate
+R_QaFTHFdsxfpvsFb	recurring	Most mistakes I can think of had to do with data analysis or reporting of results. For example, during the data analysis, I might have used a filter and then forgotten to remove it. Or another researcher might have made mistakes in their R code, specifying a wrong subset or a wrong variable. With regards to reporting, I think it happens quite often that people copy-paste text to save time and then forget to change some values. Or that they make rounding and other errors when re-typing values.	frequency	Moderate
+R_QaFTHFdsxfpvsFb	recurring	Most mistakes I can think of had to do with data analysis or reporting of results. For example, during the data analysis, I might have used a filter and then forgotten to remove it. Or another researcher might have made mistakes in their R code, specifying a wrong subset or a wrong variable. With regards to reporting, I think it happens quite often that people copy-paste text to save time and then forget to change some values. Or that they make rounding and other errors when re-typing values.	serious	Minor
+R_2WCr8uf7CKPkEXG	recurring	mistakes in writing software code for Mplus	frequency	High
+R_2WCr8uf7CKPkEXG	recurring	mistakes in writing software code for Mplus	serious	Moderate
+R_vGhe9SFx67Tm8md	recurring	My PhD student siad she performed X test that she cannot do, I figured out that she has performed another easier stat test that she could do. The results and p values or F values did not change, and luckily the paper she wrote was rejected at the first journal that I could go over the stats and found out the mistake. I was not sure if she did it because it was easies, or mistakingly. Now I go over everything she does with a double or triple check, and am rather unreluctant to write with her.	frequency	Very Low
+R_vGhe9SFx67Tm8md	recurring	My PhD student siad she performed X test that she cannot do, I figured out that she has performed another easier stat test that she could do. The results and p values or F values did not change, and luckily the paper she wrote was rejected at the first journal that I could go over the stats and found out the mistake. I was not sure if she did it because it was easies, or mistakingly. Now I go over everything she does with a double or triple check, and am rather unreluctant to write with her.	serious	Minor
+R_1q8MrESM6Soe0YW	recurring	missing documentation in the labeling/handling/recoding of variables	frequency	Moderate
+R_1q8MrESM6Soe0YW	recurring	missing documentation in the labeling/handling/recoding of variables	serious	Minor
+R_1gwrKmk8l9dBdpR	recurring	Uninformative labels which prevented using old datasets, Reverse scoring items more than one times and difficult to find out the original data	frequency	Low
+R_1gwrKmk8l9dBdpR	recurring	Uninformative labels which prevented using old datasets, Reverse scoring items more than one times and difficult to find out the original data	serious	Minor
+R_roMs84O8u4uODHb	recurring	Uninformative variable names	frequency	Low
+R_roMs84O8u4uODHb	recurring	Uninformative variable names	serious	Minor
+R_1163fpcUwH7iUdJ	recurring	sloppy file naming which made very hard to identify the subjects later	frequency	Very High
+R_1163fpcUwH7iUdJ	recurring	sloppy file naming which made very hard to identify the subjects later	serious	Moderate
+R_1eru08S1SGWl5sm	recurring	reversed the coding of a scale	frequency	Very Low
+R_1eru08S1SGWl5sm	recurring	reversed the coding of a scale	serious	Minor
+R_2pXHxkLf2ltxzDW	recurring	The wrong scoring key was shown to participants for one questionnaire, so although the data are internally consistent, it makes comparison with previous studies difficult.	frequency	Very Low
+R_2pXHxkLf2ltxzDW	recurring	The wrong scoring key was shown to participants for one questionnaire, so although the data are internally consistent, it makes comparison with previous studies difficult.	serious	Moderate
+R_27s7Eu21Kt5yIT0	recurring	Data were not properly labeled, which makes them hard to interpret in the future.	frequency	Low
+R_27s7Eu21Kt5yIT0	recurring	Data were not properly labeled, which makes them hard to interpret in the future.	serious	Minor
+R_2ZKX9MFhEoJ5EsP	recurring	"Scoring issues when transferring data from paper / pencil to digital (different / wrong scales for the same instrument, different scoring of the scales for different time points, differing interpretation of ""categories"" among student assistants who were scoring free text answers as categorical items)"	frequency	High
+R_2ZKX9MFhEoJ5EsP	recurring	"Scoring issues when transferring data from paper / pencil to digital (different / wrong scales for the same instrument, different scoring of the scales for different time points, differing interpretation of ""categories"" among student assistants who were scoring free text answers as categorical items)"	serious	Moderate
+R_3EKfYkim9TNrorw	recurring	Old saved data was overwritten by the new data	frequency	Low
+R_3EKfYkim9TNrorw	recurring	Old saved data was overwritten by the new data	serious	Major
+R_bCNgup74QHnWVKp	recurring	analyzing the wrong version of a dataset	frequency	Low
+R_bCNgup74QHnWVKp	recurring	analyzing the wrong version of a dataset	serious	Minor
+R_3kGGCsyUfakWVUl	recurring	Reverse coding	frequency	Low
+R_3kGGCsyUfakWVUl	recurring	Reverse coding	serious	Moderate
+R_2RQVxhHSV8Q7y24	recurring	Copy-and-paste errors where the values should have been replaced but weren't.	frequency	Low
+R_2RQVxhHSV8Q7y24	recurring	Copy-and-paste errors where the values should have been replaced but weren't.	serious	Minor
+R_3PHWLvpIcXFFKwW	recurring	Errors in excel templates (formulas, cut and paste etc.) that have been individuated and corrected	frequency	Low
+R_3PHWLvpIcXFFKwW	recurring	Errors in excel templates (formulas, cut and paste etc.) that have been individuated and corrected	serious	Minor
+R_OlZPqe0dnO5809z	recurring	inconsistent application of data exclusion and cleaning procedures, leading to slight different final N in the sample.  This problem happens most frequently in studies with many researchers and many parallel data sets from the same participants.	frequency	Low
+R_OlZPqe0dnO5809z	recurring	inconsistent application of data exclusion and cleaning procedures, leading to slight different final N in the sample.  This problem happens most frequently in studies with many researchers and many parallel data sets from the same participants.	serious	Minor
+R_2YrWWMvbQaoXT8U	recurring	we have lots of data checking protocols and so mistakes are eliminated (I hope/think) before dissemination. Type of errors include miscoding of participants to wrong group.	frequency	Low
+R_2YrWWMvbQaoXT8U	recurring	we have lots of data checking protocols and so mistakes are eliminated (I hope/think) before dissemination. Type of errors include miscoding of participants to wrong group.	serious	Minor
+R_2v92FujMnTNUKtU	recurring	Using uninformative variable names	frequency	Moderate
+R_2v92FujMnTNUKtU	recurring	Using uninformative variable names	serious	Minor
+R_cOwnko1L9iV7hWV	recurring	To note: There is a central data management for our key studies which works fully scripted according to standard rules with a single central data and metadata repository with automated back-up and data management solutions and versioning. Almost all data are handled there. That explains the answer. Errors mostly occur outside this pipeline which affect minor add ons.   These erors are : Problematic formattings, data entry errors, observer effects, import errors of data across programs, intransparency regarding data recording, incomplete data transfer, uncertainty about latest version	frequency	Low
+R_cOwnko1L9iV7hWV	recurring	To note: There is a central data management for our key studies which works fully scripted according to standard rules with a single central data and metadata repository with automated back-up and data management solutions and versioning. Almost all data are handled there. That explains the answer. Errors mostly occur outside this pipeline which affect minor add ons.   These erors are : Problematic formattings, data entry errors, observer effects, import errors of data across programs, intransparency regarding data recording, incomplete data transfer, uncertainty about latest version	serious	Minor
+R_Tn1zCiJl48M49bP	recurring	poor labeling of variables	frequency	Low
+R_Tn1zCiJl48M49bP	recurring	poor labeling of variables	serious	Insignificant
+R_3lQFyqvkeqxEGrv	recurring	Unclear variable names and unclear recoding of variables, usually in datasets collected by students	frequency	Low
+R_3lQFyqvkeqxEGrv	recurring	Unclear variable names and unclear recoding of variables, usually in datasets collected by students	serious	Minor
+R_cIpsWQTCtqyVUd3	recurring	Data not cleaned appropriately.	frequency	Low
+R_cIpsWQTCtqyVUd3	recurring	Data not cleaned appropriately.	serious	Minor
+R_2E3SqExkJaw5KMM	recurring	Mistaken excel files	frequency	Very Low
+R_2E3SqExkJaw5KMM	recurring	Mistaken excel files	serious	Minor
+R_3n5YF1P3zkjw6mc	recurring	Using same subject# more than once	frequency	High
+R_3n5YF1P3zkjw6mc	recurring	Using same subject# more than once	serious	Minor
+R_2tLFnGE5wJ0UxSs	recurring	In large datasets, with hundreds of variables: Analyzing earlier version of e.g., sum score that includes errors rectified in later version of variable.	frequency	Low
+R_2tLFnGE5wJ0UxSs	recurring	In large datasets, with hundreds of variables: Analyzing earlier version of e.g., sum score that includes errors rectified in later version of variable.	serious	Minor
+R_3iIFj59dgB5EXPO	recurring	losing some data files	frequency	Low
+R_3iIFj59dgB5EXPO	recurring	losing some data files	serious	Minor
+R_1IXK61gu891fM53	recurring	can't remember one, other than temporarily losing a dataset or results set	frequency	Low
+R_1IXK61gu891fM53	recurring	can't remember one, other than temporarily losing a dataset or results set	serious	Minor
+R_3ObQwLaOYCfdTA5	recurring	Bad management data by a student who is not careful entering/managing data from his/her project.  I now have to have my 2 full time research assistants double check the same databases to make sure that we don’t have mistakes done by students on their own databse.	frequency	Low
+R_3ObQwLaOYCfdTA5	recurring	Bad management data by a student who is not careful entering/managing data from his/her project.  I now have to have my 2 full time research assistants double check the same databases to make sure that we don’t have mistakes done by students on their own databse.	serious	Moderate
+R_3PYR1LMIJhMu0dH	recurring	OH MAN, how many characters do I have? The most common mistakes are related to naming of variables and files, so that I'm building models (temporarily! so far it's always been a temporary glitch!) from an outdated version of a variable or dataset.	frequency	Very High
+R_3PYR1LMIJhMu0dH	recurring	OH MAN, how many characters do I have? The most common mistakes are related to naming of variables and files, so that I'm building models (temporarily! so far it's always been a temporary glitch!) from an outdated version of a variable or dataset.	serious	Minor
+R_3hyCgqMpettYA1x	recurring	Data loss; often the type of work I'm involved in has multiple data files, and if the ID numbers are in any way misentered, we lose the ability to match respondents and lose data.	frequency	Low
+R_3hyCgqMpettYA1x	recurring	Data loss; often the type of work I'm involved in has multiple data files, and if the ID numbers are in any way misentered, we lose the ability to match respondents and lose data.	serious	Insignificant
+R_3lMjXKnwsOJomFW	recurring	Failure to reflect negatively keyed items on a personality scale.	frequency	Low
+R_3lMjXKnwsOJomFW	recurring	Failure to reflect negatively keyed items on a personality scale.	serious	Minor
+R_2U0jyqZlTh8B9Kk	recurring	Mixing different version of preprocessed data in further processing.	frequency	Moderate
+R_2U0jyqZlTh8B9Kk	recurring	Mixing different version of preprocessed data in further processing.	serious	Moderate
+R_2wu8pRf0QuCSjtC	recurring	using incorrect formulas in Excel to identify instances that meet a particular criteria - often a formula works for 99.9% of data, but might not work on rare special event trials	frequency	Low
+R_2wu8pRf0QuCSjtC	recurring	using incorrect formulas in Excel to identify instances that meet a particular criteria - often a formula works for 99.9% of data, but might not work on rare special event trials	serious	Insignificant
+R_2f9fC66h2IIZs1w	recurring	The most common mistake would be programming errors resulting in a faulty randomization or incomplete data registration	frequency	Low
+R_2f9fC66h2IIZs1w	recurring	The most common mistake would be programming errors resulting in a faulty randomization or incomplete data registration	serious	Moderate
+R_9QE69SV6ZqszWjT	recurring	labeling in graphical display of results go reversed so conditions were labelled incorrectly.	frequency	Low
+R_9QE69SV6ZqszWjT	recurring	labeling in graphical display of results go reversed so conditions were labelled incorrectly.	serious	Minor
+R_06DkavezrMGKffj	recurring	Unclear variable names and labels	frequency	Very Low
+R_06DkavezrMGKffj	recurring	Unclear variable names and labels	serious	Insignificant
+R_1FgF6lRVQZUd4dW	recurring	Coding and scoring errors on for self-report or standardized assessment instruments.	frequency	Moderate
+R_1FgF6lRVQZUd4dW	recurring	Coding and scoring errors on for self-report or standardized assessment instruments.	serious	Minor
+R_3NQyiNXjL1vSMQs	recurring	Miscoded levels of categorical variable	frequency	Low
+R_3NQyiNXjL1vSMQs	recurring	Miscoded levels of categorical variable	serious	Minor
+R_uyxOp5bl3Heyi5P	recurring	Lack of following protocols in file naming	frequency	Very Low
+R_uyxOp5bl3Heyi5P	recurring	Lack of following protocols in file naming	serious	Insignificant
+R_2QJpoM0DXM2EnBw	recurring	Data was incorrectly entered; cases were duplicated and had to be manually removed.	frequency	Moderate
+R_2QJpoM0DXM2EnBw	recurring	Data was incorrectly entered; cases were duplicated and had to be manually removed.	serious	Minor
+R_pN6MH6N2QB5EWkN	recurring	Uninformative varaible names Programming error in script so that not all datapoints were stored.	frequency	Low
+R_pN6MH6N2QB5EWkN	recurring	Uninformative varaible names Programming error in script so that not all datapoints were stored.	serious	Minor
+R_RwbZAYqdAdCWJpL	recurring	Wrong labeling of variables from Qualtrics, wrong coding of item scales.	frequency	Low
+R_RwbZAYqdAdCWJpL	recurring	Wrong labeling of variables from Qualtrics, wrong coding of item scales.	serious	Insignificant
+R_3qlI1oXGPLbeopZ	recurring	1. I selected the wrong sample for an analysis.   2. Project staff assessed students with the incorrect version of one of the measures.  3. In a data set provided from an external source, the data manager miscalculated three variables. I believe she forgot to reverse-code some of the items for their respective scales.   4. Data sets occasionally contain duplicate entries for a survey or other assessment.  5. Our data manager, in consultation with other investigators, chose to change the treatment condition for individuals who moved between groups with different assignment. For example, if an individual was assigned to a group in the treatment condition but then moved to a group in the control condition, the condition variable was changed.	frequency	Very Low
+R_3qlI1oXGPLbeopZ	recurring	1. I selected the wrong sample for an analysis.   2. Project staff assessed students with the incorrect version of one of the measures.  3. In a data set provided from an external source, the data manager miscalculated three variables. I believe she forgot to reverse-code some of the items for their respective scales.   4. Data sets occasionally contain duplicate entries for a survey or other assessment.  5. Our data manager, in consultation with other investigators, chose to change the treatment condition for individuals who moved between groups with different assignment. For example, if an individual was assigned to a group in the treatment condition but then moved to a group in the control condition, the condition variable was changed.	serious	Insignificant
+R_SJNhx4IBeQ1eZu9	recurring	When columns of data were cut and pasted into the primary data set, the columns of data were partially transposes.	frequency	Very Low
+R_SJNhx4IBeQ1eZu9	recurring	When columns of data were cut and pasted into the primary data set, the columns of data were partially transposes.	serious	Major
+R_2q9Ql7h5CKuPKN0	recurring	creation of multiple versions of dataset, and one person updates version 1 while another person updates something else in version 2.	frequency	Moderate
+R_2q9Ql7h5CKuPKN0	recurring	creation of multiple versions of dataset, and one person updates version 1 while another person updates something else in version 2.	serious	Moderate
+R_2QopNHjyyr0Mqmt	recurring	When running computer controlled experiments, there are errors in stimulus timing, the stimulus sequences, or the data stored.	frequency	Moderate
+R_2QopNHjyyr0Mqmt	recurring	When running computer controlled experiments, there are errors in stimulus timing, the stimulus sequences, or the data stored.	serious	Moderate
+R_u3udJvSlp9H0lYR	recurring	The most common data-related mistake is that we realize after beginning to collect data that a question/item was worded incorrectly, missing, or that there was some error in the electronic survey/questionnaire materials (e.g., wrong piping of text, wrong rules presenting new items based on previous responses etc).	frequency	Low
+R_u3udJvSlp9H0lYR	recurring	The most common data-related mistake is that we realize after beginning to collect data that a question/item was worded incorrectly, missing, or that there was some error in the electronic survey/questionnaire materials (e.g., wrong piping of text, wrong rules presenting new items based on previous responses etc).	serious	Minor
+R_UmqU7Ly1qrMBjHP	recurring	We will have a dataset that has been built over many years, and old versions of the data are kept as a backup.  There have been times when we have worked with these older datasets by mistake.	frequency	Low
+R_UmqU7Ly1qrMBjHP	recurring	We will have a dataset that has been built over many years, and old versions of the data are kept as a backup.  There have been times when we have worked with these older datasets by mistake.	serious	Minor
+R_3EK0TrKycm0yB5b	recurring	Students collected and analyzed data, but graduated before publishing it. I had to spend some time to understand how they entered the data before starting data analyses.	frequency	Moderate
+R_3EK0TrKycm0yB5b	recurring	Students collected and analyzed data, but graduated before publishing it. I had to spend some time to understand how they entered the data before starting data analyses.	serious	Minor
+R_1lz69PsdTmTnVVj	recurring	Maintaining a living codebook with item stems, response codes, and other metadata as variables are created and data from additional collections are added.	frequency	Moderate
+R_1lz69PsdTmTnVVj	recurring	Maintaining a living codebook with item stems, response codes, and other metadata as variables are created and data from additional collections are added.	serious	Minor
+R_1C9qNC1dUt7ZiSE	recurring	Uninformative variable names	frequency	Very High
+R_1C9qNC1dUt7ZiSE	recurring	Uninformative variable names	serious	Minor
+R_1DzEEG1QzkdWLdl	recurring	Data was coded wrong and we needed to manually recode the dataset.	frequency	Low
+R_1DzEEG1QzkdWLdl	recurring	Data was coded wrong and we needed to manually recode the dataset.	serious	Minor
+R_2B8trxy4O95LIjg	recurring	Using the wrong version of the code	frequency	Low
+R_2B8trxy4O95LIjg	recurring	Using the wrong version of the code	serious	Moderate
+R_1LBzXSxZUeQ0CZr	recurring	Problems interpreting variable names	frequency	Moderate
+R_1LBzXSxZUeQ0CZr	recurring	Problems interpreting variable names	serious	Minor
+R_28ZpvpJ7r1GU67H	recurring	not realizing that we had been working on the wrong version of a data	frequency	Moderate
+R_28ZpvpJ7r1GU67H	recurring	not realizing that we had been working on the wrong version of a data	serious	Minor
+R_3HtqACEHt1G9A41	recurring	I have made changes in an SPSS data file and forget to save the original version so that I had to go back to the raw data in order to preserve the un-recoded variables	frequency	Very Low
+R_3HtqACEHt1G9A41	recurring	I have made changes in an SPSS data file and forget to save the original version so that I had to go back to the raw data in order to preserve the un-recoded variables	serious	Insignificant
+R_1g86ziif9LCszbc	recurring	Lack of variable validation allowing intended numeric variable fields to contain text, resulting in the variable to be formatted as character instead of numeric.	frequency	High
+R_1g86ziif9LCszbc	recurring	Lack of variable validation allowing intended numeric variable fields to contain text, resulting in the variable to be formatted as character instead of numeric.	serious	Moderate
+R_Asx9afieZL39PhL	recurring	Excluding participants and then analysing data without those participants excluded - this shows up in the dfs though so (as far as I'm aware!) has always been spotted and corrected before anything has been published.	frequency	Low
+R_Asx9afieZL39PhL	recurring	Excluding participants and then analysing data without those participants excluded - this shows up in the dfs though so (as far as I'm aware!) has always been spotted and corrected before anything has been published.	serious	Minor
+R_2eOxrEvCxEutKdg	recurring	The corection of the questionnaires (syntaxis) shows errors.	frequency	Low
+R_2eOxrEvCxEutKdg	recurring	The corection of the questionnaires (syntaxis) shows errors.	serious	Insignificant
+R_3rZAis4XlhhtCIC	recurring	Probably erroneously coding survey data so that data end up in incorrect variables.	frequency	Low
+R_3rZAis4XlhhtCIC	recurring	Probably erroneously coding survey data so that data end up in incorrect variables.	serious	Major
+R_3fPi4q2MtOopLwb	recurring	Improperly recording data.	frequency	Very Low
+R_3fPi4q2MtOopLwb	recurring	Improperly recording data.	serious	Moderate
+R_2b2hwMGWs1zscoE	recurring	Misnaming data Misnaming files	frequency	Low
+R_2b2hwMGWs1zscoE	recurring	Misnaming data Misnaming files	serious	Minor
+R_1jTgRy9bu3qIAQT	recurring	There was a data error inputting the wrong information for one of the variables	frequency	Very Low
+R_1jTgRy9bu3qIAQT	recurring	There was a data error inputting the wrong information for one of the variables	serious	Minor
+R_1kTSdgoR3ATiihw	recurring	I would guess the most frequent cases are never detected.  I have noticed common mistakes in either (a) joining data or (b) random number generation (RNG).	frequency	Very Low
+R_1kTSdgoR3ATiihw	recurring	I would guess the most frequent cases are never detected.  I have noticed common mistakes in either (a) joining data or (b) random number generation (RNG).	serious	Major
+R_1lAjGmRwoW52vY9	recurring	*not clear variable labeling *poor data back-up *access to the same computer by different researchers without knowing about each other *no participant scheduling software	frequency	Low
+R_1lAjGmRwoW52vY9	recurring	*not clear variable labeling *poor data back-up *access to the same computer by different researchers without knowing about each other *no participant scheduling software	serious	Minor
+R_2S2MjnRg4NsWUiX	recurring	badly executed merging of data	frequency	Low
+R_2S2MjnRg4NsWUiX	recurring	badly executed merging of data	serious	Moderate
+R_T1L5jxO15Adwh0d	recurring	Realizing that an imputation had produced unexpected results that required a re-examination of how the data were specified in advance.	frequency	Low
+R_T1L5jxO15Adwh0d	recurring	Realizing that an imputation had produced unexpected results that required a re-examination of how the data were specified in advance.	serious	Moderate
+R_zTomGWKEQc3Ne8h	recurring	Integration of data on individuals across data sources.	frequency	Low
+R_zTomGWKEQc3Ne8h	recurring	Integration of data on individuals across data sources.	serious	Minor
+R_2tiiMYZYEfHjyYN	recurring	Research assistant canceled or failed to show up for a scheduled session, resulting in data loss for researchers and wasted time for participants.	frequency	Very High
+R_2tiiMYZYEfHjyYN	recurring	Research assistant canceled or failed to show up for a scheduled session, resulting in data loss for researchers and wasted time for participants.	serious	Minor
+R_wQKtnSahMtTdwZP	recurring	Errors calculating the dimensions of some questionnaires.	frequency	Low
+R_wQKtnSahMtTdwZP	recurring	Errors calculating the dimensions of some questionnaires.	serious	Moderate
+R_2pLz7xMojRnoxaR	recurring	"Every project is extremely unique and has it's own problems. I can't tell you what the ""most frequent"" was. How about: using inconsistent identifiers when create data for different aspects of a large project."	frequency	Low
+R_2pLz7xMojRnoxaR	recurring	"Every project is extremely unique and has it's own problems. I can't tell you what the ""most frequent"" was. How about: using inconsistent identifiers when create data for different aspects of a large project."	serious	Major
+R_2BbuTGCx18uGQHF	recurring	Working on wrong version of dataset	frequency	Low
+R_2BbuTGCx18uGQHF	recurring	Working on wrong version of dataset	serious	Minor
+R_1OB3foIsQJfflaa	recurring	An error in a table in a published article	frequency	Moderate
+R_1OB3foIsQJfflaa	recurring	An error in a table in a published article	serious	Minor
+R_6QYEgZeTJnngKZj	recurring	Coding error that changes original data	frequency	Low
+R_6QYEgZeTJnngKZj	recurring	Coding error that changes original data	serious	Minor
+R_3D85dU8d9bWZJPh	recurring	Wrong data coding, having multiple participants in the same time slot, Failing to record responses.	frequency	Low
+R_3D85dU8d9bWZJPh	recurring	Wrong data coding, having multiple participants in the same time slot, Failing to record responses.	serious	Minor
+R_2YeLYCNeAEarPbX	recurring	Poor data management - no database Poor database skills (no or poor understanding of SQL) High complexity of databases can lead to novice users making mistakes	frequency	High
+R_2YeLYCNeAEarPbX	recurring	Poor data management - no database Poor database skills (no or poor understanding of SQL) High complexity of databases can lead to novice users making mistakes	serious	Major
+R_a9Gz8zHhb9u2pW1	recurring	issues with moving between different formats e.g., data in excel, doing some initial work in excel, then copying over to SPSS	frequency	High
+R_a9Gz8zHhb9u2pW1	recurring	issues with moving between different formats e.g., data in excel, doing some initial work in excel, then copying over to SPSS	serious	Minor
+R_238HFUYOk87Upxk	recurring	Sorted responses into high and low and used the wrong ones in the analysis.	frequency	Very Low
+R_238HFUYOk87Upxk	recurring	Sorted responses into high and low and used the wrong ones in the analysis.	serious	Major
+R_ZdxANIAeQf93MkN	recurring	not cleaning a data set to verify accuracy	frequency	Low
+R_ZdxANIAeQf93MkN	recurring	not cleaning a data set to verify accuracy	serious	Moderate
+R_2XhZupfT3JtBBeo	recurring	Inadequate data feeding in preestablished templates	frequency	Very Low
+R_2XhZupfT3JtBBeo	recurring	Inadequate data feeding in preestablished templates	serious	Minor
+R_4YsljcjsHBXYfSx	recurring	bad variable names in general projects that were not documented well	frequency	Moderate
+R_4YsljcjsHBXYfSx	recurring	bad variable names in general projects that were not documented well	serious	Moderate
+R_3gYOmNFTOaQXpvg	recurring	Version control issues - using the wrong version of the text or data	frequency	Low
+R_3gYOmNFTOaQXpvg	recurring	Version control issues - using the wrong version of the text or data	serious	Moderate
+R_2uHSLuGwWn8PInP	recurring	Data loss to to glitch in programme or related technical failure.	frequency	Very Low
+R_2uHSLuGwWn8PInP	recurring	Data loss to to glitch in programme or related technical failure.	serious	Minor
+R_POu1cEcaePOzhkt	recurring	Wrong coding	frequency	Very Low
+R_POu1cEcaePOzhkt	recurring	Wrong coding	serious	Minor
+R_2rBzqM7U57tGlVk	recurring	Non-informative names of variables	frequency	Moderate
+R_2rBzqM7U57tGlVk	recurring	Non-informative names of variables	serious	Minor
+R_240mxsPP2K7qvrD	recurring	I remember only a single one, but this happened in the context of a study published in Science: we accidentally had copied all data, thus doubling each data point.	frequency	Low
+R_240mxsPP2K7qvrD	recurring	I remember only a single one, but this happened in the context of a study published in Science: we accidentally had copied all data, thus doubling each data point.	serious	Minor
+R_1GWgjyjQjIpBIew	recurring	often the data collection is handled by students, as part of their curriculum. In my experience many data mistakes are made here, for example wrong numbering of subjects (e.g., duplicate); parts of data that are missing for unknown reasons, etc.  I only discover this once the data set is handled over to me (as supervisor) when I want to use the data for publication.	frequency	Low
+R_1GWgjyjQjIpBIew	recurring	often the data collection is handled by students, as part of their curriculum. In my experience many data mistakes are made here, for example wrong numbering of subjects (e.g., duplicate); parts of data that are missing for unknown reasons, etc.  I only discover this once the data set is handled over to me (as supervisor) when I want to use the data for publication.	serious	Minor
+R_AEvIrQSSmJP5wFb	recurring	incompleteness of data introduction	frequency	Low
+R_AEvIrQSSmJP5wFb	recurring	incompleteness of data introduction	serious	Moderate
+R_2dLSHG3yGKzKecQ	recurring	When video-taping team interactions, a video camera malfunctioned and only a subset of the sample was recored.	frequency	Very Low
+R_2dLSHG3yGKzKecQ	recurring	When video-taping team interactions, a video camera malfunctioned and only a subset of the sample was recored.	serious	Minor
+R_2e295rrs3RwuezQ	recurring	Maybe data merging mistake, but I have no concrete examples as we always double check immediately afterwards, so this mistake does not last longer than a minute.	frequency	Very Low
+R_2e295rrs3RwuezQ	recurring	Maybe data merging mistake, but I have no concrete examples as we always double check immediately afterwards, so this mistake does not last longer than a minute.	serious	Insignificant
+R_2dvcIJA7IFmsu14	recurring	Copy-and-paste errors where statistics are copied across incorrectly from R into whatever the paper is being written in.	frequency	Low
+R_2dvcIJA7IFmsu14	recurring	Copy-and-paste errors where statistics are copied across incorrectly from R into whatever the paper is being written in.	serious	Minor
+R_1UeEmajLZ4T4TwR	recurring	Overwriting data, copying only half the data, defining the variable incorrectly	frequency	Low
+R_1UeEmajLZ4T4TwR	recurring	Overwriting data, copying only half the data, defining the variable incorrectly	serious	Moderate
+R_2bN2CmBCvy0RUPJ	recurring	'- wrong merging/connecting of data from different parts of the study (e.g., studies with several waves)	frequency	Very Low
+R_2bN2CmBCvy0RUPJ	recurring	'- wrong merging/connecting of data from different parts of the study (e.g., studies with several waves)	serious	Moderate
+R_2eQCIvKgmCxnQis	recurring	Conducted data analysis on an outdated dataset	frequency	Low
+R_2eQCIvKgmCxnQis	recurring	Conducted data analysis on an outdated dataset	serious	Minor
+R_1fd7fjBC84Nf1XI	recurring	Computers crashing without a data base backup (twice). software programs with bugs.	frequency	Low
+R_1fd7fjBC84Nf1XI	recurring	Computers crashing without a data base backup (twice). software programs with bugs.	serious	Minor
+R_77kUEfBZkO5ZyOl	recurring	We've had programming errors in surveys. An item appeared twice, a randomization element failed, etc.	frequency	Low
+R_77kUEfBZkO5ZyOl	recurring	We've had programming errors in surveys. An item appeared twice, a randomization element failed, etc.	serious	Moderate
+R_1K8Ralb7H385hcB	recurring	Security issues (e.g., sharing confidential information via email, instead of anonymizing participants)	frequency	High
+R_1K8Ralb7H385hcB	recurring	Security issues (e.g., sharing confidential information via email, instead of anonymizing participants)	serious	Extreme
+R_2U5GjHtbKZYkmMX	recurring	Forgetting to anonymize the data.	frequency	Low
+R_2U5GjHtbKZYkmMX	recurring	Forgetting to anonymize the data.	serious	Insignificant
+R_2thgLa4jntEMBiq	recurring	uninformative variable names, insufficient documentation of data treatment (e.g., what items were collapsed into a scale, what were the alphas or the FA justification), mistakes in combining datasets.	frequency	Moderate
+R_2thgLa4jntEMBiq	recurring	uninformative variable names, insufficient documentation of data treatment (e.g., what items were collapsed into a scale, what were the alphas or the FA justification), mistakes in combining datasets.	serious	Minor
+R_CZELpbmkR2H9uz7	recurring	difficult to decipher variable names	frequency	High
+R_CZELpbmkR2H9uz7	recurring	difficult to decipher variable names	serious	Minor
+R_p0BJ8JCn92K9IaJ	recurring	The design of a study was compromised by unintentional random allocation of pupils to conditions. The mistake was picked up, and the study re-analysed	frequency	Very Low
+R_p0BJ8JCn92K9IaJ	recurring	The design of a study was compromised by unintentional random allocation of pupils to conditions. The mistake was picked up, and the study re-analysed	serious	Moderate
+R_2rZ2DTpbcWFIEhG	recurring	mislabelling, less documentation	frequency	Low
+R_2rZ2DTpbcWFIEhG	recurring	mislabelling, less documentation	serious	Insignificant
+R_uyQjDVLfMF1DjEJ	recurring	outliers being crept in without meticulous care to spot them. In this case, I had spotted them and could make the correction, but it was a potential source of error had someone not noticed.	frequency	Moderate
+R_uyQjDVLfMF1DjEJ	recurring	outliers being crept in without meticulous care to spot them. In this case, I had spotted them and could make the correction, but it was a potential source of error had someone not noticed.	serious	Minor
+R_1mVqGcXzn9RTmbh	recurring	Working on the wrong data file.	frequency	Low
+R_1mVqGcXzn9RTmbh	recurring	Working on the wrong data file.	serious	Major
+R_2bOijjUlRMWYs2t	recurring	Original file overwritten.	frequency	Very Low
+R_2bOijjUlRMWYs2t	recurring	Original file overwritten.	serious	Minor
+R_Ub6KK5sJLnRBQBj	recurring	We only realized after publication that we had been working on the wrong version of a dataset, This was reported and new results published, Systematic revision of the databases before writing definitive paper some mistakes in occasions	frequency	Low
+R_Ub6KK5sJLnRBQBj	recurring	We only realized after publication that we had been working on the wrong version of a dataset, This was reported and new results published, Systematic revision of the databases before writing definitive paper some mistakes in occasions	serious	Moderate
+R_sbMzGYvocQNch7X	recurring	Filtering of data. For example, in reaction time experiments when you have to remove outliers.	frequency	Low
+R_sbMzGYvocQNch7X	recurring	Filtering of data. For example, in reaction time experiments when you have to remove outliers.	serious	Minor
+R_2fg0p9dQFeyFqr6	recurring	Database partly overwritten	frequency	Very Low
+R_2fg0p9dQFeyFqr6	recurring	Database partly overwritten	serious	Minor
+R_qJFDhrxLT2tTZ5v	recurring	non acurate records not proper baseline evaluation	frequency	Low
+R_qJFDhrxLT2tTZ5v	recurring	non acurate records not proper baseline evaluation	serious	Minor
+R_p3M2Ir2HhdW3gTD	recurring	not informative enough variable name	frequency	Moderate
+R_p3M2Ir2HhdW3gTD	recurring	not informative enough variable name	serious	Moderate
+R_1rqy1rVzOKTinKa	recurring	Errors of sample labeling, by graduate students and field assistants responsible for writing identifying information on tissue samples collected in the field.	frequency	Low
+R_1rqy1rVzOKTinKa	recurring	Errors of sample labeling, by graduate students and field assistants responsible for writing identifying information on tissue samples collected in the field.	serious	Minor
+R_3IT6ZXx2MztRRGc	recurring	Sub-optimal treatment of missing data.	frequency	Very Low
+R_3IT6ZXx2MztRRGc	recurring	Sub-optimal treatment of missing data.	serious	Minor
+R_11gukLDI1B8MFre	recurring	Subject ID was incorrectly typed from one data file to a second file.	frequency	Very Low
+R_11gukLDI1B8MFre	recurring	Subject ID was incorrectly typed from one data file to a second file.	serious	Insignificant
+R_1d4iz3m2nqcDwm0	recurring	Incorrect data entries	frequency	Low
+R_1d4iz3m2nqcDwm0	recurring	Incorrect data entries	serious	Minor
+R_e5USP07muEESOKB	recurring	Students miscoded variables when creating constructs.	frequency	Low
+R_e5USP07muEESOKB	recurring	Students miscoded variables when creating constructs.	serious	Minor
+R_2rwGx3tHGSfKZmT	recurring	Incorrectly entered questionnaire data into spreadsheets or Misaligned rows in spreadsheets;	frequency	Moderate
+R_2rwGx3tHGSfKZmT	recurring	Incorrectly entered questionnaire data into spreadsheets or Misaligned rows in spreadsheets;	serious	Moderate
+R_2wMmMiikRn9F6qX	recurring	coding errors during data processing/analysis (e.g., not updating variables, wrong loops. etc.)	frequency	Very High
+R_2wMmMiikRn9F6qX	recurring	coding errors during data processing/analysis (e.g., not updating variables, wrong loops. etc.)	serious	Minor
+R_1Or7tDijbW5NQ1e	recurring	Using non-current database	frequency	Very Low
+R_1Or7tDijbW5NQ1e	recurring	Using non-current database	serious	Minor
+R_23f99S8tbBeZcmr	recurring	Lost connection file between participant gender and synonyms	frequency	Very Low
+R_23f99S8tbBeZcmr	recurring	Lost connection file between participant gender and synonyms	serious	Minor
+R_1kMINu0tVdNVrjQ	recurring	The most common error is tracking down versions data files, ensuring that the most up-to-date file is being analyzed or shared.	frequency	Low
+R_1kMINu0tVdNVrjQ	recurring	The most common error is tracking down versions data files, ensuring that the most up-to-date file is being analyzed or shared.	serious	Moderate
+R_1EZ15sr0mldmdJS	recurring	"Coding in online survey system that was created by a market research firm was unclear.  For example, 0 zero times was coded as ""1"" and 1 time was coded as ""2"".  Who does that???"	frequency	Low
+R_1EZ15sr0mldmdJS	recurring	"Coding in online survey system that was created by a market research firm was unclear.  For example, 0 zero times was coded as ""1"" and 1 time was coded as ""2"".  Who does that???"	serious	Minor
+R_1oi2EOZ5uJxYlCL	recurring	Cooperating researches use different versions of the same data-set	frequency	Low
+R_1oi2EOZ5uJxYlCL	recurring	Cooperating researches use different versions of the same data-set	serious	Minor
+R_2xKa98jPFbLuzjs	recurring	Risk of losing video data	frequency	Low
+R_2xKa98jPFbLuzjs	recurring	Risk of losing video data	serious	Major
+R_cuv0b8aL16OZV5f	recurring	vague variable names/labels leading to difficulty with later use of the data for secondary projects	frequency	Low
+R_cuv0b8aL16OZV5f	recurring	vague variable names/labels leading to difficulty with later use of the data for secondary projects	serious	Minor
+R_12tYv2Y5nec53EF	recurring	Poor variable and file naming. Never led to any loss except in time backtracking and working out what the variables/files refer to.	frequency	Low
+R_12tYv2Y5nec53EF	recurring	Poor variable and file naming. Never led to any loss except in time backtracking and working out what the variables/files refer to.	serious	Minor
+R_Oa2svKJHachQHnP	recurring	1. When raw data such as questionnaires are changed  into electronic data,    the procedure often makes mistakes. 2. Compute data in SPSS sometime make mistakes.	frequency	High
+R_Oa2svKJHachQHnP	recurring	1. When raw data such as questionnaires are changed  into electronic data,    the procedure often makes mistakes. 2. Compute data in SPSS sometime make mistakes.	serious	Moderate
+R_3iqkqyCtuHBhFsN	recurring	errors in the data set (variable label, incorrect formula, data entry...)	frequency	Moderate
+R_3iqkqyCtuHBhFsN	recurring	errors in the data set (variable label, incorrect formula, data entry...)	serious	Minor
+R_2PnFe0m2znDlqh0	recurring	Variable names or labels are too vague requiring the researcher to reconstruct then from the raw data.	frequency	Low
+R_2PnFe0m2znDlqh0	recurring	Variable names or labels are too vague requiring the researcher to reconstruct then from the raw data.	serious	Minor
+R_2SeF9B5dnR5QZ1N	recurring	Miscopying of data from a spreadsheet to a statistical package	frequency	Low
+R_2SeF9B5dnR5QZ1N	recurring	Miscopying of data from a spreadsheet to a statistical package	serious	Minor
+R_2xWedLepVORUb2s	recurring	Variable names that are not informative.	frequency	Moderate
+R_2xWedLepVORUb2s	recurring	Variable names that are not informative.	serious	Minor
+R_1ditQMNo8bzXokM	recurring	Insufficient annotation in data files to easily revisit the data in the future when the project is out of mind.	frequency	Low
+R_1ditQMNo8bzXokM	recurring	Insufficient annotation in data files to easily revisit the data in the future when the project is out of mind.	serious	Minor
+R_2E6UbxqHIZGHdcc	recurring	Software error	frequency	Low
+R_2E6UbxqHIZGHdcc	recurring	Software error	serious	Minor
+R_1dLyeBiPezAXaav	recurring	Computer generated data contained bad data because of programming error.	frequency	Low
+R_1dLyeBiPezAXaav	recurring	Computer generated data contained bad data because of programming error.	serious	Moderate
+R_3Eo3YsFvO2vplXR	recurring	occasionally cannot locate original data notes from time when observations were made	frequency	Low
+R_3Eo3YsFvO2vplXR	recurring	occasionally cannot locate original data notes from time when observations were made	serious	Minor
+R_XR4vuDYVTZUdDxf	recurring	Overwriting of measured variables Loss of datasets due to storage mistakes	frequency	Very Low
+R_XR4vuDYVTZUdDxf	recurring	Overwriting of measured variables Loss of datasets due to storage mistakes	serious	Minor
+R_2Ejl6F6HzHMaous	recurring	We forgot to include several important questions and had to start the project over!	frequency	Very Low
+R_2Ejl6F6HzHMaous	recurring	We forgot to include several important questions and had to start the project over!	serious	Minor
+R_2coTxGpiZoEAjV9	recurring	Errors in the configuration of parameters in simulations where different parameter values are evaluated.	frequency	Low
+R_2coTxGpiZoEAjV9	recurring	Errors in the configuration of parameters in simulations where different parameter values are evaluated.	serious	Minor
+R_3gYp4TFBsLfhLvH	recurring	Clarity on labeling variables in SPSS; ease with which you can return to and re-analyze dataset.	frequency	Low
+R_3gYp4TFBsLfhLvH	recurring	Clarity on labeling variables in SPSS; ease with which you can return to and re-analyze dataset.	serious	Minor
+R_3hhX5mXtAv6AIHA	recurring	Included data for entities that should have been excluded; had to rerun analysis.	frequency	Low
+R_3hhX5mXtAv6AIHA	recurring	Included data for entities that should have been excluded; had to rerun analysis.	serious	Minor
+R_2uQIn0onTQYseK1	recurring	Not to meet dealines	frequency	Low
+R_2uQIn0onTQYseK1	recurring	Not to meet dealines	serious	Moderate
+R_2OTKjDgl6AvVwvh	recurring	Run analyses on old version of a dataset, but corrected it for the paper	frequency	Very Low
+R_2OTKjDgl6AvVwvh	recurring	Run analyses on old version of a dataset, but corrected it for the paper	serious	Minor
+R_2U4pgn1GCmJuGaU	recurring	uninformative data labeling	frequency	Low
+R_2U4pgn1GCmJuGaU	recurring	uninformative data labeling	serious	Minor
+R_2cth4XQgNMWuwGv	recurring	Incorrect transcription of data from EMR to spreadsheet.	frequency	High
+R_2cth4XQgNMWuwGv	recurring	Incorrect transcription of data from EMR to spreadsheet.	serious	Minor
+R_27BdmSNc3E6ZlFf	recurring	Entry error when moving data from paper format to digital format. We are not 100% digital with entry logs with back-checks. Moreover, no data are intermediately saved. All analyses are done on raw data that are never changed.	frequency	Very Low
+R_27BdmSNc3E6ZlFf	recurring	Entry error when moving data from paper format to digital format. We are not 100% digital with entry logs with back-checks. Moreover, no data are intermediately saved. All analyses are done on raw data that are never changed.	serious	Minor
+R_1o0l1vb0QVWOutj	recurring	Mistake in programming of an experiment, so that not all conditions were presented to all subjects.	frequency	Very Low
+R_1o0l1vb0QVWOutj	recurring	Mistake in programming of an experiment, so that not all conditions were presented to all subjects.	serious	Moderate
+R_1K7lVatqDC1d3dz	recurring	data loss due to storage error	frequency	Low
+R_1K7lVatqDC1d3dz	recurring	data loss due to storage error	serious	Minor
+R_3EJQO3OBaZ6CZKY	recurring	Lost of data that was important for the research	frequency	Low
+R_3EJQO3OBaZ6CZKY	recurring	Lost of data that was important for the research	serious	Minor
+R_4Z9S8WkR6ezQJ7H	recurring	mistakes in associating numbers to cases, miscalculations, wrong organisation of data in experimental conditions, wrongly reporting numbers. Errors corrected as far as I am aware	frequency	Low
+R_4Z9S8WkR6ezQJ7H	recurring	mistakes in associating numbers to cases, miscalculations, wrong organisation of data in experimental conditions, wrongly reporting numbers. Errors corrected as far as I am aware	serious	Minor
+R_1K26DA5M0mERwZH	recurring	Transformation of a variable	frequency	Very Low
+R_1K26DA5M0mERwZH	recurring	Transformation of a variable	serious	Minor
+R_2yg8jYMAU5WqMfg	recurring	I took over a project some years ago with useless variable names and no log for what had happened in that data set before my time. I believe that would be a common problem.	frequency	Moderate
+R_2yg8jYMAU5WqMfg	recurring	I took over a project some years ago with useless variable names and no log for what had happened in that data set before my time. I believe that would be a common problem.	serious	Moderate
+R_DBlXUQLPEwonUSB	recurring	Lost data because of a power failure.	frequency	Very Low
+R_DBlXUQLPEwonUSB	recurring	Lost data because of a power failure.	serious	Moderate
+R_3lMoowEYi5yWYMA	recurring	An older version with older data was worked on AND submitted to a journal by a co-author, although he did have the most recent version from me.	frequency	Low
+R_3lMoowEYi5yWYMA	recurring	An older version with older data was worked on AND submitted to a journal by a co-author, although he did have the most recent version from me.	serious	Moderate
+R_3hngidIEckW7lKF	recurring	Analysing the wrong subset of data (e.g. incorrectly selected participants, left out some participants, etc)	frequency	Very Low
+R_3hngidIEckW7lKF	recurring	Analysing the wrong subset of data (e.g. incorrectly selected participants, left out some participants, etc)	serious	Minor
+R_1ogVGCkvyaVYrta	recurring	recode of wrong item within a questionnaire (survey research - item should have been reflected)	frequency	Low
+R_1ogVGCkvyaVYrta	recurring	recode of wrong item within a questionnaire (survey research - item should have been reflected)	serious	Insignificant
+R_1hLr7MYgQpK05AT	recurring	decimal point goes to the wrong way.	frequency	Low
+R_1hLr7MYgQpK05AT	recurring	decimal point goes to the wrong way.	serious	Minor
+R_3dGuyqX1cMJFz7i	recurring	Incorrectly defining regressors for functional MRI data analysis.	frequency	Low
+R_3dGuyqX1cMJFz7i	recurring	Incorrectly defining regressors for functional MRI data analysis.	serious	Moderate
+R_3foClSs4q55ssEp	recurring	Use of old excel template to enter new data, with mixture of old/new data indistinguishable. New lab directive to use only data-wiped templates for each new experiment.	frequency	Low
+R_3foClSs4q55ssEp	recurring	Use of old excel template to enter new data, with mixture of old/new data indistinguishable. New lab directive to use only data-wiped templates for each new experiment.	serious	Moderate
+R_10uWnIrva7R5dgS	recurring	We applied the wrong precedence when resolving values for one variable which could be specified more than once.	frequency	Low
+R_10uWnIrva7R5dgS	recurring	We applied the wrong precedence when resolving values for one variable which could be specified more than once.	serious	Moderate
+R_7PVRV8S0OqzQTnz	recurring	We scheduled multiple participants for the same data collection session time.	frequency	Very Low
+R_7PVRV8S0OqzQTnz	recurring	We scheduled multiple participants for the same data collection session time.	serious	Minor
+R_1nZmLTBp6dPXqgm	recurring	"""wrong"" calculations"	frequency	Low
+R_1nZmLTBp6dPXqgm	recurring	"""wrong"" calculations"	serious	Minor
+R_Cfzi2YLDaPWFnRT	recurring	In qualtrics, error in programming randomizer for different conditions, which resulted in datasets that were incomplete and we didn't not use.	frequency	Low
+R_Cfzi2YLDaPWFnRT	recurring	In qualtrics, error in programming randomizer for different conditions, which resulted in datasets that were incomplete and we didn't not use.	serious	Major
+R_3KGCgGY4I8KXp24	recurring	'-including participants that weren't supposed to be included in the analysis because of inaccurate records to signify their participation (e.g. including someone who consented and withdrew prior to completing assessments when I was supposed to include people who consented and withdrew prior to participating in the group) -Using an outdated data set because I maintained multiple superseded datasets with similar names in the same folder	frequency	Low
+R_3KGCgGY4I8KXp24	recurring	'-including participants that weren't supposed to be included in the analysis because of inaccurate records to signify their participation (e.g. including someone who consented and withdrew prior to completing assessments when I was supposed to include people who consented and withdrew prior to participating in the group) -Using an outdated data set because I maintained multiple superseded datasets with similar names in the same folder	serious	Minor
+R_2dlHcPXBYfhftFW	recurring	Poor variable names, poor metadata management, differences in test administration between experimenters	frequency	Low
+R_2dlHcPXBYfhftFW	recurring	Poor variable names, poor metadata management, differences in test administration between experimenters	serious	Minor
+R_wRyMeFjM4H8I52h	recurring	Respondent ID is not entirely unique	frequency	Low
+R_wRyMeFjM4H8I52h	recurring	Respondent ID is not entirely unique	serious	Minor
+R_3PHKJQqRQle1gb0	recurring	Unintended data analysis errors	frequency	Very Low
+R_3PHKJQqRQle1gb0	recurring	Unintended data analysis errors	serious	Minor
+R_3hgej8gmajD0d9j	recurring	Merged data incorrectly so that some data were lost	frequency	Low
+R_3hgej8gmajD0d9j	recurring	Merged data incorrectly so that some data were lost	serious	Moderate
+R_2bQpSx7HPHcLyoX	recurring	'- copy and paste material in the article text to keep structure and then forgot to change some ino - saved an excerpt of data/text without relabelling the file and thereby lost valuable data/text	frequency	Low
+R_2bQpSx7HPHcLyoX	recurring	'- copy and paste material in the article text to keep structure and then forgot to change some ino - saved an excerpt of data/text without relabelling the file and thereby lost valuable data/text	serious	Minor
+R_6hV0lkImqJ9lbCV	recurring	Got the coding of a variable wrong so the correlation between it and another variable was backwards (- instead of +)	frequency	Low
+R_6hV0lkImqJ9lbCV	recurring	Got the coding of a variable wrong so the correlation between it and another variable was backwards (- instead of +)	serious	Moderate
+R_2fiypF20DbX0IU0	recurring	Variable names not being descriptive enough and failing to include value labels for all variables.	frequency	Low
+R_2fiypF20DbX0IU0	recurring	Variable names not being descriptive enough and failing to include value labels for all variables.	serious	Minor
+R_2duJO8zk4AgeXgg	recurring	I think that we had issues with calculating appropriately omega values for a survey study and then we wrote an erratum about it. We look at each others analysis and check it, so we have a lot of errors, but with these multiperson checks I believe that much less go into the manuscripts.	frequency	Low
+R_2duJO8zk4AgeXgg	recurring	I think that we had issues with calculating appropriately omega values for a survey study and then we wrote an erratum about it. We look at each others analysis and check it, so we have a lot of errors, but with these multiperson checks I believe that much less go into the manuscripts.	serious	Minor
+R_1qWnEsHwB47T5gC	recurring	Use of uninformative variable names; no consistent file structure for different subprojects.	frequency	Moderate
+R_1qWnEsHwB47T5gC	recurring	Use of uninformative variable names; no consistent file structure for different subprojects.	serious	Minor
+R_2zjVTdbw0kClOqk	recurring	Failing to document precisely changes made to the dataset, making it difficult to reproduce/replicate analyses and results.	frequency	Low
+R_2zjVTdbw0kClOqk	recurring	Failing to document precisely changes made to the dataset, making it difficult to reproduce/replicate analyses and results.	serious	Minor
+R_T6OrGQxMHJekFCF	recurring	the software overwrote the same variable so only the last value was recorded.	frequency	Low
+R_T6OrGQxMHJekFCF	recurring	the software overwrote the same variable so only the last value was recorded.	serious	Minor
+R_1CKGCablLVpWzNT	recurring	FAILURE TO BACK-UP DATA FILES AND RELATED SYNTAX	frequency	Low
+R_1CKGCablLVpWzNT	recurring	FAILURE TO BACK-UP DATA FILES AND RELATED SYNTAX	serious	Major
+R_2yfG7EjmzWsyWxx	recurring	Sorting variables or splitting the file and then not returning to the default; Not saving the cleaned and imputed data file used in specific analyses, and later having difficulties to reproduce the file used in the analyses	frequency	Moderate
+R_2yfG7EjmzWsyWxx	recurring	Sorting variables or splitting the file and then not returning to the default; Not saving the cleaned and imputed data file used in specific analyses, and later having difficulties to reproduce the file used in the analyses	serious	Minor
+R_1LNc6THhR7JwDJ5	recurring	Losing code used to run analyses because of a system crash or using informative label names.	frequency	Low
+R_1LNc6THhR7JwDJ5	recurring	Losing code used to run analyses because of a system crash or using informative label names.	serious	Minor
+R_2WGQonc2eGviLKq	recurring	Data entry/data copying error	frequency	Low
+R_2WGQonc2eGviLKq	recurring	Data entry/data copying error	serious	Minor
+R_3fuztQ0HcuQmyVK	recurring	Same data came from different sources. Data processing software were developed 20+ years ago. Programmers do not know how apply new data processing algorithms to fix problems.	frequency	Very High
+R_3fuztQ0HcuQmyVK	recurring	Same data came from different sources. Data processing software were developed 20+ years ago. Programmers do not know how apply new data processing algorithms to fix problems.	serious	Moderate
+R_qJHLDJdVTdBowI9	recurring	Wrong entry in the dataset or incomplete/incorrect selection of the dataset	frequency	Low
+R_qJHLDJdVTdBowI9	recurring	Wrong entry in the dataset or incomplete/incorrect selection of the dataset	serious	Minor
+R_3MxuXev3SJ36Py0	recurring	having to re-do everything because of incorrect coding ( but not loss because we saved the original file)   not knowing while file was the correct one or if responses had already been coded   transferring only certain lines of data and the transfer only working for half the line	frequency	Low
+R_3MxuXev3SJ36Py0	recurring	having to re-do everything because of incorrect coding ( but not loss because we saved the original file)   not knowing while file was the correct one or if responses had already been coded   transferring only certain lines of data and the transfer only working for half the line	serious	Minor
+R_1rH1NztEvUbUmp0	recurring	names or details of participants were mis-reported	frequency	Low
+R_1rH1NztEvUbUmp0	recurring	names or details of participants were mis-reported	serious	Moderate
+R_Xp37cWl6slWgFWN	recurring	lost of data, wrong data	frequency	Low
+R_Xp37cWl6slWgFWN	recurring	lost of data, wrong data	serious	Moderate
+R_x8Z2fY3NuG06l69	recurring	Incomplete data collection (survey missing some questions),	frequency	Moderate
+R_x8Z2fY3NuG06l69	recurring	Incomplete data collection (survey missing some questions),	serious	Moderate
+R_YPHfNIaeRchw0PT	recurring	The audio-recording device did not record properly and I only noticed that well into the session.	frequency	Low
+R_YPHfNIaeRchw0PT	recurring	The audio-recording device did not record properly and I only noticed that well into the session.	serious	Minor
+R_1HemYlCts4kwav2	recurring	Wrong data input, wrong identifier for data file	frequency	Low
+R_1HemYlCts4kwav2	recurring	Wrong data input, wrong identifier for data file	serious	Insignificant
+R_2EBoQ5pteGRidTo	recurring	It was an incomplete download of responses which led to an error in calculating derived variable scores. But the mistake was discovered through running descriptive statistics and could be corrected.	frequency	Low
+R_2EBoQ5pteGRidTo	recurring	It was an incomplete download of responses which led to an error in calculating derived variable scores. But the mistake was discovered through running descriptive statistics and could be corrected.	serious	Insignificant
+R_0ibVXbAiuoWoMWR	recurring	I don't use labs, so the most concerning issue for me is when people 'game' MTurk and it can be hard to tell if the data from one individual is used multiple times (they take the survey more than once).	frequency	Moderate
+R_0ibVXbAiuoWoMWR	recurring	I don't use labs, so the most concerning issue for me is when people 'game' MTurk and it can be hard to tell if the data from one individual is used multiple times (they take the survey more than once).	serious	Moderate
+R_3EKM0va9ntRVGxm	recurring	As I process data to reduce the number of variables, I can leave out a variable that I later realize I need. Also, if I have failed to document fully when I delete full observations.	frequency	Very Low
+R_3EKM0va9ntRVGxm	recurring	As I process data to reduce the number of variables, I can leave out a variable that I later realize I need. Also, if I have failed to document fully when I delete full observations.	serious	Moderate
+R_4Jx85V7Q7juO0rD	recurring	A calculated variable was not properly coded.	frequency	Very Low
+R_4Jx85V7Q7juO0rD	recurring	A calculated variable was not properly coded.	serious	Major
+R_vOfSDKH9m5bsxQl	recurring	Datasets are not always saved in one place, and - especially a few years - most often on people's own computers. This means that various versions of the 'same' set may be in existence, or datasets get lost (e.g. when a researcher leaves to another institute).	frequency	Low
+R_vOfSDKH9m5bsxQl	recurring	Datasets are not always saved in one place, and - especially a few years - most often on people's own computers. This means that various versions of the 'same' set may be in existence, or datasets get lost (e.g. when a researcher leaves to another institute).	serious	Moderate
+R_3kBPKtkLfMFdp7R	serious	In some cases, the field assistants neglected to record some of the data.	serious	Minor
+R_DuXE6py2mbqw7qV	serious	Wrong data used in part of a figure	serious	Minor
+R_1cZWGJtCZKD1ew4	serious	Mismatch of longitudinal data - attribution of later values to the wrong people.	serious	Major
+R_2Qy5UUJfVHXoWZV	serious	We have combined a large dataset but erroneously deleted a number of  important variables	serious	Minor
+R_3dMrKvR94hccB6c	serious	One experimenter performed data collection not according to the protocol, which was detected after several weeks and which led to uninterpretable data in almost half of the hitherto recorded subjects.	serious	Moderate
+R_25AfsUG4wphIkYO	serious	Not actually my team, but in a collaboration I have been involved in a coding error led to an experiment having to be re-run.	serious	Moderate
+R_xa49SUkv3DKQme5	serious	Coding error prevented data collection from an important variable for a whole experiment with 50 participants. The data had to be discarded.	serious	Moderate
+R_1Fsku9bfzuOnHlW	serious	Losing a full project	serious	Extreme
+R_T4VDquP5brp47AZ	serious	My fellow grad-student forget to collect gender data and had to throw out an entire term's worth of data.	serious	Moderate
+R_1ODLj4FHdxhK3G1	serious	One Data-Prep Step falsely deleted a third of the cases of interest	serious	Moderate
+R_31oXJfKSNMz4pNg	serious	Reported descriptive results in a published table that were for a subset of data instead of full sample	serious	Minor
+R_1o7utbGjr0CiW5p	serious	The axes on a graph were incorrectly labeled in a publication.	serious	Moderate
+R_2YSaYiPeTrGttp8	serious	RA had been inputting data by hand incorrectly and this all had to be redone.	serious	Moderate
+R_0Jku2nGizREQbhn	serious	Computer not recording data diluting data collection	serious	Moderate
+R_2at1V67diUQvkc1	serious	Longitudinal data collected with no way of linking repeated measures to individual participants.	serious	Extreme
+R_1QJxQZXirFtXONG	serious	we also lost complete data sets after responsible researcher left univ	serious	Major
+R_3ej0du4jNp47nCF	serious	A post-doc researcher in the team did errors at several stages of a complex project combining different imaging techniques (order of the protocol, analysis that were used for the second stage of the protocol, etc.).	serious	Major
+R_2wBKpgElsyjBV0b	serious	did not write correct code for a project	serious	Moderate
+R_RxBYZwBUfiAACBP	serious	level of expression of RNAm erroneous	serious	Moderate
+R_sKV54jfDQ68Jx05	serious	Conflated correlation	serious	Moderate
+R_RgJqa1XTk8Aexax	serious	forgot to include a scale in the questionnaire	serious	Moderate
+R_3sb7E8EQLjHDtj6	serious	data processing error - a dependent variable was incorrectly calculated from raw data	serious	Minor
+R_30oeLXyDGAJEwhS	serious	A student used two different versions of a manipulation check for her dissertation and was unable to collapse them into one measure.	serious	Major
+R_3KJ9fDQ34vAsAxJ	serious	Our data entry software re-coded missing values to a perfect score on a measure.	serious	Major
+R_339JiVn0BrXV8jw	serious	Grammar	serious	Minor
+R_Q6a2dBgrDtQZrcl	serious	We were test-retesting a measure, and found no effect whatsoever, so we gave up on it. A year later the PhD candidate realized it was because she forgot to reverse code half the retest and the data came out beautiful.	serious	Major
+R_23eJfXyDulGeJUx	serious	Students failed to return coded variables when they finish their project	serious	Moderate
+R_2afAwJhFERuWpcR	serious	We had multiple participant teams with the same tracking number from the same day and had to go back to the raw experimental materials to figure out which was which.  No big deal, except we had already started analyses and had to redo everything.	serious	Minor
+R_1C7oJP4CkRa3cdP	serious	Programming errors	serious	Moderate
+R_yD8d1A59bQGBOut	serious	We did analyses on a data-set with an dependent variable that was not correctly calculated from raw eye-tracking data.	serious	Moderate
+R_1ojdoHkyRAEhaO9	serious	Mislabeled columns when moving data between excel sheets; did not notice for a couple of months (data were not submitted for publication yet); had to rewrite part of manuscript and re-do analysis	serious	Moderate
+R_1FzFMxxfXX2SLGw	serious	Failed to have stimulus presentation software record one of the dependent variables of interest	serious	Extreme
+R_1kTbPJmOD0m8h6r	serious	Old version of database	serious	Moderate
+R_qITgjpy8nUlimv7	serious	The use of the wrong variables in an analysis.	serious	Minor
+R_2agYT2RkPZaarIL	serious	mis-coding of data that required re-coding and re-analysis	serious	Minor
+R_2RVBEeR4DZhBco5	serious	I recoded the items for my variable wrong, leading to the opposite direction of the relationship	serious	Minor
+R_2aQPnJKQNgJw2Ob	serious	Failure to properly map census areas to postal codes led to a false conclusion that was included in a grant submission and almost published, before we caught the error.	serious	Major
+R_1QLOiVySy2bKLTZ	serious	Miscoding of a variable leading to an erroneous conclusion.	serious	Moderate
+R_2YQViBTzxB4Z58d	serious	About 24 participants tested with no data collected.	serious	Moderate
+R_3G7c4213rSP4bPF	serious	improper saving of results from text processing scripts	serious	Major
+R_XiYRBKDZ1f0f0wV	serious	We failed to include 25% of items in a scale for a study.	serious	Moderate
+R_1LXOUF7PqQkhz6o	serious	Inconsistent participant numbering.	serious	Minor
+R_3lrEYOs4D0F0s0k	serious	Point 3 above (failure to retain critical baseline variable data during screening)	serious	Moderate
+R_1mKI2PUxRHLULTJ	serious	mislabelled and poorly structured data from a complex project.	serious	Moderate
+R_3RlLuQSE5pu1tb0	serious	No record of source of data, no idea where it was from	serious	Minor
+R_2doLrFMsPU9gioB	serious	A couple where there is a day loss of coding. Re-writing the coding likely improves it.	serious	Insignificant
+R_uwilEnZKlzMWNLH	serious	Data management	serious	Major
+R_1lhqYV1QwEPPpZy	serious	working on the wrong data set	serious	Minor
+R_1dyHBENaRUWZjBd	serious	In a developmental study, the randomization was set up incorrectly, such that some participants were saw conditions multiple times erroneously. We lost ~10 participants worth of data as a result.	serious	Moderate
+R_2VmXtXlfGpTVyxw	serious	Misleading cut-paste from one file to another.	serious	Insignificant
+R_XYUxOqaUOdv9F97	serious	Published a scoring key that contained errors.	serious	Moderate
+R_2Wxs9NL5pTh2Ko0	serious	We were provided with an incorrect weighting variable by a third party	serious	Major
+R_eYdELbJBuvjhdyF	serious	Software error- data not collected	serious	Moderate
+R_1IH7qhVEGwzF6pZ	serious	The code assigned to participants was a bit confusing.	serious	Major
+R_1FwvnH84InncNXX	serious	I have a certain way of dummy coding in that the experimental condition is coded as a zero while the control condition is coded as a one. A graduate student who I work with prefers the opposite. This has caused some problems.	serious	Minor
+R_26mVWrTn2jxXvOy	serious	Error in trial counts on a study, ran ~8 participants before error was found	serious	Moderate
+R_1IlTZYBSAO0Dcuy	serious	Physically deleting data from from participants not eligible for our study (rather than typing code to remove them), and not saving original raw data.	serious	Major
+R_2Yrmw7uMu8U6eEA	serious	Incorrect registration of participant responses	serious	Major
+R_2VpQNBQ0y3Xk4v1	serious	Broken server led to loss of data	serious	Moderate
+R_1qgGU0J3OX0g6t9	serious	analyses had to be re-done	serious	Minor
+R_33qjViTvNv9H48m	serious	Incorrect digital form that led to incorrect data.	serious	Moderate
+R_3ssjvVtm5kqPBor	serious	Error in formula	serious	Major
+R_3gTq4TA8Trl2ZHf	serious	Error in data analysis with a erroneous dataset	serious	Major
+R_DSGTNrt5b3NfEyd	serious	We often check data for validation; I think that the most serious mistake we faced was a formula error leading to strange values in one of our dependent variables. I took some time to figure out why the results were so hard to predict.	serious	Moderate
+R_2czHmrjciqTkBt0	serious	Loss of raw MRI images	serious	Moderate
+R_1NDGa4iJhjM1zX9	serious	Use of different versions of an instrument in files that were to be merged.	serious	Major
+R_3fjxxi7YlurfKXO	serious	Thirty years after publication of field study, I wanted to re-analyze the data.  Sadly, the data were lost because of office moves.  Thus, the lost data precludes subsequent re-analyses.	serious	Minor
+R_pDGuvxLRGbALOtH	serious	mistakes in the data analysis	serious	Minor
+R_BG2zCrSq72cu5oJ	serious	All of the data collected by one of the experimenters has to be discarded because the experimenter misunderstood part of the protocol.	serious	Moderate
+R_2TRUjQ7kYqmtIno	serious	A variable was reverse-coded when it was not supposed to be	serious	Moderate
+R_3saEuW4TTviBwnM	serious	mostly just time-consuming errors - I work with undergraduates and they do not value the process or the goal sufficiently	serious	Moderate
+R_3qR5qywuGiliJsm	serious	Not sure if this counts, but survey was programmed incorrectly, which meant a big portion of the sample didn't take an important pre-test and had to be excluded.	serious	Moderate
+R_3j27GQZJCc95DpV	serious	Different databases	serious	Moderate
+R_1ZdEcLWKTBdeOgV	serious	We collected two different versions of a survey and mistakenly reported data that was missing version one responses.	serious	Minor
+R_2EggCQnejEtHW3a	serious	My graduate student and I wrote a paper based on his analysis of a data set.  I wanted to do a more sensitive analysis but when I went back to the data, I could not replicate what he had done.  We met and I realized he used the pre-coded version of an important variable.  This negated the ability to submit the paper for publication consideration.  It was my fault as I should have double checked all analyses before beginning work on a manuscript that we wouldn't be able to publish anyway.	serious	Moderate
+R_2BgSfuqikIO1v0a	serious	We overwrote new data with old data.	serious	Moderate
+R_2QVQCBFhAeeJNZP	serious	Loss of demographic information for participants.	serious	Minor
+R_3kjMa6nu9SI2Zxt	serious	Happily, I have not had a serious data-related mistake that persisted to the finally submitted article. Probably the most serious was when I led a multisite replication project, and one lab collected their large sample prematurely using the wrong questionnaire materials, meaning they had to re-run on new subjects.	serious	Moderate
+R_3rJuaVQjfJOizzO	serious	Broken equipment leading to data loss.	serious	Major
+R_RDng1vjQz0Eut2x	serious	Wrong values entered for outcomes of a patricularvassrssment	serious	Moderate
+R_1fkEC9uIzUqHPXF	serious	PhD student leaves the field, deletes dropbox account with all data and code. Some of it was backed up, some wasn't.	serious	Moderate
+R_Ugcj0Hs9IX1A3WV	serious	Failed to appropriately document analysis syntax	serious	Major
+R_3jZ1VC6ejnLzmYa	serious	A researcher coded categorical data as interval data	serious	Extreme
+R_yDdfJsIfeCY3yRr	serious	One time a formula error (not pasting all the way down) made the results look WAY bigger/more impactful than they actually were.  Wrote the manuscript for a special issue, and the day before it was due discovered the error.  The conclusions were in the same direction but much smaller.  Had to re-write a lot of the paper very quickly (since the language needed to change with the more moderate results) and redo all analyses and graphs.  Fortunately have never (yet, knowingly) presented or submitted findings anywhere with such mistakes - I always re-check things and usually find and fix such errors early.	serious	Minor
+R_2dSg2D5VTNB7RVY	serious	Miscoded categorical variables	serious	Moderate
+R_xaBv50AriU5pPt7	serious	Incorrect coding/labeling of missing values which significantly skewed results.	serious	Minor
+R_2SBjtXj9EjzI7Sn	serious	Had to drop some coders' codings.	serious	Insignificant
+R_AmI4PaDaAItn0MF	serious	I mistakenly dropped 25% of observations from the analysis when, in fact, these 25% were quite informative for the research question.	serious	Major
+R_1EKvVZl7B5pr465	serious	Absence of a numerical data in a case of population sample	serious	Minor
+R_T1kUZzmLbVaqMQp	serious	The one described before	serious	Moderate
+R_3szfXpJiLetcwwr	serious	Loss of dataset	serious	Major
+R_WDKxkIWKqWPUbqV	serious	transcription error	serious	Insignificant
+R_1pRrkSmdJGmTwHk	serious	Data from old projects lost because old SPSS files will not open. Data was not stored in another format.	serious	Minor
+R_31N0JcnckZmHXuH	serious	Erroneous results reported in a published abstract due to a filtering error.	serious	Moderate
+R_T5iKcDfWBpqUOaJ	serious	Lost the master file necessary for data alignment.	serious	Moderate
+R_2U9jvXCLvYdgF4v	serious	Merged wrong dataset into the master version, but did not realize we were working on older/less correct dataset for two months.	serious	Moderate
+R_3CWadSWEbwUhhrs	serious	1. in research about personality and diabetes control we apply personality questionnaire to the sample which could not understand the questions; data were unreliable and we abandoned this study; 2. internet study about bulb-flesh memory included survey which forced participants to answer all of the questions in order to proceed; it turns out that many participants quit before they completed the whole survey	serious	Moderate
+R_1Kp6yZnGSG4gEcP	serious	corruption of data files	serious	Minor
+R_3JgdVz92UzIXsDf	serious	I programmed a series of images to display randomly to participants on the screen (three images representing three different conditions, placed in a random configuration on the screen, participants had to choose one of these on each trial). I recorded where on the screen participants clicked, but somehow managed to not record which image was where on which trial, so I couldn't actually triangulate back to the image chosen on each trial.	serious	Moderate
+R_Ajw5jmJ8M7DobyF	serious	Ambiguous wording of questionnaire item that precluded interpretation of data relative to the hypotheses.	serious	Major
+R_2zHk3lrt2viQjzY	serious	Loss of data	serious	Minor
+R_2VQJaAMQ7x7b0Vc	serious	Error in data recording on a small-N patient-based study, so losing data from even 1 participant was somewhat significant.	serious	Moderate
+R_3pgaQNfj5tISZ0r	serious	Lost some data stored in written form without entering in electronic form	serious	Major
+R_2cu4Vcaq8fXrGGw	serious	Someone neglected to notice a negative symbol; ie the results were the opposite of what we thought	serious	Moderate
+R_OvXfiWtDSp3WRdD	serious	Used the wrong version of a questionnaire for part of the data collection	serious	Moderate
+R_vCDw2trrlQggWnD	serious	Different variable names in study 1 versus the similar study 2 for the same questionnaire items.	serious	Moderate
+R_1FnQHiAFu95KLEA	serious	Data were not coded properly for a study variable, which led to 3 minor retractions	serious	Moderate
+R_3lFbOeEkr2aGW1f	serious	Time spent analyzing a data set that had been corrupted.	serious	Minor
+R_2YKRrPH6SwOg1i9	serious	Copy/paste error misaligned rows of data and incorrectly changed the identity of the subjects associated with each dataset	serious	Moderate
+R_2aKnSakmSAQuXYg	serious	An undergraduate research assistant fabricated data.	serious	Moderate
+R_6gLIVQF1l9WfwFH	serious	Programming error.	serious	Moderate
+R_2WVyCoeuAAHCNin	serious	Omission of scale in survey	serious	Moderate
+R_AFdMpLX9YukUDqV	serious	Coding mistake that resulted in wrong conclusions in a paper	serious	Minor
+R_3fAw2UE7epkUpRF	serious	There was an error with the software that generated unique ids and it created duplicate unique ids causing us to lose data for 130 respondents and dropping our sample from 200 to 70!!!!	serious	Moderate
+R_3jeZvxEXWjMiPoU	serious	Making some errors in programming experiment.	serious	Minor
+R_2awtub9gT0lm0Nq	serious	Reverse encoding of questionnaire items	serious	Major
+R_3s5IM3bGbNtc4XU	serious	No real mistakes, just difficult to find and understand old data.	serious	Minor
+R_73C5WonwTfcN8Wt	serious	misalignment of data files	serious	Moderate
+R_29tEljEKBrsztMe	serious	In moving a questionnaire between different qualtrics surveys the coded order of the items had changed and the SPSS syntax thus did not fit. Realized that only after writing a draft of the paper... which had to be substantially changed based on the new analyses.	serious	Major
+R_SH3w71pRCZDwotH	serious	Someone had filled a SPSS data sheet in a way that two values were in single cell. Like 4 and 2 should be next to each other but there was 42 and an empty cell. Easily detected and removed.	serious	Insignificant
+R_3fW2vvpojJLV3ZS	serious	Incorrect labelling of a variable.	serious	Moderate
+R_1g6hYU8eXreCTSC	serious	Inappropriate labelling of participants leading to confusion when aggregating data from different sources	serious	Major
+R_ysSpq9fCGv43WI9	serious	Problems with the labels of variables	serious	Minor
+R_vTAtDgS8N64qWDn	serious	Some columns of data got mixed when moving data from one software to another	serious	Moderate
+R_d9XxjKNfZKBlcv7	serious	An entire dataset was collected without a thorough check of the stimulus presentation code. This meant that key pieces of the data were not collected. The dataset had to be recollected.	serious	Moderate
+R_1gpx3ioVAlVTipo	serious	A research assistant collecting the data used by mistake cut-copy instead of copy-paste from the data file to her USB stick, which she then succeeded to put in the washing machine together with her jeans, resulting in significant loss of data. As a result, we haven't published data from that project.	serious	Major
+R_3NDG6QfrooWuJHa	serious	I remember a programming error that led to the loss of a few data sets (becoming useless because of the error) and we have to test new participants In another case, a variable (a time interval) was coded incorrectly, so that we had to average across this variable instead of taking it as independent variable (we reported this explicitly in the paper)	serious	Moderate
+R_vktbxXQAdWGQUmJ	serious	'-selecting the wrong variables in data analysis, specially when the names are similar (i.e. WM1 vs. WM2.... etc)	serious	Major
+R_3jfk9WUBB1C9rE0	serious	Bad documentation of data preparation	serious	Moderate
+R_u7y4awKmx0P9uMx	serious	A missed experiment recording.	serious	Minor
+R_1rwuSrjs7gQ6lcy	serious	mix-up of data sets	serious	Minor
+R_ZJlgxWYq9ryKVJ7	serious	Analyzing  data where  missing vaklues were not identified as such, leading to the wrong conclusions	serious	Moderate
+R_1OCdfz7knYYZ9MF	serious	A wrong pre-processing of the data.	serious	Moderate
+R_3Gs4GQj61sS2krY	serious	Wrong hand-coding of data	serious	Moderate
+R_UW9udpehJoHvjeV	serious	overwriting data leading to data loss in a pre- posttest	serious	Major
+R_W2NaMKUGZou4QDv	serious	crash of disk and back-up disk, leading to re-run all analyses (with fortunately mostly saved prgrams elsewhere)	serious	Minor
+R_3R4baXz3l9QdAPM	serious	Coding mistake	serious	Major
+R_2Ve7LLcoPdCtYvA	serious	Mistakes in online analysis code, discovered during the review process. We had to run a new experiment to verify the results. Fortunately, we replicated the initial finding despite the error.	serious	Major
+R_3DjBdzkuQENmiq9	serious	failure to save part of the data	serious	Moderate
+R_Y6sggRDaiYKcxP3	serious	Importing wrong data files, running analysis but them realizing the error and having to redo it again.	serious	Minor
+R_bCncU5uFNDBQAdr	serious	The data of an entire experiment had to be discarded due to mistakes in the coding of the participants. It was impossible to identify the condition and the questionnaires from all each participant.	serious	Major
+R_XLNMXHwqdiwAG7D	serious	Lost data	serious	Moderate
+R_2OGsptCGC66lVpU	serious	Failure to record behavioral responses	serious	Moderate
+R_1myhPq5ghONho9x	serious	misclassification of  two countries in crossnational comparison of large N countries dataset	serious	Moderate
+R_3KK0Lq3IYGIcJXW	serious	For a qualitative study the recording equipment failed, so a interview was lost.	serious	Moderate
+R_1f1ptLmJabcd2gt	serious	error in merging two dataset	serious	Major
+R_DCZvMltMaiLK0zD	serious	data lost completely due to crash of a laptop with inappropriate backup	serious	Moderate
+R_24OvWIXid68ghSc	serious	In qualitative work, recorded over old interviews with new interviews (using micro-cassette dictaphone).	serious	Moderate
+R_28GI4y8PGiLchXU	serious	"Conjoint analysis where the ""cards"" were wrongly drafted, didn't correspond to the orthoplan"	serious	Major
+R_QaFTHFdsxfpvsFb	serious	I already gave an example of problems with data analysis. So, I'll describe another big problem I personally had during data collection. Last year I planned a diary study, which included two follow-ups one week and two weeks after the end of the diary. I used the services of a company that allows you to send surveys to participants' mobile phones and to schedule the surveys so that they are sent automatically. The last part of my data collection happened in August. There was an error in their system and my last follow-ups were not sent. I noticed relatively fast but it took them days to figure out what was wrong and still the problem was not resolved. This was a source of big frustration and also caused money and data loss.	serious	Moderate
+R_2WCr8uf7CKPkEXG	serious	Mistakes in Mplus coding	serious	Moderate
+R_1q8MrESM6Soe0YW	serious	lack of documentation, data loss (mostly technical failures), using different versions of statistical software with (apparently) different algorithms	serious	Minor
+R_1gwrKmk8l9dBdpR	serious	improper reverse of negatively worded items	serious	Minor
+R_roMs84O8u4uODHb	serious	"Fault in experimental software that caused absent responses to be conflated with responses where a participant selected ""not applicable"""	serious	Minor
+R_1163fpcUwH7iUdJ	serious	no serious mistakes (the reason is, I'm actually the one in my institude who is responsible for cleaning all datasets, and my approval is necessary before any manuscript based on a given dataset is submitted for publication). However, mixing up subjects and biased matching of different data of the same subject is an everyday matter	serious	Moderate
+R_1eru08S1SGWl5sm	serious	data was not stored and the computer which had the data crashed so we lossed the data	serious	Major
+R_27s7Eu21Kt5yIT0	serious	I used the randomizer in Qualtrics in the wrong way. I set it to 'show one out of three', where it should have been 'show all three in a random order'. We had to re-do the whole data collection.	serious	Major
+R_bCNgup74QHnWVKp	serious	unclear coding of experimental conditions  btw there is an error in the question...	serious	Moderate
+R_2RQVxhHSV8Q7y24	serious	Skipped a line when copying data from two files into one new one, so data from two experimental tasks was mismatched (i.e. assigned data from participant A to participant B by mistake)	serious	Minor
+R_3PHWLvpIcXFFKwW	serious	Errors in excel templates (formulas, cut and paste etc.) that have been individuated and corrected	serious	Minor
+R_OlZPqe0dnO5809z	serious	Testing participants who should have been excluded from the study.	serious	Minor
+R_2v92FujMnTNUKtU	serious	miscoding of a dependent variable	serious	Moderate
+R_cOwnko1L9iV7hWV	serious	late discovery of severe data problems in data provided with Excel sheets. Large amounts of re-readings of images necessary.	serious	Moderate
+R_Tn1zCiJl48M49bP	serious	"we once assigned subjects to 8 treatments and had two groups twice as large as the other six. Although that made it easier to implement the experiment, we ""forgot"" that it would complicate (a bit) the analysis because we inadvertantly creeated correlated treatments"	serious	Moderate
+R_3lQFyqvkeqxEGrv	serious	A student made a mistake in Qualtrics, resulting in weird scores: scores 11-13 on a five-point rating scale.	serious	Minor
+R_cIpsWQTCtqyVUd3	serious	Data not cleaned appropriately.	serious	Minor
+R_3n5YF1P3zkjw6mc	serious	Inappropriate data analysis /modeling or errors in code	serious	Major
+R_3iIFj59dgB5EXPO	serious	losing all the data for an experiment	serious	Moderate
+R_3ObQwLaOYCfdTA5	serious	Saying there is a significant difference between 2 groups, wrote the paper and when I reanalyzed I saw the mistake and cancelled the paper but so much time lost.	serious	Minor
+R_3PYR1LMIJhMu0dH	serious	I drafted a chunk of a paper based on faulty models and had to rewrite. (...and explain to my co-author, which was much more painful than the revised models and revised text)	serious	Moderate
+R_3hyCgqMpettYA1x	serious	We had a question that was mis-coded completely, and there was no way to backwards-reconstruct the correct variable.	serious	Major
+R_3lMjXKnwsOJomFW	serious	Omission of parts of a questionnaire.	serious	Moderate
+R_2U0jyqZlTh8B9Kk	serious	Using a non-standard script to calculate d'.	serious	Moderate
+R_2wu8pRf0QuCSjtC	serious	used excel grand means in a published plot rather than mean of participant means.	serious	Minor
+R_9QE69SV6ZqszWjT	serious	cannot replicate result from the data set used for a conference presentation	serious	Moderate
+R_1FgF6lRVQZUd4dW	serious	A colleague supplied a data set containing the wrong population of participants. I had to start from scratch on a completed manuscript.	serious	Minor
+R_3NQyiNXjL1vSMQs	serious	Genotyping errors on a large batch of samples	serious	Moderate
+R_uyxOp5bl3Heyi5P	serious	Forgetting to switch on video camera when recording study	serious	Minor
+R_2QJpoM0DXM2EnBw	serious	Data did not get recorded that should have been recorded.	serious	Moderate
+R_pN6MH6N2QB5EWkN	serious	Randomization of conditions was not done properly	serious	Minor
+R_3qlI1oXGPLbeopZ	serious	Project staff assessed students with the incorrect version of one of the measures.	serious	Moderate
+R_SHwFOwZ6VkkfpPr	serious	This was before my time, on a project I was not involved in, but I heard that one time the experimental group was coded as 0 and the comparison coded as 1. These designations are of course arbitrary but the conventionally they are coded the other way around. This led to the exact opposite conclusions.	serious	Extreme
+R_2QopNHjyyr0Mqmt	serious	Experimental software did not store all experimental condition labels when exporting results.	serious	Major
+R_u3udJvSlp9H0lYR	serious	Th most serious data-related mistake was missing items from a measure that should have been included in data collection. However, this was a secondary measure and not primary outcome.	serious	Minor
+R_UmqU7Ly1qrMBjHP	serious	I read the wrong series into a computer code and there was a graph in a draft of a paper that was wrong for a month or two.	serious	Minor
+R_1lz69PsdTmTnVVj	serious	A longitudinal study I was brought on to had not created unique IDs for participants in order to ensure data collected across years could be joined.	serious	Moderate
+R_2B8trxy4O95LIjg	serious	Using the wrong version of the code	serious	Moderate
+R_1LBzXSxZUeQ0CZr	serious	Mislaid imaging data resulting in data loss for several years until rediscovery	serious	Minor
+R_28ZpvpJ7r1GU67H	serious	Erros in coding the variables and setting cut-points for an instrument	serious	Moderate
+R_3HtqACEHt1G9A41	serious	Missing data is a bigger problem than actual data mistakes but the biggest mistake has been when I have transformed a variable without saving the original version in the data file in order to confirm that the recoding was done properly.	serious	Insignificant
+R_1g86ziif9LCszbc	serious	Code written to classify disease location, behavior, and extent was incorrect.	serious	Moderate
+R_2eOxrEvCxEutKdg	serious	we lose all the data of a project for an informatical error	serious	Major
+R_3rZAis4XlhhtCIC	serious	This is not the most common, but the most severe was that automatically generated random survey identifiers for a longitudinal study were accidentally overwritten by a new random identifier set.	serious	Major
+R_3fPi4q2MtOopLwb	serious	Improperly recording data.	serious	Minor
+R_2b2hwMGWs1zscoE	serious	Losing a recording from an interview in an office move	serious	Minor
+R_1jTgRy9bu3qIAQT	serious	Incorrect use of syntax to make new variables	serious	Minor
+R_1lAjGmRwoW52vY9	serious	unstructured back-up (every researcher has data from his/her experiment on a personal disk) and not well secured data collected with questionnaires (i.e., physical material)	serious	Minor
+R_2S2MjnRg4NsWUiX	serious	programming difficulties in data merging	serious	Moderate
+R_T1L5jxO15Adwh0d	serious	This was more of a hiccup than a mistake, but by specifying the data incorrectly prior to a giant imputation that was going to take days, we realized when the parameters of certain variables were surprising that something odd must've happened. It required an additional week of work and delayed us and was frustrating and made us question our trust in the person who made the mistake.	serious	Moderate
+R_2tiiMYZYEfHjyYN	serious	Overwrote a file containing raw data from a time-consuming study.	serious	Moderate
+R_wQKtnSahMtTdwZP	serious	After I entered all the data, when I was analysing the data, I realised I made a mistake. So, I had to introduce all the data again. I lost time, and it was frustrating. Luckily, I did not publish anything with the wrong data	serious	Moderate
+R_2pLz7xMojRnoxaR	serious	I wrote software to collect data, and an error in the database software wiped the entire database halfway through the project.	serious	Major
+R_1OB3foIsQJfflaa	serious	Data were not collected at post-intervention for participants who did not fully complete an online intervention (everyone was meant to provide data consistent with intention to treat)	serious	Moderate
+R_3D85dU8d9bWZJPh	serious	Failing to record responses. That is the participants respond but the software did not record the responses.	serious	Minor
+R_2YeLYCNeAEarPbX	serious	Most of them we caught - the danger are the ones that go unnoticed.  One student used a wrong table for sex assignment (which sex a bird is) - but we caught it.	serious	Moderate
+R_a9Gz8zHhb9u2pW1	serious	lack of version control, leading to difficulty with identifying which pre-processed data were the relevant data in an output (i.e. having various versions of summary data but not being quite sure which one related to a particular outcome). It made it very difficult to reconcile, when asked to dig out some prior data by a colleague, which data were the data they required.	serious	Minor
+R_ZdxANIAeQf93MkN	serious	fellow presented inaccurate data at internal grand rounds	serious	Moderate
+R_4YsljcjsHBXYfSx	serious	data not available after a researcher left the lab	serious	Major
+R_3gYOmNFTOaQXpvg	serious	Statistician was sloppy when creating an analytic dataset - wrong exclusion criteria applied, missing data which should have remained missing was recoded to zero, sample weights not applied to analysis.	serious	Major
+R_2rBzqM7U57tGlVk	serious	Forgot to mention something really important in the experimental instructions	serious	Major
+R_AEvIrQSSmJP5wFb	serious	we had to repeat introduction of the data in the database starting again from the raw data because no double was stored and a PC was stolen	serious	Moderate
+R_2e295rrs3RwuezQ	serious	1 participant out of 300 was MRI-scanned under a different number, and therefore not correctly linked to questionnaires (it was 2 instead of 1 subject). This kept recurring in multiple analyses as nobody was allowed to change the raw MRI data files.	serious	Insignificant
+R_2dvcIJA7IFmsu14	serious	I don't know if it counts as a data-related mistake, but we've had to re-run entire studies due to errors in experimental randomisation, e.g. not randomising something we thought we were randomising, or making a mistake in a complex randomisation.	serious	Major
+R_1UeEmajLZ4T4TwR	serious	overwriting data	serious	Moderate
+R_2bN2CmBCvy0RUPJ	serious	'- wrong merging/connecting of data from different parts of the study (e.g., studies with several waves)	serious	Moderate
+R_2eQCIvKgmCxnQis	serious	Erroneously omit a page of questionnaire in data collection	serious	Major
+R_1fd7fjBC84Nf1XI	serious	computer crashing without a dataset backup	serious	Minor
+R_77kUEfBZkO5ZyOl	serious	We had separate survey versions for men and women. We left a question off of the women's survey, so we were not able to test the hypothesis for women.	serious	Moderate
+R_2U5GjHtbKZYkmMX	serious	Not aligning the participant numbers well between two data-sets from one study.	serious	Minor
+R_CZELpbmkR2H9uz7	serious	Documentation failure of fMRI designs	serious	Moderate
+R_uyQjDVLfMF1DjEJ	serious	Losing data just like yourself and not being able to generate them again	serious	Moderate
+R_2bOijjUlRMWYs2t	serious	After anonymization, a file still mentioned names of patients	serious	Moderate
+R_Ub6KK5sJLnRBQBj	serious	After publication we realize the denominator in our risk measurements included a large sample of individuals who did not belong to the study sample. Fortunately the inclusion oh those extra individuals was not related to the exposure outcome	serious	Moderate
+R_2fg0p9dQFeyFqr6	serious	Privacy breach	serious	Major
+R_qJFDhrxLT2tTZ5v	serious	technical drawback inproper data collection	serious	Minor
+R_1d4iz3m2nqcDwm0	serious	incorrect data entry	serious	Minor
+R_e5USP07muEESOKB	serious	Wrote in an article that a variable was coded 0/1 when it was actually 1/2 so the mean of 1.4 didn’t make sense.	serious	Insignificant
+R_2wMmMiikRn9F6qX	serious	Subject ID coding inconsistencies, incompleteness, or translation errors	serious	Minor
+R_1Or7tDijbW5NQ1e	serious	Using non-current database	serious	Minor
+R_1EZ15sr0mldmdJS	serious	Lost data from a participant in a longitudinal study	serious	Moderate
+R_cuv0b8aL16OZV5f	serious	I'm new to a team led by another researcher. This team used the wrong consent version with an older project, discovered three years ago, leading to about half of the data being lost (i.e., taken by the IRB).	serious	Major
+R_12tYv2Y5nec53EF	serious	RA getting conditions mixed up. Had to exclude any data the RA collected as we were not confident it was correct.	serious	Moderate
+R_Oa2svKJHachQHnP	serious	In 2017, during the second revision  of my manuscript submitted to  Psychological Assessment,  my coauthor found the interview data have mistakes. So we corrected the wrong values of the results in the second revision. This made me very frustrated. I  felt extremely sad and lost face though the whole picture of the results were not change.	serious	Moderate
+R_3iqkqyCtuHBhFsN	serious	error in the data set for some observation due to a wrong formula	serious	Minor
+R_2PnFe0m2znDlqh0	serious	Raw data (audio records) were corrupted before entry and the data were lost.	serious	Moderate
+R_2SeF9B5dnR5QZ1N	serious	Using the same participant number for more than one individual	serious	Moderate
+R_2xWedLepVORUb2s	serious	Software failure leading to data collection loss.	serious	Moderate
+R_1ditQMNo8bzXokM	serious	Published a supplemental online file alongside an article that was incomplete (claimed to report all possible interactions among a set of variables, but erroneously excluded ~11% of them).	serious	Insignificant
+R_2E6UbxqHIZGHdcc	serious	Computer malfunctions	serious	Minor
+R_1dLyeBiPezAXaav	serious	Had to rerun analyses because the generated data were incorrect (Monte Carlo studies).	serious	Moderate
+R_3Eo3YsFvO2vplXR	serious	could not locate original some data sheets from extensive data file; missing sheets represented small portion of data, and data could be re-obtained from archived material, but at cost of staff time	serious	Minor
+R_XR4vuDYVTZUdDxf	serious	Loss of participant descriptive data	serious	Minor
+R_2Ejl6F6HzHMaous	serious	Data coding errors.	serious	Insignificant
+R_2coTxGpiZoEAjV9	serious	We were running a batch of many simulations, using a specified controller, just to discover that some strange outcomes were due to error in parameter configurations.	serious	Minor
+R_2uQIn0onTQYseK1	serious	Not to meet dealines	serious	Moderate
+R_2U4pgn1GCmJuGaU	serious	mislabeled data	serious	Minor
+R_2cth4XQgNMWuwGv	serious	Transmigration of data from one spreadsheet to another producing offset of data so data points were not associated with correct patients. This was identified and corrected.	serious	Moderate
+R_27BdmSNc3E6ZlFf	serious	All data was shifted in the column assigning condition meaning that all results (zero effects) where wrong. Our assigned Devils advocate noticed it the day before submission. The PhD student had to go back to the drawing table.	serious	Minor
+R_1K7lVatqDC1d3dz	serious	A contracted external CRO messed up two experimental groups.	serious	Major
+R_3EJQO3OBaZ6CZKY	serious	We coulden't find important data during 3 days, Finally we had them	serious	Minor
+R_4Z9S8WkR6ezQJ7H	serious	wrong stats	serious	Minor
+R_1K26DA5M0mERwZH	serious	Transformation of a variable	serious	Minor
+R_2yg8jYMAU5WqMfg	serious	Problems with filing, I would say. So, not assigning names to data sets and the like in a systematic manner, leading to confusion as to what is what.	serious	Moderate
+R_DBlXUQLPEwonUSB	serious	Loss of data due to a power failure	serious	Moderate
+R_3hngidIEckW7lKF	serious	Data error: realised that the definition of a run-in period in dataset was incorrectly defined (realisation occurred months after data analysis began), resulting in many analyses needing to be re-run (but the paper was not yet submitted, so the error was remedied before publication)	serious	Minor
+R_10uWnIrva7R5dgS	serious	Due to different ways of writing and reading data from a database system, it was possible that crucial information would be interpreted in a wrong way.	serious	Major
+R_1nZmLTBp6dPXqgm	serious	uncorrect calculations of some parameters	serious	Minor
+R_3KGCgGY4I8KXp24	serious	I've only just finished my phd so I don't have many examples to draw from... the previously mentioned ones are probably the only ones	serious	Minor
+R_2dlHcPXBYfhftFW	serious	One experimenter failed to measure a variable twice, as was his instructions.	serious	Major
+R_wRyMeFjM4H8I52h	serious	Wrong data input	serious	Moderate
+R_2bQpSx7HPHcLyoX	serious	"in a publication, for the central finding, we wrote ""higher"" instead of ""lower"""	serious	Minor
+R_6hV0lkImqJ9lbCV	serious	"This was long ago, ok, but the folks hired to code data, did such a sloppy job that 10% of the sample of married couples were ""same-sex"" even though only heterosexual couples were interviewed"	serious	Major
+R_2fiypF20DbX0IU0	serious	Not accounting for missing data values. That messed things up quite a bit and it took some sleuthing to figure out the wonky patterns.	serious	Minor
+R_2duJO8zk4AgeXgg	serious	There was a mediation analysis in which we had an error, it did not influence the main message of the paper, just the model we set up was not ok. The other was the omega, that I mentioned earlier. In this case as we used multiple measures of reliability, it was not that bad.	serious	Moderate
+R_1qWnEsHwB47T5gC	serious	In a study where results had to be annotated and coded, the coder made a number of seriour mistakes that were noticed too late.	serious	Moderate
+R_T6OrGQxMHJekFCF	serious	The software provided incorrect feedback to subjects in the experiment.	serious	Moderate
+R_2yfG7EjmzWsyWxx	serious	Difficulty in locating/ matching the answers of some participants in longitudinal studies	serious	Minor
+R_1LNc6THhR7JwDJ5	serious	Someone on my data team forgot to bring the surveys for the study for subjects to fill out (or forgot to ask subjects to fill them out) - so instead we had to email them to fill it out resulting in a reduction in the number of people who responded.	serious	Moderate
+R_2WGQonc2eGviLKq	serious	Subject data files exported with wrong filter settings for calculating variable	serious	Minor
+R_3fuztQ0HcuQmyVK	serious	Database contains unknown amount of duplicates	serious	Moderate
+R_qJHLDJdVTdBowI9	serious	Nothing really serious. Statistical analyses had to be re run three times after discovering that some entries were not correct	serious	Minor
+R_Xp37cWl6slWgFWN	serious	one small but serious mistake overlooked during data collection, which lead to half of the data unusable, had to collect data again	serious	Moderate
+R_x8Z2fY3NuG06l69	serious	forgot to record qualitative interview	serious	Moderate
+R_1HemYlCts4kwav2	serious	a file was updated with an old version of a paradigm and we had to exclude the complete run from the analysis, because we just realized after recording	serious	Moderate
+R_3EKM0va9ntRVGxm	serious	Failure to document why some observations were deleted from full administrative data file.	serious	Moderate
+R_4Jx85V7Q7juO0rD	serious	We discovered the mistake a week ago. We published inaccurate data (in a registered report, in one exploratory analysis - which did not change the conclusions). We are currently writing the erratum.	serious	Major
+R_vOfSDKH9m5bsxQl	serious	Probably the failure to record part of the responses of some participants	serious	Moderate

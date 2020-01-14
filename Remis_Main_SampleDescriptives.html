@@ -13,7 +13,7 @@
 <meta name="author" content="Marton Kovacs" />
 
 
-<title>ReMis Main Raw Processed</title>
+<title>Untitled</title>
 
 <script>/*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 !function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.3",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for("boolean"==typeof g&&(j=g,g=arguments[h]||{},h++),"object"==typeof g||m.isFunction(g)||(g={}),h===i&&(g=this,h--);i>h;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&&(j&&c&&(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&&m.isArray(a)?a:[]):f=a&&m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&&(g[d]=c));return g},m.extend({expando:"jQuery"+(l+Math.random()).replace(/\D/g,""),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return"function"===m.type(a)},isArray:Array.isArray||function(a){return"array"===m.type(a)},isWindow:function(a){return null!=a&&a==a.window},isNumeric:function(a){return!m.isArray(a)&&a-parseFloat(a)+1>=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||"object"!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&&!j.call(a,"constructor")&&!j.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.call(a,b)},type:function(a){return null==a?a+"":"object"==typeof a||"function"==typeof a?h[i.call(a)]||"object":typeof a},globalEval:function(b){b&&m.trim(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(o,"ms-").replace(p,q)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toLowerCase()===b.toLowerCase()},each:function(a,b,c){var d,e=0,f=a.length,g=r(a);if(c){if(g){for(;f>e;e++)if(d=b.apply(a[e],c),d===!1)break}else for(e in a)if(d=b.apply(a[e],c),d===!1)break}else if(g){for(;f>e;e++)if(d=b.call(a[e],e,a[e]),d===!1)break}else for(e in a)if(d=b.call(a[e],e,a[e]),d===!1)break;return a},trim:function(a){return null==a?"":(a+"").replace(n,"")},makeArray:function(a,b){var c=b||[];return null!=a&&(r(Object(a))?m.merge(c,"string"==typeof a?[a]:a):f.call(c,a)),c},inArray:function(a,b,c){var d;if(b){if(g)return g.call(b,a,c);for(d=b.length,c=c?0>c?Math.max(0,d+c):c:0;d>c;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,b){var c=+b.length,d=0,e=a.length;while(c>d)a[e++]=b[d++];if(c!==c)while(void 0!==b[d])a[e++]=b[d++];return a.length=e,a},grep:function(a,b,c){for(var d,e=[],f=0,g=a.length,h=!c;g>f;f++)d=!b(a[f],f),d!==h&&e.push(a[f]);return e},map:function(a,b,c){var d,f=0,g=a.length,h=r(a),i=[];if(h)for(;g>f;f++)d=b(a[f],f,c),null!=d&&i.push(d);else for(f in a)d=b(a[f],f,c),null!=d&&i.push(d);return e.apply([],i)},guid:1,proxy:function(a,b){var c,e,f;return"string"==typeof b&&(f=a[b],b=a,a=f),m.isFunction(a)?(c=d.call(arguments,2),e=function(){return a.apply(b||this,c.concat(d.call(arguments)))},e.guid=a.guid=a.guid||m.guid++,e):void 0},now:function(){return+new Date},support:k}),m.each("Boolean Number String Function Array Date RegExp Object Error".split(" "),function(a,b){h["[object "+b+"]"]=b.toLowerCase()});function r(a){var b="length"in a&&a.length,c=m.type(a);return"function"===c||m.isWindow(a)?!1:1===a.nodeType&&b?!0:"array"===c||0===b||"number"==typeof b&&b>0&&b-1 in a}var s=function(a){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u="sizzle"+1*new Date,v=a.document,w=0,x=0,y=ha(),z=ha(),A=ha(),B=function(a,b){return a===b&&(l=!0),0},C=1<<31,D={}.hasOwnProperty,E=[],F=E.pop,G=E.push,H=E.push,I=E.slice,J=function(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1},K="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",L="[\\x20\\t\\r\\n\\f]",M="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",N=M.replace("w","w#"),O="\\["+L+"*("+M+")(?:"+L+"*([*^$|!~]?=)"+L+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+N+"))|)"+L+"*\\]",P=":("+M+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+O+")*)|.*)\\)|)",Q=new RegExp(L+"+","g"),R=new RegExp("^"+L+"+|((?:^|[^\\\\])(?:\\\\.)*)"+L+"+$","g"),S=new RegExp("^"+L+"*,"+L+"*"),T=new RegExp("^"+L+"*([>+~]|"+L+")"+L+"*"),U=new RegExp("="+L+"*([^\\]'\"]*?)"+L+"*\\]","g"),V=new RegExp(P),W=new RegExp("^"+N+"$"),X={ID:new RegExp("^#("+M+")"),CLASS:new RegExp("^\\.("+M+")"),TAG:new RegExp("^("+M.replace("w","w*")+")"),ATTR:new RegExp("^"+O),PSEUDO:new RegExp("^"+P),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+L+"*(even|odd|(([+-]|)(\\d*)n|)"+L+"*(?:([+-]|)"+L+"*(\\d+)|))"+L+"*\\)|)","i"),bool:new RegExp("^(?:"+K+")$","i"),needsContext:new RegExp("^"+L+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+L+"*((?:-\\d)?\\d*)"+L+"*\\)|)(?=[^-]|$)","i")},Y=/^(?:input|select|textarea|button)$/i,Z=/^h\d$/i,$=/^[^{]+\{\s*\[native \w/,_=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,aa=/[+~]/,ba=/'|\\/g,ca=new RegExp("\\\\([\\da-f]{1,6}"+L+"?|("+L+")|.)","ig"),da=function(a,b,c){var d="0x"+b-65536;return d!==d||c?b:0>d?String.fromCharCode(d+65536):String.fromCharCode(d>>10|55296,1023&d|56320)},ea=function(){m()};try{H.apply(E=I.call(v.childNodes),v.childNodes),E[v.childNodes.length].nodeType}catch(fa){H={apply:E.length?function(a,b){G.apply(a,I.call(b))}:function(a,b){var c=a.length,d=0;while(a[c++]=b[d++]);a.length=c-1}}}function ga(a,b,d,e){var f,h,j,k,l,o,r,s,w,x;if((b?b.ownerDocument||b:v)!==n&&m(b),b=b||n,d=d||[],k=b.nodeType,"string"!=typeof a||!a||1!==k&&9!==k&&11!==k)return d;if(!e&&p){if(11!==k&&(f=_.exec(a)))if(j=f[1]){if(9===k){if(h=b.getElementById(j),!h||!h.parentNode)return d;if(h.id===j)return d.push(h),d}else if(b.ownerDocument&&(h=b.ownerDocument.getElementById(j))&&t(b,h)&&h.id===j)return d.push(h),d}else{if(f[2])return H.apply(d,b.getElementsByTagName(a)),d;if((j=f[3])&&c.getElementsByClassName)return H.apply(d,b.getElementsByClassName(j)),d}if(c.qsa&&(!q||!q.test(a))){if(s=r=u,w=b,x=1!==k&&a,1===k&&"object"!==b.nodeName.toLowerCase()){o=g(a),(r=b.getAttribute("id"))?s=r.replace(ba,"\\$&"):b.setAttribute("id",s),s="[id='"+s+"'] ",l=o.length;while(l--)o[l]=s+ra(o[l]);w=aa.test(a)&&pa(b.parentNode)||b,x=o.join(",")}if(x)try{return H.apply(d,w.querySelectorAll(x)),d}catch(y){}finally{r||b.removeAttribute("id")}}}return i(a.replace(R,"$1"),b,d,e)}function ha(){var a=[];function b(c,e){return a.push(c+" ")>d.cacheLength&&delete b[a.shift()],b[c+" "]=e}return b}function ia(a){return a[u]=!0,a}function ja(a){var b=n.createElement("div");try{return!!a(b)}catch(c){return!1}finally{b.parentNode&&b.parentNode.removeChild(b),b=null}}function ka(a,b){var c=a.split("|"),e=a.length;while(e--)d.attrHandle[c[e]]=b}function la(a,b){var c=b&&a,d=c&&1===a.nodeType&&1===b.nodeType&&(~b.sourceIndex||C)-(~a.sourceIndex||C);if(d)return d;if(c)while(c=c.nextSibling)if(c===b)return-1;return a?1:-1}function ma(a){return function(b){var c=b.nodeName.toLowerCase();return"input"===c&&b.type===a}}function na(a){return function(b){var c=b.nodeName.toLowerCase();return("input"===c||"button"===c)&&b.type===a}}function oa(a){return ia(function(b){return b=+b,ia(function(c,d){var e,f=a([],c.length,b),g=f.length;while(g--)c[e=f[g]]&&(c[e]=!(d[e]=c[e]))})})}function pa(a){return a&&"undefined"!=typeof a.getElementsByTagName&&a}c=ga.support={},f=ga.isXML=function(a){var b=a&&(a.ownerDocument||a).documentElement;return b?"HTML"!==b.nodeName:!1},m=ga.setDocument=function(a){var b,e,g=a?a.ownerDocument||a:v;return g!==n&&9===g.nodeType&&g.documentElement?(n=g,o=g.documentElement,e=g.defaultView,e&&e!==e.top&&(e.addEventListener?e.addEventListener("unload",ea,!1):e.attachEvent&&e.attachEvent("onunload",ea)),p=!f(g),c.attributes=ja(function(a){return a.className="i",!a.getAttribute("className")}),c.getElementsByTagName=ja(function(a){return a.appendChild(g.createComment("")),!a.getElementsByTagName("*").length}),c.getElementsByClassName=$.test(g.getElementsByClassName),c.getById=ja(function(a){return o.appendChild(a).id=u,!g.getElementsByName||!g.getElementsByName(u).length}),c.getById?(d.find.ID=function(a,b){if("undefined"!=typeof b.getElementById&&p){var c=b.getElementById(a);return c&&c.parentNode?[c]:[]}},d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){return a.getAttribute("id")===b}}):(delete d.find.ID,d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){var c="undefined"!=typeof a.getAttributeNode&&a.getAttributeNode("id");return c&&c.value===b}}),d.find.TAG=c.getElementsByTagName?function(a,b){return"undefined"!=typeof b.getElementsByTagName?b.getElementsByTagName(a):c.qsa?b.querySelectorAll(a):void 0}:function(a,b){var c,d=[],e=0,f=b.getElementsByTagName(a);if("*"===a){while(c=f[e++])1===c.nodeType&&d.push(c);return d}return f},d.find.CLASS=c.getElementsByClassName&&function(a,b){return p?b.getElementsByClassName(a):void 0},r=[],q=[],(c.qsa=$.test(g.querySelectorAll))&&(ja(function(a){o.appendChild(a).innerHTML="<a id='"+u+"'></a><select id='"+u+"-\f]' msallowcapture=''><option selected=''></option></select>",a.querySelectorAll("[msallowcapture^='']").length&&q.push("[*^$]="+L+"*(?:''|\"\")"),a.querySelectorAll("[selected]").length||q.push("\\["+L+"*(?:value|"+K+")"),a.querySelectorAll("[id~="+u+"-]").length||q.push("~="),a.querySelectorAll(":checked").length||q.push(":checked"),a.querySelectorAll("a#"+u+"+*").length||q.push(".#.+[+~]")}),ja(function(a){var b=g.createElement("input");b.setAttribute("type","hidden"),a.appendChild(b).setAttribute("name","D"),a.querySelectorAll("[name=d]").length&&q.push("name"+L+"*[*^$|!~]?="),a.querySelectorAll(":enabled").length||q.push(":enabled",":disabled"),a.querySelectorAll("*,:x"),q.push(",.*:")})),(c.matchesSelector=$.test(s=o.matches||o.webkitMatchesSelector||o.mozMatchesSelector||o.oMatchesSelector||o.msMatchesSelector))&&ja(function(a){c.disconnectedMatch=s.call(a,"div"),s.call(a,"[s!='']:x"),r.push("!=",P)}),q=q.length&&new RegExp(q.join("|")),r=r.length&&new RegExp(r.join("|")),b=$.test(o.compareDocumentPosition),t=b||$.test(o.contains)?function(a,b){var c=9===a.nodeType?a.documentElement:a,d=b&&b.parentNode;return a===d||!(!d||1!==d.nodeType||!(c.contains?c.contains(d):a.compareDocumentPosition&&16&a.compareDocumentPosition(d)))}:function(a,b){if(b)while(b=b.parentNode)if(b===a)return!0;return!1},B=b?function(a,b){if(a===b)return l=!0,0;var d=!a.compareDocumentPosition-!b.compareDocumentPosition;return d?d:(d=(a.ownerDocument||a)===(b.ownerDocument||b)?a.compareDocumentPosition(b):1,1&d||!c.sortDetached&&b.compareDocumentPosition(a)===d?a===g||a.ownerDocument===v&&t(v,a)?-1:b===g||b.ownerDocument===v&&t(v,b)?1:k?J(k,a)-J(k,b):0:4&d?-1:1)}:function(a,b){if(a===b)return l=!0,0;var c,d=0,e=a.parentNode,f=b.parentNode,h=[a],i=[b];if(!e||!f)return a===g?-1:b===g?1:e?-1:f?1:k?J(k,a)-J(k,b):0;if(e===f)return la(a,b);c=a;while(c=c.parentNode)h.unshift(c);c=b;while(c=c.parentNode)i.unshift(c);while(h[d]===i[d])d++;return d?la(h[d],i[d]):h[d]===v?-1:i[d]===v?1:0},g):n},ga.matches=function(a,b){return ga(a,null,null,b)},ga.matchesSelector=function(a,b){if((a.ownerDocument||a)!==n&&m(a),b=b.replace(U,"='$1']"),!(!c.matchesSelector||!p||r&&r.test(b)||q&&q.test(b)))try{var d=s.call(a,b);if(d||c.disconnectedMatch||a.document&&11!==a.document.nodeType)return d}catch(e){}return ga(b,n,null,[a]).length>0},ga.contains=function(a,b){return(a.ownerDocument||a)!==n&&m(a),t(a,b)},ga.attr=function(a,b){(a.ownerDocument||a)!==n&&m(a);var e=d.attrHandle[b.toLowerCase()],f=e&&D.call(d.attrHandle,b.toLowerCase())?e(a,b,!p):void 0;return void 0!==f?f:c.attributes||!p?a.getAttribute(b):(f=a.getAttributeNode(b))&&f.specified?f.value:null},ga.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)},ga.uniqueSort=function(a){var b,d=[],e=0,f=0;if(l=!c.detectDuplicates,k=!c.sortStable&&a.slice(0),a.sort(B),l){while(b=a[f++])b===a[f]&&(e=d.push(f));while(e--)a.splice(d[e],1)}return k=null,a},e=ga.getText=function(a){var b,c="",d=0,f=a.nodeType;if(f){if(1===f||9===f||11===f){if("string"==typeof a.textContent)return a.textContent;for(a=a.firstChild;a;a=a.nextSibling)c+=e(a)}else if(3===f||4===f)return a.nodeValue}else while(b=a[d++])c+=e(b);return c},d=ga.selectors={cacheLength:50,createPseudo:ia,match:X,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:!0}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:!0},"~":{dir:"previousSibling"}},preFilter:{ATTR:function(a){return a[1]=a[1].replace(ca,da),a[3]=(a[3]||a[4]||a[5]||"").replace(ca,da),"~="===a[2]&&(a[3]=" "+a[3]+" "),a.slice(0,4)},CHILD:function(a){return a[1]=a[1].toLowerCase(),"nth"===a[1].slice(0,3)?(a[3]||ga.error(a[0]),a[4]=+(a[4]?a[5]+(a[6]||1):2*("even"===a[3]||"odd"===a[3])),a[5]=+(a[7]+a[8]||"odd"===a[3])):a[3]&&ga.error(a[0]),a},PSEUDO:function(a){var b,c=!a[6]&&a[2];return X.CHILD.test(a[0])?null:(a[3]?a[2]=a[4]||a[5]||"":c&&V.test(c)&&(b=g(c,!0))&&(b=c.indexOf(")",c.length-b)-c.length)&&(a[0]=a[0].slice(0,b),a[2]=c.slice(0,b)),a.slice(0,3))}},filter:{TAG:function(a){var b=a.replace(ca,da).toLowerCase();return"*"===a?function(){return!0}:function(a){return a.nodeName&&a.nodeName.toLowerCase()===b}},CLASS:function(a){var b=y[a+" "];return b||(b=new RegExp("(^|"+L+")"+a+"("+L+"|$)"))&&y(a,function(a){return b.test("string"==typeof a.className&&a.className||"undefined"!=typeof a.getAttribute&&a.getAttribute("class")||"")})},ATTR:function(a,b,c){return function(d){var e=ga.attr(d,a);return null==e?"!="===b:b?(e+="","="===b?e===c:"!="===b?e!==c:"^="===b?c&&0===e.indexOf(c):"*="===b?c&&e.indexOf(c)>-1:"$="===b?c&&e.slice(-c.length)===c:"~="===b?(" "+e.replace(Q," ")+" ").indexOf(c)>-1:"|="===b?e===c||e.slice(0,c.length+1)===c+"-":!1):!0}},CHILD:function(a,b,c,d,e){var f="nth"!==a.slice(0,3),g="last"!==a.slice(-4),h="of-type"===b;return 1===d&&0===e?function(a){return!!a.parentNode}:function(b,c,i){var j,k,l,m,n,o,p=f!==g?"nextSibling":"previousSibling",q=b.parentNode,r=h&&b.nodeName.toLowerCase(),s=!i&&!h;if(q){if(f){while(p){l=b;while(l=l[p])if(h?l.nodeName.toLowerCase()===r:1===l.nodeType)return!1;o=p="only"===a&&!o&&"nextSibling"}return!0}if(o=[g?q.firstChild:q.lastChild],g&&s){k=q[u]||(q[u]={}),j=k[a]||[],n=j[0]===w&&j[1],m=j[0]===w&&j[2],l=n&&q.childNodes[n];while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if(1===l.nodeType&&++m&&l===b){k[a]=[w,n,m];break}}else if(s&&(j=(b[u]||(b[u]={}))[a])&&j[0]===w)m=j[1];else while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if((h?l.nodeName.toLowerCase()===r:1===l.nodeType)&&++m&&(s&&((l[u]||(l[u]={}))[a]=[w,m]),l===b))break;return m-=e,m===d||m%d===0&&m/d>=0}}},PSEUDO:function(a,b){var c,e=d.pseudos[a]||d.setFilters[a.toLowerCase()]||ga.error("unsupported pseudo: "+a);return e[u]?e(b):e.length>1?(c=[a,a,"",b],d.setFilters.hasOwnProperty(a.toLowerCase())?ia(function(a,c){var d,f=e(a,b),g=f.length;while(g--)d=J(a,f[g]),a[d]=!(c[d]=f[g])}):function(a){return e(a,0,c)}):e}},pseudos:{not:ia(function(a){var b=[],c=[],d=h(a.replace(R,"$1"));return d[u]?ia(function(a,b,c,e){var f,g=d(a,null,e,[]),h=a.length;while(h--)(f=g[h])&&(a[h]=!(b[h]=f))}):function(a,e,f){return b[0]=a,d(b,null,f,c),b[0]=null,!c.pop()}}),has:ia(function(a){return function(b){return ga(a,b).length>0}}),contains:ia(function(a){return a=a.replace(ca,da),function(b){return(b.textContent||b.innerText||e(b)).indexOf(a)>-1}}),lang:ia(function(a){return W.test(a||"")||ga.error("unsupported lang: "+a),a=a.replace(ca,da).toLowerCase(),function(b){var c;do if(c=p?b.lang:b.getAttribute("xml:lang")||b.getAttribute("lang"))return c=c.toLowerCase(),c===a||0===c.indexOf(a+"-");while((b=b.parentNode)&&1===b.nodeType);return!1}}),target:function(b){var c=a.location&&a.location.hash;return c&&c.slice(1)===b.id},root:function(a){return a===o},focus:function(a){return a===n.activeElement&&(!n.hasFocus||n.hasFocus())&&!!(a.type||a.href||~a.tabIndex)},enabled:function(a){return a.disabled===!1},disabled:function(a){return a.disabled===!0},checked:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&!!a.checked||"option"===b&&!!a.selected},selected:function(a){return a.parentNode&&a.parentNode.selectedIndex,a.selected===!0},empty:function(a){for(a=a.firstChild;a;a=a.nextSibling)if(a.nodeType<6)return!1;return!0},parent:function(a){return!d.pseudos.empty(a)},header:function(a){return Z.test(a.nodeName)},input:function(a){return Y.test(a.nodeName)},button:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&"button"===a.type||"button"===b},text:function(a){var b;return"input"===a.nodeName.toLowerCase()&&"text"===a.type&&(null==(b=a.getAttribute("type"))||"text"===b.toLowerCase())},first:oa(function(){return[0]}),last:oa(function(a,b){return[b-1]}),eq:oa(function(a,b,c){return[0>c?c+b:c]}),even:oa(function(a,b){for(var c=0;b>c;c+=2)a.push(c);return a}),odd:oa(function(a,b){for(var c=1;b>c;c+=2)a.push(c);return a}),lt:oa(function(a,b,c){for(var d=0>c?c+b:c;--d>=0;)a.push(d);return a}),gt:oa(function(a,b,c){for(var d=0>c?c+b:c;++d<b;)a.push(d);return a})}},d.pseudos.nth=d.pseudos.eq;for(b in{radio:!0,checkbox:!0,file:!0,password:!0,image:!0})d.pseudos[b]=ma(b);for(b in{submit:!0,reset:!0})d.pseudos[b]=na(b);function qa(){}qa.prototype=d.filters=d.pseudos,d.setFilters=new qa,g=ga.tokenize=function(a,b){var c,e,f,g,h,i,j,k=z[a+" "];if(k)return b?0:k.slice(0);h=a,i=[],j=d.preFilter;while(h){(!c||(e=S.exec(h)))&&(e&&(h=h.slice(e[0].length)||h),i.push(f=[])),c=!1,(e=T.exec(h))&&(c=e.shift(),f.push({value:c,type:e[0].replace(R," ")}),h=h.slice(c.length));for(g in d.filter)!(e=X[g].exec(h))||j[g]&&!(e=j[g](e))||(c=e.shift(),f.push({value:c,type:g,matches:e}),h=h.slice(c.length));if(!c)break}return b?h.length:h?ga.error(a):z(a,i).slice(0)};function ra(a){for(var b=0,c=a.length,d="";c>b;b++)d+=a[b].value;return d}function sa(a,b,c){var d=b.dir,e=c&&"parentNode"===d,f=x++;return b.first?function(b,c,f){while(b=b[d])if(1===b.nodeType||e)return a(b,c,f)}:function(b,c,g){var h,i,j=[w,f];if(g){while(b=b[d])if((1===b.nodeType||e)&&a(b,c,g))return!0}else while(b=b[d])if(1===b.nodeType||e){if(i=b[u]||(b[u]={}),(h=i[d])&&h[0]===w&&h[1]===f)return j[2]=h[2];if(i[d]=j,j[2]=a(b,c,g))return!0}}}function ta(a){return a.length>1?function(b,c,d){var e=a.length;while(e--)if(!a[e](b,c,d))return!1;return!0}:a[0]}function ua(a,b,c){for(var d=0,e=b.length;e>d;d++)ga(a,b[d],c);return c}function va(a,b,c,d,e){for(var f,g=[],h=0,i=a.length,j=null!=b;i>h;h++)(f=a[h])&&(!c||c(f,d,e))&&(g.push(f),j&&b.push(h));return g}function wa(a,b,c,d,e,f){return d&&!d[u]&&(d=wa(d)),e&&!e[u]&&(e=wa(e,f)),ia(function(f,g,h,i){var j,k,l,m=[],n=[],o=g.length,p=f||ua(b||"*",h.nodeType?[h]:h,[]),q=!a||!f&&b?p:va(p,m,a,h,i),r=c?e||(f?a:o||d)?[]:g:q;if(c&&c(q,r,h,i),d){j=va(r,n),d(j,[],h,i),k=j.length;while(k--)(l=j[k])&&(r[n[k]]=!(q[n[k]]=l))}if(f){if(e||a){if(e){j=[],k=r.length;while(k--)(l=r[k])&&j.push(q[k]=l);e(null,r=[],j,i)}k=r.length;while(k--)(l=r[k])&&(j=e?J(f,l):m[k])>-1&&(f[j]=!(g[j]=l))}}else r=va(r===g?r.splice(o,r.length):r),e?e(null,g,r,i):H.apply(g,r)})}function xa(a){for(var b,c,e,f=a.length,g=d.relative[a[0].type],h=g||d.relative[" "],i=g?1:0,k=sa(function(a){return a===b},h,!0),l=sa(function(a){return J(b,a)>-1},h,!0),m=[function(a,c,d){var e=!g&&(d||c!==j)||((b=c).nodeType?k(a,c,d):l(a,c,d));return b=null,e}];f>i;i++)if(c=d.relative[a[i].type])m=[sa(ta(m),c)];else{if(c=d.filter[a[i].type].apply(null,a[i].matches),c[u]){for(e=++i;f>e;e++)if(d.relative[a[e].type])break;return wa(i>1&&ta(m),i>1&&ra(a.slice(0,i-1).concat({value:" "===a[i-2].type?"*":""})).replace(R,"$1"),c,e>i&&xa(a.slice(i,e)),f>e&&xa(a=a.slice(e)),f>e&&ra(a))}m.push(c)}return ta(m)}function ya(a,b){var c=b.length>0,e=a.length>0,f=function(f,g,h,i,k){var l,m,o,p=0,q="0",r=f&&[],s=[],t=j,u=f||e&&d.find.TAG("*",k),v=w+=null==t?1:Math.random()||.1,x=u.length;for(k&&(j=g!==n&&g);q!==x&&null!=(l=u[q]);q++){if(e&&l){m=0;while(o=a[m++])if(o(l,g,h)){i.push(l);break}k&&(w=v)}c&&((l=!o&&l)&&p--,f&&r.push(l))}if(p+=q,c&&q!==p){m=0;while(o=b[m++])o(r,s,g,h);if(f){if(p>0)while(q--)r[q]||s[q]||(s[q]=F.call(i));s=va(s)}H.apply(i,s),k&&!f&&s.length>0&&p+b.length>1&&ga.uniqueSort(i)}return k&&(w=v,j=t),r};return c?ia(f):f}return h=ga.compile=function(a,b){var c,d=[],e=[],f=A[a+" "];if(!f){b||(b=g(a)),c=b.length;while(c--)f=xa(b[c]),f[u]?d.push(f):e.push(f);f=A(a,ya(e,d)),f.selector=a}return f},i=ga.select=function(a,b,e,f){var i,j,k,l,m,n="function"==typeof a&&a,o=!f&&g(a=n.selector||a);if(e=e||[],1===o.length){if(j=o[0]=o[0].slice(0),j.length>2&&"ID"===(k=j[0]).type&&c.getById&&9===b.nodeType&&p&&d.relative[j[1].type]){if(b=(d.find.ID(k.matches[0].replace(ca,da),b)||[])[0],!b)return e;n&&(b=b.parentNode),a=a.slice(j.shift().value.length)}i=X.needsContext.test(a)?0:j.length;while(i--){if(k=j[i],d.relative[l=k.type])break;if((m=d.find[l])&&(f=m(k.matches[0].replace(ca,da),aa.test(j[0].type)&&pa(b.parentNode)||b))){if(j.splice(i,1),a=f.length&&ra(j),!a)return H.apply(e,f),e;break}}}return(n||h(a,o))(f,b,!p,e,aa.test(a)&&pa(b.parentNode)||b),e},c.sortStable=u.split("").sort(B).join("")===u,c.detectDuplicates=!!l,m(),c.sortDetached=ja(function(a){return 1&a.compareDocumentPosition(n.createElement("div"))}),ja(function(a){return a.innerHTML="<a href='#'></a>","#"===a.firstChild.getAttribute("href")})||ka("type|href|height|width",function(a,b,c){return c?void 0:a.getAttribute(b,"type"===b.toLowerCase()?1:2)}),c.attributes&&ja(function(a){return a.innerHTML="<input/>",a.firstChild.setAttribute("value",""),""===a.firstChild.getAttribute("value")})||ka("value",function(a,b,c){return c||"input"!==a.nodeName.toLowerCase()?void 0:a.defaultValue}),ja(function(a){return null==a.getAttribute("disabled")})||ka(K,function(a,b,c){var d;return c?void 0:a[b]===!0?b.toLowerCase():(d=a.getAttributeNode(b))&&d.specified?d.value:null}),ga}(a);m.find=s,m.expr=s.selectors,m.expr[":"]=m.expr.pseudos,m.unique=s.uniqueSort,m.text=s.getText,m.isXMLDoc=s.isXML,m.contains=s.contains;var t=m.expr.match.needsContext,u=/^<(\w+)\s*\/?>(?:<\/\1>|)$/,v=/^.[^:#\[\.,]*$/;function w(a,b,c){if(m.isFunction(b))return m.grep(a,function(a,d){return!!b.call(a,d,a)!==c});if(b.nodeType)return m.grep(a,function(a){return a===b!==c});if("string"==typeof b){if(v.test(b))return m.filter(b,a,c);b=m.filter(b,a)}return m.grep(a,function(a){return m.inArray(a,b)>=0!==c})}m.filter=function(a,b,c){var d=b[0];return c&&(a=":not("+a+")"),1===b.length&&1===d.nodeType?m.find.matchesSelector(d,a)?[d]:[]:m.find.matches(a,m.grep(b,function(a){return 1===a.nodeType}))},m.fn.extend({find:function(a){var b,c=[],d=this,e=d.length;if("string"!=typeof a)return this.pushStack(m(a).filter(function(){for(b=0;e>b;b++)if(m.contains(d[b],this))return!0}));for(b=0;e>b;b++)m.find(a,d[b],c);return c=this.pushStack(e>1?m.unique(c):c),c.selector=this.selector?this.selector+" "+a:a,c},filter:function(a){return this.pushStack(w(this,a||[],!1))},not:function(a){return this.pushStack(w(this,a||[],!0))},is:function(a){return!!w(this,"string"==typeof a&&t.test(a)?m(a):a||[],!1).length}});var x,y=a.document,z=/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,A=m.fn.init=function(a,b){var c,d;if(!a)return this;if("string"==typeof a){if(c="<"===a.charAt(0)&&">"===a.charAt(a.length-1)&&a.length>=3?[null,a,null]:z.exec(a),!c||!c[1]&&b)return!b||b.jquery?(b||x).find(a):this.constructor(b).find(a);if(c[1]){if(b=b instanceof m?b[0]:b,m.merge(this,m.parseHTML(c[1],b&&b.nodeType?b.ownerDocument||b:y,!0)),u.test(c[1])&&m.isPlainObject(b))for(c in b)m.isFunction(this[c])?this[c](b[c]):this.attr(c,b[c]);return this}if(d=y.getElementById(c[2]),d&&d.parentNode){if(d.id!==c[2])return x.find(a);this.length=1,this[0]=d}return this.context=y,this.selector=a,this}return a.nodeType?(this.context=this[0]=a,this.length=1,this):m.isFunction(a)?"undefined"!=typeof x.ready?x.ready(a):a(m):(void 0!==a.selector&&(this.selector=a.selector,this.context=a.context),m.makeArray(a,this))};A.prototype=m.fn,x=m(y);var B=/^(?:parents|prev(?:Until|All))/,C={children:!0,contents:!0,next:!0,prev:!0};m.extend({dir:function(a,b,c){var d=[],e=a[b];while(e&&9!==e.nodeType&&(void 0===c||1!==e.nodeType||!m(e).is(c)))1===e.nodeType&&d.push(e),e=e[b];return d},sibling:function(a,b){for(var c=[];a;a=a.nextSibling)1===a.nodeType&&a!==b&&c.push(a);return c}}),m.fn.extend({has:function(a){var b,c=m(a,this),d=c.length;return this.filter(function(){for(b=0;d>b;b++)if(m.contains(this,c[b]))return!0})},closest:function(a,b){for(var c,d=0,e=this.length,f=[],g=t.test(a)||"string"!=typeof a?m(a,b||this.context):0;e>d;d++)for(c=this[d];c&&c!==b;c=c.parentNode)if(c.nodeType<11&&(g?g.index(c)>-1:1===c.nodeType&&m.find.matchesSelector(c,a))){f.push(c);break}return this.pushStack(f.length>1?m.unique(f):f)},index:function(a){return a?"string"==typeof a?m.inArray(this[0],m(a)):m.inArray(a.jquery?a[0]:a,this):this[0]&&this[0].parentNode?this.first().prevAll().length:-1},add:function(a,b){return this.pushStack(m.unique(m.merge(this.get(),m(a,b))))},addBack:function(a){return this.add(null==a?this.prevObject:this.prevObject.filter(a))}});function D(a,b){do a=a[b];while(a&&1!==a.nodeType);return a}m.each({parent:function(a){var b=a.parentNode;return b&&11!==b.nodeType?b:null},parents:function(a){return m.dir(a,"parentNode")},parentsUntil:function(a,b,c){return m.dir(a,"parentNode",c)},next:function(a){return D(a,"nextSibling")},prev:function(a){return D(a,"previousSibling")},nextAll:function(a){return m.dir(a,"nextSibling")},prevAll:function(a){return m.dir(a,"previousSibling")},nextUntil:function(a,b,c){return m.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return m.dir(a,"previousSibling",c)},siblings:function(a){return m.sibling((a.parentNode||{}).firstChild,a)},children:function(a){return m.sibling(a.firstChild)},contents:function(a){return m.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:m.merge([],a.childNodes)}},function(a,b){m.fn[a]=function(c,d){var e=m.map(this,b,c);return"Until"!==a.slice(-5)&&(d=c),d&&"string"==typeof d&&(e=m.filter(d,e)),this.length>1&&(C[a]||(e=m.unique(e)),B.test(a)&&(e=e.reverse())),this.pushStack(e)}});var E=/\S+/g,F={};function G(a){var b=F[a]={};return m.each(a.match(E)||[],function(a,c){b[c]=!0}),b}m.Callbacks=function(a){a="string"==typeof a?F[a]||G(a):m.extend({},a);var b,c,d,e,f,g,h=[],i=!a.once&&[],j=function(l){for(c=a.memory&&l,d=!0,f=g||0,g=0,e=h.length,b=!0;h&&e>f;f++)if(h[f].apply(l[0],l[1])===!1&&a.stopOnFalse){c=!1;break}b=!1,h&&(i?i.length&&j(i.shift()):c?h=[]:k.disable())},k={add:function(){if(h){var d=h.length;!function f(b){m.each(b,function(b,c){var d=m.type(c);"function"===d?a.unique&&k.has(c)||h.push(c):c&&c.length&&"string"!==d&&f(c)})}(arguments),b?e=h.length:c&&(g=d,j(c))}return this},remove:function(){return h&&m.each(arguments,function(a,c){var d;while((d=m.inArray(c,h,d))>-1)h.splice(d,1),b&&(e>=d&&e--,f>=d&&f--)}),this},has:function(a){return a?m.inArray(a,h)>-1:!(!h||!h.length)},empty:function(){return h=[],e=0,this},disable:function(){return h=i=c=void 0,this},disabled:function(){return!h},lock:function(){return i=void 0,c||k.disable(),this},locked:function(){return!i},fireWith:function(a,c){return!h||d&&!i||(c=c||[],c=[a,c.slice?c.slice():c],b?i.push(c):j(c)),this},fire:function(){return k.fireWith(this,arguments),this},fired:function(){return!!d}};return k},m.extend({Deferred:function(a){var b=[["resolve","done",m.Callbacks("once memory"),"resolved"],["reject","fail",m.Callbacks("once memory"),"rejected"],["notify","progress",m.Callbacks("memory")]],c="pending",d={state:function(){return c},always:function(){return e.done(arguments).fail(arguments),this},then:function(){var a=arguments;return m.Deferred(function(c){m.each(b,function(b,f){var g=m.isFunction(a[b])&&a[b];e[f[1]](function(){var a=g&&g.apply(this,arguments);a&&m.isFunction(a.promise)?a.promise().done(c.resolve).fail(c.reject).progress(c.notify):c[f[0]+"With"](this===d?c.promise():this,g?[a]:arguments)})}),a=null}).promise()},promise:function(a){return null!=a?m.extend(a,d):d}},e={};return d.pipe=d.then,m.each(b,function(a,f){var g=f[2],h=f[3];d[f[1]]=g.add,h&&g.add(function(){c=h},b[1^a][2].disable,b[2][2].lock),e[f[0]]=function(){return e[f[0]+"With"](this===e?d:this,arguments),this},e[f[0]+"With"]=g.fireWith}),d.promise(e),a&&a.call(e,e),e},when:function(a){var b=0,c=d.call(arguments),e=c.length,f=1!==e||a&&m.isFunction(a.promise)?e:0,g=1===f?a:m.Deferred(),h=function(a,b,c){return function(e){b[a]=this,c[a]=arguments.length>1?d.call(arguments):e,c===i?g.notifyWith(b,c):--f||g.resolveWith(b,c)}},i,j,k;if(e>1)for(i=new Array(e),j=new Array(e),k=new Array(e);e>b;b++)c[b]&&m.isFunction(c[b].promise)?c[b].promise().done(h(b,k,c)).fail(g.reject).progress(h(b,j,i)):--f;return f||g.resolveWith(k,c),g.promise()}});var H;m.fn.ready=function(a){return m.ready.promise().done(a),this},m.extend({isReady:!1,readyWait:1,holdReady:function(a){a?m.readyWait++:m.ready(!0)},ready:function(a){if(a===!0?!--m.readyWait:!m.isReady){if(!y.body)return setTimeout(m.ready);m.isReady=!0,a!==!0&&--m.readyWait>0||(H.resolveWith(y,[m]),m.fn.triggerHandler&&(m(y).triggerHandler("ready"),m(y).off("ready")))}}});function I(){y.addEventListener?(y.removeEventListener("DOMContentLoaded",J,!1),a.removeEventListener("load",J,!1)):(y.detachEvent("onreadystatechange",J),a.detachEvent("onload",J))}function J(){(y.addEventListener||"load"===event.type||"complete"===y.readyState)&&(I(),m.ready())}m.ready.promise=function(b){if(!H)if(H=m.Deferred(),"complete"===y.readyState)setTimeout(m.ready);else if(y.addEventListener)y.addEventListener("DOMContentLoaded",J,!1),a.addEventListener("load",J,!1);else{y.attachEvent("onreadystatechange",J),a.attachEvent("onload",J);var c=!1;try{c=null==a.frameElement&&y.documentElement}catch(d){}c&&c.doScroll&&!function e(){if(!m.isReady){try{c.doScroll("left")}catch(a){return setTimeout(e,50)}I(),m.ready()}}()}return H.promise(b)};var K="undefined",L;for(L in m(k))break;k.ownLast="0"!==L,k.inlineBlockNeedsLayout=!1,m(function(){var a,b,c,d;c=y.getElementsByTagName("body")[0],c&&c.style&&(b=y.createElement("div"),d=y.createElement("div"),d.style.cssText="position:absolute;border:0;width:0;height:0;top:0;left:-9999px",c.appendChild(d).appendChild(b),typeof b.style.zoom!==K&&(b.style.cssText="display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1",k.inlineBlockNeedsLayout=a=3===b.offsetWidth,a&&(c.style.zoom=1)),c.removeChild(d))}),function(){var a=y.createElement("div");if(null==k.deleteExpando){k.deleteExpando=!0;try{delete a.test}catch(b){k.deleteExpando=!1}}a=null}(),m.acceptData=function(a){var b=m.noData[(a.nodeName+" ").toLowerCase()],c=+a.nodeType||1;return 1!==c&&9!==c?!1:!b||b!==!0&&a.getAttribute("classid")===b};var M=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,N=/([A-Z])/g;function O(a,b,c){if(void 0===c&&1===a.nodeType){var d="data-"+b.replace(N,"-$1").toLowerCase();if(c=a.getAttribute(d),"string"==typeof c){try{c="true"===c?!0:"false"===c?!1:"null"===c?null:+c+""===c?+c:M.test(c)?m.parseJSON(c):c}catch(e){}m.data(a,b,c)}else c=void 0}return c}function P(a){var b;for(b in a)if(("data"!==b||!m.isEmptyObject(a[b]))&&"toJSON"!==b)return!1;
@@ -362,7 +362,7 @@ summary {
 
 
 
-<h1 class="title toc-ignore">ReMis Main Raw Processed</h1>
+<h1 class="title toc-ignore">Untitled</h1>
 <h4 class="author">Marton Kovacs</h4>
 <h4 class="date">14 január, 2020</h4>
 
@@ -372,1278 +372,249 @@ summary {
 <div id="load-packages" class="section level1">
 <h1>Load packages</h1>
 <pre class="r"><code>library(tidyverse)
-library(writexl)
-library(readxl)
-library(zoo)
-library(qdap)</code></pre>
+library(readxl)</code></pre>
 </div>
-<div id="load-functions" class="section level1">
-<h1>Load functions</h1>
-<p>The “utils.R” file contains the custom made functions for this project.</p>
-<pre class="r"><code>source(&quot;utils.R&quot;)</code></pre>
+<div id="investigating-the-journals-in-the-science-direct-database" class="section level1">
+<h1>Investigating the journals in the science direct database</h1>
+<p>In our study we collected email addresses of authors who published in one of the Science Direct Journals that is labelled as psychology (see the following link for the journals and their labels: <a href="https://www.sciencedirect.com/browse/journals-and-books?contentType=JL&amp;subject=psychology" class="uri">https://www.sciencedirect.com/browse/journals-and-books?contentType=JL&amp;subject=psychology</a>).</p>
+<div id="import-data" class="section level2">
+<h2>Import data</h2>
+<p>The list of journals and their subfields at the time of the data collection.</p>
+<pre class="r"><code>journal &lt;- read_csv2(&quot;Data/ContactDatabase/ReMis_Sample_Journal.csv&quot;,
+                     locale = locale(encoding = &quot;ISO-8859-13&quot;))</code></pre>
+<p>At the time of our data collection there were 203 journals in the Science Direct database.</p>
 </div>
-<div id="import-data" class="section level1">
-<h1>Import data</h1>
-<p>We are importing the raw datafile that was created by the code in the “ReMis_Main_Source_Raw.Rmd” file.</p>
-<pre class="r"><code>raw &lt;- read_tsv(&quot;Data/Raw/ReMis_Main_Raw_data.tsv&quot;)</code></pre>
 </div>
-<div id="converting-the-varaible-names-to-clean-format" class="section level1">
-<h1>Converting the varaible names to clean format</h1>
-<p>We are using snake format.</p>
-<pre class="r"><code>raw &lt;-
-  raw %&gt;% 
-  janitor::clean_names()</code></pre>
+<div id="investigating-our-contact-database" class="section level1">
+<h1>Investigating our contact database</h1>
+<p>We used a scraping code to collect meta information of published articles in the Science Direct database.</p>
+<div id="import-data-1" class="section level2">
+<h2>Import data</h2>
+<pre class="r"><code>email &lt;- read_csv(&quot;Data/ContactDatabase/ReMis_Sample_Raw.csv&quot;,
+                  locale = locale(encoding = &quot;UTF-8&quot;)) %&gt;% 
+  distinct(email, .keep_all = TRUE)</code></pre>
 </div>
-<div id="data-filtering" class="section level1">
-<h1>Data filtering</h1>
-<div id="delete-rows-created-by-qualtrics-for-variable-explanation" class="section level2">
-<h2>Delete rows created by Qualtrics for variable explanation</h2>
-<p>Qualtrics create two rows that stores metadata about the variables. These are not needed in further analysis.</p>
-<pre class="r"><code>raw &lt;- 
-  raw %&gt;%
-  slice(-(1:2))</code></pre>
-<p>The number of responses: 783</p>
+<div id="descriptive-statistics-of-our-collection" class="section level2">
+<h2>Descriptive statistics of our collection</h2>
+<div id="number-of-articles" class="section level3">
+<h3>Number of articles</h3>
+<p>We have downloaded the metainformation of 59672 individual articles.</p>
+<p>We could extract the email addresses of 59671 corresponding authors of these articles. This does not mean that all email addresses are working as the automatized scraper code coulde make mistakes.</p>
 </div>
-<div id="checking-the-number-of-responses-from-each-distribution-channel" class="section level2">
-<h2>Checking the number of responses from each distribution channel</h2>
-<p>The survey was filled out by respondents outside of our sample as some respondents redestributed the survey link among their colleagues. These responses are marked as “anonymous” by Qualtrics in the Distribution channel variable. Whereas the survey that we sent to our sample is marked by “email”.</p>
-<pre class="r"><code>distrib_channel_count &lt;- 
-  raw %&gt;%
-  group_by(distribution_channel) %&gt;%
-  count()</code></pre>
-<p>We recieved 72 answers from the redistribution of our survey. We decided to keep these answers in for the creation of the groups but exclude them from the analysis.</p>
+<div id="number-of-journals" class="section level3">
+<h3>Number of journals</h3>
+<p>Saving the distinct journal titles from our collection.</p>
+<pre class="r"><code>email_publication &lt;- 
+  email %&gt;%
+  distinct(publicationname)</code></pre>
+<p>We collected articles from 153 journals out of the full Science Direct database.</p>
+<p>There are journals that are in the Science Direct database but we did not collect any articles from them. Save the list of these journals.</p>
+<pre class="r"><code>journal_missing &lt;-
+  journal %&gt;% 
+  distinct(publicationname) %&gt;% 
+  anti_join(., email_publication, by = &quot;publicationname&quot;)</code></pre>
+<p>There were 50 that we did not collect any article from.</p>
 </div>
-<div id="delete-trial-responses" class="section level2">
-<h2>Delete trial responses</h2>
-<p>There are responses that were provided by the authors during the testing of the survey. These responses are excluded from further analysis.</p>
-<pre class="r"><code>trial_respones &lt;- c(&quot;R_2v2lOblGkxW8bzU&quot;, &quot;R_OsbjDax8tZ9HrBD&quot;, &quot;R_3haoYfua4zboVyb&quot;, &quot;R_2xEmpKqvv1joVTT&quot;)
+</div>
+</div>
+<div id="investigating-the-randomly-selected-sample-for-the-main-survey" class="section level1">
+<h1>Investigating the randomly selected sample for the main survey</h1>
+<p>We randomly selected email addresses from our collection for the main survey in three rounds. These are named bacth 3, batch 5 and batch 6. For batch 3 we selected a 100 email addres, for batch 5 we selected 500, and for batch 6 we selected 15000.</p>
+<p>After the selection we tried to fin the last name or the emil address of the author if it was missing by hand.</p>
+<div id="import-data-2" class="section level2">
+<h2>Import data</h2>
+<pre class="r"><code># batch 3
+batch_3_cleaned &lt;- read_csv(&quot;Data/Samples/ReMis_Main_181126_3Batch_Cleaned.csv&quot;)
 
-raw &lt;- 
-  raw %&gt;%
-  filter(response_id %ni% trial_respones)</code></pre>
-<p>The number of responses: 779</p>
-</div>
-<div id="delete-respondents-who-did-not-accept-the-informed-consent-form" class="section level2">
-<h2>Delete respondents who did not accept the informed consent form</h2>
-<p>We exclude respondents who did not accept the informed consent form in the beggining of our survey from any further analysis.</p>
-<p>The number of respondents who did and did not accept the informed consent form:</p>
-<pre class="r"><code>raw %&gt;%
-  group_by(inform) %&gt;% 
-  summarise(n = n())</code></pre>
-<pre><code>## # A tibble: 2 x 2
-##   inform     n
-##   &lt;chr&gt;  &lt;int&gt;
-## 1 No        19
-## 2 Yes      760</code></pre>
-<pre class="r"><code>raw &lt;- 
-  raw %&gt;%
-  filter(inform == &quot;Yes&quot;)</code></pre>
-<p>The number of responses: 760</p>
-</div>
-<div id="delete-respondents-who-did-not-answer-any-question" class="section level2">
-<h2>Delete respondents who did not answer any question</h2>
-<p>When saving the responses of the survey from Qualtrics we downloaded responses in progress alongside the completed responses. Therefore, we exclude the responses where the respondent did not answer any questions of the survey.</p>
-<pre class="r"><code>questions &lt;- colnames(raw)[12:26]
+# batch 5
+batch_5_cleaned &lt;- read_csv(&quot;Data/Samples/ReMis_Main_181129_5Batch_Cleaned.csv&quot;)
 
-raw_no_answer &lt;- 
-  raw %&gt;% 
-  filter_at(vars(questions), all_vars(is.na(.)))</code></pre>
-<p>The number of responses where the respondent did not answer any question: 271</p>
-<pre class="r"><code>raw &lt;- 
-  raw %&gt;%
-  filter_at(vars(questions), any_vars(!is.na(.)))</code></pre>
-<p>The number of responses: 489</p>
-</div>
-</div>
-<div id="calucalting-median-response-time" class="section level1">
-<h1>Calucalting median response time</h1>
-<p>We are calculating the median completition time of the survey based on the responses that we had after exclusion.</p>
-<pre class="r"><code>raw %&gt;% 
-  mutate(response_time_sec = as.numeric(duration_in_seconds)) %&gt;% 
-  summarise(median_response_time_min = median(response_time_sec) / 60,
-            iqr_response_time = stats::IQR(response_time_sec),
-            quantile_response_time_3 = quantile(response_time_sec, 0.75),
-            quantile_response_time_1 = quantile(response_time_sec, 0.25),
-            min_response_time = min(response_time_sec),
-            max_response_time = max(response_time_sec))</code></pre>
-<pre><code>## # A tibble: 1 x 6
-##   median_response… iqr_response_ti… quantile_respon… quantile_respon…
-##              &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;
-## 1             6.17              342              600              258
-## # … with 2 more variables: min_response_time &lt;dbl&gt;, max_response_time &lt;dbl&gt;</code></pre>
-</div>
-<div id="variable-transformation" class="section level1">
-<h1>Variable transformation</h1>
-<p>The questions about the outcomes of the mistakes were multiple choice questions wwith the possibility of providing a free text answer (by choosing the “other” option). We are combining the free text responses with the preset responses into one variable.</p>
-<pre class="r"><code>raw &lt;- 
-  raw %&gt;%
-  mutate(years = as.integer(years),
-         recurring_outcome = case_when(recurring_outcome == &quot;other&quot; ~ recurring_outcome_6_text,
-                                          TRUE ~ recurring_outcome),
-         serious_outcome = case_when(serious_outcome == &quot;other&quot; ~ serious_outcome_6_text,
-                                          TRUE ~ serious_outcome))</code></pre>
-<p>We are keeping only the level description of the Likert-scale variables but not their explanation.</p>
-<pre class="r"><code>raw &lt;- 
-  raw %&gt;%
-  mutate(general_frequency = beg2char(general_frequency, &quot;\n&quot;),
-         recurring_frequency = beg2char(recurring_frequency, &quot;\n&quot;),
-         recurring_serious = beg2char(recurring_serious, &quot;\n&quot;),
-         serious_serious = beg2char(serious_serious, &quot;\n&quot;))</code></pre>
-</div>
-<div id="saving-the-responses-from-anonymous-respondents" class="section level1">
-<h1>Saving the responses from anonymous respondents</h1>
-<p>We save the response ids of the anonymous respondents separately in order to exclude them from further analysis later in the data preprocessing process.</p>
-<pre class="r"><code>anonym_res_data &lt;- 
-  raw %&gt;%
-  filter(distribution_channel == &quot;anonymous&quot;) %&gt;% 
-  distinct(response_id)</code></pre>
-</div>
-<div id="filter-the-needed-variables-only" class="section level1">
-<h1>Filter the needed variables only</h1>
-<p>We are dropping the variables that will not be used in further analysis.</p>
-<pre class="r"><code>raw &lt;- 
-  raw %&gt;%
-  select(-start_date, -end_date, -status,
-         -progress, -duration_in_seconds, -finished,
-         -recorded_date, -distribution_channel, -user_language,
-         -inform, -comment, -serious_outcome_6_text,
-         -recurring_outcome_6_text)</code></pre>
-</div>
-<div id="saving-the-cleaned-dataset" class="section level1">
-<h1>Saving the cleaned dataset</h1>
-<pre class="r"><code>write_tsv(raw, &quot;Data/Processed/ReMis_Main_Raw_Cleaned_data.tsv&quot;)</code></pre>
-</div>
-<div id="response-separation" class="section level1">
-<h1>Response separation</h1>
-<p>Some respondents wrote more than one answer to a free text question. In order to not lose any information, the authors read through the free text responses and separated the responses if they contained multiple answers.</p>
-<p>Since we asked the respondents to describe their team’s most <strong>recurring</strong> and most <strong>serious</strong> mistakes, and their causes and their outcomes we have to treat these differently later on. We keep this information in the variable named &quot;[mistake or cause or ourcome]_type&quot;.</p>
-<p>We keep the original response in the variable named “mistake” and “cause” and “outcome”. During the separation this variable will not be touched.</p>
-<p>The separated answers will be kept in new variables with and increasing id number in their name.</p>
-<p>E.g. If there are two answers in one response in “mistake” then those two answers will bea separated in the “mistake_1” and “mistake_2” variables.</p>
-<div id="data-management-mistakes" class="section level2">
-<h2>Data management mistakes</h2>
-<div id="number-of-responses-before-separation" class="section level3">
-<h3>Number of responses before separation</h3>
-<p>For counting the response before the separation we do not include the missing responses.</p>
-<pre class="r"><code>raw %&gt;% 
-  transmute(response_id,
-            recurring_story,
-            serious_story) %&gt;% 
-  gather(key = &quot;mistake_type&quot;, value = &quot;mistake&quot;, -response_id) %&gt;% 
-  mutate(mistake_type = str_extract(mistake_type, &quot;[^_]+&quot;)) %&gt;% 
-  drop_na(mistake) %&gt;%
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   853</code></pre>
-</div>
-<div id="transforming-data" class="section level3">
-<h3>Transforming data</h3>
-<pre class="r"><code>processed_mistake_separation &lt;-
-  raw %&gt;%
-  transmute(response_id,
-            recurring_story,
-            serious_story) %&gt;% 
-  gather(key = &quot;mistake_type&quot;, value = &quot;mistake&quot;, -response_id) %&gt;% 
-  mutate(mistake_type = str_extract(mistake_type, &quot;[^_]+&quot;),
-         mistake_1 = NA_character_,
-         mistake_2 = NA_character_)</code></pre>
-</div>
-<div id="saving-the-dataset" class="section level3">
-<h3>Saving the dataset</h3>
-<pre class="r"><code># write_xlsx(processed_mistake_separation, &quot;Data/Processed/grouping/separation/ReMis_Main_Processed_Mistake_data.xlsx&quot;)</code></pre>
-</div>
-</div>
-<div id="causes-of-mistakes" class="section level2">
-<h2>Causes of mistakes</h2>
-<div id="number-of-responses-before-separation-1" class="section level3">
-<h3>Number of responses before separation</h3>
-<p>For counting the response before the separation we do not include the missing responses.</p>
-<pre class="r"><code>raw %&gt;% 
-  transmute(response_id,
-            recurring_cause,
-            serious_cause) %&gt;% 
-  gather(key = &quot;cause_type&quot;, value = &quot;cause&quot;, -response_id) %&gt;% 
-  mutate(cause_type = str_extract(cause_type, &quot;[^_]+&quot;)) %&gt;% 
-  drop_na(cause) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   795</code></pre>
-</div>
-<div id="transforming-data-1" class="section level3">
-<h3>Transforming data</h3>
-<pre class="r"><code>processed_cause_separation &lt;-
-  raw %&gt;% 
-  transmute(response_id,
-            recurring_cause,
-            serious_cause) %&gt;% 
-  gather(key = &quot;cause_type&quot;, value = &quot;cause&quot;, -response_id) %&gt;% 
-  mutate(cause_type = str_extract(cause_type, &quot;[^_]+&quot;),
-         cause_1 = NA_character_,
-         cause_2 = NA_character_)</code></pre>
-</div>
-<div id="saving-the-dataset-1" class="section level3">
-<h3>Saving the dataset</h3>
-<pre class="r"><code># write_xlsx(processed_cause_separation, &quot;Data/Processed/grouping/separation/ReMis_Main_Processed_Cause_data.xlsx&quot;)</code></pre>
-</div>
-</div>
-<div id="outcomes-of-mistakes" class="section level2">
-<h2>Outcomes of mistakes</h2>
-<div id="number-of-responses-before-separation-2" class="section level3">
-<h3>Number of responses before separation</h3>
-<p>For counting the response before the separation we do not include the missing responses.</p>
-<pre class="r"><code>raw %&gt;% 
-  transmute(response_id,
-            recurring_outcome,
-            serious_outcome) %&gt;% 
-  gather(key = &quot;outcome_type&quot;, value = &quot;outcome&quot;, -response_id) %&gt;% 
-  mutate(outcome_type = str_extract(outcome_type, &quot;[^_]+&quot;)) %&gt;% 
-  drop_na(outcome) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   842</code></pre>
-</div>
-<div id="transforming-data-2" class="section level3">
-<h3>Transforming data</h3>
-<pre class="r"><code>processed_outcome_separation &lt;-
-  raw %&gt;% 
-  transmute(response_id,
-            recurring_outcome,
-            serious_outcome) %&gt;% 
-  gather(key = &quot;outcome_type&quot;, value = &quot;outcome&quot;, -response_id) %&gt;% 
-  mutate(outcome_type = str_extract(outcome_type, &quot;[^_]+&quot;),
-         outcome_1 = NA_character_)</code></pre>
-</div>
-<div id="saving-the-dataset-2" class="section level3">
-<h3>Saving the dataset</h3>
-<pre class="r"><code># write_xlsx(processed_outcome_separation, &quot;Data/Processed/grouping/separation/ReMis_Main_Processed_Outcome_data.xlsx&quot;)</code></pre>
-</div>
-</div>
-</div>
-<div id="thematic-grouping" class="section level1">
-<h1>Thematic grouping</h1>
-<p>The thematic grouping methodology is applied to the separated descriptions of <strong>mistakes</strong>, <strong>causes</strong> and <strong>outcomes</strong> separately.</p>
-<div id="preparing-data-for-creating-the-codes" class="section level2">
-<h2>Preparing data for creating the codes</h2>
-<p>First, we read the output of the separation process of the mistakes, causes and outcomes.</p>
-<p>Objects with the name &quot;processed_[mistake, cause, outcome]_data&quot; contain the result of the manually carried out response separation process.</p>
-<p>Second, we transform the data to prepare them for the coding of the separated responses.</p>
-<p>Third, we save the transformed datatable.</p>
-<div id="data-management-mistake-types" class="section level3">
-<h3>Data management mistake types</h3>
-<div id="read-data" class="section level4">
-<h4>Read data</h4>
-<pre class="r"><code>processed_mistake_data &lt;- read_xlsx(&quot;Data/Processed/grouping/separation/ReMis_Main_Processed_Mistake_data.xlsx&quot;)</code></pre>
-</div>
-<div id="transform-data" class="section level4">
-<h4>Transform data</h4>
-<pre class="r"><code>processed_mistake_data &lt;-
-  processed_mistake_data %&gt;% 
-  gather(key = &quot;mistake_no&quot;, value = &quot;mistake_sep&quot;, -response_id, -mistake_type, -mistake) %&gt;%
-  mutate(mistake_no = str_extract(mistake_no, &quot;[0-9]$&quot;),
-         mistake_no = as.integer(mistake_no),
-         code = NA_character_) %&gt;% 
-  drop_na(mistake_sep)</code></pre>
-</div>
-<div id="number-of-responses-after-separation" class="section level4">
-<h4>Number of responses after separation</h4>
-<pre class="r"><code>processed_mistake_data  %&gt;% 
-  drop_na(mistake) %&gt;%
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   974</code></pre>
-</div>
-<div id="write-data" class="section level4">
-<h4>Write data</h4>
-<pre class="r"><code># write_xlsx(processed_mistake_data, &quot;Data/Processed/grouping/coding/ReMis_Main_Processed_Mistake_Type_Coding_data.xlsx&quot;)</code></pre>
-</div>
-</div>
-<div id="causes-of-mistakes-1" class="section level3">
-<h3>Causes of mistakes</h3>
-<div id="read-data-1" class="section level4">
-<h4>Read data</h4>
-<pre class="r"><code>processed_cause_data &lt;- read_xlsx(&quot;Data/Processed/grouping/separation/ReMis_Main_Processed_Cause_data.xlsx&quot;)</code></pre>
-</div>
-<div id="transform-data-1" class="section level4">
-<h4>Transform data</h4>
-<pre class="r"><code>processed_cause_data &lt;-
-  processed_cause_data %&gt;% 
-  gather(key = &quot;cause_no&quot;, value = &quot;cause_sep&quot;, -response_id, -cause_type, -cause) %&gt;%
-  mutate(cause_no = str_extract(cause_no, &quot;[0-9]$&quot;),
-         cause_no = as.integer(cause_no),
-         code = NA_character_) %&gt;% 
-  drop_na(cause_sep)</code></pre>
-</div>
-<div id="number-of-responses-after-separation-1" class="section level4">
-<h4>Number of responses after separation</h4>
-<pre class="r"><code>processed_cause_data  %&gt;% 
-  drop_na(cause) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1  1006</code></pre>
-</div>
-<div id="write-data-1" class="section level4">
-<h4>Write data</h4>
-<pre class="r"><code># write_xlsx(processed_cause_data, &quot;Data/Processed/grouping/coding/ReMis_Main_Processed_Cause_Coding_data.xlsx&quot;)</code></pre>
-</div>
-</div>
-<div id="outcomes-of-mistakes-1" class="section level3">
-<h3>Outcomes of mistakes</h3>
-<div id="read-data-2" class="section level4">
-<h4>Read data</h4>
-<pre class="r"><code>processed_outcome_data &lt;- read_xlsx(&quot;Data/Processed/grouping/separation/ReMis_Main_Processed_Outcome_data.xlsx&quot;)</code></pre>
-</div>
-<div id="transform-data-2" class="section level4">
-<h4>Transform data</h4>
-<pre class="r"><code>processed_outcome_data &lt;- 
-  processed_outcome_data %&gt;% 
-  gather(key = &quot;outcome_no&quot;, value = &quot;outcome_sep&quot;, -response_id, -outcome_type, -outcome) %&gt;%
-  mutate(outcome_no = str_extract(outcome_no, &quot;[0-9]$&quot;),
-         outcome_no = as.integer(outcome_no),
-         code = NA_character_) %&gt;% 
-  drop_na(outcome_sep)</code></pre>
-</div>
-<div id="number-of-responses-after-separation-2" class="section level4">
-<h4>Number of responses after separation</h4>
-<pre class="r"><code>processed_outcome_data  %&gt;% 
-  drop_na(outcome) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   937</code></pre>
-</div>
-<div id="write-data-2" class="section level4">
-<h4>Write data</h4>
-<pre class="r"><code># write_xlsx(processed_outcome_data, &quot;Data/Processed/grouping/coding/ReMis_Main_Processed_Outcome_Coding_data.xlsx&quot;)</code></pre>
-</div>
-</div>
-</div>
-<div id="creating-groups" class="section level2">
-<h2>Creating groups</h2>
-<p>First, we read the output of the coding process of the separated mistakes, causes and outcomes.</p>
-<p>Objects with the name &quot;processed_[mistake_tpye, cause, outcome]_coding&quot; contain the result of the manually carried out creating codes process.</p>
-<p>Second, we transform the codes to use them for creating the groups.</p>
-<p>Third, we save the transformed datatable.</p>
-<div id="data-management-mistake-types-1" class="section level3">
-<h3>Data management mistake types</h3>
-<div id="read-data-3" class="section level4">
-<h4>Read data</h4>
-<pre class="r"><code>processed_mistake_type_coding &lt;-
-  read_xlsx(&quot;Data/Processed/grouping/coding/ReMis_Main_Processed_Mistake_Type_Coding_data.xlsx&quot;) %&gt;% 
-  mutate(mistake_no = as.integer(mistake_no))</code></pre>
-</div>
-<div id="general-exclusion" class="section level4">
-<h4>General exclusion</h4>
-<p>After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent (“see above”), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).</p>
-<div id="number-of-exluded-responses" class="section level5">
-<h5>Number of exluded responses</h5>
-<pre class="r"><code>processed_mistake_type_coding %&gt;% 
-  filter(code %in% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;)) %&gt;% 
-  group_by(code) %&gt;% 
-  count() %&gt;% 
-  ungroup() %&gt;% 
-  mutate(sum_n = sum(n))</code></pre>
-<pre><code>## # A tibble: 4 x 3
-##   code                   n sum_n
-##   &lt;chr&gt;              &lt;int&gt; &lt;int&gt;
-## 1 irrelevant content    84   264
-## 2 missing              125   264
-## 3 out of timeframe      15   264
-## 4 see above             40   264</code></pre>
-</div>
-<div id="number-of-responses-after-exclusion" class="section level5">
-<h5>Number of responses after exclusion</h5>
-<pre class="r"><code>processed_mistake_type_coding %&gt;% 
-  filter(code %ni% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;)) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   835</code></pre>
-</div>
-<div id="number-of-responses-excluded-because-of-insufficient-information" class="section level5">
-<h5>Number of responses excluded because of insufficient information</h5>
-<p>For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the mistake (“insufficient information”).</p>
-<pre class="r"><code>processed_mistake_type_coding %&gt;% 
-  filter(code == &quot;insufficient information&quot;) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1    30</code></pre>
-</div>
-</div>
-<div id="transform-data-3" class="section level4">
-<h4>Transform data</h4>
-<pre class="r"><code>processed_mistake_type_coding_count &lt;-
-  processed_mistake_type_coding %&gt;% 
-  group_by(code) %&gt;%
-  count() %&gt;% 
-  mutate(group = NA_character_) %&gt;%
-  arrange(code)</code></pre>
-</div>
-<div id="counting-the-number-of-disctinct-codes" class="section level4">
-<h4>Counting the number of disctinct codes</h4>
-<pre class="r"><code>processed_mistake_type_coding_count %&gt;% 
-  filter(code %ni% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;,
-                     &quot;insufficient information&quot;)) %&gt;% 
-  ungroup() %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   317</code></pre>
-</div>
-<div id="write-data-3" class="section level4">
-<h4>Write data</h4>
-<pre class="r"><code># write_xlsx(processed_mistake_type_coding_count, &quot;Data/Processed/grouping/group/ReMis_Main_Processed_Mistake_Type_Grouping.xlsx&quot;)</code></pre>
-</div>
-<div id="testing-similarity-between-tables" class="section level4">
-<h4>Testing similarity between tables</h4>
-<p>The tables are handled in a spreadsheet therefore, it is possible that there are dissimilarities between them. These test compare the parts of the tables that should be similar after the manual processing that were carried out outside of R.</p>
-<pre class="r"><code>setdiff(
-  select(processed_mistake_type_coding, -code),
-  select(processed_mistake_data, -code)
-  )</code></pre>
-<pre><code>## # A tibble: 0 x 5
-## # … with 5 variables: response_id &lt;chr&gt;, mistake_type &lt;chr&gt;, mistake &lt;chr&gt;,
-## #   mistake_no &lt;int&gt;, mistake_sep &lt;chr&gt;</code></pre>
-</div>
-</div>
-<div id="causes-of-mistakes-2" class="section level3">
-<h3>Causes of mistakes</h3>
-<div id="read-data-4" class="section level4">
-<h4>Read data</h4>
-<pre class="r"><code>processed_cause_coding &lt;-
-  read_xlsx(&quot;Data/Processed/grouping/coding/ReMis_Main_Processed_Cause_Coding_data.xlsx&quot;) %&gt;% 
-  mutate(cause_no = as.integer(cause_no))</code></pre>
-</div>
-<div id="general-exclusion-1" class="section level4">
-<h4>General exclusion</h4>
-<p>After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent (“see above”), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).</p>
-<div id="number-of-exluded-responses-1" class="section level5">
-<h5>Number of exluded responses</h5>
-<pre class="r"><code>processed_cause_coding %&gt;% 
-  filter(code %in% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;)) %&gt;% 
-  group_by(code) %&gt;% 
-  count() %&gt;% 
-  ungroup() %&gt;% 
-  mutate(sum_n = sum(n))</code></pre>
-<pre><code>## # A tibble: 3 x 3
-##   code                   n sum_n
-##   &lt;chr&gt;              &lt;int&gt; &lt;int&gt;
-## 1 irrelevant content    38   258
-## 2 missing              183   258
-## 3 see above             37   258</code></pre>
-</div>
-<div id="number-of-responses-after-exclusion-1" class="section level5">
-<h5>Number of responses after exclusion</h5>
-<pre class="r"><code>processed_cause_coding %&gt;% 
-  filter(code %ni% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;)) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   931</code></pre>
-</div>
-<div id="number-of-responses-excluded-because-of-insufficient-information-1" class="section level5">
-<h5>Number of responses excluded because of insufficient information</h5>
-<p>For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the cause of the mistake (“insufficient information”).</p>
-<pre class="r"><code>processed_cause_coding %&gt;% 
-  filter(code == &quot;insufficient information&quot;) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1    59</code></pre>
-</div>
-</div>
-<div id="transform-data-4" class="section level4">
-<h4>Transform data</h4>
-<pre class="r"><code>processed_cause_coding_count &lt;-
-  processed_cause_coding %&gt;% 
-  group_by(code) %&gt;%
-  count() %&gt;%
-  mutate(group = NA_character_) %&gt;% 
-  arrange(code)</code></pre>
-</div>
-<div id="counting-the-number-of-disctinct-codes-1" class="section level4">
-<h4>Counting the number of disctinct codes</h4>
-<pre class="r"><code>processed_cause_coding_count %&gt;% 
-  filter(code %ni% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;,
-                     &quot;insufficient information&quot;)) %&gt;% 
-  ungroup() %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   334</code></pre>
-</div>
-<div id="write-data-4" class="section level4">
-<h4>Write data</h4>
-<pre class="r"><code># write_xlsx(processed_cause_coding_count, &quot;Data/Processed/grouping/group/ReMis_Main_Processed_Cause_Grouping.xlsx&quot;)</code></pre>
-</div>
-<div id="testing-similarity-between-tables-1" class="section level4">
-<h4>Testing similarity between tables</h4>
-<pre class="r"><code>setdiff(
-  select(processed_cause_coding, -code),
-  select(processed_cause_data, -code)
-  )</code></pre>
-<pre><code>## # A tibble: 0 x 5
-## # … with 5 variables: response_id &lt;chr&gt;, cause_type &lt;chr&gt;, cause &lt;chr&gt;,
-## #   cause_no &lt;int&gt;, cause_sep &lt;chr&gt;</code></pre>
-</div>
-</div>
-<div id="outcomes-of-mistakes-2" class="section level3">
-<h3>Outcomes of mistakes</h3>
-<div id="read-data-5" class="section level4">
-<h4>Read data</h4>
-<pre class="r"><code>processed_outcome_coding &lt;-
-  read_xlsx(&quot;Data/Processed/grouping/coding/ReMis_Main_Processed_Outcome_Coding_data.xlsx&quot;) %&gt;% 
-  mutate(outcome_no = as.integer(outcome_no))</code></pre>
-</div>
-<div id="general-exclusion-2" class="section level4">
-<h4>General exclusion</h4>
-<p>After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent (“see above”), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).</p>
-<div id="number-of-exluded-responses-2" class="section level5">
-<h5>Number of exluded responses</h5>
-<pre class="r"><code>processed_outcome_coding %&gt;% 
-  filter(code %in% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;)) %&gt;% 
-  group_by(code) %&gt;% 
-  count() %&gt;% 
-  ungroup() %&gt;% 
-  mutate(sum_n = sum(n))</code></pre>
-<pre><code>## # A tibble: 3 x 3
-##   code                   n sum_n
-##   &lt;chr&gt;              &lt;int&gt; &lt;int&gt;
-## 1 irrelevant content    13   153
-## 2 missing              136   153
-## 3 see above              4   153</code></pre>
-</div>
-<div id="number-of-responses-after-exclusion-2" class="section level5">
-<h5>Number of responses after exclusion</h5>
-<pre class="r"><code>processed_outcome_coding %&gt;% 
-  filter(code %ni% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;)) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   920</code></pre>
-</div>
-<div id="number-of-responses-excluded-because-of-insufficient-information-2" class="section level5">
-<h5>Number of responses excluded because of insufficient information</h5>
-<p>For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the outcome of the mistake (“insufficient information”).</p>
-<pre class="r"><code>processed_outcome_coding %&gt;% 
-  filter(code == &quot;insufficient information&quot;) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1     5</code></pre>
-</div>
-</div>
-<div id="transform-data-5" class="section level4">
-<h4>Transform data</h4>
-<pre class="r"><code>processed_outcome_coding_count &lt;-
-  processed_outcome_coding %&gt;% 
-  group_by(code) %&gt;%
-  count() %&gt;%
-  mutate(group = NA_character_) %&gt;% 
-  arrange(code)</code></pre>
-</div>
-<div id="counting-the-number-of-disctinct-codes-2" class="section level4">
-<h4>Counting the number of disctinct codes</h4>
-<pre class="r"><code>processed_outcome_coding_count %&gt;% 
-  filter(code %ni% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;,
-                     &quot;insufficient information&quot;)) %&gt;% 
-  ungroup() %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1    34</code></pre>
-</div>
-<div id="write-data-5" class="section level4">
-<h4>Write data</h4>
-<pre class="r"><code># write_xlsx(processed_outcome_coding_count, &quot;Data/Processed/grouping/group/ReMis_Main_Processed_Outcome_Grouping.xlsx&quot;)</code></pre>
-</div>
-<div id="testing-similarity-between-tables-2" class="section level4">
-<h4>Testing similarity between tables</h4>
-<pre class="r"><code>setdiff(
-  select(processed_outcome_coding, -code),
-  select(processed_outcome_data, -code)
-  )</code></pre>
-<pre><code>## # A tibble: 0 x 5
-## # … with 5 variables: response_id &lt;chr&gt;, outcome_type &lt;chr&gt;, outcome &lt;chr&gt;,
-## #   outcome_no &lt;int&gt;, outcome_sep &lt;chr&gt;</code></pre>
-</div>
-</div>
-</div>
-<div id="exclusion" class="section level2">
-<h2>Exclusion</h2>
-<p>First, we read the outcome of the creating groups process. Second, we join the outputs of the creating codes and the defining groups processes.</p>
-<p>Second, we exclude all the separated responses, where * the corresponding code was not assigned to a group during the defining groups process (“NA”) * the respondent did not write down the response but refered to a previous response (“see above”) * the response was irrelevant to the given question (“irrelevant content”) * the response did not provide enough information to decide what did the respondent mean (“insufficient information”) * if the respondent expliciltly claimed the the mistake happen more then 5 years ago (“out of timeframe”) * if the response was missing (“missing”)</p>
-<div id="data-management-mistake-types-2" class="section level3">
-<h3>Data management mistake types</h3>
-<div id="read-data-6" class="section level4">
-<h4>Read data</h4>
-<pre class="r"><code>processed_mistake_type_grouping &lt;- read_xlsx(&quot;Data/Processed/grouping/group/ReMis_Main_Processed_Mistake_Type_Grouping.xlsx&quot;)</code></pre>
-</div>
-<div id="merge-each-case-with-their-group-based-on-the-codes" class="section level4">
-<h4>Merge each case with their group based on the codes</h4>
-<pre class="r"><code>processed_mistake_type_grouped &lt;-
-  processed_mistake_type_coding %&gt;% 
-  left_join(., processed_mistake_type_grouping, by = &quot;code&quot;)</code></pre>
-</div>
-<div id="write-responses-for-validation" class="section level4">
-<h4>Write responses for validation</h4>
-<pre class="r"><code># write_tsv(processed_mistake_type_grouped, &quot;Processed/grouping/grouped/ReMis_Main_Processed_Mistake_Type_Grouped_data.tsv&quot;)</code></pre>
-</div>
-<div id="count-the-number-of-responses-that-we-exclude-because-we-could-not-assign-the-code-to-a-group" class="section level4">
-<h4>Count the number of responses that we exclude because we could not assign the code to a group</h4>
-<pre class="r"><code>processed_mistake_type_grouped %&gt;% 
-  filter(group == &quot;NA&quot;) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1    19</code></pre>
-</div>
-<div id="test-if-there-is-any-case-thats-code-is-not-grouped" class="section level4">
-<h4>Test if there is any case thats code is not grouped</h4>
-<pre class="r"><code>processed_mistake_type_grouped %&gt;% 
-  filter(is.na(group)) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1     0</code></pre>
-</div>
-<div id="create-a-variable-that-stores-whether-the-maximum-number-of-separated-responses-provided-by-the-respondent-is-one-or-not" class="section level4">
-<h4>Create a variable that stores whether the maximum number of separated responses provided by the respondent is one or not</h4>
-<pre class="r"><code>processed_mistake_type_grouped &lt;-
-  processed_mistake_type_grouped %&gt;% 
-  group_by(response_id, mistake_type) %&gt;%
-  mutate(maximum_response_one_type = case_when(which.max(mistake_no) == 1L ~ &quot;yes&quot;,
-                                          which.max(mistake_no) != 1L ~ &quot;no&quot;))</code></pre>
-</div>
-<div id="number-of-responses-where-the-maximum-number-of-separated-of-response-is-not-one" class="section level4">
-<h4>Number of responses where the maximum number of separated of response is not one</h4>
-<pre class="r"><code>processed_mistake_type_grouped %&gt;% 
-  ungroup() %&gt;% 
-  filter(maximum_response_one_type != &quot;yes&quot;) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   201</code></pre>
-</div>
-<div id="number-of-respondent-who-wrote-more-than-one-response" class="section level4">
-<h4>Number of respondent who wrote more than one response</h4>
-<pre class="r"><code>processed_mistake_type_grouped %&gt;% 
-  ungroup() %&gt;% 
-  filter(maximum_response_one_type != &quot;yes&quot;) %&gt;% 
-  distinct(response_id) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1    79</code></pre>
-</div>
-<div id="exclude-cases-based-on-ambiguous-groups" class="section level4">
-<h4>Exclude cases based on ambiguous groups</h4>
-<pre class="r"><code>processed_mistake_type_filtered &lt;-
-  processed_mistake_type_grouped %&gt;% 
-  filter(group %ni% c(&quot;see above&quot;,
-                      &quot;missing&quot;,
-                      &quot;irrelevant content&quot;,
-                      &quot;out of timeframe&quot;,
-                      &quot;insufficient information&quot;,
-                      &quot;NA&quot;))</code></pre>
-</div>
-<div id="exclude-cases-of-anonymous-respondents" class="section level4">
-<h4>Exclude cases of anonymous respondents</h4>
-<p>We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.</p>
-<pre class="r"><code>processed_mistake_type_filtered &lt;-
-  processed_mistake_type_filtered %&gt;% 
-  anti_join(., anonym_res_data, by = &quot;response_id&quot;)</code></pre>
-</div>
-<div id="transformation" class="section level4">
-<h4>Transformation</h4>
-<pre class="r"><code>processed_mistake_type_filtered &lt;-
-  processed_mistake_type_filtered %&gt;% 
-  ungroup() %&gt;% 
-  mutate(type = mistake_type,
-         group_type = group,
-         code_type = code) %&gt;% 
-  select(-mistake_type, -n, -group, -code)</code></pre>
-</div>
-<div id="write-final-groups-for-further-analysis" class="section level4">
-<h4>Write final groups for further analysis</h4>
-<pre class="r"><code>write_tsv(processed_mistake_type_filtered, &quot;Data/Processed/ReMis_Main_Processed_Type_Groups_data.tsv&quot;)</code></pre>
-</div>
-</div>
-<div id="causes-of-mistakes-3" class="section level3">
-<h3>Causes of mistakes</h3>
-<div id="read-data-7" class="section level4">
-<h4>Read data</h4>
-<pre class="r"><code>processed_cause_grouping &lt;- read_xlsx(&quot;Data/Processed/grouping/group/ReMis_Main_Processed_Cause_Grouping.xlsx&quot;)</code></pre>
-</div>
-<div id="merge-each-case-with-their-group-based-on-the-codes-1" class="section level4">
-<h4>Merge each case with their group based on the codes</h4>
-<pre class="r"><code>processed_cause_grouped &lt;-
-  processed_cause_coding %&gt;% 
-  left_join(., processed_cause_grouping, by = &quot;code&quot;)</code></pre>
-</div>
-<div id="write-responses-for-validation-1" class="section level4">
-<h4>Write responses for validation</h4>
-<pre class="r"><code># write_tsv(processed_cause_grouped, &quot;Data/Processed/grouping/grouped/ReMis_Main_Processed_Cause_Grouped_data.tsv&quot;)</code></pre>
-</div>
-<div id="count-the-number-of-responses-that-we-exclude-because-we-could-not-assign-the-code-to-a-group-1" class="section level4">
-<h4>Count the number of responses that we exclude because we could not assign the code to a group</h4>
-<pre class="r"><code>processed_cause_grouped %&gt;% 
-  filter(group == &quot;NA&quot;) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   290</code></pre>
-</div>
-<div id="test-if-there-is-any-case-thats-code-is-not-grouped-1" class="section level4">
-<h4>Test if there is any case thats code is not grouped</h4>
-<pre class="r"><code>processed_cause_grouped %&gt;% 
-  filter(is.na(group)) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1     0</code></pre>
-</div>
-<div id="create-a-variable-that-stores-whether-the-maximum-number-of-separated-responses-provided-by-the-respondent-is-one-or-not-1" class="section level4">
-<h4>Create a variable that stores whether the maximum number of separated responses provided by the respondent is one or not</h4>
-<pre class="r"><code>processed_cause_grouped &lt;-
-  processed_cause_grouped %&gt;% 
-  group_by(response_id, cause_type) %&gt;%
-  mutate(maximum_response_one_cause = case_when(which.max(cause_no) == 1L ~ &quot;yes&quot;,
-                                          which.max(cause_no) != 1L ~ &quot;no&quot;))</code></pre>
-</div>
-<div id="number-of-responses-where-the-maximum-number-of-separated-of-response-is-not-one-1" class="section level4">
-<h4>Number of responses where the maximum number of separated of response is not one</h4>
-<pre class="r"><code>processed_cause_grouped %&gt;% 
-  ungroup() %&gt;% 
-  filter(maximum_response_one_cause != &quot;yes&quot;) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   378</code></pre>
-</div>
-<div id="number-of-respondent-who-wrote-more-than-one-response-1" class="section level4">
-<h4>Number of respondent who wrote more than one response</h4>
-<pre class="r"><code>processed_cause_grouped %&gt;% 
-  ungroup() %&gt;% 
-  filter(maximum_response_one_cause != &quot;yes&quot;) %&gt;% 
-  distinct(response_id) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   149</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="exclude-cases-based-on-ambiguous-groups-1" class="section level1">
-<h1>Exclude cases based on ambiguous groups</h1>
-<pre class="r"><code>processed_cause_filtered &lt;-
-  processed_cause_grouped %&gt;% 
-  filter(group %ni% c(&quot;see above&quot;,
-                      &quot;missing&quot;,
-                      &quot;irrelevant content&quot;,
-                      &quot;out of timeframe&quot;,
-                      &quot;insufficient information&quot;,
-                      &quot;NA&quot;))</code></pre>
-<div id="exclude-cases-of-anonymous-respondents-1" class="section level4">
-<h4>Exclude cases of anonymous respondents</h4>
-<p>We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.</p>
-<pre class="r"><code>processed_cause_filtered &lt;-
-  processed_cause_filtered %&gt;% 
-  anti_join(., anonym_res_data, by = &quot;response_id&quot;)</code></pre>
-</div>
-<div id="transformation-1" class="section level4">
-<h4>Transformation</h4>
-<pre class="r"><code>processed_cause_filtered &lt;-
-  processed_cause_filtered %&gt;% 
-  ungroup() %&gt;% 
-  mutate(type = cause_type,
-         group_cause = group,
-         code_cause = code) %&gt;% 
-  select(-cause_type, -n, -group, -code)</code></pre>
-</div>
-<div id="write-final-groups-for-further-analysis-1" class="section level4">
-<h4>Write final groups for further analysis</h4>
-<pre class="r"><code>write_tsv(processed_cause_filtered, &quot;Data/Processed/ReMis_Main_Processed_Cause_Groups_data.tsv&quot;)</code></pre>
-</div>
-<div id="outcomes-of-mistakes-3" class="section level3">
-<h3>Outcomes of mistakes</h3>
-<div id="read-data-8" class="section level4">
-<h4>Read data</h4>
-<pre class="r"><code>processed_outcome_grouping &lt;- read_xlsx(&quot;Data/Processed/grouping/group/ReMis_Main_Processed_Outcome_Grouping.xlsx&quot;)</code></pre>
-</div>
-<div id="merge-each-case-with-their-group-based-on-the-codes-2" class="section level4">
-<h4>Merge each case with their group based on the codes</h4>
-<pre class="r"><code>processed_outcome_grouped &lt;- 
-  processed_outcome_coding %&gt;% 
-  left_join(., processed_outcome_grouping, by = &quot;code&quot;)</code></pre>
-</div>
-<div id="write-responses-for-validation-2" class="section level4">
-<h4>Write responses for validation</h4>
-<pre class="r"><code># write_tsv(processed_outcome_grouped, &quot;Data/Processed/grouping/grouped/ReMis_Main_Processed_Outcome_Grouped_data.tsv&quot;)</code></pre>
-</div>
-<div id="count-the-number-of-responses-that-we-exclude-because-we-could-not-assign-the-code-to-a-group-2" class="section level4">
-<h4>Count the number of responses that we exclude because we could not assign the code to a group</h4>
-<pre class="r"><code>processed_outcome_grouped %&gt;% 
-  filter(group == &quot;NA&quot;) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1    14</code></pre>
-</div>
-<div id="test-if-there-is-any-case-thats-code-is-not-grouped-2" class="section level4">
-<h4>Test if there is any case thats code is not grouped</h4>
-<pre class="r"><code>processed_outcome_grouped %&gt;% 
-  filter(is.na(group)) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1     0</code></pre>
-</div>
-<div id="create-a-variable-that-stores-whether-the-maximum-number-of-separated-responses-provided-by-the-respondent-is-one-or-not-2" class="section level4">
-<h4>Create a variable that stores whether the maximum number of separated responses provided by the respondent is one or not</h4>
-<pre class="r"><code>processed_outcome_grouped &lt;-
-  processed_outcome_grouped %&gt;% 
-  group_by(response_id, outcome_type) %&gt;%
-  mutate(maximum_response_one_outcome = case_when(which.max(outcome_no) == 1L ~ &quot;yes&quot;,
-                                          which.max(outcome_no) != 1L ~ &quot;no&quot;))</code></pre>
-</div>
-<div id="number-of-responses-where-the-maximum-number-of-separated-of-response-is-not-one-2" class="section level4">
-<h4>Number of responses where the maximum number of separated of response is not one</h4>
-<pre class="r"><code>processed_outcome_grouped %&gt;% 
-  ungroup() %&gt;% 
-  filter(maximum_response_one_outcome != &quot;yes&quot;) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   154</code></pre>
-</div>
-<div id="number-of-respondent-who-wrote-more-than-one-response-2" class="section level4">
-<h4>Number of respondent who wrote more than one response</h4>
-<pre class="r"><code>processed_outcome_grouped %&gt;% 
-  ungroup() %&gt;% 
-  filter(maximum_response_one_outcome != &quot;yes&quot;) %&gt;% 
-  distinct(response_id) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1    42</code></pre>
-</div>
-<div id="exclude-cases-based-on-ambiguous-groups-2" class="section level4">
-<h4>Exclude cases based on ambiguous groups</h4>
-<pre class="r"><code>processed_outcome_filtered &lt;-
-  processed_outcome_grouped %&gt;% 
-  filter(group %ni% c(&quot;see above&quot;,
-                      &quot;missing&quot;,
-                      &quot;irrelevant content&quot;,
-                      &quot;out of timeframe&quot;,
-                      &quot;insufficient information&quot;,
-                      &quot;NA&quot;))</code></pre>
-</div>
-<div id="exclude-cases-of-anonymous-respondents-2" class="section level4">
-<h4>Exclude cases of anonymous respondents</h4>
-<p>We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.</p>
-<pre class="r"><code>processed_outcome_filtered &lt;-
-  processed_outcome_filtered %&gt;% 
-  anti_join(., anonym_res_data, by = &quot;response_id&quot;)</code></pre>
-</div>
-<div id="transformation-2" class="section level4">
-<h4>Transformation</h4>
-<pre class="r"><code>processed_outcome_filtered &lt;-
-  processed_outcome_filtered %&gt;% 
-  ungroup() %&gt;% 
-  mutate(type = outcome_type,
-         group_outcome = group,
-         code_outcome = code) %&gt;% 
-  select(-outcome_type, -n, -group, -code)</code></pre>
-</div>
-<div id="write-final-groups-for-further-analysis-2" class="section level4">
-<h4>Write final groups for further analysis</h4>
-<pre class="r"><code>write_tsv(processed_outcome_filtered, &quot;Data/Processed/ReMis_Main_Processed_Outcome_Groups_data.tsv&quot;)</code></pre>
-</div>
-</div>
-</div>
-<div id="create-individual-datatables-for-the-analysis" class="section level1">
-<h1>Create individual datatables for the analysis</h1>
-<div id="excluding-responses-because-it-is-from-an-anonym-respondent" class="section level2">
-<h2>Excluding responses because it is from an anonym respondent</h2>
-<pre class="r"><code>raw &lt;-
-  raw %&gt;%
-  anti_join(., anonym_res_data, by = &quot;response_id&quot;)</code></pre>
-</div>
-<div id="create-datatable-for-the-descriptive-information" class="section level2">
-<h2>Create datatable for the descriptive information</h2>
-<div id="select-needed-variables" class="section level3">
-<h3>Select needed variables</h3>
-<pre class="r"><code>processed_descriptives &lt;- 
-  raw %&gt;%
-  select(response_id,
-         years,
-         field)</code></pre>
-</div>
-<div id="write-processed-datafile-for-analysis" class="section level3">
-<h3>Write processed datafile for analysis</h3>
-<pre class="r"><code>write_tsv(processed_descriptives, &quot;Data/Processed/ReMis_Main_Processed_Descriptive_data.tsv&quot;)</code></pre>
-</div>
-</div>
-<div id="create-datatable-for-general-frequency-of-mistakes-in-teams" class="section level2">
-<h2>Create datatable for general frequency of mistakes in teams</h2>
-<div id="select-needed-variables-1" class="section level3">
-<h3>Select needed variables</h3>
-<pre class="r"><code>processed_general_frequency &lt;- 
-  raw %&gt;%
-  select(response_id,
-         general_frequency)</code></pre>
-</div>
-<div id="write-processed-datafile-for-analysis-1" class="section level3">
-<h3>Write processed datafile for analysis</h3>
-<pre class="r"><code>write_tsv(processed_general_frequency, &quot;Data/Processed/ReMis_Main_Processed_General_Frequency_data.tsv&quot;)</code></pre>
-</div>
-</div>
-<div id="create-datatable-for-general-overview-of-data-management-mistakes-seriousness-and-frequency-ratings-of-mistakes" class="section level2">
-<h2>Create datatable for general overview of data management mistakes (seriousness and frequency ratings of mistakes)</h2>
-<div id="investigating-the-excluded-responses" class="section level3">
-<h3>Investigating the excluded responses</h3>
-<div id="create-a-table-of-the-excluded-responses" class="section level4">
-<h4>Create a table of the excluded responses</h4>
-<p>We flagged the mistakes that needed to be excluded from further analysis during the coding process in order to save time. Therefore, we use the coded mistake data to find the participants who’s responses fit our exclusion criteria.</p>
-<pre class="r"><code>exclude &lt;-  
-  processed_mistake_type_coding %&gt;%
-  filter(code %in% c(&quot;see above&quot;,
-                     &quot;missing&quot;,
-                     &quot;irrelevant content&quot;,
-                     &quot;out of timeframe&quot;)) %&gt;%
-  mutate(exclusion_criteria = code,
-         type = mistake_type) %&gt;%
-  select(response_id, type, mistake, exclusion_criteria) %&gt;% 
-  distinct(response_id, type, .keep_all = TRUE) %&gt;% 
-  anti_join(., anonym_res_data, by = &quot;response_id&quot;) # We are excluding responses that are from anonymous respondents from this list
+# batch 6
+batch_6_cleaned &lt;- read_csv(&quot;Data/Samples/ReMis_Main_181210_6Batch_Cleaned.csv&quot;)</code></pre>
+<p>We used the Qualtrics mail sender to send out our survey. Therefore now, we load the metadata of our samples downloaded from the Qualtrics mail sender history.</p>
+<pre class="r"><code># batch 3
+batch_3_history &lt;- read_csv2(&quot;Data/MailSender_History/ReMis_Main_History_Batch_3.csv&quot;)
 
-write_tsv(exclude, &quot;Data/Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv&quot;)</code></pre>
+# batch 5
+batch_5_history &lt;- read_csv2(&quot;Data/MailSender_History/ReMis_Main_History_Batch_5.csv&quot;)
+
+# batch 6
+batch_6_history &lt;- read_csv2(&quot;Data/MailSender_History/ReMis_Main_History_Batch_6.csv&quot;)</code></pre>
 </div>
-<div id="number-of-mistake-responses-that-we-exclude-and-the-reason-why" class="section level4">
-<h4>Number of mistake responses that we exclude (and the reason why)</h4>
-<pre class="r"><code>exclude %&gt;% 
-  group_by(exclusion_criteria, type) %&gt;% 
-  count() %&gt;% 
-  group_by(type) %&gt;% 
-  mutate(sum = sum(n)) %&gt;%
-  knitr::kable(caption = &quot;The exclusion criteria and the number of responses excluded because of that&quot;)</code></pre>
-<table>
-<caption>The exclusion criteria and the number of responses excluded because of that</caption>
-<thead>
-<tr class="header">
-<th align="left">exclusion_criteria</th>
-<th align="left">type</th>
-<th align="right">n</th>
-<th align="right">sum</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">irrelevant content</td>
-<td align="left">recurring</td>
-<td align="right">21</td>
-<td align="right">67</td>
-</tr>
-<tr class="even">
-<td align="left">irrelevant content</td>
-<td align="left">serious</td>
-<td align="right">60</td>
-<td align="right">186</td>
-</tr>
-<tr class="odd">
-<td align="left">missing</td>
-<td align="left">recurring</td>
-<td align="right">38</td>
-<td align="right">67</td>
-</tr>
-<tr class="even">
-<td align="left">missing</td>
-<td align="left">serious</td>
-<td align="right">82</td>
-<td align="right">186</td>
-</tr>
-<tr class="odd">
-<td align="left">out of timeframe</td>
-<td align="left">recurring</td>
-<td align="right">8</td>
-<td align="right">67</td>
-</tr>
-<tr class="even">
-<td align="left">out of timeframe</td>
-<td align="left">serious</td>
-<td align="right">5</td>
-<td align="right">186</td>
-</tr>
-<tr class="odd">
-<td align="left">see above</td>
-<td align="left">serious</td>
-<td align="right">39</td>
-<td align="right">186</td>
-</tr>
-</tbody>
-</table>
+<div id="renaming-variables" class="section level2">
+<h2>Renaming variables</h2>
+<p>We rename some variables to make the datasets comperable.</p>
+<pre class="r"><code># batch 3
+batch_3_history &lt;- 
+  batch_3_history %&gt;% 
+  rename(email = Email,
+         last_name = `Last Name`,
+         status = Status)
+
+batch_3_cleaned &lt;-
+  batch_3_cleaned %&gt;% 
+  rename(last_name = surname)
+
+# batch 5
+batch_5_history &lt;- 
+  batch_5_history %&gt;% 
+  rename(email = Email,
+         last_name = `Last Name`,
+         status = Status)
+
+batch_5_cleaned &lt;-
+  batch_5_cleaned %&gt;% 
+  rename(last_name = surname)
+
+# batch 6
+batch_6_history &lt;- 
+ batch_6_history %&gt;%
+  rename(email = Email,
+         last_name = `Last Name`,
+         status = Status)
+
+batch_6_cleaned &lt;-
+  batch_6_cleaned %&gt;% 
+  rename(last_name = surname)</code></pre>
 </div>
+<div id="descriptives-of-the-used-samples" class="section level2">
+<h2>Descriptives of the used samples</h2>
+<p>There are 500 email addresses in the sample of batch 3. For batch 3 there were 0 missing email addresses and 0 missing last names. There were 500 emails sent out to this sample.</p>
+<p>There are 1000 email addresses in the sample of batch 5. For batch 5 there were 0 missing email addresses and 0 missing last names. There were 1000 emails sent out to this sample.</p>
+<p>There are 15000 email addresses in the sample of batch 6. For batch 6 there were 10 missing email addresses and 78 missing last names. There were 14913 emails sent out to this sample.</p>
 </div>
-<div id="transforming-data-3" class="section level3">
-<h3>Transforming data</h3>
-<div id="creating-temporary-datatable-for-storing-mistake-descriptions" class="section level4">
-<h4>Creating temporary datatable for storing mistake descriptions</h4>
-<pre class="r"><code>temp_story &lt;- 
-  raw %&gt;% 
-  select(response_id, recurring_story, serious_story) %&gt;%
-  gather(key = &quot;type&quot;, value = &quot;mistake&quot;, -response_id) %&gt;% 
-  mutate(type = str_extract(type, &quot;[^_]+&quot;))</code></pre>
+<div id="exclusion-from-the-samples" class="section level2">
+<h2>Exclusion from the samples</h2>
+<p>For a few authors we coud not find the last name or the email address in the sample of batch 6. We are saving these incomplete instances now.</p>
+<pre class="r"><code>batch_6_missing &lt;-
+  batch_6_cleaned %&gt;% 
+  filter(is.na(last_name) | is.na(email))</code></pre>
+<p>We are checking the difference between the cleaned sample and the survey history.</p>
+<pre class="r"><code>batch_6_cleaned_history_difference &lt;-
+  setdiff(
+    select(batch_6_cleaned, email, last_name),
+    select(batch_6_history, email, last_name)
+    )</code></pre>
+<p>There are 89 data points that differ in the sample in opposition to the survey history. 88 of these differing data points are the ones that miss either the last name or the email address of the author, so they were dropped during cleaning up. 1 data point is differing because there is a difference in the last name addded during the cleaning up.</p>
+<p>We are checking the difference between the survey history and the cleaned sample.</p>
+<pre class="r"><code>batch_6_history_cleaned_difference &lt;-
+  setdiff(
+    select(batch_6_history, email, last_name),
+    select(batch_6_cleaned, email, last_name)
+    )</code></pre>
+<p>There are 2 data points that differ in the survey history in opposition to the sample. One of these data points is the one with different wording in the last name that we have found in the comparison before. In addition, one of the coauthors was added to the email list as a final check.</p>
+<p>We are excluding the coauthor from the survey history.</p>
+<pre class="r"><code>batch_6_history &lt;-
+  batch_6_history %&gt;% 
+  filter(last_name != &quot;Aczel&quot;)</code></pre>
 </div>
-<div id="number-of-all-mistake-response-stories-before-exclusion" class="section level4">
-<h4>Number of all mistake response stories before exclusion</h4>
-<pre class="r"><code>temp_story %&gt;% 
-  filter(!is.na(mistake)) %&gt;%
-  group_by(type) %&gt;% 
+<div id="joining-sample-with-history" class="section level2">
+<h2>Joining sample with history</h2>
+<p>Finish the cleaning of the sample we join the information in the sample to the email addresses in the survey history.</p>
+<pre class="r"><code># Batch 3
+batch_3_sample &lt;-
+  batch_3_history %&gt;% 
+  left_join(., batch_3_cleaned, by = c(&quot;email&quot;, &quot;last_name&quot;))
+
+# Batch 5
+batch_5_sample &lt;-
+  batch_5_history %&gt;% 
+  left_join(., batch_5_cleaned, by = c(&quot;email&quot;, &quot;last_name&quot;))
+
+# Batch 6
+batch_6_sample &lt;-
+  batch_6_history %&gt;% 
+  left_join(., batch_6_cleaned, by = c(&quot;email&quot;, &quot;last_name&quot;))</code></pre>
+<p>The final sample size for batch 3 is 500</p>
+<p>The final sample size for batch 5 is 1000</p>
+<p>The final sample size for batch 6 is 14912</p>
+</div>
+<div id="joining-samples" class="section level2">
+<h2>Joining samples</h2>
+<p>We join all the three samples to one dataframe.</p>
+<pre class="r"><code>sample &lt;-
+  batch_3_sample %&gt;% 
+  bind_rows(batch_5_sample) %&gt;%
+  bind_rows(batch_6_sample)</code></pre>
+<p>Checking the send status of the emails.</p>
+<pre class="r"><code>sample %&gt;% 
+  group_by(status) %&gt;% 
   count()</code></pre>
-<pre><code>## # A tibble: 2 x 2
-## # Groups:   type [2]
-##   type          n
-##   &lt;chr&gt;     &lt;int&gt;
-## 1 recurring   426
-## 2 serious     382</code></pre>
-</div>
-<div id="creating-temporary-datatable-for-storing-mistake-ratings" class="section level4">
-<h4>Creating temporary datatable for storing mistake ratings</h4>
-<pre class="r"><code>temp_rating &lt;-
-  raw %&gt;%
-  select(response_id, recurring_frequency, recurring_serious, serious_serious) %&gt;% 
-  gather(key = &quot;key&quot;, value = &quot;rating&quot;, -response_id) %&gt;% 
-  separate(key, into = c(&quot;type&quot;, &quot;question&quot;), sep = &quot;_&quot;)</code></pre>
-</div>
-<div id="number-of-all-mistake-response-ratings-before-exclusion" class="section level4">
-<h4>Number of all mistake response ratings before exclusion</h4>
-<pre class="r"><code>temp_rating %&gt;%
-  filter(!is.na(rating)) %&gt;%
-  group_by(type, question) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 3 x 3
-## # Groups:   type, question [3]
-##   type      question      n
-##   &lt;chr&gt;     &lt;chr&gt;     &lt;int&gt;
-## 1 recurring frequency   453
-## 2 recurring serious     453
-## 3 serious   serious     376</code></pre>
-</div>
-<div id="joining-ratings-to-the-descriptions-of-the-mistakes" class="section level4">
-<h4>Joining ratings to the descriptions of the mistakes</h4>
-<pre class="r"><code>processed_mistake_general &lt;-
-  temp_story %&gt;% 
-  left_join(., temp_rating, by = c(&quot;response_id&quot;, &quot;type&quot;))</code></pre>
-</div>
-<div id="number-of-individual-respondents-before-exclusion" class="section level4">
-<h4>Number of individual respondents before exclusion</h4>
-<pre class="r"><code>processed_mistake_general %&gt;% 
-  distinct(response_id) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   464</code></pre>
-</div>
-<div id="responses-that-will-be-excluded-and-their-ratings" class="section level4">
-<h4>Responses that will be excluded and their ratings</h4>
-<pre class="r"><code>processed_mistake_general_exclude &lt;- 
-  processed_mistake_general %&gt;% 
-  inner_join(., exclude, by = c(&quot;response_id&quot;, &quot;type&quot;, &quot;mistake&quot;))</code></pre>
-</div>
-<div id="number-of-responses-that-will-be-excluded-per-type-and-question" class="section level4">
-<h4>Number of responses that will be excluded per type and question</h4>
-<pre class="r"><code>processed_mistake_general_exclude %&gt;% 
-  group_by(type, question) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 3 x 3
-## # Groups:   type, question [3]
-##   type      question      n
-##   &lt;chr&gt;     &lt;chr&gt;     &lt;int&gt;
-## 1 recurring frequency    67
-## 2 recurring serious      67
-## 3 serious   serious     186</code></pre>
-</div>
-<div id="excluding-trials" class="section level4">
-<h4>Excluding trials</h4>
-<pre class="r"><code>processed_mistake_general_excluded &lt;-
-  processed_mistake_general %&gt;% 
-  anti_join(., exclude, by = c(&quot;response_id&quot;, &quot;type&quot;, &quot;mistake&quot;))</code></pre>
-</div>
-<div id="number-of-missing-ratings-after-exclusion" class="section level4">
-<h4>Number of missing ratings after exclusion</h4>
-<pre class="r"><code>processed_mistake_general_excluded %&gt;% 
-  filter(is.na(rating)) %&gt;% 
-  group_by(type, question) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 3
-## # Groups:   type, question [1]
-##   type    question     n
-##   &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt;
-## 1 serious serious      1</code></pre>
-</div>
-<div id="drop-responses-where-the-rating-is-missing" class="section level4">
-<h4>Drop responses where the rating is missing</h4>
-<pre class="r"><code>processed_mistake_general_excluded &lt;-
-  processed_mistake_general_excluded %&gt;% 
-  filter(!is.na(rating))</code></pre>
-</div>
-<div id="number-of-all-mistake-response-ratings" class="section level4">
-<h4>Number of all mistake response ratings</h4>
-<pre class="r"><code>processed_mistake_general_excluded %&gt;% 
-  group_by(type, question) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 3 x 3
-## # Groups:   type, question [3]
-##   type      question      n
-##   &lt;chr&gt;     &lt;chr&gt;     &lt;int&gt;
-## 1 recurring frequency   397
-## 2 recurring serious     397
-## 3 serious   serious     277</code></pre>
-</div>
-<div id="number-of-individual-respondents-left-after-exclusion" class="section level4">
-<h4>Number of individual respondents left after exclusion</h4>
-<pre class="r"><code>processed_mistake_general_excluded %&gt;% 
-  distinct(response_id) %&gt;%
-  count()</code></pre>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1   404</code></pre>
-</div>
-<div id="write-processed-datafile-for-analysis-2" class="section level4">
-<h4>Write processed datafile for analysis</h4>
-<pre class="r"><code>write_tsv(processed_mistake_general_excluded, &quot;Data/Processed/ReMis_Main_Processed_Mistake_General_data.tsv&quot;)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+## # Groups:   status [6]
+##   status                         n
+##   &lt;chr&gt;                      &lt;int&gt;
+## 1 Email Bounced               2379
+## 2 Email Sent                 13095
+## 3 Finished Survey              481
+## 4 Opted Out                    211
+## 5 Partially Completed Survey   223
+## 6 Started Survey                23</code></pre>
 </div>
 </div>
+<div id="investigating-the-journals-in-our-sample" class="section level1">
+<h1>Investigating the journals in our sample</h1>
+<p>A lot of the respondents to our survey indicated that their subfield is not on the list of preset subfields that we provided in our survey. We believed that the range of subfields listed cover the field of psychology. It is possible that our respondents were not exclusivly psychologist, just published in a paper that is labelled as psychology in the Science Direct database. Therefore, now we list the titles of the journals where the authors in our sample published in.</p>
+<pre class="r"><code>sample_publication &lt;- 
+  sample %&gt;%
+  distinct(publicationname)</code></pre>
+<p>We have 151 distinct journals in our sample.</p>
+<p>We are checking the list of publications that our in our whole database but were not selected when we created our sample.</p>
+<pre class="r"><code>email_publication %&gt;% 
+  anti_join(., sample_publication, by = &quot;publicationname&quot;)</code></pre>
+<pre><code>## # A tibble: 2 x 1
+##   publicationname                                 
+##   &lt;chr&gt;                                           
+## 1 Applied and Preventive Psychology               
+## 2 Woman - Psychosomatic Gynaecology and Obstetrics</code></pre>
+<p>There were 1 researchers in the sample where the journal is not known.</p>
 </div>
-<div id="create-datatable-for-exploring-the-relationship-between-mistake-causes-and-types" class="section level2">
-<h2>Create datatable for exploring the relationship between mistake causes and types</h2>
-<p>We keep every case where the respondent reported only maximum one cause or one mistake.</p>
-<div id="counting-the-number-of-causes-before-exclusion" class="section level3">
-<h3>Counting the number of causes before exclusion</h3>
-<pre class="r"><code>processed_cause_filtered %&gt;% 
-  group_by(type) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 2 x 2
-## # Groups:   type [2]
-##   type          n
-##   &lt;chr&gt;     &lt;int&gt;
-## 1 recurring   337
-## 2 serious     209</code></pre>
-</div>
-<div id="counting-the-number-of-mistake-types-before-exclusion" class="section level3">
-<h3>Counting the number of mistake types before exclusion</h3>
-<pre class="r"><code>processed_mistake_type_filtered %&gt;% 
-  group_by(type) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 2 x 2
-## # Groups:   type [2]
-##   type          n
-##   &lt;chr&gt;     &lt;int&gt;
-## 1 recurring   481
-## 2 serious     263</code></pre>
-</div>
-<div id="create-the-datatable" class="section level3">
-<h3>Create the datatable</h3>
-<pre class="r"><code>processed_cause_type_relationship &lt;-
-  processed_cause_filtered %&gt;% 
-  inner_join(., processed_mistake_type_filtered, by = c(&quot;response_id&quot;, &quot;type&quot;)) %&gt;% 
-  filter(!(maximum_response_one_cause == &quot;no&quot; &amp; maximum_response_one_type == &quot;no&quot;))</code></pre>
-</div>
-<div id="write-processed-datafile-for-analysis-3" class="section level3">
-<h3>Write processed datafile for analysis</h3>
-<pre class="r"><code>write_tsv(processed_cause_type_relationship, &quot;Data/Processed/ReMis_Main_Processed_Cause_Type_Relationship_Analysis_data.tsv&quot;)</code></pre>
-</div>
-</div>
-<div id="create-datatable-for-exploring-the-relationship-between-mistake-types-and-outcomes" class="section level2">
-<h2>Create datatable for exploring the relationship between mistake types and outcomes</h2>
-<p>We keep every case where the respondent reported only maximum one outcome or one mistake.</p>
-<div id="counting-the-number-of-outcomes-before-exclusion" class="section level3">
-<h3>Counting the number of outcomes before exclusion</h3>
-<pre class="r"><code>processed_outcome_filtered %&gt;% 
-  group_by(type) %&gt;% 
-  count()</code></pre>
-<pre><code>## # A tibble: 2 x 2
-## # Groups:   type [2]
-##   type          n
-##   &lt;chr&gt;     &lt;int&gt;
-## 1 recurring   469
-## 2 serious     375</code></pre>
-</div>
-<div id="create-the-datatable-1" class="section level3">
-<h3>Create the datatable</h3>
-<pre class="r"><code>processed_outcome_type_relationship &lt;-
-  processed_mistake_type_filtered %&gt;% 
-  inner_join(., processed_outcome_filtered, by = c(&quot;response_id&quot;, &quot;type&quot;)) %&gt;% 
-  filter(!(maximum_response_one_outcome == &quot;no&quot; &amp; maximum_response_one_type == &quot;no&quot;))</code></pre>
-</div>
-<div id="write-processed-datafile-for-analysis-4" class="section level3">
-<h3>Write processed datafile for analysis</h3>
-<pre class="r"><code>write_tsv(processed_outcome_type_relationship, &quot;Data/Processed/ReMis_Main_Processed_Outcome_Type_Relationship_Analysis_data.tsv&quot;)</code></pre>
-</div>
-</div>
+<div id="exploring-journal-subfield-in-our-sample" class="section level1">
+<h1>Exploring journal subfield in our sample</h1>
+<p>We are adding the subfield descriptions from the Science Direct database to our sample.</p>
+<pre class="r"><code>sample_match_journal &lt;-
+  sample_publication %&gt;%
+  inner_join(., journal, by = &quot;publicationname&quot;)</code></pre>
+<pre class="r"><code>sample_match_journal %&gt;% 
+  arrange(publicationname) %&gt;% 
+  write_tsv(., &quot;Data/Processed/ReMis_Main_SampleJournals.tsv&quot;)</code></pre>
+<p>We are checking the number of subfields that a journal is assigned to.</p>
+<pre class="r"><code>sample_match_journal %&gt;% 
+  group_by(publicationname) %&gt;% 
+  summarise(n_subfields = n()) %&gt;% 
+  group_by(n_subfields) %&gt;% 
+  summarise(n_journals = n())</code></pre>
+<pre><code>## # A tibble: 4 x 2
+##   n_subfields n_journals
+##         &lt;int&gt;      &lt;int&gt;
+## 1           1         91
+## 2           2         47
+## 3           3         11
+## 4           4          2</code></pre>
+<p>On plot the same thing.</p>
+<pre class="r"><code>sample_match_journal %&gt;% 
+  group_by(publicationname) %&gt;% 
+  summarise(n = n()) %&gt;% 
+  arrange(desc(n)) %&gt;% 
+  ggplot() +
+  aes(x = n) +
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 130)) +
+  labs(x = &quot;Number of Subfields That a Journal Is Assigned to&quot;, y = &quot;Count&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="data:image/png;base64,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" width="672" /></p>
+<p>Number of journals assinged to each subfield. Please keep in mind that a journal can be assigned to more than one subfield.</p>
+<pre class="r"><code>sample_match_journal %&gt;% 
+  group_by(subfield) %&gt;% 
+  summarise(n = n()) %&gt;% 
+  ggplot() +
+  aes(x = subfield, y = n) +
+  geom_bar(stat = &quot;identity&quot;) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 60)) +
+  labs(x = &quot;Subfields&quot;, y = &quot;Count&quot;) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5))</code></pre>
+<p><img src="data:image/png;base64,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" width="672" /></p>
 </div>
 
 

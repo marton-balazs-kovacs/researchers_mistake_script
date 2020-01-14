@@ -26,7 +26,7 @@ source %>%
   slice(-(1:2)) %>% 
   distinct(comment, ResponseId) %>% 
   filter(ResponseId %in% personal_comment_id) %>% 
-  write_tsv(., "Data/Raw/ReMis_Main_PersonalComments_data.tsv")
+  write_tsv(., "ReMis_Main_PersonalComments_data.tsv")
 ```
 
 # Save source data in .tsv format but delete comments that contain personal information
