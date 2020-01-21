@@ -446,7 +446,7 @@ processed_mistake_type_coding <-
   mutate(mistake_no = as.integer(mistake_no))
 ```
 
-#### General exclusion
+#### Pre grouping exclusion
 
 After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent ("see above"), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).
 
@@ -475,6 +475,7 @@ processed_mistake_type_coding %>%
   count()
 ```
 
+#### Grouping exclusion
 ##### Number of responses excluded because of insufficient information
 
 For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the mistake ("insufficient information").
@@ -482,6 +483,20 @@ For the thematic analysis only we exclude responses where there is not enough in
 ```{r}
 processed_mistake_type_coding %>% 
   filter(code == "insufficient information") %>% 
+  count()
+```
+
+##### Number of responses after exclusion
+
+After excluding the responses that could not be assigned to a code.
+
+```{r}
+processed_mistake_type_coding %>% 
+  filter(code %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe",
+                     "insufficient information")) %>% 
   count()
 ```
 
@@ -535,7 +550,7 @@ processed_cause_coding <-
   mutate(cause_no = as.integer(cause_no))
 ```
 
-#### General exclusion
+#### Pre grouping exclusion
 
 After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent ("see above"), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).
 
@@ -564,6 +579,7 @@ processed_cause_coding %>%
   count()
 ```
 
+#### Grouping exclusion
 ##### Number of responses excluded because of insufficient information
 
 For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the cause of the mistake ("insufficient information").
@@ -571,6 +587,20 @@ For the thematic analysis only we exclude responses where there is not enough in
 ```{r}
 processed_cause_coding %>% 
   filter(code == "insufficient information") %>% 
+  count()
+```
+
+##### Number of responses after exclusion
+
+After excluding the responses that could not be assigned to a code.
+
+```{r}
+processed_cause_coding %>% 
+  filter(code %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe",
+                     "insufficient information")) %>% 
   count()
 ```
 
@@ -622,7 +652,7 @@ processed_outcome_coding <-
   mutate(outcome_no = as.integer(outcome_no))
 ```
 
-#### General exclusion
+#### Pre grouping exclusion
 
 After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent ("see above"), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).
 
@@ -651,6 +681,7 @@ processed_outcome_coding %>%
   count()
 ```
 
+#### Grouping exclusion
 ##### Number of responses excluded because of insufficient information
 
 For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the outcome of the mistake ("insufficient information").
@@ -658,6 +689,20 @@ For the thematic analysis only we exclude responses where there is not enough in
 ```{r}
 processed_outcome_coding %>% 
   filter(code == "insufficient information") %>% 
+  count()
+```
+
+##### Number of responses after exclusion
+
+After excluding the responses that could not be assigned to a code.
+
+```{r}
+processed_outcome_coding %>% 
+  filter(code %ni% c("see above",
+                     "missing",
+                     "irrelevant content",
+                     "out of timeframe",
+                     "insufficient information")) %>% 
   count()
 ```
 
@@ -720,6 +765,20 @@ Second, we exclude all the separated responses, where
 processed_mistake_type_grouping <- read_xlsx("Data/Processed/grouping/group/ReMis_Main_Processed_Mistake_Type_Grouping.xlsx")
 ```
 
+#### Number of distinct groups
+
+```{r}
+processed_mistake_type_grouping %>% 
+  distinct(group) %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  count()
+```
+
 #### Merge each case with their group based on the codes
 
 ```{r}
@@ -742,6 +801,19 @@ processed_mistake_type_grouped %>%
   count()
 ```
 
+#### The number of responses after we exclude the responses that could not be assigned to a group
+
+```{r}
+processed_mistake_type_grouped %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  count()
+```
+
 #### Test if there is any case thats code is not grouped
 
 ```{r}
@@ -760,7 +832,7 @@ processed_mistake_type_grouped <-
                                           which.max(mistake_no) != 1L ~ "no"))
 ```
 
-#### Number of responses where the maximum number of separated of response is not one
+#### Number of responses where the maximum number of separated response is not one
 
 ```{r}
 processed_mistake_type_grouped %>% 
@@ -792,7 +864,7 @@ processed_mistake_type_filtered <-
                       "NA"))
 ```
 
-#### Exclude cases of anonymous respondents
+#### Post grouping exclusion
 
 We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.
 
@@ -800,6 +872,14 @@ We used the responses of anonymous respondents for only the group creation and v
 processed_mistake_type_filtered <-
   processed_mistake_type_filtered %>% 
   anti_join(., anonym_res_data, by = "response_id")
+```
+
+#### Number of responses after excluding anonymous respondents
+
+```{r}
+processed_mistake_type_filtered %>% 
+  ungroup() %>% 
+  count()
 ```
 
 #### Transformation
@@ -827,6 +907,20 @@ write_tsv(processed_mistake_type_filtered, "Data/Processed/ReMis_Main_Processed_
 processed_cause_grouping <- read_xlsx("Data/Processed/grouping/group/ReMis_Main_Processed_Cause_Grouping.xlsx")
 ```
 
+#### Number of distinct groups
+
+```{r}
+processed_cause_grouping %>% 
+  distinct(group) %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  count()
+```
+
 #### Merge each case with their group based on the codes
 
 ```{r}
@@ -849,6 +943,19 @@ processed_cause_grouped %>%
   count()
 ```
 
+#### The Number of responses after we exclude the responses that could not be assigned to a group
+
+```{r}
+processed_cause_grouped %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  count()
+```
+
 #### Test if there is any case thats code is not grouped
 
 ```{r}
@@ -867,7 +974,7 @@ processed_cause_grouped <-
                                           which.max(cause_no) != 1L ~ "no"))
 ```
 
-#### Number of responses where the maximum number of separated of response is not one
+#### Number of responses where the maximum number of separated response is not one
 
 ```{r}
 processed_cause_grouped %>% 
@@ -899,7 +1006,7 @@ processed_cause_filtered <-
                       "NA"))
 ```
 
-#### Exclude cases of anonymous respondents
+#### Post grouping exclusion
 
 We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.
 
@@ -907,6 +1014,14 @@ We used the responses of anonymous respondents for only the group creation and v
 processed_cause_filtered <-
   processed_cause_filtered %>% 
   anti_join(., anonym_res_data, by = "response_id")
+```
+
+#### Number of responses after excluding anonymous respondents
+
+```{r}
+processed_cause_filtered %>%
+  ungroup() %>% 
+  count()
 ```
 
 #### Transformation
@@ -934,6 +1049,20 @@ write_tsv(processed_cause_filtered, "Data/Processed/ReMis_Main_Processed_Cause_G
 processed_outcome_grouping <- read_xlsx("Data/Processed/grouping/group/ReMis_Main_Processed_Outcome_Grouping.xlsx")
 ```
 
+#### Number of distinct groups
+
+```{r}
+processed_outcome_grouping %>% 
+  distinct(group) %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  count()
+```
+
 #### Merge each case with their group based on the codes
 
 ```{r}
@@ -956,6 +1085,19 @@ processed_outcome_grouped %>%
   count()
 ```
 
+#### The Number of responses after we exclude the responses that could not be assigned to a group
+
+```{r}
+processed_outcome_grouped %>% 
+  filter(group %ni% c("see above",
+                      "missing",
+                      "irrelevant content",
+                      "out of timeframe",
+                      "insufficient information",
+                      "NA")) %>%
+  count()
+```
+
 #### Test if there is any case thats code is not grouped
 
 ```{r}
@@ -974,7 +1116,7 @@ processed_outcome_grouped <-
                                           which.max(outcome_no) != 1L ~ "no"))
 ```
 
-#### Number of responses where the maximum number of separated of response is not one
+#### Number of responses where the maximum number of separated response is not one
 
 ```{r}
 processed_outcome_grouped %>% 
@@ -1006,7 +1148,7 @@ processed_outcome_filtered <-
                       "NA"))
 ```
 
-#### Exclude cases of anonymous respondents
+#### Post grouping exclusion
 
 We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.
 
@@ -1014,6 +1156,14 @@ We used the responses of anonymous respondents for only the group creation and v
 processed_outcome_filtered <-
   processed_outcome_filtered %>% 
   anti_join(., anonym_res_data, by = "response_id")
+```
+
+#### Number of responses after excluding anonymous respondents
+
+```{r}
+processed_outcome_filtered %>%
+  ungroup() %>% 
+  count()
 ```
 
 #### Transformation

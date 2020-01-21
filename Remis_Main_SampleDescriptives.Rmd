@@ -73,7 +73,7 @@ There were `r journal_missing %>% count()` that we did not collect any article f
 
 We randomly selected email addresses from our collection for the main survey in three rounds. These are named bacth 3, batch 5 and batch 6. For batch 3 we selected a 100 email addres, for batch 5 we selected 500, and for batch 6 we selected 15000.
 
-After the selection we tried to fin the last name or the emil address of the author if it was missing by hand.
+After the selection we tried to fin the last name or the email address of the author if it was missing by hand.
 
 ## Import data
 
@@ -317,8 +317,21 @@ sample_match_journal %>%
   ggplot() +
   aes(x = subfield, y = n) +
   geom_bar(stat = "identity") +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 60)) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 40)) +
   labs(x = "Subfields", y = "Count") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5),
+        axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 16),
+        axis.title = element_text(size = 20),
+        panel.background = element_blank(),
+        panel.grid = element_blank())
 ```
+
+Saving the plot.
+
+```{r}
+ggsave("Figures/sample_journal_subfield_plot.png", width = 14.4, height = 8, plot = last_plot())
+```
+

@@ -58,7 +58,7 @@ descriptives %>%
   ggplot() +
   aes(years) +
   geom_histogram() +
-  labs(x = "Years spent on the field",  y = "Count") +
+  labs(x = "Years spent in the field",  y = "Count") +
   scale_y_continuous(expand = c(0,0)) +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -174,6 +174,21 @@ general_mistake_frequency %>%
         panel.background = element_blank())
 ```
 
+```{r}
+general_mistake_frequency %>%
+  filter(!is.na(general_frequency)) %>% 
+  mutate(report_group = case_when(general_frequency == "Very Low" ~ 1L,
+                                  general_frequency == "Low" ~ 0L,
+                                  general_frequency == "Moderate" ~ 0L,
+                                  general_frequency == "High" ~ 0L,
+                                  general_frequency == "Very High" ~ 0L)) %>% 
+  group_by(report_group) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100)
+```
+
 ## Analysis of the most frequent mistakes
 ### Read in data
 
@@ -235,6 +250,33 @@ general_mistake_overview %>%
         panel.background = element_blank())
 ```
 
+```{r}
+general_mistake_overview %>%
+  filter(type == "recurring",
+         question == "frequency",
+         !is.na(rating)) %>% 
+  mutate(rating = frequency_char_to_fact(rating)) %>% 
+  mutate(report_group = case_when(rating == "Very Low" ~ 1L,
+                                  rating == "Low" ~ 0L,
+                                  rating == "Moderate" ~ 0L,
+                                  rating == "High" ~ 0L,
+                                  rating == "Very High" ~ 0L)) %>%
+  group_by(report_group) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100)
+```
+
+### Levels of the answer option to recurring_serious
+
+```{r}
+general_mistake_overview %>% 
+  filter(type == "recurring",
+         question == "serious") %>% 
+  distinct(rating)
+```
+
 ### Proportion of the most recurring mistakes on a given seriousness level throughout research data management
 
 ```{r}
@@ -247,7 +289,7 @@ general_mistake_overview %>%
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
-         percentage = round(n / N * 100))
+         percentage = n / N * 100)
 ```
 
 ### Barplot of responses of the seriousness of the most recurring mistakes
@@ -270,6 +312,24 @@ general_mistake_overview %>%
         axis.text = element_text(color = "black", size = 12),
         axis.title = element_text(size = 15),
         panel.background = element_blank())
+```
+
+```{r}
+general_mistake_overview %>%
+  filter(type == "recurring",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>% 
+  mutate(report_group = case_when(rating == "Insignificant" ~ 1L,
+                                  rating == "Minor" ~ 0L,
+                                  rating == "Moderate" ~ 0L,
+                                  rating == "Major" ~ 0L,
+                                  rating == "Extreme" ~ 0L)) %>%
+  group_by(report_group) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100)
 ```
 
 ### Median rating of all the most recurring mistakes
@@ -328,6 +388,24 @@ general_mistake_overview %>%
         panel.background = element_blank())
 ```
 
+```{r}
+general_mistake_overview %>%
+  filter(type == "serious",
+         question == "serious",
+         !is.na(rating)) %>% 
+  mutate(rating = serious_char_to_fact(rating)) %>% 
+  mutate(report_group = case_when(rating == "Insignificant" ~ 1L,
+                                  rating == "Minor" ~ 0L,
+                                  rating == "Moderate" ~ 0L,
+                                  rating == "Major" ~ 0L,
+                                  rating == "Extreme" ~ 0L)) %>%
+  group_by(report_group) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100)
+```
+
 # Investigating research data management mistake types
 ## Relationship between mistake types by mistake causes
 ### Read in processed data
@@ -352,13 +430,13 @@ For the plot we are recoding the different cause groups to match APA 6th format.
 cause_type_relationship <- 
   cause_type_relationship %>% 
   mutate(group_cause_meta = case_when(group_cause == "lack of knowledge/experience" ~ "Lack of knowledge",
-                                      group_cause == "bad or lack of planning" ~ "Bad project preparation or management",
-                                      group_cause == "bad or lack of standards" ~ "Bad project preparation or management",
-                                      group_cause == "bad skill management" ~ "Bad project preparation or management",
-                                      group_cause == "miscommunication" ~ "Bad project preparation or management",
-                                      group_cause == "project management issue" ~ "Bad project preparation or management",
-                                      group_cause == "time management issue" ~ "Bad project preparation or management",
-                                      group_cause == "risking human error" ~ "Bad project preparation or management",
+                                      group_cause == "bad or lack of planning" ~ "Poor project preparation\nor management",
+                                      group_cause == "bad or lack of standards" ~ "Poor project preparation\nor management",
+                                      group_cause == "bad skill management" ~ "Poor project preparation\nor management",
+                                      group_cause == "miscommunication" ~ "Poor project preparation\nor management",
+                                      group_cause == "project management issue" ~ "Poor project preparation\nor management",
+                                      group_cause == "time management issue" ~ "Poor project preparation\nor management",
+                                      group_cause == "risking human error" ~ "Poor project preparation\nor management",
                                       group_cause == "technical issue" ~ "External difficulties",
                                       group_cause == "too high complexity" ~ "External difficulties",
                                       group_cause == "inattention" ~ "Personal difficulties",
@@ -422,13 +500,162 @@ relationship_plot_data %>%
           axis.line = element_line(color = "black"),
           legend.title = element_text(size = 15),
           axis.title = element_text(size = 15, color = "black"),
-          legend.text = element_text(size = 12))
+          legend.text = element_text(size = 12),
+          legend.position = "bottom")
 ```
 
 Saving the plot.
 
 ```{r}
 ggsave("Figures/cause_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+### Same figure separately for the most frequent mistakes
+
+Filter the most frequent mistakes only.
+
+```{r}
+frequent_cause_type_relationship <- 
+  cause_type_relationship %>% 
+  filter(type == "recurring")
+```
+
+Counting how many respondents listed a specific cause for each mistake type.
+
+```{r}
+con_tab <- as_tibble(xtabs(~ group_type + group_cause_meta, data = frequent_cause_type_relationship))
+```
+
+Calculating the percentages for each count.
+
+```{r}
+relationship_plot_data <- 
+  con_tab %>% 
+  group_by(group_type) %>% 
+  mutate(n_sum = sum(n)) %>% 
+  ungroup() %>%
+  mutate(prop = n / n_sum) %>%
+  filter(n_sum >= 10)
+```
+
+Check if the proportion of the cause groups add up to a hundred.
+
+```{r}
+relationship_plot_data %>% 
+  group_by(group_type) %>% 
+  summarise(sum_prop = sum(prop))
+```
+
+Creating labels for the plots' Y axis with the different mistake types and their count in this analysis.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  mutate(label = paste0(group_type, " (", n_sum, ")"))
+```
+
+#### Creating the plot
+
+```{r, fig.show = 'hide'}
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(label, n), y = prop, group = group_cause_meta, fill = group_cause_meta)) +
+    geom_bar(stat = "identity") +
+    viridis::scale_fill_viridis(discrete = TRUE) +
+    scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
+    coord_flip() +
+    labs(x = "Data Management Mistake Types",
+         y = "Percentage",
+         fill = "Meta Cause Groups") +
+    theme(axis.text.x = element_text(size = 12, color = "black"),
+          axis.text.y = element_text(size = 12, color = "black"),
+          panel.background = element_blank(),
+          panel.grid = element_blank(),
+          axis.ticks = element_line(color = "black"),
+          axis.line = element_line(color = "black"),
+          legend.title = element_text(size = 15),
+          axis.title = element_text(size = 15, color = "black"),
+          legend.text = element_text(size = 12),
+          legend.position = "bottom")
+```
+
+Saving the plot.
+
+```{r}
+ggsave("Figures/frequent_cause_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+### Same figure separately for the most serious mistakes
+
+Filter the most serious mistakes only.
+
+```{r}
+serious_cause_type_relationship <- 
+  cause_type_relationship %>% 
+  filter(type == "serious")
+```
+
+Counting how many respondents listed a specific cause for each mistake type.
+
+```{r}
+con_tab <- as_tibble(xtabs(~ group_type + group_cause_meta, data = serious_cause_type_relationship))
+```
+
+Calculating the percentages for each count.
+
+```{r}
+relationship_plot_data <- 
+  con_tab %>% 
+  group_by(group_type) %>% 
+  mutate(n_sum = sum(n)) %>% 
+  ungroup() %>%
+  mutate(prop = n / n_sum) %>%
+  filter(n_sum >= 10)
+```
+
+Check if the proportion of the cause groups add up to a hundred.
+
+```{r}
+relationship_plot_data %>% 
+  group_by(group_type) %>% 
+  summarise(sum_prop = sum(prop))
+```
+
+Creating labels for the plots' Y axis with the different mistake types and their count in this analysis.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  mutate(label = paste0(group_type, " (", n_sum, ")"))
+```
+
+#### Creating the plot
+
+```{r, fig.show = 'hide'}
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(label, n), y = prop, group = group_cause_meta, fill = group_cause_meta)) +
+    geom_bar(stat = "identity") +
+    viridis::scale_fill_viridis(discrete = TRUE) +
+    scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
+    coord_flip() +
+    labs(x = "Data Management Mistake Types",
+         y = "Percentage",
+         fill = "Meta Cause Groups") +
+    theme(axis.text.x = element_text(size = 12, color = "black"),
+          axis.text.y = element_text(size = 12, color = "black"),
+          panel.background = element_blank(),
+          panel.grid = element_blank(),
+          axis.ticks = element_line(color = "black"),
+          axis.line = element_line(color = "black"),
+          legend.title = element_text(size = 15),
+          axis.title = element_text(size = 15, color = "black"),
+          legend.text = element_text(size = 12),
+          legend.position = "bottom")
+```
+
+Saving the plot.
+
+```{r}
+ggsave("Figures/serious_cause_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
 ```
 
 ## Relationship between mistake types and mistake outcomes
@@ -504,11 +731,297 @@ relationship_plot_data %>%
           axis.line = element_line(color = "black"),
           axis.title = element_text(size = 15, color = "black"),
           legend.title = element_text(size = 15),
-          legend.text = element_text(size = 12))
+          legend.text = element_text(size = 12),
+          legend.position = "bottom")
 ```
 
 Saving the plot.
 
 ```{r}
 ggsave("Figures/outcome_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+### Same figure separately for the most frequent mistakes
+
+Filter the most frequent mistakes only.
+
+```{r}
+frequent_outcome_type_relationship <- 
+  outcome_type_relationship %>% 
+  filter(type == "recurring")
+```
+
+#### Data transformation
+
+Counting how many respondents listed a specific cause for each mistake type
+
+```{r}
+con_tab <- as_tibble(xtabs(~ group_type + group_outcome, data = frequent_outcome_type_relationship))
+```
+
+Calculating the percentages for each count.
+
+```{r}
+relationship_plot_data <-
+  con_tab %>% 
+  group_by(group_type) %>% 
+  mutate(n_sum = sum(n)) %>% 
+  ungroup() %>%
+  mutate(prop = n / n_sum) %>%
+  filter(n_sum >= 10) %>% 
+  mutate(group_outcome = case_when(group_outcome == "financial lost" ~ "financial loss",
+                                   TRUE ~ group_outcome))
+```
+
+Check if the proportion of the cause groups add up to a hundred.
+
+```{r}
+relationship_plot_data %>% 
+  group_by(group_type) %>% 
+  summarise(sum_prop = sum(prop))
+```
+
+Creating labels for the plots' Y axis with the different mistake types and their count in this analysis.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  mutate(label = paste0(group_type, " (", n_sum, ")"))
+```
+
+#### Creating the plot
+
+```{r, fig.show = 'hide'}
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(label, n), y = prop, group = group_outcome, fill = group_outcome)) +
+    geom_bar(stat = "identity") +
+    viridis::scale_fill_viridis(discrete = TRUE) +
+    scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
+    coord_flip() +
+    labs(x = "Data Management Mistake Types",
+         y = "Percentage",
+         fill = "Outcome Groups") +
+    theme(axis.text.x = element_text(size = 12, color = "black"),
+          axis.text.y = element_text(size = 12, color = "black"),
+          panel.background = element_blank(),
+          panel.grid = element_blank(),
+          axis.ticks = element_line(color = "black"),
+          axis.line = element_line(color = "black"),
+          axis.title = element_text(size = 15, color = "black"),
+          legend.title = element_text(size = 15),
+          legend.text = element_text(size = 12),
+          legend.position = "bottom")
+```
+
+Saving the plot.
+
+```{r}
+ggsave("Figures/frequent_outcome_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+### Same figure separately for the most serious mistakes
+
+Filter the most frequent mistakes only.
+
+```{r}
+serious_outcome_type_relationship <- 
+  outcome_type_relationship %>% 
+  filter(type == "serious")
+```
+
+#### Data transformation
+
+Counting how many respondents listed a specific cause for each mistake type
+
+```{r}
+con_tab <- as_tibble(xtabs(~ group_type + group_outcome, data = serious_outcome_type_relationship))
+```
+
+Calculating the percentages for each count.
+
+```{r}
+relationship_plot_data <-
+  con_tab %>% 
+  group_by(group_type) %>% 
+  mutate(n_sum = sum(n)) %>% 
+  ungroup() %>%
+  mutate(prop = n / n_sum) %>%
+  filter(n_sum >= 10) %>% 
+  mutate(group_outcome = case_when(group_outcome == "financial lost" ~ "financial loss",
+                                   TRUE ~ group_outcome))
+```
+
+Check if the proportion of the cause groups add up to a hundred.
+
+```{r}
+relationship_plot_data %>% 
+  group_by(group_type) %>% 
+  summarise(sum_prop = sum(prop))
+```
+
+Creating labels for the plots' Y axis with the different mistake types and their count in this analysis.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  mutate(label = paste0(group_type, " (", n_sum, ")"))
+```
+
+#### Creating the plot
+
+```{r, fig.show = 'hide'}
+relationship_plot_data %>% 
+    ggplot(aes(x = reorder(label, n), y = prop, group = group_outcome, fill = group_outcome)) +
+    geom_bar(stat = "identity") +
+    viridis::scale_fill_viridis(discrete = TRUE) +
+    scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
+    coord_flip() +
+    labs(x = "Data Management Mistake Types",
+         y = "Percentage",
+         fill = "Outcome Groups") +
+    theme(axis.text.x = element_text(size = 12, color = "black"),
+          axis.text.y = element_text(size = 12, color = "black"),
+          panel.background = element_blank(),
+          panel.grid = element_blank(),
+          axis.ticks = element_line(color = "black"),
+          axis.line = element_line(color = "black"),
+          axis.title = element_text(size = 15, color = "black"),
+          legend.title = element_text(size = 15),
+          legend.text = element_text(size = 12),
+          legend.position = "bottom")
+```
+
+Saving the plot.
+
+```{r}
+ggsave("Figures/serious_outcome_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+```
+
+## Frequency of data management mistak types
+### Read data
+
+```{r}
+mistake_type_groups <- read_tsv("Data/Processed/ReMis_Main_Processed_Type_Groups_data.tsv")
+```
+
+### Counting how many times a mistake type is reported for the most frequent mistakes
+
+```{r}
+mistake_type_groups %>% 
+  filter(type == "recurring") %>% 
+  group_by(group_type) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n))
+```
+
+### Counting how many times a mistake type is reported for the most serious mistakes
+
+```{r}
+mistake_type_groups %>% 
+  filter(type == "serious") %>% 
+  group_by(group_type) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n))
+```
+
+### Counting how many times a mistake type is reported for the most frequent and most serious mistakes
+
+```{r}
+mistake_type_groups %>% 
+  group_by(group_type) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100)
+```
+
+## Frequency of cause groups
+### Read data
+
+```{r}
+cause_groups <- read_tsv("Data/Processed/ReMis_Main_Processed_Cause_Groups_data.tsv")
+```
+
+### Counting how many times a cause is reported for the most frequent mistakes
+
+```{r}
+cause_groups %>% 
+  filter(type == "recurring") %>% 
+  group_by(group_cause) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n))
+```
+
+### Counting how many times a cause group is reported for the most serious mistakes
+
+```{r}
+cause_groups %>% 
+  filter(type == "serious") %>% 
+  group_by(group_cause) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n))
+```
+
+### Counting how many times a cause group is reported for the most frequent and most serious mistakes
+
+```{r}
+cause_groups %>% 
+  group_by(group_cause) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100)
+```
+
+## Frequency of outcome groups
+### Read data
+
+```{r}
+outcome_groups <- read_tsv("Data/Processed/ReMis_Main_Processed_Outcome_Groups_data.tsv")
+```
+
+### Counting how many times an outcome group is reported for the most frequent mistakes
+
+```{r}
+outcome_groups %>% 
+  filter(type == "recurring") %>% 
+  group_by(group_outcome) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n))
+```
+
+### Counting how many times an outcome group is reported for the most serious mistakes
+
+```{r}
+outcome_groups %>% 
+  filter(type == "serious") %>% 
+  group_by(group_outcome) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n))
+```
+
+### Counting how many times an outcome group is reported for the most frequent and most serious mistakes
+
+```{r}
+outcome_groups %>% 
+  group_by(group_outcome) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100)
 ```

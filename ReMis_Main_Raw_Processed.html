@@ -364,7 +364,7 @@ summary {
 
 <h1 class="title toc-ignore">ReMis Main Raw Processed</h1>
 <h4 class="author">Marton Kovacs</h4>
-<h4 class="date">14 január, 2020</h4>
+<h4 class="date">16 január, 2020</h4>
 
 </div>
 
@@ -742,8 +742,8 @@ raw_no_answer &lt;-
   read_xlsx(&quot;Data/Processed/grouping/coding/ReMis_Main_Processed_Mistake_Type_Coding_data.xlsx&quot;) %&gt;% 
   mutate(mistake_no = as.integer(mistake_no))</code></pre>
 </div>
-<div id="general-exclusion" class="section level4">
-<h4>General exclusion</h4>
+<div id="pre-grouping-exclusion" class="section level4">
+<h4>Pre grouping exclusion</h4>
 <p>After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent (“see above”), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).</p>
 <div id="number-of-exluded-responses" class="section level5">
 <h5>Number of exluded responses</h5>
@@ -777,6 +777,9 @@ raw_no_answer &lt;-
 ##   &lt;int&gt;
 ## 1   835</code></pre>
 </div>
+</div>
+<div id="grouping-exclusion" class="section level4">
+<h4>Grouping exclusion</h4>
 <div id="number-of-responses-excluded-because-of-insufficient-information" class="section level5">
 <h5>Number of responses excluded because of insufficient information</h5>
 <p>For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the mistake (“insufficient information”).</p>
@@ -787,6 +790,21 @@ raw_no_answer &lt;-
 ##       n
 ##   &lt;int&gt;
 ## 1    30</code></pre>
+</div>
+<div id="number-of-responses-after-exclusion-1" class="section level5">
+<h5>Number of responses after exclusion</h5>
+<p>After excluding the responses that could not be assigned to a code.</p>
+<pre class="r"><code>processed_mistake_type_coding %&gt;% 
+  filter(code %ni% c(&quot;see above&quot;,
+                     &quot;missing&quot;,
+                     &quot;irrelevant content&quot;,
+                     &quot;out of timeframe&quot;,
+                     &quot;insufficient information&quot;)) %&gt;% 
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1   805</code></pre>
 </div>
 </div>
 <div id="transform-data-3" class="section level4">
@@ -837,8 +855,8 @@ raw_no_answer &lt;-
   read_xlsx(&quot;Data/Processed/grouping/coding/ReMis_Main_Processed_Cause_Coding_data.xlsx&quot;) %&gt;% 
   mutate(cause_no = as.integer(cause_no))</code></pre>
 </div>
-<div id="general-exclusion-1" class="section level4">
-<h4>General exclusion</h4>
+<div id="pre-grouping-exclusion-1" class="section level4">
+<h4>Pre grouping exclusion</h4>
 <p>After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent (“see above”), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).</p>
 <div id="number-of-exluded-responses-1" class="section level5">
 <h5>Number of exluded responses</h5>
@@ -858,7 +876,7 @@ raw_no_answer &lt;-
 ## 2 missing              183   258
 ## 3 see above             37   258</code></pre>
 </div>
-<div id="number-of-responses-after-exclusion-1" class="section level5">
+<div id="number-of-responses-after-exclusion-2" class="section level5">
 <h5>Number of responses after exclusion</h5>
 <pre class="r"><code>processed_cause_coding %&gt;% 
   filter(code %ni% c(&quot;see above&quot;,
@@ -871,6 +889,9 @@ raw_no_answer &lt;-
 ##   &lt;int&gt;
 ## 1   931</code></pre>
 </div>
+</div>
+<div id="grouping-exclusion-1" class="section level4">
+<h4>Grouping exclusion</h4>
 <div id="number-of-responses-excluded-because-of-insufficient-information-1" class="section level5">
 <h5>Number of responses excluded because of insufficient information</h5>
 <p>For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the cause of the mistake (“insufficient information”).</p>
@@ -881,6 +902,21 @@ raw_no_answer &lt;-
 ##       n
 ##   &lt;int&gt;
 ## 1    59</code></pre>
+</div>
+<div id="number-of-responses-after-exclusion-3" class="section level5">
+<h5>Number of responses after exclusion</h5>
+<p>After excluding the responses that could not be assigned to a code.</p>
+<pre class="r"><code>processed_cause_coding %&gt;% 
+  filter(code %ni% c(&quot;see above&quot;,
+                     &quot;missing&quot;,
+                     &quot;irrelevant content&quot;,
+                     &quot;out of timeframe&quot;,
+                     &quot;insufficient information&quot;)) %&gt;% 
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1   872</code></pre>
 </div>
 </div>
 <div id="transform-data-4" class="section level4">
@@ -930,8 +966,8 @@ raw_no_answer &lt;-
   read_xlsx(&quot;Data/Processed/grouping/coding/ReMis_Main_Processed_Outcome_Coding_data.xlsx&quot;) %&gt;% 
   mutate(outcome_no = as.integer(outcome_no))</code></pre>
 </div>
-<div id="general-exclusion-2" class="section level4">
-<h4>General exclusion</h4>
+<div id="pre-grouping-exclusion-2" class="section level4">
+<h4>Pre grouping exclusion</h4>
 <p>After the response separation we excluded cases if: (1) the participant’s response was irrelevant to the question, ambivalent (“see above”), or missing; or (2) stated that the mistake occurred before the prescribed timeframe (i.e., past 5 years).</p>
 <div id="number-of-exluded-responses-2" class="section level5">
 <h5>Number of exluded responses</h5>
@@ -951,7 +987,7 @@ raw_no_answer &lt;-
 ## 2 missing              136   153
 ## 3 see above              4   153</code></pre>
 </div>
-<div id="number-of-responses-after-exclusion-2" class="section level5">
+<div id="number-of-responses-after-exclusion-4" class="section level5">
 <h5>Number of responses after exclusion</h5>
 <pre class="r"><code>processed_outcome_coding %&gt;% 
   filter(code %ni% c(&quot;see above&quot;,
@@ -964,6 +1000,9 @@ raw_no_answer &lt;-
 ##   &lt;int&gt;
 ## 1   920</code></pre>
 </div>
+</div>
+<div id="grouping-exclusion-2" class="section level4">
+<h4>Grouping exclusion</h4>
 <div id="number-of-responses-excluded-because-of-insufficient-information-2" class="section level5">
 <h5>Number of responses excluded because of insufficient information</h5>
 <p>For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the outcome of the mistake (“insufficient information”).</p>
@@ -974,6 +1013,21 @@ raw_no_answer &lt;-
 ##       n
 ##   &lt;int&gt;
 ## 1     5</code></pre>
+</div>
+<div id="number-of-responses-after-exclusion-5" class="section level5">
+<h5>Number of responses after exclusion</h5>
+<p>After excluding the responses that could not be assigned to a code.</p>
+<pre class="r"><code>processed_outcome_coding %&gt;% 
+  filter(code %ni% c(&quot;see above&quot;,
+                     &quot;missing&quot;,
+                     &quot;irrelevant content&quot;,
+                     &quot;out of timeframe&quot;,
+                     &quot;insufficient information&quot;)) %&gt;% 
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1   915</code></pre>
 </div>
 </div>
 <div id="transform-data-5" class="section level4">
@@ -1026,6 +1080,22 @@ raw_no_answer &lt;-
 <h4>Read data</h4>
 <pre class="r"><code>processed_mistake_type_grouping &lt;- read_xlsx(&quot;Data/Processed/grouping/group/ReMis_Main_Processed_Mistake_Type_Grouping.xlsx&quot;)</code></pre>
 </div>
+<div id="number-of-distinct-groups" class="section level4">
+<h4>Number of distinct groups</h4>
+<pre class="r"><code>processed_mistake_type_grouping %&gt;% 
+  distinct(group) %&gt;% 
+  filter(group %ni% c(&quot;see above&quot;,
+                      &quot;missing&quot;,
+                      &quot;irrelevant content&quot;,
+                      &quot;out of timeframe&quot;,
+                      &quot;insufficient information&quot;,
+                      &quot;NA&quot;)) %&gt;%
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1    20</code></pre>
+</div>
 <div id="merge-each-case-with-their-group-based-on-the-codes" class="section level4">
 <h4>Merge each case with their group based on the codes</h4>
 <pre class="r"><code>processed_mistake_type_grouped &lt;-
@@ -1046,6 +1116,21 @@ raw_no_answer &lt;-
 ##   &lt;int&gt;
 ## 1    19</code></pre>
 </div>
+<div id="the-number-of-responses-after-we-exclude-the-responses-that-could-not-be-assigned-to-a-group" class="section level4">
+<h4>The number of responses after we exclude the responses that could not be assigned to a group</h4>
+<pre class="r"><code>processed_mistake_type_grouped %&gt;% 
+  filter(group %ni% c(&quot;see above&quot;,
+                      &quot;missing&quot;,
+                      &quot;irrelevant content&quot;,
+                      &quot;out of timeframe&quot;,
+                      &quot;insufficient information&quot;,
+                      &quot;NA&quot;)) %&gt;%
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1   786</code></pre>
+</div>
 <div id="test-if-there-is-any-case-thats-code-is-not-grouped" class="section level4">
 <h4>Test if there is any case thats code is not grouped</h4>
 <pre class="r"><code>processed_mistake_type_grouped %&gt;% 
@@ -1064,8 +1149,8 @@ raw_no_answer &lt;-
   mutate(maximum_response_one_type = case_when(which.max(mistake_no) == 1L ~ &quot;yes&quot;,
                                           which.max(mistake_no) != 1L ~ &quot;no&quot;))</code></pre>
 </div>
-<div id="number-of-responses-where-the-maximum-number-of-separated-of-response-is-not-one" class="section level4">
-<h4>Number of responses where the maximum number of separated of response is not one</h4>
+<div id="number-of-responses-where-the-maximum-number-of-separated-response-is-not-one" class="section level4">
+<h4>Number of responses where the maximum number of separated response is not one</h4>
 <pre class="r"><code>processed_mistake_type_grouped %&gt;% 
   ungroup() %&gt;% 
   filter(maximum_response_one_type != &quot;yes&quot;) %&gt;% 
@@ -1098,12 +1183,22 @@ raw_no_answer &lt;-
                       &quot;insufficient information&quot;,
                       &quot;NA&quot;))</code></pre>
 </div>
-<div id="exclude-cases-of-anonymous-respondents" class="section level4">
-<h4>Exclude cases of anonymous respondents</h4>
+<div id="post-grouping-exclusion" class="section level4">
+<h4>Post grouping exclusion</h4>
 <p>We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.</p>
 <pre class="r"><code>processed_mistake_type_filtered &lt;-
   processed_mistake_type_filtered %&gt;% 
   anti_join(., anonym_res_data, by = &quot;response_id&quot;)</code></pre>
+</div>
+<div id="number-of-responses-after-excluding-anonymous-respondents" class="section level4">
+<h4>Number of responses after excluding anonymous respondents</h4>
+<pre class="r"><code>processed_mistake_type_filtered %&gt;% 
+  ungroup() %&gt;% 
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1   744</code></pre>
 </div>
 <div id="transformation" class="section level4">
 <h4>Transformation</h4>
@@ -1126,6 +1221,22 @@ raw_no_answer &lt;-
 <h4>Read data</h4>
 <pre class="r"><code>processed_cause_grouping &lt;- read_xlsx(&quot;Data/Processed/grouping/group/ReMis_Main_Processed_Cause_Grouping.xlsx&quot;)</code></pre>
 </div>
+<div id="number-of-distinct-groups-1" class="section level4">
+<h4>Number of distinct groups</h4>
+<pre class="r"><code>processed_cause_grouping %&gt;% 
+  distinct(group) %&gt;% 
+  filter(group %ni% c(&quot;see above&quot;,
+                      &quot;missing&quot;,
+                      &quot;irrelevant content&quot;,
+                      &quot;out of timeframe&quot;,
+                      &quot;insufficient information&quot;,
+                      &quot;NA&quot;)) %&gt;%
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1    15</code></pre>
+</div>
 <div id="merge-each-case-with-their-group-based-on-the-codes-1" class="section level4">
 <h4>Merge each case with their group based on the codes</h4>
 <pre class="r"><code>processed_cause_grouped &lt;-
@@ -1146,6 +1257,21 @@ raw_no_answer &lt;-
 ##   &lt;int&gt;
 ## 1   290</code></pre>
 </div>
+<div id="the-number-of-responses-after-we-exclude-the-responses-that-could-not-be-assigned-to-a-group-1" class="section level4">
+<h4>The Number of responses after we exclude the responses that could not be assigned to a group</h4>
+<pre class="r"><code>processed_cause_grouped %&gt;% 
+  filter(group %ni% c(&quot;see above&quot;,
+                      &quot;missing&quot;,
+                      &quot;irrelevant content&quot;,
+                      &quot;out of timeframe&quot;,
+                      &quot;insufficient information&quot;,
+                      &quot;NA&quot;)) %&gt;%
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1   582</code></pre>
+</div>
 <div id="test-if-there-is-any-case-thats-code-is-not-grouped-1" class="section level4">
 <h4>Test if there is any case thats code is not grouped</h4>
 <pre class="r"><code>processed_cause_grouped %&gt;% 
@@ -1164,8 +1290,8 @@ raw_no_answer &lt;-
   mutate(maximum_response_one_cause = case_when(which.max(cause_no) == 1L ~ &quot;yes&quot;,
                                           which.max(cause_no) != 1L ~ &quot;no&quot;))</code></pre>
 </div>
-<div id="number-of-responses-where-the-maximum-number-of-separated-of-response-is-not-one-1" class="section level4">
-<h4>Number of responses where the maximum number of separated of response is not one</h4>
+<div id="number-of-responses-where-the-maximum-number-of-separated-response-is-not-one-1" class="section level4">
+<h4>Number of responses where the maximum number of separated response is not one</h4>
 <pre class="r"><code>processed_cause_grouped %&gt;% 
   ungroup() %&gt;% 
   filter(maximum_response_one_cause != &quot;yes&quot;) %&gt;% 
@@ -1200,12 +1326,22 @@ raw_no_answer &lt;-
                       &quot;out of timeframe&quot;,
                       &quot;insufficient information&quot;,
                       &quot;NA&quot;))</code></pre>
-<div id="exclude-cases-of-anonymous-respondents-1" class="section level4">
-<h4>Exclude cases of anonymous respondents</h4>
+<div id="post-grouping-exclusion-1" class="section level4">
+<h4>Post grouping exclusion</h4>
 <p>We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.</p>
 <pre class="r"><code>processed_cause_filtered &lt;-
   processed_cause_filtered %&gt;% 
   anti_join(., anonym_res_data, by = &quot;response_id&quot;)</code></pre>
+</div>
+<div id="number-of-responses-after-excluding-anonymous-respondents-1" class="section level4">
+<h4>Number of responses after excluding anonymous respondents</h4>
+<pre class="r"><code>processed_cause_filtered %&gt;%
+  ungroup() %&gt;% 
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1   546</code></pre>
 </div>
 <div id="transformation-1" class="section level4">
 <h4>Transformation</h4>
@@ -1227,6 +1363,22 @@ raw_no_answer &lt;-
 <h4>Read data</h4>
 <pre class="r"><code>processed_outcome_grouping &lt;- read_xlsx(&quot;Data/Processed/grouping/group/ReMis_Main_Processed_Outcome_Grouping.xlsx&quot;)</code></pre>
 </div>
+<div id="number-of-distinct-groups-2" class="section level4">
+<h4>Number of distinct groups</h4>
+<pre class="r"><code>processed_outcome_grouping %&gt;% 
+  distinct(group) %&gt;% 
+  filter(group %ni% c(&quot;see above&quot;,
+                      &quot;missing&quot;,
+                      &quot;irrelevant content&quot;,
+                      &quot;out of timeframe&quot;,
+                      &quot;insufficient information&quot;,
+                      &quot;NA&quot;)) %&gt;%
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1     7</code></pre>
+</div>
 <div id="merge-each-case-with-their-group-based-on-the-codes-2" class="section level4">
 <h4>Merge each case with their group based on the codes</h4>
 <pre class="r"><code>processed_outcome_grouped &lt;- 
@@ -1247,6 +1399,21 @@ raw_no_answer &lt;-
 ##   &lt;int&gt;
 ## 1    14</code></pre>
 </div>
+<div id="the-number-of-responses-after-we-exclude-the-responses-that-could-not-be-assigned-to-a-group-2" class="section level4">
+<h4>The Number of responses after we exclude the responses that could not be assigned to a group</h4>
+<pre class="r"><code>processed_outcome_grouped %&gt;% 
+  filter(group %ni% c(&quot;see above&quot;,
+                      &quot;missing&quot;,
+                      &quot;irrelevant content&quot;,
+                      &quot;out of timeframe&quot;,
+                      &quot;insufficient information&quot;,
+                      &quot;NA&quot;)) %&gt;%
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1   901</code></pre>
+</div>
 <div id="test-if-there-is-any-case-thats-code-is-not-grouped-2" class="section level4">
 <h4>Test if there is any case thats code is not grouped</h4>
 <pre class="r"><code>processed_outcome_grouped %&gt;% 
@@ -1265,8 +1432,8 @@ raw_no_answer &lt;-
   mutate(maximum_response_one_outcome = case_when(which.max(outcome_no) == 1L ~ &quot;yes&quot;,
                                           which.max(outcome_no) != 1L ~ &quot;no&quot;))</code></pre>
 </div>
-<div id="number-of-responses-where-the-maximum-number-of-separated-of-response-is-not-one-2" class="section level4">
-<h4>Number of responses where the maximum number of separated of response is not one</h4>
+<div id="number-of-responses-where-the-maximum-number-of-separated-response-is-not-one-2" class="section level4">
+<h4>Number of responses where the maximum number of separated response is not one</h4>
 <pre class="r"><code>processed_outcome_grouped %&gt;% 
   ungroup() %&gt;% 
   filter(maximum_response_one_outcome != &quot;yes&quot;) %&gt;% 
@@ -1299,12 +1466,22 @@ raw_no_answer &lt;-
                       &quot;insufficient information&quot;,
                       &quot;NA&quot;))</code></pre>
 </div>
-<div id="exclude-cases-of-anonymous-respondents-2" class="section level4">
-<h4>Exclude cases of anonymous respondents</h4>
+<div id="post-grouping-exclusion-2" class="section level4">
+<h4>Post grouping exclusion</h4>
 <p>We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.</p>
 <pre class="r"><code>processed_outcome_filtered &lt;-
   processed_outcome_filtered %&gt;% 
   anti_join(., anonym_res_data, by = &quot;response_id&quot;)</code></pre>
+</div>
+<div id="number-of-responses-after-excluding-anonymous-respondents-2" class="section level4">
+<h4>Number of responses after excluding anonymous respondents</h4>
+<pre class="r"><code>processed_outcome_filtered %&gt;%
+  ungroup() %&gt;% 
+  count()</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1   844</code></pre>
 </div>
 <div id="transformation-2" class="section level4">
 <h4>Transformation</h4>
