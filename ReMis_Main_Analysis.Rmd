@@ -58,7 +58,7 @@ descriptives %>%
   ggplot() +
   aes(years) +
   geom_histogram() +
-  labs(x = "Years spent in the field",  y = "Count") +
+  labs(x = "Years Spent in the Field",  y = "Count") +
   scale_y_continuous(expand = c(0,0)) +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -107,7 +107,7 @@ descriptives %>%
   aes(x = reorder(field, desc(n)), y = n) +
   geom_bar(stat = "identity") +
   scale_y_continuous(expand = c(0,0), limits = c(0, 120)) +
-  labs(x = "Field of the research teams of the respondents",
+  labs(x = "Field of the Research Teams of the Respondents",
        y = "Count") + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
         axis.ticks = element_line(color = "black"),
@@ -171,8 +171,8 @@ general_mistake_frequency_plot <-
   geom_bar(stat = "identity") +
   geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
   scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
-  labs(x = "Frequency level",
-       title = "Overall frequency (n = 463)") +
+  labs(x = "Frequency Level",
+       title = "Overall Frequency (n = 463)") +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -258,7 +258,7 @@ most_frequent_frequency_plot <-
   aes(x = rating, y = percentage) +
   geom_bar(stat = "identity") +
   geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
-  labs(title = "Most frequent mistakes (n = 397)") +
+  labs(title = "Most Frequent Mistakes (n = 397)") +
   scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
@@ -334,7 +334,7 @@ most_frequent_seriousness_plot <-
   geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
   scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
   labs(y = "Percentage",
-       title = "Most frequent mistakes (n = 397)") +
+       title = "Most Frequent Mistakes (n = 397)") +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -419,9 +419,9 @@ most_serious_seriousness_plot <-
   geom_bar(stat = "identity") +
   geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
   scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
-  labs(x = "Seriousness level",
+  labs(x = "Seriousness Level",
        y = "Percentage",
-       title = "Most serious mistakes (n = 277)") +
+       title = "Most Serious Mistakes (n = 277)") +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -566,7 +566,7 @@ relationship_plot_data %>%
     coord_flip() +
     labs(x = "Data Management Mistake Types",
          y = "Percentage",
-         fill = "Cause Meta-groups") +
+         fill = "Cause Meta-Groups") +
     theme(axis.text.x = element_text(size = 18, color = "black"),
           axis.text.y = element_text(size = 18, color = "black"),
           panel.background = element_blank(),
@@ -651,7 +651,7 @@ relationship_plot_data %>%
     coord_flip() +
     labs(x = "Data Management Mistake Types",
          y = "Percentage",
-         fill = "Cause Meta-groups") +
+         fill = "Cause Meta-Groups") +
     theme(axis.text.x = element_text(size = 18, color = "black"),
           axis.text.y = element_text(size = 18, color = "black"),
           panel.background = element_blank(),
@@ -736,7 +736,7 @@ relationship_plot_data %>%
     coord_flip() +
     labs(x = "Data Management Mistake Types",
          y = "Percentage",
-         fill = "Cause Meta-groups") +
+         fill = "Cause Meta-Groups") +
     theme(axis.text.x = element_text(size = 18, color = "black"),
           axis.text.y = element_text(size = 18, color = "black"),
           panel.background = element_blank(),
