@@ -71,7 +71,7 @@ There were `r journal_missing %>% count()` that we did not collect any article f
 
 # Investigating the randomly selected sample for the main survey
 
-We randomly selected email addresses from our collection for the main survey in three rounds. These are named bacth 3, batch 5 and batch 6. For batch 3 we selected a 100 email addres, for batch 5 we selected 500, and for batch 6 we selected 15000.
+We randomly selected email addresses from our collection for the main survey in three rounds. These are named batch 3, batch 5 and batch 6. For batch 3 we selected a 100 email address, for batch 5 we selected 500, and for batch 6 we selected 15000.
 
 After the selection we tried to fin the last name or the email address of the author if it was missing by hand.
 
@@ -176,7 +176,7 @@ batch_6_cleaned_history_difference <-
 
 There are `r batch_6_cleaned_history_difference %>% count()` data points that differ in the sample in opposition to the survey history.
 88 of these differing data points are the ones that miss either the last name or the email address of the author, so they were dropped during cleaning up.
-1 data point is differing because there is a difference in the last name addded during the cleaning up.
+1 data point is differing because there is a difference in the last name added during the cleaning up.
 
 We are checking the difference between the survey history and the cleaned sample.
 
@@ -248,7 +248,7 @@ sample %>%
 
 # Investigating the journals in our sample
 
-A lot of the respondents to our survey indicated that their subfield is not on the list of preset subfields that we provided in our survey. We believed that the range of subfields listed cover the field of psychology. It is possible that our respondents were not exclusivly psychologist, just published in a paper that is labelled as psychology in the Science Direct database. Therefore, now we list the titles of the journals where the authors in our sample published in.
+A lot of the respondents to our survey indicated that their subfield is not on the list of preset subfields that we provided in our survey. We believed that the range of subfields listed cover the field of psychology. It is possible that our respondents were not exclusively psychologist, just published in a paper that is labeled as psychology in the Science Direct database. Therefore, now we list the titles of the journals where the authors in our sample published in.
 
 ```{r}
 sample_publication <- 
@@ -334,4 +334,3 @@ Saving the plot.
 ```{r}
 ggsave("Figures/sample_journal_subfield_plot.png", width = 14.4, height = 8, plot = last_plot())
 ```
-

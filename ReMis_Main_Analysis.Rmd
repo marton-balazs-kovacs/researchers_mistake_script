@@ -70,7 +70,7 @@ descriptives %>%
 Saving the plot.
 
 ```{r}
-ggsave("Figures/years_on_field_plot.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/years_on_field_plot.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ## Field
@@ -120,7 +120,7 @@ descriptives %>%
 Saving the plot.
 
 ```{r}
-ggsave("Figures/subfield_distribution_plot.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/subfield_distribution_plot.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 # General overview of data management mistakes
@@ -154,31 +154,43 @@ general_mistake_frequency %>%
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
-         percentage = n / N * 100)
+         percentage = round(n / N * 100, 0))
 ```
 
 ```{r}
-general_mistake_frequency %>% 
+general_mistake_frequency_plot <- 
+  general_mistake_frequency %>% 
   filter(!is.na(general_frequency)) %>% 
+  group_by(general_frequency) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 0)) %>% 
   ggplot() +
-  aes(general_frequency) +
-  geom_bar() +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 270)) +
-  labs(x = "Frequency levels",
-       y = "Count") +
+  aes(x = general_frequency, y = percentage) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
+  scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
+  labs(x = "Frequency level",
+       title = "Overall frequency (n = 463)") +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
-        axis.text = element_text(color = "black", size = 12),
-        axis.title = element_text(size = 15),
-        panel.background = element_blank())
+        axis.text = element_text(color = "black", size = 18),
+        axis.title = element_text(size = 20),
+        panel.background = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = unit(c(0,0.8,0,0), "cm"),
+        title = element_text(color = "black", size = 20))
+
+general_mistake_frequency_plot
 ```
 
 ```{r}
 general_mistake_frequency %>%
   filter(!is.na(general_frequency)) %>% 
   mutate(report_group = case_when(general_frequency == "Very Low" ~ 1L,
-                                  general_frequency == "Low" ~ 0L,
+                                  general_frequency == "Low" ~ 1L,
                                   general_frequency == "Moderate" ~ 0L,
                                   general_frequency == "High" ~ 0L,
                                   general_frequency == "Very High" ~ 0L)) %>% 
@@ -225,29 +237,39 @@ general_mistake_overview %>%
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
-         percentage = n / N * 100)
+         percentage = round(n / N * 100, 0))
 ```
 
 ### Barplot of responses of the frequency of the most recurring mistakes
 
 ```{r} 
-general_mistake_overview %>%
+most_frequent_frequency_plot <- 
+  general_mistake_overview %>%
   filter(type == "recurring",
          question == "frequency",
          !is.na(rating)) %>% 
   mutate(rating = frequency_char_to_fact(rating)) %>% 
+  group_by(rating) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 0)) %>% 
   ggplot() +
-  aes(x = rating) +
-  geom_bar() +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 250)) +
-  labs(x = "Frequency levels",
-       y = "Count") +
+  aes(x = rating, y = percentage) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
+  labs(title = "Most frequent mistakes (n = 397)") +
+  scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
-        axis.text = element_text(color = "black", size = 12),
-        axis.title = element_text(size = 15),
-        panel.background = element_blank())
+        axis.text = element_text(color = "black", size = 18),
+        panel.background = element_blank(),
+        axis.title = element_blank(),
+        plot.margin = unit(c(0,0.8,0,0), "cm"),
+        title = element_text(color = "black", size = 20))
+
+most_frequent_frequency_plot
 ```
 
 ```{r}
@@ -257,7 +279,7 @@ general_mistake_overview %>%
          !is.na(rating)) %>% 
   mutate(rating = frequency_char_to_fact(rating)) %>% 
   mutate(report_group = case_when(rating == "Very Low" ~ 1L,
-                                  rating == "Low" ~ 0L,
+                                  rating == "Low" ~ 1L,
                                   rating == "Moderate" ~ 0L,
                                   rating == "High" ~ 0L,
                                   rating == "Very High" ~ 0L)) %>%
@@ -295,23 +317,35 @@ general_mistake_overview %>%
 ### Barplot of responses of the seriousness of the most recurring mistakes
 
 ```{r}
-general_mistake_overview %>% 
+most_frequent_seriousness_plot <- 
+  general_mistake_overview %>% 
   filter(type == "recurring",
          question == "serious",
          !is.na(rating)) %>% 
   mutate(rating = serious_char_to_fact(rating)) %>% 
+  group_by(rating) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 0)) %>% 
   ggplot() +
-  aes(rating) +
-  geom_bar() +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 280)) +
-  labs(x = "Seriousnes levels",
-       y = "Count") +
+  aes(rating, percentage) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
+  scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
+  labs(y = "Percentage",
+       title = "Most frequent mistakes (n = 397)") +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
-        axis.text = element_text(color = "black", size = 12),
-        axis.title = element_text(size = 15),
-        panel.background = element_blank())
+        axis.text = element_text(color = "black", size = 18),
+        axis.title = element_text(size = 20),
+        panel.background = element_blank(),
+        axis.title.y = element_blank(),
+        plot.margin = unit(c(0,0.8,0,0), "cm"),
+        title = element_text(color = "black", size = 20))
+
+most_frequent_seriousness_plot
 ```
 
 ```{r}
@@ -321,7 +355,7 @@ general_mistake_overview %>%
          !is.na(rating)) %>% 
   mutate(rating = serious_char_to_fact(rating)) %>% 
   mutate(report_group = case_when(rating == "Insignificant" ~ 1L,
-                                  rating == "Minor" ~ 0L,
+                                  rating == "Minor" ~ 1L,
                                   rating == "Moderate" ~ 0L,
                                   rating == "Major" ~ 0L,
                                   rating == "Extreme" ~ 0L)) %>%
@@ -363,29 +397,41 @@ general_mistake_overview %>%
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
-         percentage = n / N * 100)
+         percentage = round(n / N * 100, 0))
 ```
 
 ### Barplot of responses to serious_serious
 
 ```{r}
-general_mistake_overview %>% 
+most_serious_seriousness_plot <- 
+  general_mistake_overview %>% 
   filter(type == "serious",
          question == "serious",
          !is.na(rating)) %>% 
   mutate(rating = serious_char_to_fact(rating)) %>%
+  group_by(rating) %>% 
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         percentage = round(n / N * 100, 0)) %>% 
   ggplot() +
-  aes(rating) +
-  geom_bar() +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 300)) +
-  labs(x = "Seriousnes levels",
-       y = "Count") +
+  aes(rating, percentage) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
+  scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
+  labs(x = "Seriousness level",
+       y = "Percentage",
+       title = "Most serious mistakes (n = 277)") +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
-        axis.text = element_text(color = "black", size = 12),
-        axis.title = element_text(size = 15),
-        panel.background = element_blank())
+        axis.text = element_text(color = "black", size = 18),
+        axis.title = element_text(size = 20),
+        panel.background = element_blank(),
+        plot.margin = unit(c(0,0.8,0,0), "cm"),
+        title = element_text(color = "black", size = 20))
+
+most_serious_seriousness_plot
 ```
 
 ```{r}
@@ -395,7 +441,7 @@ general_mistake_overview %>%
          !is.na(rating)) %>% 
   mutate(rating = serious_char_to_fact(rating)) %>% 
   mutate(report_group = case_when(rating == "Insignificant" ~ 1L,
-                                  rating == "Minor" ~ 0L,
+                                  rating == "Minor" ~ 1L,
                                   rating == "Moderate" ~ 0L,
                                   rating == "Major" ~ 0L,
                                   rating == "Extreme" ~ 0L)) %>%
@@ -404,6 +450,15 @@ general_mistake_overview %>%
   ungroup() %>% 
   mutate(N = sum(n),
          prop = n / N * 100)
+```
+
+```{r}
+cowplot::plot_grid(general_mistake_frequency_plot, most_frequent_frequency_plot,
+                   most_serious_seriousness_plot, most_frequent_seriousness_plot, ncol = 2, align = "hv")
+```
+
+```{r}
+ggsave("Figures/overview_mistakes_plot.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 # Investigating research data management mistake types
@@ -446,6 +501,18 @@ cause_type_relationship <-
                                       group_cause == "lack of control" ~ "Personal difficulties"))
 ```
 
+Calculating the proportions of meta-causes in the sample.
+
+```{r}
+cause_type_relationship %>% 
+  group_by(group_cause_meta) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100) %>% 
+  arrange(desc(n))
+```
+
 Counting how many respondents listed a specific cause for each mistake type.
 
 ```{r}
@@ -480,6 +547,14 @@ relationship_plot_data <-
   mutate(label = paste0(group_type, " (", n_sum, ")"))
 ```
 
+Drop cases where the mistake type-cause connection is not present.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  filter(n != 0)
+```
+
 ### Creating the plot
 
 ```{r, fig.show = 'hide'}
@@ -491,23 +566,26 @@ relationship_plot_data %>%
     coord_flip() +
     labs(x = "Data Management Mistake Types",
          y = "Percentage",
-         fill = "Meta Cause Groups") +
-    theme(axis.text.x = element_text(size = 12, color = "black"),
-          axis.text.y = element_text(size = 12, color = "black"),
+         fill = "Cause Meta-groups") +
+    theme(axis.text.x = element_text(size = 18, color = "black"),
+          axis.text.y = element_text(size = 18, color = "black"),
           panel.background = element_blank(),
           panel.grid = element_blank(),
           axis.ticks = element_line(color = "black"),
           axis.line = element_line(color = "black"),
-          legend.title = element_text(size = 15),
-          axis.title = element_text(size = 15, color = "black"),
-          legend.text = element_text(size = 12),
-          legend.position = "bottom")
+          legend.title = element_text(size = 18),
+          axis.title = element_text(size = 20, color = "black"),
+          legend.text = element_text(size = 18),
+          legend.position = c(.2, -.13),
+          legend.direction = "horizontal",
+          plot.margin = unit(c(0,0.9,2,0), "cm")) +
+  guides(fill = guide_legend(reverse=TRUE))
 ```
 
 Saving the plot.
 
 ```{r}
-ggsave("Figures/cause_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/cause_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ### Same figure separately for the most frequent mistakes
@@ -554,6 +632,14 @@ relationship_plot_data <-
   mutate(label = paste0(group_type, " (", n_sum, ")"))
 ```
 
+Drop cases where the mistake type-cause connection is not present.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  filter(n != 0)
+```
+
 #### Creating the plot
 
 ```{r, fig.show = 'hide'}
@@ -565,23 +651,26 @@ relationship_plot_data %>%
     coord_flip() +
     labs(x = "Data Management Mistake Types",
          y = "Percentage",
-         fill = "Meta Cause Groups") +
-    theme(axis.text.x = element_text(size = 12, color = "black"),
-          axis.text.y = element_text(size = 12, color = "black"),
+         fill = "Cause Meta-groups") +
+    theme(axis.text.x = element_text(size = 18, color = "black"),
+          axis.text.y = element_text(size = 18, color = "black"),
           panel.background = element_blank(),
           panel.grid = element_blank(),
           axis.ticks = element_line(color = "black"),
           axis.line = element_line(color = "black"),
-          legend.title = element_text(size = 15),
-          axis.title = element_text(size = 15, color = "black"),
-          legend.text = element_text(size = 12),
-          legend.position = "bottom")
+          legend.title = element_text(size = 18),
+          axis.title = element_text(size = 20, color = "black"),
+          legend.text = element_text(size = 18),
+          legend.position = c(.2, -.13),
+          legend.direction = "horizontal",
+          plot.margin = unit(c(0,0.9,2.2,0), "cm")) +
+  guides(fill = guide_legend(reverse=TRUE))
 ```
 
 Saving the plot.
 
 ```{r}
-ggsave("Figures/frequent_cause_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/frequent_cause_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ### Same figure separately for the most serious mistakes
@@ -628,6 +717,14 @@ relationship_plot_data <-
   mutate(label = paste0(group_type, " (", n_sum, ")"))
 ```
 
+Drop cases where the mistake type-cause connection is not present.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  filter(n != 0)
+```
+
 #### Creating the plot
 
 ```{r, fig.show = 'hide'}
@@ -639,30 +736,33 @@ relationship_plot_data %>%
     coord_flip() +
     labs(x = "Data Management Mistake Types",
          y = "Percentage",
-         fill = "Meta Cause Groups") +
-    theme(axis.text.x = element_text(size = 12, color = "black"),
-          axis.text.y = element_text(size = 12, color = "black"),
+         fill = "Cause Meta-groups") +
+    theme(axis.text.x = element_text(size = 18, color = "black"),
+          axis.text.y = element_text(size = 18, color = "black"),
           panel.background = element_blank(),
           panel.grid = element_blank(),
           axis.ticks = element_line(color = "black"),
           axis.line = element_line(color = "black"),
-          legend.title = element_text(size = 15),
-          axis.title = element_text(size = 15, color = "black"),
-          legend.text = element_text(size = 12),
-          legend.position = "bottom")
+          legend.title = element_text(size = 18),
+          axis.title = element_text(size = 20, color = "black"),
+          legend.text = element_text(size = 18),
+          legend.position = c(.2, -.13),
+          legend.direction = "horizontal",
+          plot.margin = unit(c(0,0.9,2.2,0), "cm")) +
+  guides(fill = guide_legend(reverse=TRUE))
 ```
 
 Saving the plot.
 
 ```{r}
-ggsave("Figures/serious_cause_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/serious_cause_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ## Relationship between mistake types and mistake outcomes
 ### Read in processed data
 
 ```{r}
-outcome_type_relationship <- read_tsv( "Data/Processed/ReMis_Main_Processed_Outcome_Type_Relationship_Analysis_data.tsv")
+outcome_type_relationship <- read_tsv("Data/Processed/ReMis_Main_Processed_Outcome_Type_Relationship_Analysis_data.tsv")
 ```
 
 ### Data descriptives
@@ -671,6 +771,18 @@ outcome_type_relationship <- read_tsv( "Data/Processed/ReMis_Main_Processed_Outc
 skim(outcome_type_relationship) %>% summary()
 
 skim(outcome_type_relationship)
+```
+
+Calculating the proportions of meta-causes in the sample.
+
+```{r}
+outcome_type_relationship %>% 
+  group_by(group_outcome) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100) %>% 
+  arrange(desc(n))
 ```
 
 ### Data transformation
@@ -690,7 +802,7 @@ relationship_plot_data <-
   mutate(n_sum = sum(n)) %>% 
   ungroup() %>%
   mutate(prop = n / n_sum) %>%
-  filter(n_sum >= 10) %>% 
+  filter(n_sum >= 10) %>%
   mutate(group_outcome = case_when(group_outcome == "financial lost" ~ "financial loss",
                                    TRUE ~ group_outcome))
 ```
@@ -711,6 +823,14 @@ relationship_plot_data <-
   mutate(label = paste0(group_type, " (", n_sum, ")"))
 ```
 
+Drop cases where the mistake type-outcome connection is not present.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  filter(n != 0)
+```
+
 ### Creating the plot
 
 ```{r, fig.show = 'hide'}
@@ -723,22 +843,25 @@ relationship_plot_data %>%
     labs(x = "Data Management Mistake Types",
          y = "Percentage",
          fill = "Outcome Groups") +
-    theme(axis.text.x = element_text(size = 12, color = "black"),
-          axis.text.y = element_text(size = 12, color = "black"),
+    theme(axis.text.x = element_text(size = 18, color = "black"),
+          axis.text.y = element_text(size = 18, color = "black"),
           panel.background = element_blank(),
           panel.grid = element_blank(),
           axis.ticks = element_line(color = "black"),
           axis.line = element_line(color = "black"),
-          axis.title = element_text(size = 15, color = "black"),
-          legend.title = element_text(size = 15),
-          legend.text = element_text(size = 12),
-          legend.position = "bottom")
+          axis.title = element_text(size = 20, color = "black"),
+          legend.title = element_text(size = 18),
+          legend.text = element_text(size = 18),
+          legend.position = c(.2, -.13),
+          legend.direction = "horizontal",
+          plot.margin = unit(c(0,0.9,2.2,0), "cm")) +
+  guides(fill = guide_legend(reverse=TRUE))
 ```
 
 Saving the plot.
 
 ```{r}
-ggsave("Figures/outcome_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/outcome_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ### Same figure separately for the most frequent mistakes
@@ -789,6 +912,14 @@ relationship_plot_data <-
   mutate(label = paste0(group_type, " (", n_sum, ")"))
 ```
 
+Drop cases where the mistake type-outcome connection is not present.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  filter(n != 0)
+```
+
 #### Creating the plot
 
 ```{r, fig.show = 'hide'}
@@ -801,22 +932,25 @@ relationship_plot_data %>%
     labs(x = "Data Management Mistake Types",
          y = "Percentage",
          fill = "Outcome Groups") +
-    theme(axis.text.x = element_text(size = 12, color = "black"),
-          axis.text.y = element_text(size = 12, color = "black"),
+    theme(axis.text.x = element_text(size = 18, color = "black"),
+          axis.text.y = element_text(size = 18, color = "black"),
           panel.background = element_blank(),
           panel.grid = element_blank(),
           axis.ticks = element_line(color = "black"),
           axis.line = element_line(color = "black"),
-          axis.title = element_text(size = 15, color = "black"),
-          legend.title = element_text(size = 15),
-          legend.text = element_text(size = 12),
-          legend.position = "bottom")
+          axis.title = element_text(size = 20, color = "black"),
+          legend.title = element_text(size = 18),
+          legend.text = element_text(size = 18),
+          legend.position = c(.2, -.13),
+          legend.direction = "horizontal",
+          plot.margin = unit(c(0,0.9,2.2,0), "cm")) +
+  guides(fill = guide_legend(reverse=TRUE))
 ```
 
 Saving the plot.
 
 ```{r}
-ggsave("Figures/frequent_outcome_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/frequent_outcome_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ### Same figure separately for the most serious mistakes
@@ -851,7 +985,7 @@ relationship_plot_data <-
                                    TRUE ~ group_outcome))
 ```
 
-Check if the proportion of the cause groups add up to a hundred.
+Check if the proportion of the outcome groups add up to a hundred.
 
 ```{r}
 relationship_plot_data %>% 
@@ -867,6 +1001,14 @@ relationship_plot_data <-
   mutate(label = paste0(group_type, " (", n_sum, ")"))
 ```
 
+Drop cases where the mistake type-outcome connection is not present.
+
+```{r}
+relationship_plot_data <- 
+  relationship_plot_data %>% 
+  filter(n != 0)
+```
+
 #### Creating the plot
 
 ```{r, fig.show = 'hide'}
@@ -879,22 +1021,25 @@ relationship_plot_data %>%
     labs(x = "Data Management Mistake Types",
          y = "Percentage",
          fill = "Outcome Groups") +
-    theme(axis.text.x = element_text(size = 12, color = "black"),
-          axis.text.y = element_text(size = 12, color = "black"),
+    theme(axis.text.x = element_text(size = 18, color = "black"),
+          axis.text.y = element_text(size = 18, color = "black"),
           panel.background = element_blank(),
           panel.grid = element_blank(),
           axis.ticks = element_line(color = "black"),
           axis.line = element_line(color = "black"),
-          axis.title = element_text(size = 15, color = "black"),
-          legend.title = element_text(size = 15),
-          legend.text = element_text(size = 12),
-          legend.position = "bottom")
+          axis.title = element_text(size = 20, color = "black"),
+          legend.title = element_text(size = 18),
+          legend.text = element_text(size = 18),
+          legend.position = c(.2, -.13),
+          legend.direction = "horizontal",
+          plot.margin = unit(c(0,0.9,2.2,0), "cm")) +
+  guides(fill = guide_legend(reverse=TRUE))
 ```
 
 Saving the plot.
 
 ```{r}
-ggsave("Figures/serious_outcome_type_relationship_plot.png", width = 14.4, height = 8, plot = last_plot())
+ggsave("Figures/serious_outcome_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ## Frequency of data management mistak types
