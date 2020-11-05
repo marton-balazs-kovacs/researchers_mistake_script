@@ -542,13 +542,13 @@ processed_outcome_coding_count <-
 ```{r}
 n_distinct_code <- function(df) {
   df %>% 
-      filter(code %ni% c("see above",
-                         "missing",
-                         "irrelevant content",
-                         "out of timeframe",
-                         "insufficient information")) %>% 
+    filter(code %ni% c("see above",
+                       "missing",
+                       "irrelevant content",
+                       "out of timeframe",
+                       "insufficient information")) %>% 
     ungroup() %>% 
-    count()
+    summarise(n = n())
 }
 
 n_distinct_code(processed_mistake_type_coding_count)
@@ -793,7 +793,6 @@ keep_responses_grouping_exclusion <- function(df) {
 processed_mistake_type_filtered <-
   keep_responses_grouping_exclusion(processed_mistake_type_grouped) 
 
-
 processed_cause_filtered <-
   keep_responses_grouping_exclusion(processed_cause_grouped)
 
@@ -1014,7 +1013,7 @@ exclude <-
   distinct(response_id, type, .keep_all = TRUE) %>% 
   anti_join(., anonym_res_data, by = "response_id") # We are excluding responses that are from anonymous respondents from this list
 
-write_tsv(exclude, "Data/Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv")
+# write_tsv(exclude, "Data/Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv")
 ```
 
 #### Number of mistake responses that we exclude (and the reason why)
