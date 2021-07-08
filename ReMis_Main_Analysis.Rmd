@@ -158,14 +158,18 @@ general_mistake_frequency %>%
 ```
 
 ```{r}
-general_mistake_frequency_plot <- 
+# With percentage
+general_mistake_frequency_plot_data <- 
   general_mistake_frequency %>% 
   filter(!is.na(general_frequency)) %>% 
   group_by(general_frequency) %>% 
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
-         percentage = round(n / N * 100, 0)) %>% 
+         percentage = round(n / N * 100, 0))
+
+general_mistake_frequency_plot <- 
+  general_mistake_frequency_plot_data %>% 
   ggplot() +
   aes(x = general_frequency, y = percentage) +
   geom_bar(stat = "identity") +
@@ -184,6 +188,28 @@ general_mistake_frequency_plot <-
         title = element_text(color = "black", size = 20))
 
 general_mistake_frequency_plot
+
+# With count
+general_mistake_frequency_plot_count <- 
+  general_mistake_frequency_plot_data %>% 
+  ggplot() +
+  aes(x = general_frequency, y = n) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = n), size = 8, hjust = -0.3) +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x = "Frequency Level",
+       title = "Overall Frequency (n = 463)") +
+  coord_flip() +
+  theme(axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 18),
+        axis.title = element_text(size = 20),
+        panel.background = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = unit(c(0,0.8,0,0), "cm"),
+        title = element_text(color = "black", size = 20))
+
+general_mistake_frequency_plot_count
 ```
 
 ```{r}
@@ -243,7 +269,8 @@ general_mistake_overview %>%
 ### Barplot of responses of the frequency of the most recurring mistakes
 
 ```{r} 
-most_frequent_frequency_plot <- 
+# With percentage
+most_frequent_frequency_plot_data <- 
   general_mistake_overview %>%
   filter(type == "recurring",
          question == "frequency",
@@ -253,7 +280,10 @@ most_frequent_frequency_plot <-
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
-         percentage = round(n / N * 100, 0)) %>% 
+         percentage = round(n / N * 100, 0))
+
+most_frequent_frequency_plot <- 
+  most_frequent_frequency_plot_data %>% 
   ggplot() +
   aes(x = rating, y = percentage) +
   geom_bar(stat = "identity") +
@@ -270,6 +300,26 @@ most_frequent_frequency_plot <-
         title = element_text(color = "black", size = 20))
 
 most_frequent_frequency_plot
+
+# With counts
+most_frequent_frequency_plot_count <- 
+  most_frequent_frequency_plot_data %>% 
+  ggplot() +
+  aes(x = rating, y = n) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = n), size = 8, hjust=-0.3) +
+  labs(title = "Most Frequent Mistakes (n = 397)") +
+  scale_y_continuous(expand = c(0,0)) +
+  coord_flip() +
+  theme(axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 18),
+        panel.background = element_blank(),
+        axis.title = element_blank(),
+        plot.margin = unit(c(0,0.8,0,0), "cm"),
+        title = element_text(color = "black", size = 20))
+
+most_frequent_frequency_plot_count
 ```
 
 ```{r}
@@ -317,7 +367,8 @@ general_mistake_overview %>%
 ### Barplot of responses of the seriousness of the most recurring mistakes
 
 ```{r}
-most_frequent_seriousness_plot <- 
+# With percentage
+most_frequent_seriousness_plot_data <- 
   general_mistake_overview %>% 
   filter(type == "recurring",
          question == "serious",
@@ -327,11 +378,14 @@ most_frequent_seriousness_plot <-
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
-         percentage = round(n / N * 100, 0)) %>% 
+         percentage = round(n / N * 100, 0))
+
+most_frequent_seriousness_plot <- 
+  most_frequent_seriousness_plot_data %>% 
   ggplot() +
   aes(rating, percentage) +
   geom_bar(stat = "identity") +
-  geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
+  geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust = -0.3) +
   scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
   labs(y = "Percentage",
        title = "Most Frequent Mistakes (n = 397)") +
@@ -346,6 +400,28 @@ most_frequent_seriousness_plot <-
         title = element_text(color = "black", size = 20))
 
 most_frequent_seriousness_plot
+
+# With count
+most_frequent_seriousness_plot_count <- 
+  most_frequent_seriousness_plot_data %>% 
+    ggplot() +
+  aes(rating, n) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = n), size = 8, hjust = -0.3) +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(y = "Count",
+       title = "Most Frequent Mistakes (n = 397)") +
+  coord_flip() +
+  theme(axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 18),
+        axis.title = element_text(size = 20),
+        panel.background = element_blank(),
+        axis.title.y = element_blank(),
+        plot.margin = unit(c(0,0.8,0,0), "cm"),
+        title = element_text(color = "black", size = 20))
+
+most_frequent_seriousness_plot_count
 ```
 
 ```{r}
@@ -403,7 +479,8 @@ general_mistake_overview %>%
 ### Barplot of responses to serious_serious
 
 ```{r}
-most_serious_seriousness_plot <- 
+# With percentage
+most_serious_seriousness_plot_data <- 
   general_mistake_overview %>% 
   filter(type == "serious",
          question == "serious",
@@ -413,7 +490,10 @@ most_serious_seriousness_plot <-
   summarise(n = n()) %>% 
   ungroup() %>% 
   mutate(N = sum(n),
-         percentage = round(n / N * 100, 0)) %>% 
+         percentage = round(n / N * 100, 0))
+
+most_serious_seriousness_plot <- 
+  most_serious_seriousness_plot_data %>% 
   ggplot() +
   aes(rating, percentage) +
   geom_bar(stat = "identity") +
@@ -432,6 +512,28 @@ most_serious_seriousness_plot <-
         title = element_text(color = "black", size = 20))
 
 most_serious_seriousness_plot
+
+# With count
+most_serious_seriousness_plot_count <- 
+  most_serious_seriousness_plot_data %>% 
+    ggplot() +
+  aes(rating, n) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = n), size = 8, hjust = -0.3) +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x = "Seriousness Level",
+       y = "Count",
+       title = "Most Serious Mistakes (n = 277)") +
+  coord_flip() +
+  theme(axis.ticks = element_line(color = "black"),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(color = "black", size = 18),
+        axis.title = element_text(size = 20),
+        panel.background = element_blank(),
+        plot.margin = unit(c(0,0.8,0,0), "cm"),
+        title = element_text(color = "black", size = 20))
+
+most_serious_seriousness_plot_count
 ```
 
 ```{r}
@@ -459,6 +561,15 @@ cowplot::plot_grid(general_mistake_frequency_plot, most_frequent_frequency_plot,
 
 ```{r}
 ggsave("Figures/overview_mistakes_plot.png", width = 14.4, height = 9, plot = last_plot())
+```
+
+```{r}
+cowplot::plot_grid(general_mistake_frequency_plot_count, most_frequent_frequency_plot_count,
+                   most_serious_seriousness_plot_count, most_frequent_seriousness_plot_count, ncol = 2, align = "hv")
+```
+
+```{r}
+ggsave("Figures/overview_mistakes_plot_count.png", width = 14.4, height = 9, plot = last_plot())
 ```
 
 # Investigating research data management mistake types

@@ -12,7 +12,7 @@ library(tidyverse)
 library(writexl)
 library(readxl)
 library(zoo)
-library(qdap)
+# library(qdap)
 ```
 
 # Load functions
@@ -64,6 +64,8 @@ distrib_channel_count <-
   raw %>%
   group_by(distribution_channel) %>%
   count()
+
+distrib_channel_count
 ```
 
 We received `r filter(distrib_channel_count, distribution_channel == "anonymous") %>% pull(n)` answers from the redistribution of our survey. We decided to keep these answers in for the creation of the groups but exclude them from the analysis.
