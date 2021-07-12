@@ -12,7 +12,7 @@ library(tidyverse)
 library(writexl)
 library(readxl)
 library(zoo)
-# library(qdap)
+library(qdap)
 ```
 
 # Load functions
@@ -45,7 +45,7 @@ raw <-
 ## Data filtering
 ### Delete rows created by Qualtrics for variable explanation
 
-Qualtrics create two rows that stores metadata about the variables. These are not needed in further analysis.
+Qualtrics creates two rows that store metadata about the variables. These are not needed in further analysis.
 
 ```{r}
 raw <- 
@@ -68,7 +68,7 @@ distrib_channel_count <-
 distrib_channel_count
 ```
 
-We received `r filter(distrib_channel_count, distribution_channel == "anonymous") %>% pull(n)` answers from the redistribution of our survey. We decided to keep these answers in for the creation of the groups but exclude them from the analysis.
+We received `r filter(distrib_channel_count, distribution_channel == "anonymous") %>% pull(n)` answers from the redistribution of our survey. We decided to keep these answers for the creation of the groups but and for analysis as the anonymous respondents provided answers for the background questions as well.
 
 ### Delete trial responses
 
@@ -167,16 +167,9 @@ raw <-
          serious_serious = beg2char(serious_serious, "\n"))
 ```
 
-## Saving the responses from anonymous respondents
+## Calculate the number of responses after all initial exclusions
 
-We save the response ids of the anonymous respondents separately in order to exclude them from further analysis later in the data preprocessing process.
-
-```{r}
-anonym_res_data <- 
-  raw %>%
-  filter(distribution_channel == "anonymous") %>% 
-  distinct(response_id)
-```
+There are `r response_count(raw)` responses remaining for further data wrangling. Out of which, `r filter(raw, distribution_channel == "anonymous") %>% nrow()` are coming from anonymous respondents.
 
 ## Filter the needed variables only
 
@@ -802,41 +795,6 @@ processed_outcome_filtered <-
   keep_responses_grouping_exclusion(processed_outcome_grouped) 
 ```
 
-#### Post grouping exclusion
-
-We used the responses of anonymous respondents for only the group creation and validation but we do not use them in further analysis.
-
-```{r}
-processed_mistake_type_filtered <-
-  processed_mistake_type_filtered %>% 
-  anti_join(., anonym_res_data, by = "response_id")
-
-processed_cause_filtered <-
-  processed_cause_filtered %>% 
-  anti_join(., anonym_res_data, by = "response_id")
-
-processed_outcome_filtered <-
-  processed_outcome_filtered %>% 
-  anti_join(., anonym_res_data, by = "response_id")
-```
-
-#### Number of responses after excluding anonymous respondents
-
-```{r}
-n_responses_after_excluding_anonymous <- function(df, type_var) {
-  df %>% 
-  ungroup() %>% 
-  group_by({{type_var}}) %>% 
-  summarise(n = n()) 
-}
-
-n_responses_after_excluding_anonymous(processed_mistake_type_filtered, mistake_type)
-
-n_responses_after_excluding_anonymous(processed_cause_filtered, cause_type)
-  
-n_responses_after_excluding_anonymous(processed_outcome_filtered, outcome_type)
-```
-
 #### Transformation
 
 ```{r}
@@ -938,14 +896,6 @@ write_tsv(processed_outcome_type_relationship, "Data/Processed/ReMis_Main_Proces
 ```
 
 ## Preprocessing of the frequency and seriousness ratings
-### Excluding responses because it is from an anonym respondent
-
-```{r}
-raw <-
-  raw %>%
-  anti_join(., anonym_res_data, by = "response_id")
-```
-
 ### Create datatable for the descriptive information
 #### Select needed variables
 
@@ -997,11 +947,15 @@ write_tsv(processed_general_frequency, "Data/Processed/ReMis_Main_Processed_Gene
 ### Investigating the excluded responses
 #### Create a table of the excluded responses
 
-We flagged the mistakes that needed to be excluded from further analysis during the coding process in order to save time. Therefore, we use the coded mistake data to find the participants who's responses fit our exclusion criteria.
+We flagged the mistakes that needed to be excluded from the analysis of the frequency and seriousness ratings during the preprocessing of the free-text responses in order to save time. Therefore, we use the coded mistake dataset to excluded cases that fit our exclusion criteria.
 
 If the participants response got separated both separated responses got the same code and got dropped.
 
 ```{r}
+processed_mistake_type_coding <-
+  read_xlsx("Data/Processed/grouping/coding/ReMis_Main_Processed_Mistake_Type_Coding_data.xlsx") %>% 
+  mutate(mistake_no = as.integer(mistake_no))
+
 exclude <-  
   processed_mistake_type_coding %>%
   filter(code %in% c("see above",
@@ -1012,8 +966,7 @@ exclude <-
          type = mistake_type) %>%
   select(response_id, type, mistake, exclusion_criteria) %>%
   # In two cases the response got separated into 2 responses but both got the same code. In order to keep the numbers constant we keep only one response.
-  distinct(response_id, type, .keep_all = TRUE) %>% 
-  anti_join(., anonym_res_data, by = "response_id") # We are excluding responses that are from anonymous respondents from this list
+  distinct(response_id, type, .keep_all = TRUE)
 
 # write_tsv(exclude, "Data/Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv")
 ```
