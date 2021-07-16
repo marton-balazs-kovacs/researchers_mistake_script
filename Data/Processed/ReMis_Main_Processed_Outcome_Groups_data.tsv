@@ -16,6 +16,8 @@ R_10uWnIrva7R5dgS	time loss, frustration	2	frustration	no	serious	frustration	fr
 R_1163fpcUwH7iUdJ	time loss	1	time loss	yes	recurring	time loss	time loss
 R_1163fpcUwH7iUdJ	time loss	1	time loss	yes	serious	time loss	time loss
 R_11gukLDI1B8MFre	frustration	1	frustration	yes	serious	frustration	frustration
+R_12kZ5E4TIFs2wbK	frustration	1	frustration	yes	recurring	frustration	frustration
+R_12kZ5E4TIFs2wbK	erroneous conclusion	1	erroneous conclusion	yes	serious	erroneous conclusion	erroneous conclusion
 R_12tYv2Y5nec53EF	time loss	1	time loss	yes	recurring	time loss	time loss
 R_12tYv2Y5nec53EF	time loss	1	time loss	yes	serious	time loss	time loss
 R_1C7oJP4CkRa3cdP	financial loss	1	financial loss	yes	recurring	financial lost	financial loss
@@ -40,6 +42,11 @@ R_1dyHBENaRUWZjBd	financial loss	1	financial loss	yes	recurring	financial lost	f
 R_1dyHBENaRUWZjBd	time loss	1	time loss	yes	serious	time loss	time loss
 R_1DzEEG1QzkdWLdl	time loss	1	time loss	yes	recurring	time loss	time loss
 R_1DzEEG1QzkdWLdl	time loss	1	time loss	yes	serious	time loss	time loss
+R_1EibulGREp2Awdg	erroneous conclusion	1	erroneous conclusion	yes	recurring	erroneous conclusion	erroneous conclusion
+R_1EibulGREp2Awdg	All of the above	1	financial loss	no	serious	financial lost	financial loss
+R_1EibulGREp2Awdg	All of the above	2	erroneous conclusion	no	serious	erroneous conclusion	erroneous conclusion
+R_1EibulGREp2Awdg	All of the above	3	time loss	no	serious	time loss	time loss
+R_1EibulGREp2Awdg	All of the above	4	frustration	no	serious	frustration	frustration
 R_1EKvVZl7B5pr465	time loss	1	time loss	yes	recurring	time loss	time loss
 R_1EKvVZl7B5pr465	time loss	1	time loss	yes	serious	time loss	time loss
 R_1eru08S1SGWl5sm	time loss	1	time loss	yes	recurring	time loss	time loss
@@ -117,6 +124,8 @@ R_1kY9lz7ULI6kPb3	time loss	1	time loss	yes	serious	time loss	time loss
 R_1lAjGmRwoW52vY9	time loss	1	time loss	yes	recurring	time loss	time loss
 R_1lAjGmRwoW52vY9	frustration	1	frustration	yes	serious	frustration	frustration
 R_1lB26n6FmxVjcjF	frustration	1	frustration	yes	serious	frustration	frustration
+R_1LbdeE1TkgHwlf0	time loss	1	time loss	yes	recurring	time loss	time loss
+R_1LbdeE1TkgHwlf0	time loss	1	time loss	yes	serious	time loss	time loss
 R_1LBzXSxZUeQ0CZr	time loss	1	time loss	yes	recurring	time loss	time loss
 R_1LBzXSxZUeQ0CZr	time loss	1	time loss	yes	serious	time loss	time loss
 R_1Lez5WNMDX1hRUJ	time loss	1	time loss	yes	recurring	time loss	time loss
@@ -132,6 +141,8 @@ R_1lz69PsdTmTnVVj	time loss	1	time loss	yes	recurring	time loss	time loss
 R_1lz69PsdTmTnVVj	Loss of participants because information could not be matched across years	1	Loss of participants because information could not be matched across years	yes	serious	potential or real project failure or setback	participant loss
 R_1mKI2PUxRHLULTJ	time loss	1	time loss	yes	recurring	time loss	time loss
 R_1mKI2PUxRHLULTJ	time loss	1	time loss	yes	serious	time loss	time loss
+R_1MQWERjeI1GSADq	time loss	1	time loss	yes	recurring	time loss	time loss
+R_1MQWERjeI1GSADq	erroneous conclusion	1	erroneous conclusion	yes	serious	erroneous conclusion	erroneous conclusion
 R_1mVqGcXzn9RTmbh	erroneous conclusion	1	erroneous conclusion	yes	recurring	erroneous conclusion	erroneous conclusion
 R_1mW0ThB9AoMJITt	time loss	1	time loss	yes	recurring	time loss	time loss
 R_1mW0ThB9AoMJITt	time loss	1	time loss	yes	serious	time loss	time loss
@@ -172,6 +183,11 @@ R_1Or7tDijbW5NQ1e	time loss	1	time loss	yes	serious	time loss	time loss
 R_1pRrkSmdJGmTwHk	time loss	1	time loss	yes	recurring	time loss	time loss
 R_1pRrkSmdJGmTwHk	data loss/unable to share with other researchers years later	1	data loss	no	serious	potential or real project failure or setback	data loss
 R_1pRrkSmdJGmTwHk	data loss/unable to share with other researchers years later	2	unable to share with other researchers years later	no	serious	loss of scientific value	unable to share data
+R_1PYqrwTWH43MQ4b	Time loss and frustration (survey wouldn’t allow me to select both)	1	Time loss (survey wouldn’t allow me to select both)	no	recurring	time loss	time loss
+R_1PYqrwTWH43MQ4b	Frustration, time loss, having an editor look down on us for changing conclusions after an R&R	1	Frustration	no	serious	frustration	frustration
+R_1PYqrwTWH43MQ4b	Time loss and frustration (survey wouldn’t allow me to select both)	2	frustration	no	recurring	frustration	frustration
+R_1PYqrwTWH43MQ4b	Frustration, time loss, having an editor look down on us for changing conclusions after an R&R	2	time loss	no	serious	time loss	time loss
+R_1PYqrwTWH43MQ4b	Frustration, time loss, having an editor look down on us for changing conclusions after an R&R	3	having an editor look down on us for changing conclusions after an R&R	no	serious	frustration	embarrassment
 R_1q8MrESM6Soe0YW	frustration	1	frustration	yes	recurring	frustration	frustration
 R_1q8MrESM6Soe0YW	frustration	1	frustration	yes	serious	frustration	frustration
 R_1qgGU0J3OX0g6t9	time loss	1	time loss	yes	recurring	time loss	time loss
@@ -205,6 +221,8 @@ R_238HFUYOk87Upxk	erroneous conclusion	1	erroneous conclusion	yes	serious	errone
 R_23eJfXyDulGeJUx	time loss	1	time loss	yes	recurring	time loss	time loss
 R_23eJfXyDulGeJUx	frustration	1	frustration	yes	serious	frustration	frustration
 R_23f99S8tbBeZcmr	time loss	1	time loss	yes	recurring	time loss	time loss
+R_240gExq9GupfN2a	time loss	1	time loss	yes	recurring	time loss	time loss
+R_240gExq9GupfN2a	time loss	1	time loss	yes	serious	time loss	time loss
 R_240mxsPP2K7qvrD	frustration	1	frustration	yes	recurring	frustration	frustration
 R_240mxsPP2K7qvrD	frustration	1	frustration	yes	serious	frustration	frustration
 R_24AdUWCIaQLvyCw	time loss	1	time loss	yes	recurring	time loss	time loss
@@ -236,6 +254,14 @@ R_2aKnSakmSAQuXYg	time loss	1	time loss	yes	recurring	time loss	time loss
 R_2aKnSakmSAQuXYg	time loss	1	time loss	yes	serious	time loss	time loss
 R_2aQPnJKQNgJw2Ob	time loss	1	time loss	yes	recurring	time loss	time loss
 R_2aQPnJKQNgJw2Ob	erroneous conclusion	1	erroneous conclusion	yes	serious	erroneous conclusion	erroneous conclusion
+R_2ARO4v2Lk45N6OG	all of the above -- mostly time loss	1	financial loss	no	recurring	financial lost	financial loss
+R_2ARO4v2Lk45N6OG	all of the above	1	financial loss	no	serious	financial lost	financial loss
+R_2ARO4v2Lk45N6OG	all of the above -- mostly time loss	2	erroneous conclusion	no	recurring	erroneous conclusion	erroneous conclusion
+R_2ARO4v2Lk45N6OG	all of the above	2	erroneous conclusion	no	serious	erroneous conclusion	erroneous conclusion
+R_2ARO4v2Lk45N6OG	all of the above -- mostly time loss	3	time loss	no	recurring	time loss	time loss
+R_2ARO4v2Lk45N6OG	all of the above	3	time loss	no	serious	time loss	time loss
+R_2ARO4v2Lk45N6OG	all of the above -- mostly time loss	4	frustration	no	recurring	frustration	frustration
+R_2ARO4v2Lk45N6OG	all of the above	4	frustration	no	serious	frustration	frustration
 R_2at1V67diUQvkc1	time loss	1	time loss	yes	recurring	time loss	time loss
 R_2at1V67diUQvkc1	Unable to use the data	1	Unable to use the data	yes	serious	potential or real project failure or setback	data loss
 R_2awtub9gT0lm0Nq	time loss	1	time loss	yes	recurring	time loss	time loss
@@ -374,6 +400,8 @@ R_2Ve7LLcoPdCtYvA	time loss	1	time loss	yes	recurring	time loss	time loss
 R_2Ve7LLcoPdCtYvA	time loss	1	time loss	yes	serious	time loss	time loss
 R_2VEKMPKkOYROq4e	time loss	1	time loss	yes	recurring	time loss	time loss
 R_2VEKMPKkOYROq4e	time loss	1	time loss	yes	serious	time loss	time loss
+R_2VmBlknbIlY3gij	time loss	1	time loss	yes	recurring	time loss	time loss
+R_2VmBlknbIlY3gij	frustration	1	frustration	yes	serious	frustration	frustration
 R_2VmXtXlfGpTVyxw	time loss	1	time loss	yes	recurring	time loss	time loss
 R_2VmXtXlfGpTVyxw	time loss	1	time loss	yes	serious	time loss	time loss
 R_2VpQNBQ0y3Xk4v1	time loss	1	time loss	yes	recurring	time loss	time loss
@@ -410,6 +438,8 @@ R_2xWedLepVORUb2s	time loss and frustration	2	frustration	no	recurring	frustrati
 R_2xWedLepVORUb2s	Time loss and frustration	2	frustration	no	serious	frustration	frustration
 R_2xYjxG2sdLotM8Q	time loss	1	time loss	yes	recurring	time loss	time loss
 R_2xYjxG2sdLotM8Q	time loss	1	time loss	yes	serious	time loss	time loss
+R_2Y4AUWvkpjNoWMj	time loss	1	time loss	yes	recurring	time loss	time loss
+R_2Y4AUWvkpjNoWMj	time loss	1	time loss	yes	serious	time loss	time loss
 R_2YeLYCNeAEarPbX	all of them	1	financial loss	no	recurring	financial lost	financial loss
 R_2YeLYCNeAEarPbX	all of them	2	erroneous conclusion	no	recurring	erroneous conclusion	erroneous conclusion
 R_2YeLYCNeAEarPbX	all of them	3	time loss	no	recurring	time loss	time loss
@@ -439,20 +469,30 @@ R_2zjVTdbw0kClOqk	time loss	1	time loss	yes	recurring	time loss	time loss
 R_2ZKX9MFhEoJ5EsP	time loss	1	time loss	yes	recurring	time loss	time loss
 R_302hgWPu7XX10Ur	time loss	1	time loss	yes	recurring	time loss	time loss
 R_302hgWPu7XX10Ur	time loss	1	time loss	yes	serious	time loss	time loss
+R_30iBM9IxcA9r8sY	time loss	1	time loss	yes	recurring	time loss	time loss
 R_30oeLXyDGAJEwhS	time loss	1	time loss	yes	recurring	time loss	time loss
 R_30oeLXyDGAJEwhS	erroneous conclusion	1	erroneous conclusion	yes	serious	erroneous conclusion	erroneous conclusion
+R_30qQDg8DretpwYi	time loss	1	time loss	yes	recurring	time loss	time loss
+R_30qQDg8DretpwYi	time loss	1	time loss	yes	serious	time loss	time loss
 R_31cTpd46NEwANvI	time loss	1	time loss	yes	recurring	time loss	time loss
 R_31cTpd46NEwANvI	time loss	1	time loss	yes	serious	time loss	time loss
 R_31N0JcnckZmHXuH	time loss	1	time loss	yes	recurring	time loss	time loss
 R_31N0JcnckZmHXuH	erroneous conclusion	1	erroneous conclusion	yes	serious	erroneous conclusion	erroneous conclusion
 R_31oXJfKSNMz4pNg	erroneous conclusion	1	erroneous conclusion	yes	recurring	erroneous conclusion	erroneous conclusion
 R_31oXJfKSNMz4pNg	erroneous conclusion	1	erroneous conclusion	yes	serious	erroneous conclusion	erroneous conclusion
+R_339EykMm32hLYqR	time loss and frustration	1	time loss	no	recurring	time loss	time loss
+R_339EykMm32hLYqR	time loss, frustration, setbacks	1	time loss	no	serious	time loss	time loss
+R_339EykMm32hLYqR	time loss and frustration	2	frustration	no	recurring	frustration	frustration
+R_339EykMm32hLYqR	time loss, frustration, setbacks	2	frustration	no	serious	frustration	frustration
+R_339EykMm32hLYqR	time loss, frustration, setbacks	3	setbacks	no	serious	potential or real project failure or setback	setbacks
 R_339JiVn0BrXV8jw	time loss	1	time loss	yes	recurring	time loss	time loss
 R_339JiVn0BrXV8jw	time loss	1	time loss	yes	serious	time loss	time loss
 R_33lN4aBOD0tfqwg	time loss	1	time loss	yes	recurring	time loss	time loss
 R_33lN4aBOD0tfqwg	time loss	1	time loss	yes	serious	time loss	time loss
 R_33qjViTvNv9H48m	time loss	1	time loss	yes	recurring	time loss	time loss
 R_33qjViTvNv9H48m	frustration	1	frustration	yes	serious	frustration	frustration
+R_38UJ0Ze2LPz2C1b	time loss	1	time loss	yes	recurring	time loss	time loss
+R_38UJ0Ze2LPz2C1b	time loss	1	time loss	yes	serious	time loss	time loss
 R_3CWadSWEbwUhhrs	time loss	1	time loss	yes	recurring	time loss	time loss
 R_3CWadSWEbwUhhrs	time loss	1	time loss	yes	serious	time loss	time loss
 R_3D85dU8d9bWZJPh	frustration	1	frustration	yes	recurring	frustration	frustration
@@ -535,6 +575,7 @@ R_3IT6ZXx2MztRRGc	time loss	1	time loss	yes	recurring	time loss	time loss
 R_3IT6ZXx2MztRRGc	time loss	1	time loss	yes	serious	time loss	time loss
 R_3j27GQZJCc95DpV	time loss	1	time loss	yes	recurring	time loss	time loss
 R_3j27GQZJCc95DpV	time loss	1	time loss	yes	serious	time loss	time loss
+R_3J4c4rpnbPrwloU	frustration	1	frustration	yes	recurring	frustration	frustration
 R_3jeZvxEXWjMiPoU	time loss	1	time loss	yes	recurring	time loss	time loss
 R_3jeZvxEXWjMiPoU	time loss	1	time loss	yes	serious	time loss	time loss
 R_3jfk9WUBB1C9rE0	erroneous conclusion	1	erroneous conclusion	yes	recurring	erroneous conclusion	erroneous conclusion
@@ -555,6 +596,8 @@ R_3kjMa6nu9SI2Zxt	time loss	1	time loss	yes	recurring	time loss	time loss
 R_3kjMa6nu9SI2Zxt	time loss	1	time loss	yes	serious	time loss	time loss
 R_3KK0Lq3IYGIcJXW	time loss	1	time loss	yes	recurring	time loss	time loss
 R_3KK0Lq3IYGIcJXW	frustration	1	frustration	yes	serious	frustration	frustration
+R_3L6niGuAekVeaXx	all of this can happen if no one checks-finds it. in ours mainly time loss due to some smart people finding it just before article publication	1	all of this can happen if no one checks-finds it. in ours mainly time loss due to some smart people finding it just before article publication	yes	recurring	time loss	time loss
+R_3L6niGuAekVeaXx	time loss	1	time loss	yes	serious	time loss	time loss
 R_3lFbOeEkr2aGW1f	& frustration	1	& frustration	yes	recurring	frustration	frustration
 R_3lFbOeEkr2aGW1f	& frustration	1	& frustration	yes	serious	frustration	frustration
 R_3lKPtjrvge3kjlW	financial and time loss, frustration	1	financial	no	recurring	financial lost	financial loss
@@ -569,6 +612,8 @@ R_3lQFyqvkeqxEGrv	time loss	1	time loss	yes	serious	time loss	time loss
 R_3lrEYOs4D0F0s0k	erroneous conclusion	1	erroneous conclusion	yes	recurring	erroneous conclusion	erroneous conclusion
 R_3lrEYOs4D0F0s0k	frustration	1	frustration	yes	serious	frustration	frustration
 R_3M0uW4vbFXE4kvx	time loss	1	time loss	yes	recurring	time loss	time loss
+R_3MxiNSZMv5T1z4X	frustration	1	frustration	yes	recurring	frustration	frustration
+R_3MxiNSZMv5T1z4X	frustration	1	frustration	yes	serious	frustration	frustration
 R_3MxuXev3SJ36Py0	frustration and time loss	1	frustration	no	recurring	frustration	frustration
 R_3MxuXev3SJ36Py0	frustration and time loss	2	time loss	no	recurring	time loss	time loss
 R_3n5YF1P3zkjw6mc	time loss	1	time loss	yes	recurring	time loss	time loss
@@ -592,6 +637,8 @@ R_3PYR1LMIJhMu0dH	Time loss AND frustration	1	Time loss	no	recurring	time loss	t
 R_3PYR1LMIJhMu0dH	Time loss AND frustration	1	Time loss	no	serious	time loss	time loss
 R_3PYR1LMIJhMu0dH	Time loss AND frustration	2	frustration	no	recurring	frustration	frustration
 R_3PYR1LMIJhMu0dH	Time loss AND frustration	2	frustration	no	serious	frustration	frustration
+R_3q9lNyzTYS3Wwfu	time loss	1	time loss	yes	recurring	time loss	time loss
+R_3q9lNyzTYS3Wwfu	data became mostly useless	1	data became mostly useless	yes	serious	potential or real project failure or setback	unusable data
 R_3qlI1oXGPLbeopZ	time loss	1	time loss	yes	recurring	time loss	time loss
 R_3qlI1oXGPLbeopZ	The data from this error has not been analyzed, but it will take time and, perhaps, cause frustration while we work out how to resolve the issue.	1	The data from this error has not been analyzed	no	serious	potential or real project failure or setback	data loss
 R_3qlI1oXGPLbeopZ	The data from this error has not been analyzed, but it will take time and, perhaps, cause frustration while we work out how to resolve the issue.	2	but it will take time	no	serious	time loss	time loss
@@ -687,6 +734,8 @@ R_cuv0b8aL16OZV5f	data loss	1	data loss	yes	serious	potential or real project fa
 R_cYFPvH5xI8jDLOh	less meaningful results	1	less meaningful results	yes	recurring	loss of scientific value	less meaningful results
 R_CZELpbmkR2H9uz7	frustration	1	frustration	yes	recurring	frustration	frustration
 R_CZELpbmkR2H9uz7	time loss	1	time loss	yes	serious	time loss	time loss
+R_d5bHbCJFKEtSdcB	time loss	1	time loss	yes	recurring	time loss	time loss
+R_d5bHbCJFKEtSdcB	erroneous conclusion	1	erroneous conclusion	yes	serious	erroneous conclusion	erroneous conclusion
 R_d9XxjKNfZKBlcv7	erroneous conclusion	1	erroneous conclusion	yes	recurring	erroneous conclusion	erroneous conclusion
 R_d9XxjKNfZKBlcv7	financial loss	1	financial loss	yes	serious	financial lost	financial loss
 R_DBlXUQLPEwonUSB	time loss	1	time loss	yes	recurring	time loss	time loss
@@ -697,6 +746,8 @@ R_DSGTNrt5b3NfEyd	time loss	1	time loss	yes	recurring	time loss	time loss
 R_DSGTNrt5b3NfEyd	time loss	1	time loss	yes	serious	time loss	time loss
 R_DuXE6py2mbqw7qV	time loss	1	time loss	yes	recurring	time loss	time loss
 R_DuXE6py2mbqw7qV	frustration	1	frustration	yes	serious	frustration	frustration
+R_e2QJYA7HDLHM0QV	time loss	1	time loss	yes	recurring	time loss	time loss
+R_e2QJYA7HDLHM0QV	time loss	1	time loss	yes	serious	time loss	time loss
 R_e5USP07muEESOKB	frustration	1	frustration	yes	serious	frustration	frustration
 R_exlSjtrcVMPpPkl	erroneous conclusion	1	erroneous conclusion	yes	recurring	erroneous conclusion	erroneous conclusion
 R_eYdELbJBuvjhdyF	time loss	1	time loss	yes	recurring	time loss	time loss
@@ -731,6 +782,10 @@ R_qJFDhrxLT2tTZ5v	time loss	1	time loss	yes	recurring	time loss	time loss
 R_qJFDhrxLT2tTZ5v	frustration	1	frustration	yes	serious	frustration	frustration
 R_qJHLDJdVTdBowI9	time loss	1	time loss	yes	recurring	time loss	time loss
 R_qJHLDJdVTdBowI9	time loss	1	time loss	yes	serious	time loss	time loss
+R_qyVu3WJ4rXTojBf	time loss	1	time loss	yes	recurring	time loss	time loss
+R_qyVu3WJ4rXTojBf	erroneous conclusion	1	erroneous conclusion	yes	serious	erroneous conclusion	erroneous conclusion
+R_qyZXW5SQf5lG4Ol	time loss	1	time loss	yes	recurring	time loss	time loss
+R_qyZXW5SQf5lG4Ol	time loss	1	time loss	yes	serious	time loss	time loss
 R_R4b2NHauEWrdgcN	time loss	1	time loss	yes	recurring	time loss	time loss
 R_RDng1vjQz0Eut2x	time loss	1	time loss	yes	recurring	time loss	time loss
 R_RDng1vjQz0Eut2x	time loss	1	time loss	yes	serious	time loss	time loss
@@ -841,5 +896,7 @@ R_ZdxANIAeQf93MkN	frustration	1	frustration	yes	recurring	frustration	frustratio
 R_ZdxANIAeQf93MkN	erroneous conclusion	1	erroneous conclusion	yes	serious	erroneous conclusion	erroneous conclusion
 R_ZJlgxWYq9ryKVJ7	time loss	1	time loss	yes	recurring	time loss	time loss
 R_ZJlgxWYq9ryKVJ7	time loss	1	time loss	yes	serious	time loss	time loss
+R_ZKoWiUDZBNjI1kl	erroneous conclusion	1	erroneous conclusion	yes	recurring	erroneous conclusion	erroneous conclusion
+R_ZKoWiUDZBNjI1kl	The article would have to be abandoned, and sanctions taken. This did not occur, due to decisions made above my pay grade, but I still consider it a failure.	1	The article would have to be abandoned.	yes	serious	potential or real project failure or setback	abandoned article
 R_zTomGWKEQc3Ne8h	time loss	1	time loss	yes	recurring	time loss	time loss
 R_ZyPIaTnZlEqj2PT	time loss	1	time loss	yes	recurring	time loss	time loss

@@ -47,7 +47,7 @@ skim(descriptives)
 
 ```{r}
 descriptives %>% 
-  summarise(median_year = median(years))
+  summarise(median_year = median(years, na.rm = TRUE))
 ```
 
 ## Years spent on the field
@@ -62,15 +62,15 @@ descriptives %>%
   scale_y_continuous(expand = c(0,0)) +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
-        axis.text = element_text(color = "black", size = 12),
-        axis.title = element_text(size = 15),
+        axis.text = element_text(color = "black", size = 25),
+        axis.title = element_text(size = 40),
         panel.background = element_blank())
 ```
 
 Saving the plot.
 
 ```{r}
-ggsave("Figures/years_on_field_plot.png", width = 14.4, height = 9, plot = last_plot())
+ggsave("Figures/years_on_field_plot.png", plot = last_plot(), dpi = 300, width = 50, height = 30, units = "cm")
 ```
 
 ## Field
@@ -104,23 +104,26 @@ descriptives %>%
   group_by(field) %>% 
   count() %>% 
   ggplot(.) +
-  aes(x = reorder(field, desc(n)), y = n) +
+  aes(x = reorder(field, n), y = n) +
   geom_bar(stat = "identity") +
   scale_y_continuous(expand = c(0,0), limits = c(0, 120)) +
-  labs(x = "Field of the Research Teams of the Respondents",
+  labs(x = "Research Field of the Respondent",
        y = "Count") + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
-        axis.ticks = element_line(color = "black"),
-        axis.line = element_line(color = "black"),
-        axis.text = element_text(color = "black", size = 12),
-        axis.title = element_text(size = 15),
-        panel.background = element_blank())
+  coord_flip() +
+  theme(
+    # axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
+    axis.ticks = element_line(color = "black"),
+    axis.line = element_line(color = "black"),
+    axis.text = element_text(color = "black", size = 25),
+    axis.title = element_text(size = 30),
+    panel.background = element_blank(),
+    plot.margin = unit(c(.8, .8, .8, .8), "cm"))
 ```
 
 Saving the plot.
 
 ```{r}
-ggsave("Figures/subfield_distribution_plot.png", width = 14.4, height = 9, plot = last_plot())
+ggsave("Figures/subfield_distribution_plot.png", plot = last_plot(), dpi = 300, width = 50, height = 30, units = "cm")
 ```
 
 # General overview of data management mistakes
@@ -168,6 +171,8 @@ general_mistake_frequency_plot_data <-
   mutate(N = sum(n),
          percentage = round(n / N * 100, 0))
 
+general_mistake_frequency_all_n <- sum(general_mistake_frequency_plot_data$n)
+
 general_mistake_frequency_plot <- 
   general_mistake_frequency_plot_data %>% 
   ggplot() +
@@ -176,7 +181,7 @@ general_mistake_frequency_plot <-
   geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
   scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
   labs(x = "Frequency Level",
-       title = "Overall Frequency (n = 463)") +
+       title = paste("Overall Frequency (n =", general_mistake_frequency_all_n, ")")) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -198,7 +203,7 @@ general_mistake_frequency_plot_count <-
   geom_text(aes(label = n), size = 8, hjust = -0.3) +
   scale_y_continuous(expand = c(0,0)) +
   labs(x = "Frequency Level",
-       title = "Overall Frequency (n = 463)") +
+       title = paste("Overall Frequency (n =", general_mistake_frequency_all_n, ")")) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -282,13 +287,15 @@ most_frequent_frequency_plot_data <-
   mutate(N = sum(n),
          percentage = round(n / N * 100, 0))
 
+most_frequent_frequency_all_n <- sum(most_frequent_frequency_plot_data$n)
+
 most_frequent_frequency_plot <- 
   most_frequent_frequency_plot_data %>% 
   ggplot() +
   aes(x = rating, y = percentage) +
   geom_bar(stat = "identity") +
   geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust=-0.3) +
-  labs(title = "Most Frequent Mistakes (n = 397)") +
+  labs(title = paste("Most Frequent Mistakes (n =", most_frequent_frequency_all_n, ")")) +
   scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
@@ -308,7 +315,7 @@ most_frequent_frequency_plot_count <-
   aes(x = rating, y = n) +
   geom_bar(stat = "identity") +
   geom_text(aes(label = n), size = 8, hjust=-0.3) +
-  labs(title = "Most Frequent Mistakes (n = 397)") +
+  labs(title = paste("Most Frequent Mistakes (n =", most_frequent_frequency_all_n, ")")) +
   scale_y_continuous(expand = c(0,0)) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
@@ -380,6 +387,8 @@ most_frequent_seriousness_plot_data <-
   mutate(N = sum(n),
          percentage = round(n / N * 100, 0))
 
+most_frequent_seriousness_all_n <- sum(most_frequent_seriousness_plot_data$n)
+
 most_frequent_seriousness_plot <- 
   most_frequent_seriousness_plot_data %>% 
   ggplot() +
@@ -388,7 +397,7 @@ most_frequent_seriousness_plot <-
   geom_text(aes(label = paste0(percentage, "%")), size = 8, hjust = -0.3) +
   scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
   labs(y = "Percentage",
-       title = "Most Frequent Mistakes (n = 397)") +
+       title = paste("Most Frequent Mistakes (n =", most_frequent_seriousness_all_n, ")")) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -410,7 +419,7 @@ most_frequent_seriousness_plot_count <-
   geom_text(aes(label = n), size = 8, hjust = -0.3) +
   scale_y_continuous(expand = c(0,0)) +
   labs(y = "Count",
-       title = "Most Frequent Mistakes (n = 397)") +
+       title = paste("Most Frequent Mistakes (n =", most_frequent_seriousness_all_n, ")")) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -432,7 +441,7 @@ general_mistake_overview %>%
   mutate(rating = serious_char_to_fact(rating)) %>% 
   mutate(report_group = case_when(rating == "Insignificant" ~ 1L,
                                   rating == "Minor" ~ 1L,
-                                  rating == "Moderate" ~ 0L,
+                                  rating == "Moderate" ~ 2L,
                                   rating == "Major" ~ 0L,
                                   rating == "Extreme" ~ 0L)) %>%
   group_by(report_group) %>% 
@@ -492,6 +501,8 @@ most_serious_seriousness_plot_data <-
   mutate(N = sum(n),
          percentage = round(n / N * 100, 0))
 
+most_serious_seriousness_all_n <- sum(most_serious_seriousness_plot_data$n)
+
 most_serious_seriousness_plot <- 
   most_serious_seriousness_plot_data %>% 
   ggplot() +
@@ -501,7 +512,7 @@ most_serious_seriousness_plot <-
   scale_y_continuous(expand = c(0,0), limit = c(0, 75), breaks = c(0, 20, 40, 60, 75), labels = scales::label_percent(scale = 1)) +
   labs(x = "Seriousness Level",
        y = "Percentage",
-       title = "Most Serious Mistakes (n = 277)") +
+       title = paste("Most Serious Mistakes (n =", most_serious_seriousness_all_n, ")")) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -523,7 +534,7 @@ most_serious_seriousness_plot_count <-
   scale_y_continuous(expand = c(0,0)) +
   labs(x = "Seriousness Level",
        y = "Count",
-       title = "Most Serious Mistakes (n = 277)") +
+       title = paste("Most Serious Mistakes (n =", most_serious_seriousness_all_n, ")")) +
   coord_flip() +
   theme(axis.ticks = element_line(color = "black"),
         axis.line = element_line(color = "black"),
@@ -544,7 +555,7 @@ general_mistake_overview %>%
   mutate(rating = serious_char_to_fact(rating)) %>% 
   mutate(report_group = case_when(rating == "Insignificant" ~ 1L,
                                   rating == "Minor" ~ 1L,
-                                  rating == "Moderate" ~ 0L,
+                                  rating == "Moderate" ~ 2L,
                                   rating == "Major" ~ 0L,
                                   rating == "Extreme" ~ 0L)) %>%
   group_by(report_group) %>% 
@@ -670,7 +681,7 @@ relationship_plot_data <-
 
 ```{r, fig.show = 'hide'}
 relationship_plot_data %>% 
-    ggplot(aes(x = reorder(label, n), y = prop, group = group_cause_meta, fill = group_cause_meta)) +
+    ggplot(aes(x = reorder(label, n_sum), y = prop, group = group_cause_meta, fill = group_cause_meta)) +
     geom_bar(stat = "identity") +
     viridis::scale_fill_viridis(discrete = TRUE) +
     scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
@@ -707,6 +718,18 @@ Filter the most frequent mistakes only.
 frequent_cause_type_relationship <- 
   cause_type_relationship %>% 
   filter(type == "recurring")
+```
+
+Calculating the proportions of meta-causes in the sample.
+
+```{r}
+frequent_cause_type_relationship %>% 
+  group_by(group_cause_meta) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100) %>% 
+  arrange(desc(n))
 ```
 
 Counting how many respondents listed a specific cause for each mistake type.
@@ -755,7 +778,7 @@ relationship_plot_data <-
 
 ```{r, fig.show = 'hide'}
 relationship_plot_data %>% 
-    ggplot(aes(x = reorder(label, n), y = prop, group = group_cause_meta, fill = group_cause_meta)) +
+    ggplot(aes(x = reorder(label, n_sum), y = prop, group = group_cause_meta, fill = group_cause_meta)) +
     geom_bar(stat = "identity") +
     viridis::scale_fill_viridis(discrete = TRUE) +
     scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
@@ -792,6 +815,18 @@ Filter the most serious mistakes only.
 serious_cause_type_relationship <- 
   cause_type_relationship %>% 
   filter(type == "serious")
+```
+
+Calculating the proportions of meta-causes in the sample.
+
+```{r}
+serious_cause_type_relationship %>% 
+  group_by(group_cause_meta) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100) %>% 
+  arrange(desc(n))
 ```
 
 Counting how many respondents listed a specific cause for each mistake type.
@@ -840,7 +875,7 @@ relationship_plot_data <-
 
 ```{r, fig.show = 'hide'}
 relationship_plot_data %>% 
-    ggplot(aes(x = reorder(label, n), y = prop, group = group_cause_meta, fill = group_cause_meta)) +
+    ggplot(aes(x = reorder(label, n_sum), y = prop, group = group_cause_meta, fill = group_cause_meta)) +
     geom_bar(stat = "identity") +
     viridis::scale_fill_viridis(discrete = TRUE) +
     scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
@@ -884,7 +919,7 @@ skim(outcome_type_relationship) %>% summary()
 skim(outcome_type_relationship)
 ```
 
-Calculating the proportions of meta-causes in the sample.
+Calculating the proportions of outcomes in the sample.
 
 ```{r}
 outcome_type_relationship %>% 
@@ -898,7 +933,7 @@ outcome_type_relationship %>%
 
 ### Data transformation
 
-Counting how many respondents listed a specific cause for each mistake type
+Counting how many respondents listed a specific outcome for each mistake type
 
 ```{r}
 con_tab <- as_tibble(xtabs(~ group_type + group_outcome, data = outcome_type_relationship))
@@ -918,7 +953,7 @@ relationship_plot_data <-
                                    TRUE ~ group_outcome))
 ```
 
-Check if the proportion of the cause groups add up to a hundred.
+Check if the proportion of the outcome groups add up to a hundred.
 
 ```{r}
 relationship_plot_data %>% 
@@ -946,7 +981,7 @@ relationship_plot_data <-
 
 ```{r, fig.show = 'hide'}
 relationship_plot_data %>% 
-    ggplot(aes(x = reorder(label, n), y = prop, group = group_outcome, fill = group_outcome)) +
+    ggplot(aes(x = reorder(label, n_sum), y = prop, group = group_outcome, fill = group_outcome)) +
     geom_bar(stat = "identity") +
     viridis::scale_fill_viridis(discrete = TRUE) +
     scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
@@ -985,9 +1020,21 @@ frequent_outcome_type_relationship <-
   filter(type == "recurring")
 ```
 
+Calculating the proportions of outcomes in the sample.
+
+```{r}
+frequent_outcome_type_relationship %>% 
+  group_by(group_outcome) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100) %>% 
+  arrange(desc(n))
+```
+
 #### Data transformation
 
-Counting how many respondents listed a specific cause for each mistake type
+Counting how many respondents listed a specific outcome for each mistake type
 
 ```{r}
 con_tab <- as_tibble(xtabs(~ group_type + group_outcome, data = frequent_outcome_type_relationship))
@@ -1007,7 +1054,7 @@ relationship_plot_data <-
                                    TRUE ~ group_outcome))
 ```
 
-Check if the proportion of the cause groups add up to a hundred.
+Check if the proportion of the outcome groups add up to a hundred.
 
 ```{r}
 relationship_plot_data %>% 
@@ -1035,7 +1082,7 @@ relationship_plot_data <-
 
 ```{r, fig.show = 'hide'}
 relationship_plot_data %>% 
-    ggplot(aes(x = reorder(label, n), y = prop, group = group_outcome, fill = group_outcome)) +
+    ggplot(aes(x = reorder(label, n_sum), y = prop, group = group_outcome, fill = group_outcome)) +
     geom_bar(stat = "identity") +
     viridis::scale_fill_viridis(discrete = TRUE) +
     scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
@@ -1066,12 +1113,24 @@ ggsave("Figures/frequent_outcome_type_relationship_plot.png", width = 14.4, heig
 
 ### Same figure separately for the most serious mistakes
 
-Filter the most frequent mistakes only.
+Filter the most serious mistakes only.
 
 ```{r}
 serious_outcome_type_relationship <- 
   outcome_type_relationship %>% 
   filter(type == "serious")
+```
+
+Calculating the proportions of outcomes in the sample.
+
+```{r}
+serious_outcome_type_relationship %>% 
+  group_by(group_outcome) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(N = sum(n),
+         prop = n / N * 100) %>% 
+  arrange(desc(n))
 ```
 
 #### Data transformation
@@ -1124,7 +1183,7 @@ relationship_plot_data <-
 
 ```{r, fig.show = 'hide'}
 relationship_plot_data %>% 
-    ggplot(aes(x = reorder(label, n), y = prop, group = group_outcome, fill = group_outcome)) +
+    ggplot(aes(x = reorder(label, n_sum), y = prop, group = group_outcome, fill = group_outcome)) +
     geom_bar(stat = "identity") +
     viridis::scale_fill_viridis(discrete = TRUE) +
     scale_y_continuous(expand = c(0,0), limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1), labels = scales::percent(c(0, 0.25, 0.5, 0.75, 1))) +
@@ -1160,28 +1219,43 @@ ggsave("Figures/serious_outcome_type_relationship_plot.png", width = 14.4, heigh
 mistake_type_groups <- read_tsv("Data/Processed/ReMis_Main_Processed_Type_Groups_data.tsv")
 ```
 
-### Counting how many times a mistake type is reported for the most frequent mistakes
+### Counting the number of grouped responses per mistake type
 
 ```{r}
 mistake_type_groups %>% 
+  count(type)
+```
+
+### Counting how many times a mistake type is reported for the most frequent mistakes
+
+```{r}
+mistake_type_frequent <- 
+  mistake_type_groups %>% 
   filter(type == "recurring") %>% 
-  group_by(group_type) %>% 
-  count() %>% 
-  arrange(desc(n)) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n))
+  count(group_type) %>% 
+  rename(`Most Frequent Mistakes` = n)
 ```
 
 ### Counting how many times a mistake type is reported for the most serious mistakes
 
 ```{r}
-mistake_type_groups %>% 
+mistake_type_serious <- 
+  mistake_type_groups %>% 
   filter(type == "serious") %>% 
-  group_by(group_type) %>% 
-  count() %>% 
-  arrange(desc(n)) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n))
+  count(group_type) %>% 
+  rename(`Most Serious Mistakes` = n)
+```
+
+## Merging tables of most frequent and most serious mistakes
+
+```{r}
+mistake_type_table <- 
+  mistake_type_frequent %>% 
+  left_join(., mistake_type_serious, by ="group_type") %>% 
+  rename(`Mistake Type Group` = group_type) %>% 
+  mutate(n_all = `Most Frequent Mistakes` + `Most Serious Mistakes`) %>% 
+  arrange(desc(n_all)) %>% 
+  select(-n_all)
 ```
 
 ### Counting how many times a mistake type is reported for the most frequent and most serious mistakes
@@ -1203,28 +1277,43 @@ mistake_type_groups %>%
 cause_groups <- read_tsv("Data/Processed/ReMis_Main_Processed_Cause_Groups_data.tsv")
 ```
 
-### Counting how many times a cause is reported for the most frequent mistakes
+### Counting the number of grouped responses per mistake type
 
 ```{r}
 cause_groups %>% 
+  count(type)
+```
+
+### Counting how many times a cause is reported for the most frequent mistakes
+
+```{r}
+cause_group_frequent <- 
+  cause_groups %>% 
   filter(type == "recurring") %>% 
-  group_by(group_cause) %>% 
-  count() %>% 
-  arrange(desc(n)) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n))
+  count(group_cause) %>% 
+  rename(`Most Frequent Mistakes` = n)
 ```
 
 ### Counting how many times a cause group is reported for the most serious mistakes
 
 ```{r}
-cause_groups %>% 
+cause_group_serious <- 
+  cause_groups %>% 
   filter(type == "serious") %>% 
-  group_by(group_cause) %>% 
-  count() %>% 
-  arrange(desc(n)) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n))
+  count(group_cause) %>% 
+  rename(`Most Serious Mistakes` = n)
+```
+
+## Merging tables for the causes of the most frequent and most serious mistakes
+
+```{r}
+cause_group_table <- 
+  cause_group_frequent %>% 
+  left_join(., cause_group_serious, by ="group_cause") %>% 
+  rename(`Cause Group` = group_cause) %>% 
+  mutate(n_all = `Most Frequent Mistakes` + `Most Serious Mistakes`) %>% 
+  arrange(desc(n_all)) %>% 
+  select(-n_all)
 ```
 
 ### Counting how many times a cause group is reported for the most frequent and most serious mistakes
@@ -1246,28 +1335,44 @@ cause_groups %>%
 outcome_groups <- read_tsv("Data/Processed/ReMis_Main_Processed_Outcome_Groups_data.tsv")
 ```
 
-### Counting how many times an outcome group is reported for the most frequent mistakes
+### Counting the number of grouped responses per mistake type
 
 ```{r}
 outcome_groups %>% 
+  count(type)
+```
+
+### Counting how many times an outcome group is reported for the most frequent mistakes
+
+```{r}
+outcome_group_frequent <- 
+  outcome_groups %>% 
   filter(type == "recurring") %>% 
-  group_by(group_outcome) %>% 
-  count() %>% 
-  arrange(desc(n)) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n))
+  count(group_outcome) %>% 
+  rename(`Most Frequent Mistakes` = n)
 ```
 
 ### Counting how many times an outcome group is reported for the most serious mistakes
 
 ```{r}
-outcome_groups %>% 
+outcome_group_serious <- 
+  outcome_groups %>% 
   filter(type == "serious") %>% 
   group_by(group_outcome) %>% 
-  count() %>% 
-  arrange(desc(n)) %>% 
-  ungroup() %>% 
-  mutate(N = sum(n))
+  count(group_outcome) %>% 
+  rename(`Most Serious Mistakes` = n)
+```
+
+## Merging tables for the causes of the most frequent and most serious mistakes
+
+```{r}
+outcome_group_table <- 
+  outcome_group_frequent %>% 
+  left_join(., outcome_group_serious, by ="group_outcome") %>% 
+  rename(`Outcome Group` = group_outcome) %>% 
+  mutate(n_all = `Most Frequent Mistakes` + `Most Serious Mistakes`) %>% 
+  arrange(desc(n_all)) %>% 
+  select(-n_all)
 ```
 
 ### Counting how many times an outcome group is reported for the most frequent and most serious mistakes

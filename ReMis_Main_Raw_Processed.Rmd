@@ -126,6 +126,37 @@ raw <-
 
 The number of responses: `r response_count(raw)`
 
+## Excluding respondents who did not answer the compulsory background questions
+
+Number of respondents who will be excluded.
+
+```{r}
+raw %>% 
+  filter_at(vars(years, field), any_vars(is.na(.))) %>% 
+  nrow()
+```
+
+Save the id of the respondent with missing background responses.
+
+```{r}
+missing_background <-
+  raw %>% 
+  filter_at(vars(years, field), any_vars(is.na(.))) %>% 
+  pull(response_id)
+
+missing_background
+```
+
+Exclusion.
+
+```{r}
+raw <- 
+  raw %>%
+  filter_at(vars(field, years), any_vars(!is.na(.)))
+```
+
+The number of responses: `r response_count(raw)`
+
 ## Calucalting median response time
 
 We are calculating the median competition time of the survey based on the responses that we had after exclusion.
@@ -373,6 +404,7 @@ keep_excluded_ambiguous_responses <- function(df, type_var, var) {
                        "missing",
                        "irrelevant content",
                        "out of timeframe")) %>% 
+    filter(response_id %ni% missing_background) %>% 
     mutate(exclusion_criteria = code,
            type = {{type_var}}) %>%
     select(response_id, type, {{var}}, exclusion_criteria) %>% 
@@ -433,16 +465,20 @@ n_response_left_after_excluding_ambiguous <- function(df, type_var) {
                        "missing",
                        "irrelevant content",
                        "out of timeframe")) %>%
+    filter(response_id %ni% missing_background) %>% 
     distinct(response_id, {{type_var}}) %>% 
     count({{type_var}}) %>% 
     mutate(N = sum(n))
 }
 
-n_response_left_after_excluding_ambiguous(processed_mistake_type_coding, mistake_type)
+processed_mistake_type_coding %>% 
+  n_response_left_after_excluding_ambiguous(., mistake_type)
 
-n_response_left_after_excluding_ambiguous(processed_cause_coding, cause_type)
+processed_cause_coding %>% 
+  n_response_left_after_excluding_ambiguous(., cause_type)
   
-n_response_left_after_excluding_ambiguous(processed_outcome_coding, outcome_type)
+processed_outcome_coding %>% 
+  n_response_left_after_excluding_ambiguous(., outcome_type)
 ```
 
 ##### Number of responses after separation
@@ -454,21 +490,25 @@ n_response_after_separation <-function(df, type_var) {
                        "missing",
                        "irrelevant content",
                        "out of timeframe")) %>%
+    filter(response_id %ni% missing_background) %>% 
     count({{type_var}}) %>% 
     mutate(N = sum(n))
 }
 
-n_response_after_separation(processed_mistake_type_coding, mistake_type)
+processed_mistake_type_coding %>% 
+  n_response_after_separation(., mistake_type)
 
-n_response_after_separation(processed_cause_coding, cause_type)
+processed_cause_coding %>% 
+  n_response_after_separation(., cause_type)
   
-n_response_after_separation(processed_outcome_coding, outcome_type)
+processed_outcome_coding %>%
+  n_response_after_separation(., outcome_type)
 ```
 
 #### Grouping exclusion
 ##### Number of responses excluded because of insufficient information
 
-For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the mistake ("insufficient information").
+For the thematic analysis only we exclude responses where there is not enough information in the response to decide what was the mistake ("insufficient information"). This exclusion happened based on the assigned codes.
 
 ```{r}
 processed_mistake_type_coding %>% 
@@ -496,15 +536,19 @@ n_response_left_excluded_during_coding <- function(df, type_var) {
                        "irrelevant content",
                        "out of timeframe",
                        "insufficient information")) %>% 
+    filter(response_id %ni% missing_background) %>% 
     count({{type_var}}) %>% 
     mutate(N = sum(n))
 }
 
-n_response_left_excluded_during_coding(processed_mistake_type_coding, mistake_type)
+processed_mistake_type_coding %>% 
+  n_response_left_excluded_during_coding(., mistake_type)
 
-n_response_left_excluded_during_coding(processed_cause_coding, cause_type)
+processed_cause_coding %>% 
+  n_response_left_excluded_during_coding(., cause_type)
 
-n_response_left_excluded_during_coding(processed_outcome_coding, outcome_type)
+processed_outcome_coding %>% 
+  n_response_left_excluded_during_coding(., outcome_type)
 ```
 
 #### Transform data
@@ -648,7 +692,7 @@ processed_outcome_grouped <-
 #### Write responses for validation
 
 ```{r}
-# write_tsv(processed_mistake_type_grouped, "Processed/grouping/grouped/ReMis_Main_Processed_Mistake_Type_Grouped_data.tsv")
+# write_tsv(processed_mistake_type_grouped, "Data/Processed/grouping/grouped/ReMis_Main_Processed_Mistake_Type_Grouped_data.tsv")
 
 # write_tsv(processed_cause_grouped, "Data/Processed/grouping/grouped/ReMis_Main_Processed_Cause_Grouped_data.tsv")
 
@@ -682,15 +726,21 @@ n_response_left_excluded_during_grouping <- function(df, type_var) {
                         "out of timeframe",
                         "insufficient information",
                         "NA")) %>%
+    filter(response_id %ni% missing_background) %>% 
     group_by({{type_var}}) %>% 
-    summarise(n = n())
+    summarise(n = n()) %>% 
+    ungroup() %>% 
+    mutate(N = sum(n))
 }
 
-n_response_left_excluded_during_grouping(processed_mistake_type_grouped, mistake_type)
+processed_mistake_type_grouped %>% 
+  n_response_left_excluded_during_grouping(., mistake_type)
 
-n_response_left_excluded_during_grouping(processed_cause_grouped, cause_type)
+processed_cause_grouped %>% 
+  n_response_left_excluded_during_grouping(., cause_type)
 
-n_response_left_excluded_during_grouping(processed_outcome_grouped, outcome_type)
+processed_outcome_grouped %>% 
+  n_response_left_excluded_during_grouping(., outcome_type)
 ```
 
 #### Test if there is any case thats code is not grouped
@@ -782,7 +832,9 @@ keep_responses_grouping_exclusion <- function(df) {
                         "irrelevant content",
                         "out of timeframe",
                         "insufficient information",
-                        "NA"))
+                        "NA")) %>% 
+    # All the responses from this person will be dropped because they are missing but I want to make this explicit
+    filter(response_id %ni% missing_background)
 }
 
 processed_mistake_type_filtered <-
@@ -937,6 +989,8 @@ processed_general_frequency <-
   filter(!is.na(general_frequency))
 ```
 
+There are `r nrow(processed_general_frequency)` responses left after excluding the missing responses.
+
 #### Write processed datafile for analysis
 
 ```{r}
@@ -947,9 +1001,9 @@ write_tsv(processed_general_frequency, "Data/Processed/ReMis_Main_Processed_Gene
 ### Investigating the excluded responses
 #### Create a table of the excluded responses
 
-We flagged the mistakes that needed to be excluded from the analysis of the frequency and seriousness ratings during the preprocessing of the free-text responses in order to save time. Therefore, we use the coded mistake dataset to excluded cases that fit our exclusion criteria.
+We flagged the description of the mistakes that needed to be excluded from the analysis of the frequency and seriousness ratings during the preprocessing of the free-text responses in order to save time. Therefore, we use the coded mistake dataset to excluded cases that fit our exclusion criteria.
 
-If the participants response got separated both separated responses got the same code and got dropped.
+In the manuscript these are the first (missing responses) and second step (irrelevant, out of timeframe, and ambiguous responses) of the exclusions for the Preprocessing of the frequency and seriousness ratings.
 
 ```{r}
 processed_mistake_type_coding <-
@@ -962,10 +1016,12 @@ exclude <-
                      "missing",
                      "irrelevant content",
                      "out of timeframe")) %>%
+  # As the respondent with missing background information was decided to be excluded later in the process we have to exclude them now here
+  filter(response_id %ni% missing_background) %>%
   mutate(exclusion_criteria = code,
          type = mistake_type) %>%
-  select(response_id, type, mistake, exclusion_criteria) %>%
-  # In two cases the response got separated into 2 responses but both got the same code. In order to keep the numbers constant we keep only one response.
+  select(response_id, type, mistake, exclusion_criteria) %>% 
+  # In case of two respondents the description of the mistake got separated into 2 responses but both got the same code. In order to keep the numbers constant we keep only one response.
   distinct(response_id, type, .keep_all = TRUE)
 
 # write_tsv(exclude, "Data/Processed/ReMis_Main_Mistake_General_Exclusion_data.tsv")
@@ -1005,13 +1061,27 @@ temp_story <-
   mutate(type = str_extract(type, "[^_]+"))
 ```
 
-#### Number of all mistake response stories before exclusion
+#### Number of all mistake response stories after excluding the missing responses
 
 ```{r}
 temp_story %>% 
   filter(!is.na(mistake)) %>%
-  group_by(type) %>% 
-  count()
+  count(type)
+```
+
+#### Excluding trials
+
+```{r}
+temp_story_excluded <-
+  temp_story %>% 
+  anti_join(., exclude, by = c("response_id", "type", "mistake"))
+```
+
+#### Number of mistake description after exclusiong by type
+
+```{r}
+temp_story_excluded %>% 
+  count(type)
 ```
 
 #### Creating temporary datatable for storing mistake ratings
@@ -1024,69 +1094,47 @@ temp_rating <-
   separate(key, into = c("type", "question"), sep = "_")
 ```
 
-#### Number of all mistake response ratings before exclusion
+#### Number of missing mistake response ratings per type and per question before
+
+This is the number of missing ratings before we exclude the descriptions that are missing or ambiguous.
+
+```{r}
+temp_rating %>%
+  filter(is.na(rating)) %>% 
+  count(type, question)
+```
+
+#### Number of all mistake response ratings after excluding the missing responses
+
+This is the number of non-missing ratings before we exclude the descriptions that are missing or ambiguous.
 
 ```{r}
 temp_rating %>%
   filter(!is.na(rating)) %>%
-  group_by(type, question) %>% 
-  count()
+  count(type, question)
 ```
 
 #### Joining ratings to the descriptions of the mistakes
 
 ```{r}
 processed_mistake_general <-
-  temp_story %>% 
-  left_join(., temp_rating, by = c("response_id", "type"))
-```
-
-#### Number of individual respondents before exclusion
-
-```{r}
-processed_mistake_general %>% 
-  distinct(response_id) %>% 
-  count()
-```
-
-#### Responses that will be excluded and their ratings
-
-```{r}
-processed_mistake_general_exclude <- 
-  processed_mistake_general %>% 
-  inner_join(., exclude, by = c("response_id", "type", "mistake"))
-```
-
-#### Number of responses that will be excluded per type and question
-
-```{r}
-processed_mistake_general_exclude %>% 
-  group_by(type, question) %>% 
-  count()
-```
-
-#### Excluding trials
-
-```{r}
-processed_mistake_general_excluded <-
-  processed_mistake_general %>% 
-  anti_join(., exclude, by = c("response_id", "type", "mistake"))
+  temp_story_excluded %>% 
+  inner_join(., temp_rating, by = c("response_id", "type"))
 ```
 
 #### Number of missing ratings after exclusion
 
 ```{r}
-processed_mistake_general_excluded %>% 
+processed_mistake_general %>% 
   filter(is.na(rating)) %>% 
-  group_by(type, question) %>% 
-  count()
+  count(type, question)
 ```
 
 #### Drop responses where the rating is missing
 
 ```{r}
 processed_mistake_general_excluded <-
-  processed_mistake_general_excluded %>% 
+  processed_mistake_general %>% 
   filter(!is.na(rating))
 ```
 
@@ -1094,8 +1142,7 @@ processed_mistake_general_excluded <-
 
 ```{r}
 processed_mistake_general_excluded %>% 
-  group_by(type, question) %>% 
-  count()
+  count(type, question)
 ```
 
 #### Number of individual respondents left after exclusion

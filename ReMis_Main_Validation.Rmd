@@ -38,7 +38,7 @@ processed_mistake_type_grouping <- read_xlsx("Data/Processed/grouping/group/ReMi
 ```{r}
 processed_mistake_type_grouping %>% 
   filter(group == "NA") %>% 
-  count()
+  summarise(N = sum(n))
 ```
 
 #### Transform data
@@ -61,26 +61,6 @@ processed_mistake_type_definition <-
 
 ```{r}
 # write_xlsx(processed_mistake_type_definition, "Data/Processed/definition/ReMis_Main_Processed_Mistake_Type_Definition.xlsx")
-```
-
-#### Testing
-##### Testing similarity between tables
-
-```{r}
-setdiff(
-  select(processed_mistake_type_coding_count, -group),
-  select(processed_mistake_type_grouping, -group)
-  )
-```
-
-##### Test if the sum of the number of codes equals the length of the responses
-
-```{r}
-processed_mistake_type_grouping %>% 
-  summarise(sum_n = sum(n))
-
-processed_mistake_type_coding %>% 
-  count()
 ```
 
 ### Causes of mistakes
@@ -120,26 +100,6 @@ processed_cause_definition <-
 # write_xlsx(processed_cause_definition, "Data/Processed/definition/ReMis_Main_Processed_Cause_Definition.xlsx")
 ```
 
-#### Testing
-##### Testing similarity between tables
-
-```{r}
-setdiff(
-  select(processed_cause_coding_count, -group),
-  select(processed_casuse_grouping, -group)
-)
-```
-
-##### Test if the sum of the number of codes equals the length of the responses
-
-```{r}
-processed_cause_grouping %>% 
-  summarise(sum_n = sum(n))
-
-processed_cause_coding %>% 
-  count()
-```
-
 ### Outcomes of mistakes
 #### Read data
 
@@ -177,26 +137,6 @@ processed_outcome_definition <-
 # write_xlsx(processed_outcome_definition, "Data/Processed/definition/ReMis_Main_Processed_Outcome_Definition.xlsx")
 ```
 
-#### Testing
-##### Testing similarity between tables
-
-```{r}
-setdiff(
-  select(processed_outcome_coding_count, -group),
-  select(processed_outcome_grouping, -group)
-)
-```
-
-##### Test if the sum of the number of codes equals the length of the responses
-
-```{r}
-processed_outcome_grouping %>% 
-  summarise(sum_n = sum(n))
-
-processed_outcome_coding %>% 
-  count()
-```
-
 ## Sorting the responses to groups
 ### Creating spreadsheets for the raters
 
@@ -209,17 +149,27 @@ Because sorting the separated responses to groups by independent raters require 
 processed_mistake_type_grouped <- read_tsv("Data/Processed/grouping/grouped/ReMis_Main_Processed_Mistake_Type_Grouped_data.tsv")
 ```
 
+##### Count the number of cases where a response was not assigned to a code
+
+This should be the same as group == "NA" in the processed_mistake_type_grouping df.
+
+```{r}
+processed_mistake_type_grouped %>% 
+  filter(is.na(group)) %>% 
+  nrow()
+```
+
 ##### Transform data
 
 ```{r}
-processed_mistake_type_grouped <-
+processed_mistake_type_to_validate <-
   processed_mistake_type_grouped %>% 
   filter(group %ni% c("see above",
                      "missing",
                      "irrelevant content",
                      "out of timeframe",
-                     "insufficient information",
-                     "NA")) %>%
+                     "insufficient information")) %>%
+  filter(!is.na(group)) %>% 
   select(-code, -n, -group)
 ```
 
@@ -229,7 +179,7 @@ processed_mistake_type_grouped <-
 # Rater1
 ## Transform data
 processed_mistake_type_rater1 <-
-  processed_mistake_type_grouped %>% 
+  processed_mistake_type_to_validate %>% 
   mutate(group_rater1 = NA_character_) %>% 
   slice(1:599)
 
@@ -239,7 +189,7 @@ processed_mistake_type_rater1 <-
 # Rater2
 ## Transform data
 processed_mistake_type_rater2 <-
-  processed_mistake_type_grouped %>% 
+  processed_mistake_type_to_validate %>% 
   mutate(group_rater2 = NA_character_) %>% 
   slice(1:599)
 
@@ -249,7 +199,7 @@ processed_mistake_type_rater2 <-
 # Rater3
 ## Transform data
 processed_mistake_type_rater3 <-
-  processed_mistake_type_grouped %>% 
+  processed_mistake_type_to_validate %>% 
   mutate(group_rater3 = NA_character_) %>%
   slice(600:786)
 
@@ -259,7 +209,7 @@ processed_mistake_type_rater3 <-
 # Rater4
 ## Transform data
 processed_mistake_type_rater4 <-
-  processed_mistake_type_grouped %>% 
+  processed_mistake_type_to_validate %>% 
   mutate(group_rater4 = NA_character_) %>% 
   slice(600:786)
 
@@ -277,14 +227,14 @@ processed_cause_grouped <- read_tsv("Data/Processed/grouping/grouped/ReMis_Main_
 ##### Transform data
 
 ```{r}
-processed_cause_grouped <-
+processed_cause_to_validate <-
   processed_cause_grouped %>% 
   filter(group %ni% c("see above",
                       "missing",
                       "irrelevant content",
                       "out of timeframe",
-                      "insufficient information",
-                      "NA")) %>%
+                      "insufficient information")) %>%
+  filter(!is.na(group)) %>% 
   select(-code, -n, -group)
 ```
 
@@ -294,7 +244,7 @@ processed_cause_grouped <-
 # Rater1
 ## Transform data
 processed_cause_rater1 <-
-  processed_cause_grouped %>% 
+  processed_cause_to_validate %>% 
   mutate(group_rater1 = NA_character_)
 
 ## Write data
@@ -303,7 +253,7 @@ processed_cause_rater1 <-
 # Rater2
 ## Transform data
 processed_cause_rater2 <-
-  processed_cause_grouped %>% 
+  processed_cause_to_validate %>% 
   mutate(group_rater2 = NA_character_)
 
 ## Write data
@@ -320,14 +270,14 @@ processed_outcome_grouped <- read_tsv("Data/Processed/grouping/grouped/ReMis_Mai
 ##### Transform data
 
 ```{r}
-processed_outcome_grouped <-
+processed_outcome_to_validate <-
   processed_outcome_grouped %>% 
   filter(group %ni% c("see above",
                       "missing",
                       "irrelevant content",
                       "out of timeframe",
-                      "insufficient information",
-                      "NA")) %>%
+                      "insufficient information")) %>%
+  filter(!is.na(group)) %>% 
   select(-code, -n, -group)
 ```
 
@@ -337,7 +287,7 @@ processed_outcome_grouped <-
 # Rater1
 ## Transform data
 processed_outcome_rater1 <-
-  processed_outcome_grouped %>% 
+  processed_outcome_to_validate %>% 
   mutate(group_rater1 = NA_character_) 
 
 ## Write data
@@ -346,7 +296,7 @@ processed_outcome_rater1 <-
 # Rater2
 ## Transform data
 processed_outcome_rater2 <-
-  processed_outcome_grouped %>% 
+  processed_outcome_to_validate %>% 
   mutate(group_rater2 = NA_character_)
 
 ## Write data
@@ -656,6 +606,8 @@ processed_grouping_type_result <-
 ```{r}
 processed_grouping_type_validation <-
   processed_grouping_type_result %>%
+  # This participant was excluded after the validation process. They did not provide any free text response, but to be transparent we make sure their response is excluded here
+  filter(response_id != "R_1eV2on20y9CkUQr") %>% 
   inner_join(., processed_mistake_type_grouped, by = c("mistake_no",
                                                        "response_id",
                                                        "mistake",
@@ -687,7 +639,7 @@ processed_grouping_type_result %>%
 ##### Saving the dataset
 
 ```{r}
-write_tsv(processed_grouping_type_result, "Data/Processed/grouping/validated/ReMis_Main_Processed_Type_Validated_data.tsv")
+# write_tsv(processed_grouping_type_result, "Data/Processed/grouping/validated/ReMis_Main_Processed_Type_Validated_data.tsv")
 ```
 
 #### Causes of mistakes
@@ -736,6 +688,8 @@ processed_grouping_cause_result %>%
 ```{r}
 processed_grouping_cause_validation <-
   processed_grouping_cause_result %>%
+    # This participant was excluded after the validation process. They did not provide any free text response, but to be transparent we make sure their response is excluded here
+  filter(response_id != "R_1eV2on20y9CkUQr") %>% 
   inner_join(., processed_cause_grouped, by = c("cause_no",
                                                 "response_id",
                                                 "cause",
@@ -758,7 +712,7 @@ processed_grouping_cause_validation %>%
 ##### Saving the dataset
 
 ```{r}
-write_tsv(processed_grouping_cause_result, "Data/Processed/grouping/validated/ReMis_Main_Processed_Cause_Validated_data.tsv")
+# write_tsv(processed_grouping_cause_result, "Data/Processed/grouping/validated/ReMis_Main_Processed_Cause_Validated_data.tsv")
 ```
 
 #### Outcomes of mistakes
@@ -805,6 +759,8 @@ processed_grouping_outcome_result %>%
 ```{r}
 processed_grouping_outcome_validation <-
   processed_grouping_outcome_result %>%
+    # This participant was excluded after the validation process. They did not provide any free text response, but to be transparent we make sure their response is excluded here
+  filter(response_id != "R_1eV2on20y9CkUQr") %>% 
   inner_join(., processed_outcome_grouped, by = c("outcome_no",
                                                 "response_id",
                                                 "outcome",
@@ -827,5 +783,5 @@ processed_grouping_outcome_validation %>%
 ##### Saving the dataset
 
 ```{r}
-write_tsv(processed_grouping_outcome_result, "Data/Processed/grouping/validated/ReMis_Main_Processed_Outcome_Validated_data.tsv")
+# write_tsv(processed_grouping_outcome_result, "Data/Processed/grouping/validated/ReMis_Main_Processed_Outcome_Validated_data.tsv")
 ```
