@@ -70,7 +70,9 @@ descriptives %>%
 Saving the plot.
 
 ```{r}
-ggsave("Figures/years_on_field_plot.png", plot = last_plot(), dpi = 300, width = 50, height = 30, units = "cm")
+ggsave("Figures/figs2.png", plot = last_plot(), dpi = 300, width = 50, height = 30, units = "cm")
+
+ggsave("Figures/figs2.pdf", plot = last_plot(), dpi = 300, width = 50, height = 30, units = "cm")
 ```
 
 ## Field
@@ -123,7 +125,9 @@ descriptives %>%
 Saving the plot.
 
 ```{r}
-ggsave("Figures/subfield_distribution_plot.png", plot = last_plot(), dpi = 300, width = 50, height = 30, units = "cm")
+ggsave("Figures/figs3.png", plot = last_plot(), dpi = 300, width = 50, height = 30, units = "cm")
+
+ggsave("Figures/figs3.pdf", plot = last_plot(), dpi = 300, width = 50, height = 30, units = "cm")
 ```
 
 # General overview of data management mistakes
@@ -571,7 +575,9 @@ cowplot::plot_grid(general_mistake_frequency_plot, most_frequent_frequency_plot,
 ```
 
 ```{r}
-ggsave("Figures/overview_mistakes_plot.png", width = 14.4, height = 9, plot = last_plot())
+ggsave("Figures/fig3.png", width = 14.4, height = 9, plot = last_plot())
+
+ggsave("Figures/fig3.pdf", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ```{r}
@@ -580,7 +586,9 @@ cowplot::plot_grid(general_mistake_frequency_plot_count, most_frequent_frequency
 ```
 
 ```{r}
-ggsave("Figures/overview_mistakes_plot_count.png", width = 14.4, height = 9, plot = last_plot())
+ggsave("Figures/figs4.png", width = 14.4, height = 9, plot = last_plot())
+
+ggsave("Figures/figs4.pdf", width = 14.4, height = 9, plot = last_plot())
 ```
 
 # Investigating research data management mistake types
@@ -708,6 +716,8 @@ Saving the plot.
 
 ```{r}
 ggsave("Figures/cause_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
+
+ggsave("Figures/cause_type_relationship_plot.pdf", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ### Same figure separately for the most frequent mistakes
@@ -804,7 +814,9 @@ relationship_plot_data %>%
 Saving the plot.
 
 ```{r}
-ggsave("Figures/frequent_cause_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
+ggsave("Figures/fig4.png", width = 14.4, height = 9, plot = last_plot())
+
+ggsave("Figures/fig4.pdf", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ### Same figure separately for the most serious mistakes
@@ -901,7 +913,9 @@ relationship_plot_data %>%
 Saving the plot.
 
 ```{r}
-ggsave("Figures/serious_cause_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
+ggsave("Figures/figs6.png", width = 14.4, height = 9, plot = last_plot())
+
+ggsave("Figures/figs6.pdf", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ## Relationship between mistake types and mistake outcomes
@@ -1008,6 +1022,8 @@ Saving the plot.
 
 ```{r}
 ggsave("Figures/outcome_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
+
+ggsave("Figures/outcome_type_relationship_plot.pdf", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ### Same figure separately for the most frequent mistakes
@@ -1108,7 +1124,9 @@ relationship_plot_data %>%
 Saving the plot.
 
 ```{r}
-ggsave("Figures/frequent_outcome_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
+ggsave("Figures/fig5.png", width = 14.4, height = 9, plot = last_plot())
+
+ggsave("Figures/fig5.pdf", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ### Same figure separately for the most serious mistakes
@@ -1209,7 +1227,9 @@ relationship_plot_data %>%
 Saving the plot.
 
 ```{r}
-ggsave("Figures/serious_outcome_type_relationship_plot.png", width = 14.4, height = 9, plot = last_plot())
+ggsave("Figures/figs5.png", width = 14.4, height = 9, plot = last_plot())
+
+ggsave("Figures/figs5.pdf", width = 14.4, height = 9, plot = last_plot())
 ```
 
 ## Frequency of data management mistak types
